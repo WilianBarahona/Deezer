@@ -1,0 +1,13 @@
+*{
+	margin: 0 auto;
+}
+
+.login{
+	height: 100vh;
+	width: 100%;
+	margin: 0 auto;
+	background-image: url("../img/bg.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
