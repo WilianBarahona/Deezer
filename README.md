@@ -1,3 +1,3 @@
-# Freezer
+# Deezer
 
 Streaming Music Service
