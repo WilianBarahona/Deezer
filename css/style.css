@@ -11,3 +11,13 @@
 	background-position: center;
 	background-repeat: no-repeat;
 }
+
+.nav-bar{
+	width: 20%;
+	float: left;
+}
+
+.content-main{
+	width: 80%
+	float:left;
+}
