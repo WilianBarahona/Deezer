@@ -1,3 +1,11 @@
+@font-face {
+    font-family: Open-Sans;
+    src: url("../fonts/open-sans.ttf");
+}
+
+*{
+  font-family: Open-Sans;
+}
 /*
  * Sidebar
  */
@@ -6,7 +14,7 @@
   display: none;
 }
 
-.sidebar a{
+.sidebar, .sidebar a{
   color:#C2C2CA;
 }
 @media (min-width: 768px) {
@@ -21,6 +29,7 @@
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: #23232c;
     border-right: 1px solid #eee;
+    font-size: 10pt;
   }
 }
 /* Sidebar navigation */
@@ -29,6 +38,8 @@
   margin-bottom: 20px;
   margin-left: -20px;
 }
+
+
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
@@ -44,4 +55,37 @@
 .nav-sidebar > li a:hover,
 .nav-sidebar > li a:focus {
   background-color: #23232c;
+}
+
+
+// POR ARCHIVOS
+// 
+// ##################################################
+// search.html
+.nav-bar{
+  width: 20%;
+  float: left;
+}
+
+.content-main{
+  width: 80%
+  float:left;
+}
+
+// Tabla
+.table-striped>tbody>tr{
+  color:#92929D;
+}
+.table-striped > tbody > tr:hover{
+  background-color: #E8E8EC;
+}
+
+.btn-none{
+  background-color:rgba(0, 0, 0, 0);
+}
+
+.card{
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 2px rgba(25,25,34,.15);
+          box-shadow: 0 1px 2px rgba(25,25,34,.15);
 }
