@@ -16,6 +16,7 @@
 
 .sidebar, .sidebar a{
   color:#C2C2CA;
+  text-decoration: none;
 }
 @media (min-width: 768px) {
   .sidebar {
@@ -29,7 +30,7 @@
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: #23232c;
     border-right: 1px solid #eee;
-    font-size: 10pt;
+    font-size: 9pt;
   }
 }
 /* Sidebar navigation */
@@ -38,11 +39,24 @@
   margin-bottom: 20px;
   margin-left: -20px;
 }
+
+.nav-sidebar .col1,
+.nav-sidebar .col2{
+  float:left;
+  margin: 0 auto;
+}
+
+.col1{
+  width: 20%;
+}
+
+.col2{
+  width: 60%;
+}
 .sidebar .player{
   bootom:0;
   margin-left: -15px;
   margin-right: -15px;
-  background-color:#C22C2C;
 }
 
 .nav-sidebar > li > a {
@@ -57,10 +71,18 @@
   background-color:#15151E;
 }
 
+.nav-sidebar hr{
+  margin: 5px 0 5px 0;
+  border-top: 1px solid #474747;
+}
 
-.nav-sidebar > li:hover,
+.nav-sidebar li{
+  height: 35px;
+}
+
 .nav-sidebar > li a:hover,
-.nav-sidebar > li:focus {
+.nav-sidebar > li a:hover,
+.nav-sidebar > li a:focus {
   background-color: #191922;
 }
 
@@ -69,6 +91,8 @@
   width: 90%;
   background-color: #007FEB;
   border-color: #007FEB;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 // POR ARCHIVOS
