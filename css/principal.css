@@ -38,7 +38,12 @@
   margin-bottom: 20px;
   margin-left: -20px;
 }
-
+.sidebar .player{
+  bootom:0;
+  margin-left: -15px;
+  margin-right: -15px;
+  background-color:#C22C2C;
+}
 
 .nav-sidebar > li > a {
   padding-right: 30px;
@@ -53,8 +58,9 @@
 }
 
 
+.nav-sidebar > li:hover,
 .nav-sidebar > li a:hover,
-.nav-sidebar > li a:focus {
+.nav-sidebar > li:focus {
   background-color: #191922;
 }
 
