@@ -9,6 +9,7 @@
     <!-- CSS -->
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="css/principal.css">
+   <link rel="stylesheet" href="css/player.css">
 
   </head>
   <body>
@@ -37,8 +38,8 @@
             </li>
                 <div class="container-fluid">
                   <div class="row">
-                      <div class="col-xs-12 text-center">
-                        <button type="button" class="btn btn-info">
+                      <div class="col-xs-12">
+                        <button type="button" class="btn btn-info center-block">
                           <span class="glyphicon glyphicon-plus"></span> SUSCRIBIRSE
                         </button>
                       </div>
@@ -77,6 +78,71 @@
           </ul>
 
           <div class="player">
+            <div class="container-fluid">
+              <div class="row player-info">
+                <div class="container-fluid">
+                  <div class="row">
+                    <h5>Title</h5>
+                  </div>
+                  <div class="row">
+                    <p>Title</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <span class="glyphicon glyphicon-knight"></span>
+                    </div>
+                    <div class="col-sm-2">
+                      <span class="glyphicon glyphicon-knight"></span>
+                    </div>
+                    <div class="col-sm-2">
+                      <span class="glyphicon glyphicon-knight"></span>
+                    </div>
+                    <div class="col-sm-6"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row player-btn player-change">
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-none" onclick="alert(1)">
+                    <span class="glyphicon glyphicon-step-backward player-prev"></span>
+                  </button>
+                </div >
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-none" onclick="alert(2)">
+                    <span class="glyphicon glyphicon-play player-play"></span>
+                  </button>
+                </div >
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-none" onclick="alert(3)">
+                    <span class="glyphicon glyphicon-step-forward player-next"></span>
+                  </button>
+                </div >
+              </div>
+
+              <div class="row player-btn player-opt">
+                <div class="col-sm-3">
+                  <button type="button" class="btn btn-none" onclick="alert(4)">
+                    <span class="glyphicon glyphicon-volume-up"></span>
+                  </button>
+                </div>
+                <div class="col-sm-3">
+                  <button type="button" class="btn btn-none" onclick="alert(5)">
+                    <span class="glyphicon glyphicon-repeat"></span>
+                  </button>
+                </div>
+                <div class="col-sm-3">
+                  <button type="button" class="btn btn-none" onclick="alert(6)">
+                    <span class="glyphicon glyphicon-random"></span>
+                  </button>
+                </div>
+                <div class="col-sm-3">
+                  <button type="button" class="btn btn-none" onclick="alert(7)">
+                    <span class="glyphicon glyphicon-list-alt"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         

@@ -30,7 +30,7 @@
     z-index: 1000;
     display: block;
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: hidden; /* Scrollable contents if viewport is shorter than content. */
     background-color: #23232c;
     border-right: 1px solid #eee;
     font-size: 9pt;
@@ -105,12 +105,6 @@
 
 .sidebar li .glyphicon{
   font-size:12pt;
-}
-
-.sidebar .player{
-  bootom:0;
-  margin-left: -15px;
-  margin-right: -15px;
 }
 
 // POR ARCHIVOS
