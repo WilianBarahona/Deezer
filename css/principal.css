@@ -61,18 +61,6 @@
   border-top: 1px solid #474747;
 }
 
-.nav-sidebar li a .img-profile{
-  width: 23px;
-  height: 23px;
-  margin-top: -2px;
-  float: left;
-  border: 2px rgba(109, 109, 109, 0.5) solid 
-}
-
-.nav-sidebar li a .settings{
-  float: right;
-}
-
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
@@ -87,6 +75,23 @@
   background-color: #191922;
 }
 
+.nav-sidebar li a .img-profile{
+  width: 23px;
+  height: 23px;
+  margin-top: -2px;
+  float: left;
+  border: 2px rgba(109, 109, 109, 0.5) solid 
+}
+
+.nav-sidebar li a .settings{
+  float: right;
+}
+
+.nav-sidebar li .link-profile{
+  width: 300px;
+  padding-right: 70px;
+}
+
 .sidebar .btn-info,
 .sidebar .btn-info:focus{
   width: 90%;
@@ -95,6 +100,7 @@
   margin-top: 5px;
   margin-bottom: 5px;
   font-family: Open-Sans;
+  font-size:9pt;
 }
 
 .sidebar li .glyphicon{
