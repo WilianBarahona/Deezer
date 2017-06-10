@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="img/favicon.png">
     <title>Freezer - Flow your music</title>
-    <!-- Bootstrap core CSS -->
+    
+    <!-- CSS -->
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="css/principal.css">
+
   </head>
   <body>
     <div class="container-fluid">
@@ -22,12 +20,20 @@
               <input type="text" name="search" class="form-control" placeholder="Buscar">
               <span class="glyphicon glyphicon-search form-control-feedback"></span>
           </div>
-          <ul class="nav nav-sidebar">
+          <ul class="nav nav-sidebar" aria-hidden="true">
             <li class="active"><a href="#">INICIO</a></li>
-            <li><a href="#">RECOMENDACIONES</a></li>
+            <li>
+              <a href="#">RECOMENDACIONES</a>
+            </li>
             <hr>
             <li>
-              <a href="">Música</a>
+              <a href="#">
+                <span class="link-profile" onclick="alert(4)">
+                  <img src="img/user.jpg"  class="img-profile img-circle" alt="">
+                  &nbsp;&nbsp;&nbsp; <span>Mi Música</span>
+                </span>
+                <span class="glyphicon glyphicon-cog settings" onclick="alert(5)"></span>
+              </a>
             </li>
                 <div class="container-fluid">
                   <div class="row">
@@ -41,31 +47,31 @@
             <li>
               <a href="#">
                   <span class="glyphicon glyphicon-heart"></span> 
-                  Canciones favoritas
+                  &nbsp;&nbsp;&nbsp; Mis favoritas
                 </a>
             </li>
             <li>
                 <a href="#">
                   <span class="glyphicon glyphicon-list"></span> 
-                  Playlists
+                  &nbsp;&nbsp;&nbsp; Playlists
                 </a>
             </li> 
               <li>
               <a href="#">
                   <span class="glyphicon glyphicon-cd"></span> 
-                  Álbumes
+                  &nbsp;&nbsp;&nbsp; Álbumes
                 </a>
               </li>
               <li>
               <a href="#">
                   <span class="glyphicon glyphicon-time"></span> 
-                  Actividad
+                  &nbsp;&nbsp;&nbsp; Actividad
                 </a>
               </li>
               <li>
                 <a href="#">
                     <span class="glyphicon glyphicon-expand"></span> 
-                    Aplicaciones
+                    &nbsp;&nbsp;&nbsp; Aplicaciones
                   </a>
               </li>
           </ul>
@@ -73,6 +79,7 @@
           <div class="player">
           </div>
         </div>
+        
         <!-- Contenido Principal -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <div class="container-fluid">
