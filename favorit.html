@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/favicon.png">
+    <title>Freezer - Flow your music</title>
+    <!-- Bootstrap core CSS -->
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/principal.css">
+   <link rel="stylesheet" type="text/css" href="css/favoritos.css">
+   <style>
+   		body{
+   			background-color:rgba(248, 248, 249,0.5);
+   		}
+   </style>
+
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <a href="index.html"><img src="img/freezer.png" class="img-responsive" alt=""></a>
+          <div class="form-group has-feedback">
+              <input type="text" name="search" class="form-control" placeholder="Buscar">
+              <span class="glyphicon glyphicon-search form-control-feedback" onclick="alert(5)"></span>
+          </div>
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">INICIO</a></li>
+            <li><a href="#">RECOMENDACIONES</a></li>
+            <hr>
+            <li>
+              <div class="container-fluid">
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+                    <a href=""><img src="img/icon.png"  class="img-circle img-responsive" alt=""></a>
+                  </div>
+                  <div class="col-sm-6 col-md-6 col-lg-6">
+                    <a href="">Mi Música</a>
+                  </div>
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+                      <a href=""><span class="glyphicon glyphicon-cog"></span></a>
+                  </div>
+              </div>
+            </li>
+            <br>
+            <li>
+                <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-xs-12 text-center">
+                        <button type="button" class="btn btn-info">
+                          <span class="glyphicon glyphicon-plus"></span> SUSCRIBIRSE
+                        </button>
+                      </div>
+                  </div>
+                </div>
+            </li>
+            <li>
+              <a href="">
+                  <span class="glyphicon glyphicon-heart"></span> 
+                  Canciones favoritas
+                </a>
+            </li>
+            <li>
+                <a href="">
+                  <span class="glyphicon glyphicon-list"></span> 
+                  Playlists
+                </a>
+            </li> 
+              <li>
+              <a href="">
+                  <span class="glyphicon glyphicon-cd"></span> 
+                  Álbumes
+                </a>
+              </li>
+              <li>
+              <a href="">
+                  <span class="glyphicon glyphicon-time"></span> 
+                  Actividad
+                </a>
+              </li>
+              <li>
+                <a href="">
+                    <span class="glyphicon glyphicon-expand"></span> 
+                    Aplicaciones
+                  </a>
+              </li>
+          </ul>
+        </div>
+        <!-- Contenido Principal -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <div class="container-fluid">
+          		<div class="row" style="margin-top: 10px">
+          			<!--Anuncio publicitario-->
+          			<div class="col-md-2"></div>
+          			<div class="col-md-8 well"></div>
+          			<div class="col-md-2"></div>
+          		</div><!--Fin Anuncio publicitario-->
+
+				<!--Barra de usuario-->
+          		<div class="banner-header-bg" style="background-image: url(img/fondo.jpg);padding: 60px;margin-right: -30px;margin-left: -30px;margin-bottom: -80px">
+          			<h2 style="color: white;text-align-last: center"><p >#Nombre de usuario#</p></h2>
+          		</div><!--Fin Barra de usuario-->
+
+				<img src="img/usuario.jpg" class="img-responsive img-circle" style="margin-bottom:-70px;margin-left: 120px" width="140">
+
+          		<!--Icons-->
+          		<div style="margin-top: 30px">
+          			<div class="col-md-4"></div>
+          			<div class="col-md-4">
+          			
+          				<button class="btn btn-primary">
+          				<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><strong>  FLOW</strong>
+          				</button>
+          					<button class=" btn cuenta">
+          					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span><strong>  Mi cuenta</strong>
+          				</button>
+          			</div>
+          			<div class="col-md-4"></div>
+          		</div><!-- Fin de los Icons-->
+
+          		<!--Barra de navegacion-->
+          		<div class="row">
+          			<nav class="navbar navbar-center">
+  						<div class="container-fluid">
+    						<ul class="nav navbar-nav">
+      							<li><a href="#">Mi Musica</a></li>
+      							<li><a href="#">Mis Favoritas</a></li> 
+     							<li><a href="#">Playlist</a></li>
+     							<li><a href="#">Álbumes</a></li>
+     							<li><a href="#">Artistas</a></li>
+     							<li><a href="#">Álbumes</a></li> 
+   							 </ul>
+  						</div>
+  					<hr>
+				</nav>
+				</div>	<!-- Fin barra de navegacion-->
+
+				<!--Reproduccion-->
+				<div class="row" style="background-color: rgba(230, 230, 231,0.2)">
+					<h5># Cancion</h5>
+						<div class="col-md-2">
+							<button class="btn  reproductor">
+								<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><strong>  Escuchar</strong>
+							</button>
+						</div>
+						<div class="col-md-10">
+							<input type="text" name="txt-busqueda" id="txt-busqueda" placeholder="Buscar en los resultados" class="form-control boton">
+						</div>
+						<br>
+				</div>
+				<!-- Fin de reproduccion-->
+
+				<!--contenedor de canciones-->
+				<div class="table-responsive" style="margin-top: 15px">
+					<table class="table table-hover table-striped">
+						<th class="th">cancion</th>
+						<th class="th">Artista</th>
+						<th class="th">Album</th>
+						<th class="th">Duracion</th>
+						<th class="th">Añadido</th>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

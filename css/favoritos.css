@@ -1,0 +1,102 @@
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #4389c1;
+    border-color: #2e6da4;
+}
+.cuenta{
+	font-size: 10px;
+}
+.navbar-nav>li>a:hover, .navbar-nav>li>button:hover {
+    border-color: #007feb;
+    color: #32323d;
+    text-decoration: none;
+
+}
+
+.navbar-nav>li>a, .navbar-nav>li>button {
+    font-size: 12px;
+    background-color: transparent;
+    border-bottom: 3px solid transparent;
+    color: #72727d;
+    display: block;
+    font-family: "Open Sans",Arial,sans-serif;
+    font-weight: 700;
+    height: 50px;
+    letter-spacing: .5px;
+    padding: 0 15px;
+    transition-duration: .15s;
+    transition-property: border-color,color;
+    padding-top: 20px;
+    padding-right: 50px;
+}
+.navbar-default {
+    background-color: #f8f8f8;
+    border-color: #f8f8f8;
+}
+
+.reproductor{
+    color: black;
+    background-color: white;
+    padding: 5px 30px 5px 30px;
+    margin: 0px;
+}
+.boton{
+    padding: 5px 30px 5px 30px;
+}
+.form-control:focus:hover {
+    border-color: gray;
+    outline: 0;
+}
+.form-control {
+    display: block;
+    width: 20%;
+    height: 30px;
+    padding: 6px 12px;
+    font-size: 10px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.btn {
+    border-color: gray;
+}
+.btn-primary:hover {
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+.th{
+    background-color: rgb(195, 195, 201);
+    font-size: 10px;
+    color: white
+}
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+}
