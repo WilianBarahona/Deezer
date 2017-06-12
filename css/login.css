@@ -1,37 +1,41 @@
 body {
 margin:0;
 background:#000;
-overflow:hidden;
+background-attachment: fixed;
+
+}
+
+.contenedor{
+  width:90%;
+  max-width: 3000px;
+  margin:auto;
 }
 
 
 *{
-	margin: 0 auto;
+  margin: 0 auto;
 }
+
+#particles-js {
+  width: 100%;
+  height:100%;
+  position: fixed;
+
+}
+
 .login{
-	height: 100vh;
-	width: 100%;
-	margin: 0 auto;
-	background-image: url("../img/bg.jpg");
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  background-image: url("../img/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.glyphicon.v-centered {
-    position: inherit;
-    vertical-align: middle;
-}
 
-.vcenter * {
-    vertical-align: middle;
-    display: inline-block;
-}
 
-.btn i {
-    margin-left: 10px;
-    font-size: 20px;
-}
+
 
 .btn-info{
   color: white;
@@ -95,4 +99,16 @@ fieldset[disabled] .btn-info.focus {
   color: white;
   background-color: #365899;
   
+}
+
+navbar-text {
+  margin-top: 15px;
+  margin-bottom: 200px;
+}
+
+
+header {
+  position: relative;
+  height: auto;
+  overflow: hidden;
 }
