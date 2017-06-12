@@ -74,13 +74,13 @@
   font-size: 10px;
 }
 .barra{
-  padding: 15px 60px 15px 40px;
+  /*padding: 15px 60px 15px 40px;
   margin-top:20px;
-  margin-bottom: 30px;
+  margin-bottom: 30px;*/
   color: white;
   font-size: 9px;
   text-align: center;
-  position: center center;
+ /* position: center center;*/
 }
 
 .coneccion{
@@ -105,3 +105,4 @@ a:hover{
     width: 87%;
     margin-left: 23px;
 }
+

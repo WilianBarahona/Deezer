@@ -1,26 +1,105 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Freezer</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="img/favicon.png">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/login.css">
-	<link rel="stylesheet" type="text/css" href="css/principal.css">
+      <title>Freezer</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="img/favicon.png">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+      <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap-social.css">
+      <link href="css/register.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="css/login.css">
+      <link rel="stylesheet" type="text/css" href="css/principal.css">
+      <link rel="icon" href="img/favicon.png">
 </head>
-<body>
-	<div id="particles-js" class="login">
-		<img src="img/freezer.png" alt="Freezer" width="256px">
-		<button class="btn btn-info">
-    <i class="fa fa-facebook" aria-hidden="true"></i>  Facebook
-  </button>
-	</div>
 
-	<!-- scripts -->
-	<script src="js/particles.js"></script>
-	<script src="js/app.js"></script>
-	
+
+<body class="contenedor login">
+    <div id="particles-js"></div>
+    <header>
+      <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 img-responsive">
+                  <img src="img/freezer.png" alt="Freezer" width="256px">
+            </div>
+            <div class="col-lg-5 col-md-4 col-sm-0 col-xs-0"></div>
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
+              <button class="btn btn-shadow coneccion" id="login_button">
+            <span class="label">Conectarse</span>
+          </button>
+            </div>
+          </div>
+    </header>
+          
+          <!--Encabezado-->
+            <div class="row parrafo-blanco">
+             <div class="col-md-3"></div>
+               <div class="col-md-6">
+                    <p><strong><h1>¿Qué vas a escuchar hoy?</h1></strong></p>
+                    <p><h4>Escucha las canciones de tu Flow en Freezer </h4></p>
+                    <p><h4>Registrarse</h4></p>
+                </div>
+                <div class="col-md-3"></div>
+           </div>
+           <!--Formulario-->
+           <div class="row">
+               <form class="form-signin">
+                    <button class="btn  btn-social btn-facebook style-buttons">Facebook 
+                      <i class="fa fa-facebook"></i>
+                    </button>
+                    <button class="btn  btn-social btn-google style-buttons">Google+
+                       <i class="fa fa-google-plus"></i>
+                    </button>
+                    <br>
+                    <table>
+                        <tr>
+                          <td>
+                              <em>
+                                    <input type="email" style="padding: 15px 90px 15px 93px;" id="inputEmail" class="form-control" placeholder="Correo Electronico" required autofocus>
+                                </em>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <em>
+                                   <input type="password" style="padding: 15px 90px 15px 93px;" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+                                </em>
+                          </td>
+                        </tr>
+                        
+                    </table>
+                    <h6></h6>
+                    <h6 class="tamaño" style="position: relative;">
+                         <a href="Freezer-Legal.html" class="tamaño">¿Has olvidado tu contraseña?</a>
+                     </h6>
+                    <button class="btn btn-info btn-block" type="submit" style="font-size: 12px; position: relative;">
+                         Conectarse
+                    </button>
+                    
+       
+                  </form>
+        </div>
+      
+      <!--Enlaces-->
+      <div class="row barra">
+          <div class="col-md-2 col-lg-3"></div>
+        <div class="col-md-8 col-lg-8">
+            <p class="navbar-text" style="font-size:11px;">
+                    <a href="#" class="navbar-link">Ofertas</a>
+                    <a href="#" class="navbar-link"> Ventajas</a>
+                    <a href="#" class="navbar-link">Movil</a>
+                    <a href="#" class="navbar-link">Prensa</a>
+                    <a href="#" class="navbar-link">Trabajos</a>
+                    <a href="#" class="navbar-link">Ayuda y contactos</a>
+                    <a href="#" class="navbar-link">Codigos generales de uso</a>
+                    <a href="#" class="navbar-link">Datos personales y Cookies</a>
+                </p>
+            </div>
+            <div class="col-md-2 col-lg-1"></div>
+        </div>
+       
+  <script src="js/particles.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
