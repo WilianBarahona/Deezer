@@ -1,23 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="img/favicon.png">
     <title>Freezer - Flow your music</title>
-    <!-- Bootstrap core CSS -->
+    
+    <!-- CSS -->
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="css/principal.css">
+   <link rel="stylesheet" href="css/player.css">
    <link rel="stylesheet" type="text/css" href="css/favoritos.css">
-   <style>
-   		body{
-   			background-color:rgba(248, 248, 249,0.5);
-   		}
-   </style>
 
   </head>
   <body>
@@ -27,179 +20,258 @@
           <a href="index.html"><img src="img/freezer.png" class="img-responsive" alt=""></a>
           <div class="form-group has-feedback">
               <input type="text" name="search" class="form-control" placeholder="Buscar">
-              <span class="glyphicon glyphicon-search form-control-feedback" onclick="alert(5)"></span>
+              <span class="glyphicon glyphicon-search form-control-feedback"></span>
           </div>
-          <ul class="nav nav-sidebar">
+          <ul class="nav nav-sidebar" aria-hidden="true">
             <li class="active"><a href="#">INICIO</a></li>
-            <li><a href="#">RECOMENDACIONES</a></li>
+            <li>
+              <a href="#">RECOMENDACIONES</a>
+            </li>
             <hr>
             <li>
-              <div class="container-fluid">
-                  <div class="col-sm-3 col-md-3 col-lg-3">
-                    <a href=""><img src="img/icon.png"  class="img-circle img-responsive" alt=""></a>
-                  </div>
-                  <div class="col-sm-6 col-md-6 col-lg-6">
-                    <a href="">Mi Música</a>
-                  </div>
-                  <div class="col-sm-3 col-md-3 col-lg-3">
-                      <a href=""><span class="glyphicon glyphicon-cog"></span></a>
-                  </div>
-              </div>
+              <a href="#">
+                <span class="link-profile" onclick="alert(4)">
+                  <img src="img/user.jpg"  class="img-profile img-circle" alt="">
+                  &nbsp;&nbsp;&nbsp; <span>Mi Música</span>
+                </span>
+                <span class="glyphicon glyphicon-cog settings" onclick="alert(5)"></span>
+              </a>
             </li>
-            <br>
-            <li>
                 <div class="container-fluid">
                   <div class="row">
-                      <div class="col-xs-12 text-center">
-                        <button type="button" class="btn btn-info">
+                      <div class="col-xs-12">
+                        <button type="button" class="btn btn-info center-block">
                           <span class="glyphicon glyphicon-plus"></span> SUSCRIBIRSE
                         </button>
                       </div>
                   </div>
                 </div>
-            </li>
             <li>
-              <a href="">
+              <a href="#">
                   <span class="glyphicon glyphicon-heart"></span> 
-                  Canciones favoritas
+                  &nbsp;&nbsp;&nbsp; Mis favoritas
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="#">
                   <span class="glyphicon glyphicon-list"></span> 
-                  Playlists
+                  &nbsp;&nbsp;&nbsp; Playlists
                 </a>
             </li> 
               <li>
-              <a href="">
+              <a href="#">
                   <span class="glyphicon glyphicon-cd"></span> 
-                  Álbumes
+                  &nbsp;&nbsp;&nbsp; Álbumes
                 </a>
               </li>
               <li>
-              <a href="">
+              <a href="#">
                   <span class="glyphicon glyphicon-time"></span> 
-                  Actividad
+                  &nbsp;&nbsp;&nbsp; Actividad
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="#">
                     <span class="glyphicon glyphicon-expand"></span> 
-                    Aplicaciones
+                    &nbsp;&nbsp;&nbsp; Aplicaciones
                   </a>
               </li>
           </ul>
+
+          <div class="player">
+            <div class="container-fluid">
+              <div class="row player-info">
+                <div class="container-fluid">
+                  <div class="row">
+                    <h5>Title</h5>
+                  </div>
+                  <div class="row">
+                    <p>Title</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <span class="glyphicon glyphicon-knight"></span>
+                    </div>
+                    <div class="col-sm-2">
+                      <span class="glyphicon glyphicon-knight"></span>
+                    </div>
+                    <div class="col-sm-2">
+                      <span class="glyphicon glyphicon-knight"></span>
+                    </div>
+                    <div class="col-sm-6"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row player-btn player-change">
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-none" onclick="alert(1)">
+                    <span class="glyphicon glyphicon-step-backward player-prev"></span>
+                  </button>
+                </div >
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-none" onclick="alert(2)">
+                    <span class="glyphicon glyphicon-play player-play"></span>
+                  </button>
+                </div >
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-none" onclick="alert(3)">
+                    <span class="glyphicon glyphicon-step-forward player-next"></span>
+                  </button>
+                </div >
+              </div>
+
+              <div class="row player-btn player-opt">
+                <div class="col-sm-3">
+                  <button type="button" class="btn btn-none" onclick="alert(4)">
+                    <span class="glyphicon glyphicon-volume-up"></span>
+                  </button>
+                </div>
+                <div class="col-sm-3">
+                  <button type="button" class="btn btn-none" onclick="alert(5)">
+                    <span class="glyphicon glyphicon-repeat"></span>
+                  </button>
+                </div>
+                <div class="col-sm-3">
+                  <button type="button" class="btn btn-none" onclick="alert(6)">
+                    <span class="glyphicon glyphicon-random"></span>
+                  </button>
+                </div>
+                <div class="col-sm-3">
+                  <button type="button" class="btn btn-none" onclick="alert(7)">
+                    <span class="glyphicon glyphicon-list-alt"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        
         <!-- Contenido Principal -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <div class="container-fluid">
-          		<div class="row" style="margin-top: 10px">
-          			<!--Anuncio publicitario-->
-          			<div class="col-md-2"></div>
-          			<div class="col-md-8 well"></div>
-          			<div class="col-md-2"></div>
-          		</div><!--Fin Anuncio publicitario-->
+            <!--Anuncio publicitario-->
+            <div class="row" style="margin-top: 10px">
+                <div class="col-md-2 col-md-2"></div>
+                <div class="col-md-8 col-md-8 well"></div>
+                <div class="col-md-2 col-md-2"></div>
+            </div>
+            <!--Fin Anuncio publicitario-->
 
-				<!--Barra de usuario-->
-          		<div class="banner-header-bg" style="background-image: url(img/fondo.jpg);padding: 60px;margin-right: -30px;margin-left: -30px;margin-bottom: -80px">
-          			<h2 style="color: white;text-align-last: center"><p >#Nombre de usuario#</p></h2>
-          		</div><!--Fin Barra de usuario-->
+            <!--Barra de usuario-->
+              <div class="banner-header-bg" style="background-image: url(img/fondo.jpg);padding: 60px;margin-right: -30px;margin-left: -30px;margin-bottom: -80px">
+                <h2 style="color: white;text-align-last: center">
+                    <p >#Nombre de usuario#</p>
+                  </h2>
+              </div>
+            <!--Fin Barra de usuario-->
 
-				<img src="img/usuario.jpg" class="img-responsive img-circle" style="margin-bottom:-70px;margin-left: 120px" width="140">
+            <img src="img/usuario.jpg" class="img-responsive img-circle" style="margin-bottom:-120px;
+            margin-left: 170px"" width="140">
 
-          		<!--Icons-->
-          		<div style="margin-top: 30px">
-          			<div class="col-md-4"></div>
-          			<div class="col-md-4">
-          			
-          				<button class="btn btn-primary">
-          				<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><strong>  FLOW</strong>
-          				</button>
-          					<button class=" btn cuenta">
-          					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span><strong>  Mi cuenta</strong>
-          				</button>
-          			</div>
-          			<div class="col-md-4"></div>
-          		</div><!-- Fin de los Icons-->
+            <!--Icons-->
+              <div style="margin-top: 80px">
+                  <div class="col-md-4 col-md-"></div>
+                  <div class="col-md-4 col-md-4">
+                      <button class="btn btn-primary">
+                          <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><strong>  FLOW</strong>
+                      </button>
+                      <button class=" btn cuenta">
+                          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span><strong>  Mi cuenta</strong>
+                      </button>
+                </div>
+                <div class="col-md-4 col-md-3"></div>
+              </div>
+            <!-- Fin de los Icons-->
 
-          		<!--Barra de navegacion-->
-          		<div class="row">
-          			<nav class="navbar navbar-center">
-  						<div class="container-fluid">
-    						<ul class="nav navbar-nav">
-      							<li><a href="#">Mi Musica</a></li>
-      							<li><a href="#">Mis Favoritas</a></li> 
-     							<li><a href="#">Playlist</a></li>
-     							<li><a href="#">Álbumes</a></li>
-     							<li><a href="#">Artistas</a></li>
-     							<li><a href="#">Álbumes</a></li> 
-   							 </ul>
-  						</div>
-  					<hr>
-				</nav>
-				</div>	<!-- Fin barra de navegacion-->
+            <div class="row col-lg-12" style="margin-top: 30px">
+                <div class="col-lg-1 col-md-0"></div>
+                <div class="col-lg-10 col-md-12">
+                      <nav class="navbar navbar-center">
+                        <div class="container-fluid">
+                          <ul class="nav navbar-nav">
+                            <li><a href="#">Mi Musica</a></li>
+                            <li><a href="#">Mis Favoritas</a></li> 
+                            <li><a href="#">Playlist</a></li>
+                            <li><a href="#">Álbumes</a></li>
+                            <li><a href="#">Artistas</a></li>
+                            <li><a href="#">Álbumes</a></li> 
+                          </ul>
+                        </div>
+                      </nav>
+                </div>
+                <div class="col-lg-0"></div>
+                <hr>
+          </div>  <!-- Fin barra de navegacion-->
 
-				<!--Reproduccion-->
-				<div class="row" style="background-color: rgba(230, 230, 231,0.2)">
-					<h5># Cancion</h5>
-						<div class="col-md-2">
-							<button class="btn  reproductor">
-								<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><strong>  Escuchar</strong>
-							</button>
-						</div>
-						<div class="col-md-10">
-							<input type="text" name="txt-busqueda" id="txt-busqueda" placeholder="Buscar en los resultados" class="form-control boton">
-						</div>
-						<br>
-				</div>
-				<!-- Fin de reproduccion-->
+          <!--Reproduccion-->
+          <div class="row col-lg-12" style="background-color: rgba(230, 230, 231,0.2)">
+            <h5># Cancion</h5>
+              <div class="col-lg-2 col-md-3">
+                  <button class="btn  reproductor">
+                    <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><strong>  Escuchar</strong>
+                  </button>
+              </div>
+              <div class="col-lg-3 col-md-2"></div>
+              <div class="col-lg-7 col-md-7">
+                <input type="text" name="txt-busqueda" id="txt-busqueda" placeholder="Buscar en los resultados" class="form-control boton">
+              </div>
+            
+                  
+          
+        </div>
+        <!-- Fin de reproduccion-->
+          
+        <!--contenedor de canciones-->
+        <div class="row col-lg-12">
+        <div class="table-responsive" style="margin-top: 15px">
+          <table class="table table-hover table-striped">
+            <th class="th">cancion</th>
+            <th class="th">Artista</th>
+            <th class="th">Album</th>
+            <th class="th">Duracion</th>
+            <th class="th">Añadido</th>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+          </div>
+        </div><!--Fin de la tabla-->
+            
 
-				<!--contenedor de canciones-->
-				<div class="table-responsive" style="margin-top: 15px">
-					<table class="table table-hover table-striped">
-						<th class="th">cancion</th>
-						<th class="th">Artista</th>
-						<th class="th">Album</th>
-						<th class="th">Duracion</th>
-						<th class="th">Añadido</th>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-
+          </div>
         </div>
       </div>
     </div>
