@@ -1,4 +1,12 @@
-.btn {
+.banner{
+    color: white;
+    text-align-last: center;
+    padding: 70px;
+    margin-right: -30px;
+    margin-left: -30px;
+    margin-bottom: -80px;
+}
+#botones{
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -18,22 +26,22 @@
     background-image: none;
     border: 1px solid transparent;
     border-radius: 4px;
+    border-color: gray;
 }
-.btn-primary {
+
+.btn-azul {
     color: #fff;
     background-color: #4389c1;
     border-color: #2e6da4;
 }
-.cuenta{
-	font-size: 10px;
-}
+
 .navbar-nav>li>a:hover, .navbar-nav>li>button:hover {
     border-color: #007feb;
     color: #32323d;
     text-decoration: none;
+    background-color: white;
 
 }
-
 .navbar-nav>li>a, .navbar-nav>li>button {
     font-size: 12px;
     background-color: transparent;
@@ -61,14 +69,12 @@
     padding: 5px 30px 5px 30px;
     margin: 0px;
 }
+
 .boton{
     padding: 5px 30px 5px 30px;
 }
-.form-control:focus:hover {
-    border-color: gray;
-    outline: 0;
-}
-.form-control {
+
+.control {
     display: block;
     width: 20%;
     height: 30px;
@@ -81,18 +87,26 @@
     border: 1px solid gray;
     border-radius: 4px;
 }
-.btn {
-    border-color: gray;
+
+.navbar-nav>li>a, .navbar-nav>li>button {
+    font-size: 12px;
+    background-color: transparent;
+    border-bottom: 3px solid transparent;
+    color: #72727d;
+    display: block;
+    font-family: "Open Sans",Arial,sans-serif;
+    font-weight: 700;
+    height: 50px;
+    letter-spacing: .5px;
+    padding: 0 15px;
+    transition-duration: .15s;
+    transition-property: border-color,color;
+    padding-top: 20px;
+    padding-right: 50px;
 }
-.btn-primary:hover {
-    background-color: white;
-    color: black;
-    border-color: black;
-}
-.th{
-    background-color: rgb(195, 195, 201);
-    font-size: 10px;
-    color: white
+.navbar-default {
+    background-color: #f8f8f8;
+    border-color: #f8f8f8;
 }
 .navbar {
     position: relative;
@@ -100,7 +114,8 @@
     margin-bottom: 0px;
     border: 1px solid transparent;
 }
-.imagen{
-    margin-bottom:-120px;
-    margin-left: 120px";
+.th{
+    background-color: rgb(195, 195, 201);
+    font-size: 10px;
+    color: white
 }
