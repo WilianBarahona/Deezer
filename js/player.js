@@ -8,20 +8,26 @@ soundManager.setup({
 	}
 });	
 
+function cambiarRola(){
+	lista.next();
+}
+
 // OBJETO PLAYLIST CREADA EN SoundManager.onready
 function playList(){
 	this.isPlaying=false;
 	// Definicion DE ARREGLO PLAYLIST (El id se puede obtener de una DataBase)
 	// Donde esté guardado el URL del archivo, cover, informacion de artista, etc.
 	this.arraySong = [
-		{id:"photo",url:"music/photo.mp3"}//, + iteraciones
+		{id:"photo",url:"music/photo.mp3"},//, + iteraciones
+		{id:"rend",url:"music/rend.mp3"}//, + iteraciones
 	];
 	this.i=0; // CONTADOR DE REPRODUCCION
 	this.initSounds = function(){
 		for (var i = 0; i < this.arraySong.length; i++) {
 			soundManager.createSound({
 				id: this.arraySong[i].id,
-				url: this.arraySong[i].url
+				url: this.arraySong[i].url,
+
 			});
 		}
 	}
@@ -33,7 +39,14 @@ function playList(){
 	this.play = function(){
 		soundManager.pauseAll();
 		var id = this.arraySong[this.i].id;
-		soundManager.getSoundById(id).play();
+		// soundManager.getSoundById(id).play();
+		soundManager.play(id, {
+			// onfinish: lista.next
+			whileplaying : function(){
+				console.log(this.position);
+			},
+			onfinish: cambiarRola
+		});
 		// Cambiar icono
 		document.getElementById("player-play").setAttribute("class","");
 		document.getElementById("player-play").setAttribute("class","glyphicon glyphicon-pause");
@@ -41,6 +54,7 @@ function playList(){
 	// Pausar canción Actual
 	this.pause=function(){
 		soundManager.pauseAll();
+		// Cambiar icono
 		document.getElementById("player-play").setAttribute("class","");
 		document.getElementById("player-play").setAttribute("class","glyphicon glyphicon-play");	
 	}
@@ -56,8 +70,18 @@ function playList(){
 		}
 	}
 
-	this.prev=function(){}
-	this.next=function(){}
+	this.prev=function(){
+		this.i--;
+		if (this.i<this.arraySong.length && this.i>=0) {
+			this.play()
+		}
+	}
+	this.next=function(){
+		this.i++;
+		if (this.i<this.arraySong.length && this.i>=0) {
+			this.play()
+		}
+	}
 
 	// METODOS DE INICIO
 	this.initSounds();
