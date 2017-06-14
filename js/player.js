@@ -73,12 +73,14 @@ function playList(){
 	this.prev=function(){
 		this.i--;
 		if (this.i<this.arraySong.length && this.i>=0) {
+			soundManager.stopAll();
 			this.play()
 		}
 	}
 	this.next=function(){
 		this.i++;
 		if (this.i<this.arraySong.length && this.i>=0) {
+			soundManager.stopAll();
 			this.play()
 		}
 	}
