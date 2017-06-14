@@ -3,9 +3,9 @@
   bottom: 0;
   min-height: 230px;
   width: 100%;
-  background-color: #F70000;
+  background-color: #6A6A6A;
   margin-left: -15px;
-  background-image: url("../img/cover.jpg");
+  background-image: url("../img/x.jpg");
   background-size: cover;
   background-position: center;
 }

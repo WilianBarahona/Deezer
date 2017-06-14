@@ -35,7 +35,7 @@
     border-right: 1px solid #eee;
     font-size: 9pt;
   }
-}
+
 /* Sidebar navigation */
 .nav-sidebar {
   margin-right: -21px; /* 20px padding + 1px border */
@@ -106,7 +106,7 @@
 .sidebar li .glyphicon{
   font-size:12pt;
 }
-
+}
 // POR ARCHIVOS
 // 
 // ##################################################
