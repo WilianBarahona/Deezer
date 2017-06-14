@@ -82,8 +82,11 @@
               <div class="row player-info">
                 <div class="container-fluid">
                   <div class="row">
-                    <h4>Ed Sheeran <br>
-                    Photograph</h4>
+                    <h4>
+                    <span id="player-artist">Ed Sheeran</span>
+                    <br>
+                    <span id="player-title">Photograph</span>
+                    </h4>
                   </div>
                   <div class="row">
                     <div class="col-sm-2">
@@ -112,7 +115,7 @@
                   </button>
                 </div >
                 <div class="col-sm-4">
-                  <button type="button" class="btn btn-none" onclick="lista.next()">
+                  <button type="button" class="btn btn-none" onclick="lista.next(selector)">
                     <span class="glyphicon glyphicon-step-forward player-next"></span>
                   </button>
                 </div >
