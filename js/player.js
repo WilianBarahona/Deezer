@@ -118,6 +118,17 @@ function playList(){
 		document.getElementById("player").style.backgroundImage="url("+imgURL+")";
 	}
 
+	this.stop = function(){
+		soundManager.stopAll();
+		// Cambiar icono
+		document.getElementById("player-play").setAttribute("class","");
+		document.getElementById("player-play").setAttribute("class","glyphicon glyphicon-play");	
+	}
+
+	this.clear = function(){
+		this.arraySong =[];
+	}
+
 	// METODOS DE INICIO
 	this.initSounds();
 }
