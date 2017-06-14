@@ -18,7 +18,7 @@ function playList(){
 	// Definicion DE ARREGLO PLAYLIST (El id se puede obtener de una DataBase)
 	// Donde esté guardado el URL del archivo, cover, informacion de artista, etc.
 	this.arraySong = [
-		{id:"photo",url:"music/photo.mp3"},//, + iteraciones
+		{id:"photo",url:"music/photo.mp3"},//, + iteraciones // Agregar coverimage, artist, titulo
 		{id:"rend",url:"music/rend.mp3"}//, + iteraciones
 	];
 	this.i=0; // CONTADOR DE REPRODUCCION
@@ -43,7 +43,7 @@ function playList(){
 		soundManager.play(id, {
 			// onfinish: lista.next
 			whileplaying : function(){
-				console.log(this.position);
+				// Update position
 			},
 			onfinish: cambiarRola
 		});
