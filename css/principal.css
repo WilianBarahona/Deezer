@@ -6,6 +6,9 @@
 *{
   font-family: Open-Sans;
 }
+body{
+  background-color: #F8F8F9;
+}
 /*
  * Sidebar
  */
@@ -21,6 +24,13 @@
   text-decoration: none;
 }
 @media (min-width: 768px) { /* CSS para Escritorio*/
+  .sidebar{
+    width: 231px;
+  }
+  .float-bar{
+    width: 375px;
+  }
+  
   .sidebar, 
   .float-bar{
     position: fixed;
@@ -126,10 +136,6 @@
 }
 
 } 
-
-.main{
-  background-color: #F8F8F9;
-}
 
 // Fin CSS para Escritorio
 // POR ARCHIVOS
