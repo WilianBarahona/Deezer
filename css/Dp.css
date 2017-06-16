@@ -108,3 +108,15 @@ h1{
     font-weight: 300;
 
 }
+
+.op{
+	padding: 2px;
+	border: 2px;
+	color: #fff;
+	list-style: none;
+	position: relative;
+	color: blue;
+}
+.op:hover{
+	color: blue;
+}
