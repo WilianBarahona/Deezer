@@ -8,7 +8,7 @@ soundManager.setup({
 	}
 });	
 
-function cambiarRola(){
+function nextSound(){
 	lista.next();
 }
 
@@ -60,7 +60,7 @@ function playList(){
 			whileplaying : function(){
 				// Update position
 			},
-			onfinish: cambiarRola
+			onfinish: nextSound
 		});
 		// Cambiar icono
 		document.getElementById("player-play").setAttribute("class","");
