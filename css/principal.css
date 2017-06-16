@@ -12,7 +12,6 @@
 /* Hide for mobile, show later */
 .sidebar {
   display: none;
-  width: 230px;
   -webkit-user-select: none;
   -moz-user-select: none; 
 }
@@ -21,8 +20,9 @@
   color:#C2C2CA;
   text-decoration: none;
 }
-@media (min-width: 768px) {
-  .sidebar {
+@media (min-width: 768px) { /* CSS para Escritorio*/
+  .sidebar, 
+  .float-bar{
     position: fixed;
     top: 0;
     bottom: 0;
@@ -51,6 +51,7 @@
     padding-left: 30px;
     height: 30px;
     padding-top: 5px;
+    cursor: pointer;
 }
 
 .nav-sidebar hr{
@@ -105,20 +106,36 @@
 .sidebar li .glyphicon{
   font-size:12pt;
 }
+
+.float-bar{
+  background: #F8F8FA;
+  z-index: 500;
+  margin-left: -500px;
 }
+
+.float-bar-overlay{
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0a0a1655;
+    z-index: 1; 
+    cursor: pointer;
+}
+
+} 
+
+.main{
+  background-color: #F8F8F9;
+}
+
+// Fin CSS para Escritorio
 // POR ARCHIVOS
 // 
 // ##################################################
 // search.html
-.nav-bar{
-  width: 20%;
-  float: left;
-}
-
-.content-main{
-  width: 80%
-  float:left;
-}
 
 // Tabla
 .table-striped>tbody>tr{
