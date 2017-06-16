@@ -32,7 +32,6 @@
     overflow-x: hidden;
     overflow-y: hidden; /* Scrollable contents if viewport is shorter than content. */
     background-color: #23232c;
-    border-right: 1px solid #eee;
     font-size: 9pt;
   }
 

@@ -103,6 +103,7 @@ function playList(){
 			this.changeInfoSong();
 		}else{
 			this.i--;
+			this.pause();
 		}
 	}
 
