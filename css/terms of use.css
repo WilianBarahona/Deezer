@@ -1,4 +1,4 @@
-a{
+/*a{
 	color: blue;
 }
 h4{
@@ -6,4 +6,159 @@ h4{
 }
 #titulo{
 	font-size: 3em;
+}
+*/
+
+body {
+  min-height: 2000px;
+}
+
+.navbar-static-top {
+  margin-bottom: 19px;
+}
+   
+
+li{
+	padding: 2px;
+	border: 2px;
+	color: #fff;
+	list-style: none;
+	position: relative;
+	color: #d1d1d7;
+
+}
+
+ 
+li{
+  margin-top: 10px;
+}
+.btn-registro{
+	background-color: #0A5DBB;
+	padding: 7px;
+	border-color: #0A5DBB;
+	border-radius: 4px;
+	margin: 10px;
+	color: #fff;
+	font-weight: bold;
+
+}
+.btn-conectar{
+
+	background-color: transparent;
+	padding: 7px;
+	border-color: transparent;
+	border-radius: 4px;
+	margin: 10px;
+	color: #fff;
+	font-weight: bold;
+
+}
+.contenedor{
+    background-color: #fff;
+    width: 100%;
+    float: left;
+    border: 20px;
+    padding: 0px 30px 30px 30px;
+
+}
+p{
+	text-align: justify;
+    color: #72727d;
+    font-size: 16px;
+    line-height: 25px;
+}
+h1{
+	font-family: arial;
+}
+.contenedor2{
+    background-color: #42424D;
+    width: 100%;
+    float: right;
+    border: 20px;
+    padding: 40px;
+
+}
+.fuente{
+	color: #fff;
+	font-family: "Open Sans",Arial,sans-serif;
+    font-size: 20px;
+}
+.contenedor3{
+    background-color: #23232D;
+    width: 100%;
+    float: right;
+    border: 20px;
+    padding: 40px;
+
+}
+.pp{
+	color: #007feb;
+    font-family: "Open Sans",Arial,sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+
+}
+
+.op{
+	padding: 2px;
+	border: 2px;
+	color: #fff;
+	list-style: none;
+	position: relative;
+	color: blue;
+}
+.op:hover{
+	color: blue;
+}
+
+.navbar-default {
+    background-color: #000;
+    border-color: #000;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #cac8d0;
+}
+
+
+.navbar-default {
+    background-color: #23232D;
+    border-color: #23232D;
+}
+
+.btn-registro{
+	background-color: #0A5DBB;
+	padding: 8px;
+	border:1px;
+	border-color: #0A5DBB;
+	/*border-radius: 4px;*/
+	margin: 15px 10px 10px 10px;
+	color: #fff;
+	font-weight: bold;
+
+}
+.btn-conectar{
+	background-color: #12121E;
+	padding: 8px;
+	border:1px;
+	border-color: #12121E;
+	/*border-radius: 4px;*/
+	margin: 15px 10px 10px 10px;
+	color: #fff;
+	font-weight: bold;
+
+}
+
+/*.nav-link{
+	font-family: "Open Sans",Arial,sans-serif;
+	color: white;
+    background-color: rgba(10,10,22,.3);
+    border-color: rgba(255,255,255,.4);
+    font-weight: bold;
+    font-size: 11px;
+}
+*/
+a:hover{
+	text-decoration: none;
+	color: white;
 }
