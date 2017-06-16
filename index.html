@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Freezer - Flow your music</title>
-    
     <!-- CSS -->
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="css/principal.css">
@@ -149,187 +148,94 @@
           </div>
         </div>
         <!-- Fin Barra de Navegacion Lateral -->
-
         
+        <!-- Barra Flotante Aparece Oculta display: none -->
+        <!-- Aparece oculta en moviles -->
         <div class="col-sm-offset-3 col-md-offset-3 col-lg-offset-2 col-sm-3 col-md-3 col-lg-3 float-bar" id="float-bar">
           <div class="container-fluid">
-              CONTENIDO BARRA
+                <h5>Cuenta</h5>
+                <hr>
+                <ul class="section">
+                    <li>
+                      <a href="#">
+                        <span class="icon glyphicon glyphicon-user"></span>
+                        <span class="icon-label">Ajustes de la cuenta</span>
+                        <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span class="icon glyphicon glyphicon-question-sign" style="background-color: #76D016"></span>
+                        <span class="icon-label">Ayuda</span>
+                        <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span class="icon glyphicon glyphicon-barcode" style="background-color: #8D05AD"></span>
+                        <span class="icon-label">Activar un código</span>
+                        <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                      </a>
+                    </li>
+                </ul>
+
+                <h5>Audio</h5>
+                <hr>
+                <ul class="section">
+                  <li>
+                    <span class="icon-label">
+                      Alta calidad
+                      <input class="chb" type="checkbox" name="ckb-high-quality" value="ckb-high-quality">
+                    </span>
+                  </li>
+                  <li>
+                    <span class="icon-label">
+                      Cross-fade
+                    </span>
+                  </li>
+                </ul>
+
+                <h5>Descubrir Deezer</h5>
+                <hr>
+                <ul class="section">
+                  <li>
+                    <a href="#">
+                      <span class="icon-label">Ofertas</span>
+                      <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                    </li>
+                  <li>
+                    <a href="#">
+                      <span class="icon-label">Quiénes somos</span>
+                      <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                    </li>
+                  <li>
+                    <a href="search.html">
+                      <span class="icon-label">Ventajas</span>
+                      <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                    </li>
+                  <li>
+                    <a href="#">
+                      <span class="icon-label">Trabajos</span>
+                      <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                    </li>
+                </ul>
+                <div class="panel-footer">
+                  <div class="col-sm-12">
+                    <button type="button" class="btn btn-danger btn-block">Desconectarse</button>
+                  </div>
+                </div>
           </div>
         </div>
         <div id="float-bar-overlay" class="float-bar-overlay" onclick="floatBar.hidePanel()"></div>
 
         <!-- Contenido Principal -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-lg-12">
-                 <a href="http://google.hn" class="banner1">
-                  <img src="img/banner-795-90.gif">
-                 </a>
-                </div>
-             </div>
-            </div>
-            <div class="container-fluid"> 
-              <div class="row">
-                <div class="col-lg-10">
-                  <div class="card">
-                    <img src="img/nena.jpg">
-                  </div>
-                </div>
-              </div>  
-            </div>
-            <div class="container-fluid">
-              <h3 align="text-center"> EXPLORAR</h3><button type="button" class="glyphicon-chevron-right"></button>
-              <span  class="help-block"><h5 >Descubre los canales de música, entretenimiento y podcast</h5></span>
-            </div>
-            <!--Explorar>
-            <!-->
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12">
-                  <img src="img/index/explorar/a100x214.jpg" style="width: 162px" class="img-rounded">
-                  <div class="title"><p>NUEVOS LANZAMIENTOS</p></div>
-            <p>
-            </p>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12">
-            <img src="img/index/explorar/b100x214.jpg" style="width: 162px" class="img-rounded">
-            <p>
-            </p>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12">
-            <img src="img/index/explorar/c100x214.jpg" style="width: 162px" class="img-rounded">
-            <p>
-            </p>
-          </div>
-          <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12">
-            <img src="img/index/explorar/d100x214.jpg" style="width: 162px" class="img-rounded">
-            <p>
-            </p>
-          </div>
-          </div>
-          </div>
           <div class="container-fluid">
-            <div class="card">
-              <h3>SELECCIÓN DE PLAYLISTS</h3>
-                <span  class="help-block"><h5>Recomendaciones de nuestros Editores</h5></span>
-            <div class="row">
-              <div class="col-lg-12">
-                <button type="button" class="btn btn-none">
-                  <span class="glyphicon glyphicon-chevron-right">
-                  </span>
-                </button>
-              </div>
-              <div class="col-lg-3">
-                <img src="img/index/playlist/a264x264.jpg"  class="img-rounded"><br>
-                  <a href="#" >El mejor rock de todos los tiempos</a>
-                  <span  class="help-block"><h6>19 canciones - 1.920 fans</h6></span>
-              </div>
-              <div class="col-lg-3">
-                <img src="img/index/playlist/b264x264.jpg"  class="img-rounded" ><br>
-                  <a href="#">Back to school</a>
-                  <span  class="help-block"><h6>13 canciones - 4.632 fans</h6></span>
-              </div>
-              <div class="col-lg-3">
-                <img src="img/index/playlist/c264x264.jpg" class="img-rounded"><br>
-                  <a href="#">Prince covers y colaboraciones</a>
-                  <span  class="help-block"><h6>51 canciones - 6.245 fans</h6></span>
-              </div>
-              <div class="col-lg-3">
-                <img src="img/index/playlist/d264x264.jpg"  class="img-rounded"><br>
-                  <a href="#">Epicos de los 80' y 90'</a>
-                  <span  class="help-block"><h6>32 canciones - 7.455 fans</h6></span>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="container-fluid">
-              <h3 align="text-center">POPULAR</h3>
-          </div>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12">
-                <img src="img/index/popular/a264x264.jpg" class="img-rounded">
-                  <a href="#">Iconos del rock</a>
-                  <span  class="help-block"><h6>102 canciones - 10.365 fans</h6></span>
-              </div>
-              <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12">
-                <img src="img/index/popular/b264x264.jpg" class="img-rounded">
-                  <a href="#">Hits del momento</a>
-                  <span  class="help-block"><h6>14 canciones - 263.452 fans</h6></span>
-              </div>
-              <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12">
-                <img src="img/index/popular/c264x264.jpg" class="img-rounded">
-                  <a href="#">Reggaeton</a>
-                  <span  class="help-block"><h6>100 canciones - 102.365 fans</h6></span>
-              </div>
-              <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12">
-                <img src="img/index/popular/d264x264.jpg" class="img-rounded">
-                  <a href="#">POP</a>
-                  <span  class="help-block"><h6>62 canciones - 301.548 fans</h6></span>
-              </div>
-            </div>
-          </div>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-6">
-                <img src="img/index/top honduras.jpg">
-              </div>
-              <br>
-              <div class="col-lg-6">
-                <ol>
-                  <li>
-                    <a href="#"> Felices los 4</a>
-                    <span  class="help-block"><h6>de <a href="#">Maluma</a></h6></span>
-                  </li>
-                  <li>
-                    <a href="#">Me rehuso</a>
-                    <span  class="help-block"><h6>de <a href="#">Danny Ocean</a></h6></span>
-                  </li>
-                  <li>
-                    <a href="#">Despacito</a>
-                    <span  class="help-block"><h6>de <a href="#">Luis Fonsi</a></h6></span>
-                  </li>
-                  <li>
-                    <a href="#">Stronger</a>
-                    <span  class="help-block"><h6>de <a href="#">Clean Bandit</a></h6></span>
-                  </li>
-                </ol>
-              </div>
-            </div>  
-          </div>
-          <div class="container-fluid">
-            <div class="card">
-              <h4>NUEVOS LANZAMIENTOS</h4>
-              <div class="row">
-              <div class="col-lg-12">
-                <button type="button" class="btn btn-none">
-                  <span class="glyphicon glyphicon-chevron-right">
-                  </span>
-                </button>
-              </div>
-                <div class="col-lg-3">
-                  <img src="img/index/nuevos/a264x264.jpg">
-                  <a href="#">Rarities of fetichism</a>
-                  <span  class="help-block"><h6>De Nephrectomy</h6></span>
-                </div>
-                <div class="col-lg-3">
-                  <img src="img/index/nuevos/b264x264.jpg">
-                  <a href="#">Amor Supremo Desnudo</a>
-                  <span  class="help-block"><h6>De Carla Morrison</h6></span>
-                </div>
-                <div class="col-lg-3">
-                  <img src="img/index/nuevos/c264x264.jpg">
-                  <a href="#">Ctrl</a>
-                  <span  class="help-block"><h6>De SZA</h6></span>
-                </div>
-                <div class="col-lg-3">
-                  <img src="img/index/nuevos/d264x264.jpg">
-                  <a href="#">Wonder</a>
-                  <span  class="help-block"><h6>De Hillsong United</h6></span>
-                </div>
-            </div>
-            </div>
+             
           </div>
         </div>
         <!-- Fin Contenido Principal -->

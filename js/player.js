@@ -7,11 +7,9 @@ soundManager.setup({
 		// Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
 	}
 });	
-
 function nextSound(){
 	lista.next();
 }
-
 // OBJETO PLAYLIST CREADA EN SoundManager.onready
 function playList(){
 	this.isPlaying=false;
@@ -42,7 +40,6 @@ function playList(){
 			soundManager.createSound({
 				id: this.arraySong[i].id,
 				url: this.arraySong[i].url,
-
 			});
 		}
 	}
@@ -73,7 +70,6 @@ function playList(){
 		document.getElementById("player-play").setAttribute("class","");
 		document.getElementById("player-play").setAttribute("class","glyphicon glyphicon-play");	
 	}
-
 	// Reproducir/Pausar Cancion Actual
 	this.toogle=function(){
 		if (this.isPlaying==true) {
@@ -84,7 +80,6 @@ function playList(){
 			this.isPlaying=true;
 		}
 	}
-
 	this.prev=function(){
 		this.i--;
 		if (this.i<this.arraySong.length && this.i>=0) {
@@ -106,30 +101,25 @@ function playList(){
 			this.pause();
 		}
 	}
-
 	this.changeInfoSong = function(){
 		var cancion = this.arraySong[this.i];
 		// Cambiar titulo
 		document.getElementById("player-title").innerHTML=cancion.title;
 		// Cambiar artista
 		document.getElementById("player-artist").innerHTML=cancion.artist;
-
 		// Cmabiar cover
 		var imgURL = cancion.cover;
 		document.getElementById("player").style.backgroundImage="url("+imgURL+")";
 	}
-
 	this.stop = function(){
 		soundManager.stopAll();
 		// Cambiar icono
 		document.getElementById("player-play").setAttribute("class","");
 		document.getElementById("player-play").setAttribute("class","glyphicon glyphicon-play");	
 	}
-
 	this.clear = function(){
 		this.arraySong =[];
 	}
-
 	// METODOS DE INICIO
 	this.initSounds();
 }
