@@ -133,7 +133,6 @@ body{
   color:#32323d;
   margin-bottom: 5px;
   text-decoration:none;
-  display:block;
 }
 
 .float-bar .icon{
@@ -166,6 +165,22 @@ body{
   line-height: 32px;
   color: #C5C5CD;
 }
+
+// .float-bar .slider{
+//   width: 100px;
+//   height:40px;
+// }
+
+// .float-bar .cross-fade-slider{
+//   float: left;
+//   width: 20px;
+// }
+
+// .float-bar .cross-fade-val,
+// .float-bar .cross-fade-max{
+//   float: left;
+//   width: 20%;
+// }
 
 .float-bar-overlay{
     position: fixed;
