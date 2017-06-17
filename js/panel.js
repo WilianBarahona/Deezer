@@ -7,12 +7,10 @@ function panel(){
 	this.hidePanel = function() {
 		var panel = $("#float-bar");
 		panel.animate({
-			"margin-left":-500
+			"margin-left":-500,
+			"display":"none"
 		},300);
 		$("#float-bar-overlay").css({"display": "none"});
-		panel.css({
-			"display":"none"
-		});
 		this.visible=false;
 	}
 	this.showPanel= function(){
