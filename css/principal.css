@@ -2,8 +2,24 @@
 font-family: Open-Sans;
 src: url("../fonts/open-sans.ttf");
 }
+
+@font-face {
+font-family: Open-Sans-Bold;
+src: url("../fonts/open-sans-bold.ttf");
+}
+
+@font-face {
+font-family: Open-Sans-Italic;
+src: url("../fonts/open-sans-italic.ttf");
+}
+
+@font-face {
+font-family: Open-Sans-Light;
+src: url("../fonts/open-sans-light.ttf");
+}
+
 body{
-	font-family: Open-Sans!important;
+	font-family: Open-Sans,Arial,sans-serif!important;
 	background-color: #F8F8F9;
 }
 
