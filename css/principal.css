@@ -6,6 +6,11 @@ body{
 	font-family: Open-Sans!important;
 	background-color: #F8F8F9;
 }
+
+.page-header{
+	background-color: #fff;
+	border:none;
+}
 /*
 * Sidebar
 */
@@ -14,7 +19,7 @@ body{
 .float-bar{
 	display: none;
 	-webkit-user-select: none;
-	-moz-user-select: none; 
+	-moz-user-select: none;
 }
 .sidebar, .sidebar a{
 	color:#C2C2CA;
@@ -74,6 +79,7 @@ body{
 	.nav-sidebar > li a:hover,
 	.nav-sidebar > li a:focus {
 		background-color: #191922;
+		color:#C2C2CA;
 	}
 	.nav-sidebar li a .img-profile{
 		width: 23px;
@@ -203,26 +209,32 @@ body{
 		height: 30px;
 		margin-top: 5px;
 	}
+	
+	/*Imagen desplazamiento*/
+	.top-chart img{
+		position: relative;
+		right: -40px;
+	}
 } /*Fin CSS para Escritorio*/
 
 /*POR ARCHIVOS*/
+
 /*index*/
 .clear{
 	margin-bottom: 40px;
 
 }
+
 .heading{
-	margin-bottom: 20px;
+	margin-bottom: 10px;
+	margin-top: 30px;
 }
-.title{
-	margin-top: 40px;
-}
-.main a,
-.main a:hover{
+a,
+a:hover{
 	color:#32323d;
 }
 
-.title a:hover{
+a.title:hover{
 	text-decoration:none;
 	color:#009CF0;
 }
@@ -243,19 +255,69 @@ body{
 	padding-bottom: 20px;
 }
 
-.top-chart img{
-	position: relative;
-	right: -40px;
+/*Navbar*/
+
+.navbar {
+    margin-bottom: 0px;
 }
 
+.navbar-nav>li>a:hover, 
+.navbar-nav>li>button:hover {
+    border-color: #007feb;
+    color: #32323d;
+    background-color: white;
+
+}
+.navbar-nav>li>a, 
+.navbar-nav>li>button {
+    font-size: 14px;
+    border-bottom: 3px solid transparent;
+    color: #72727d;
+    font-weight: 700;
+    height: 50px;
+    letter-spacing: .2px;
+    transition-duration: .15s;
+    transition-property: border-color,color;
+    padding-top: 20px;
+    padding-right: 40px;
+}
+
+
 /* search.html*/
+
+span.blue{
+	color:#009CF0;
+}
+
 /* Tabla*/
+
+.table-striped{
+	border: none;
+}
 .table-striped>tbody>tr{
-color:#92929D;
+	color:#92929D;
+	background-color: #F8F8F9;
+}
+
+
+.table-striped > tbody > tr:nth-of-type(2n+1){
+	background-color: #F3F3F5;
 }
 .table-striped > tbody > tr:hover{
 background-color: #E8E8EC;
 }
+
+.table .th{
+    background-color: rgb(195, 195, 201);
+    font-size: 10px;
+    color: white
+}
+
+.table td{
+    color: #72727d;
+    font-size: 12px;
+}
+
 .btn-none{
 background-color:rgba(0, 0, 0, 0);
 }

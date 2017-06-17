@@ -3,7 +3,7 @@
     text-align-last: center;
     padding: 70px;
     margin-right: -30px;
-    margin-left: -30px;
+    margin-left: -100px;
     margin-bottom: -80px;
 }
 .botones{
@@ -29,39 +29,13 @@
     border-color: gray;
 }
 
-.btn-azul {
+.btn-azul,
+.btn-guardar{
     color: #fff;
     background-color: #4389c1;
     border-color: #2e6da4;
 }
 
-.navbar-nav>li>a:hover, .navbar-nav>li>button:hover {
-    border-color: #007feb;
-    color: #32323d;
-    text-decoration: none;
-    background-color: white;
-
-}
-.navbar-nav>li>a, .navbar-nav>li>button {
-    font-size: 12px;
-    background-color: transparent;
-    border-bottom: 3px solid transparent;
-    color: #72727d;
-    display: block;
-    font-family: "Open Sans",Arial,sans-serif;
-    font-weight: 700;
-    height: 50px;
-    letter-spacing: .5px;
-    padding: 0 15px;
-    transition-duration: .15s;
-    transition-property: border-color,color;
-    padding-top: 20px;
-    padding-right: 50px;
-}
-.navbar-default {
-    background-color: #f8f8f8;
-    border-color: #f8f8f8;
-}
 
 .reproductor{
     color: black;
@@ -88,45 +62,9 @@
     border-radius: 4px;
 }
 
-.navbar-nav>li>a, .navbar-nav>li>button {
-    font-size: 12px;
-    background-color: transparent;
-    border-bottom: 3px solid transparent;
-    color: #72727d;
-    display: block;
-    font-family: "Open Sans",Arial,sans-serif;
-    font-weight: 700;
-    height: 50px;
-    letter-spacing: .5px;
-    padding: 0 15px;
-    transition-duration: .15s;
-    transition-property: border-color,color;
-    padding-top: 20px;
-    padding-right: 50px;
-}
-.navbar-default {
-    background-color: #f8f8f8;
-    border-color: #f8f8f8;
-}
-.navbar {
-    position: relative;
-    min-height: 50px;
-    margin-bottom: 0px;
-    border: 1px solid transparent;
-}
-.th{
-    background-color: rgb(195, 195, 201);
-    font-size: 10px;
-    color: white
-}
-.contenedor{
-    background-color: #fff;
-    width: 950px;
-    float: right;
-    border: 20px;
-    padding: 40px;
 
-}
+
+
 .contenedorFormulario{
     padding-left: 160px;
     float: right;
@@ -134,23 +72,13 @@
     position: relative;
 }
 
-.td{
-    color: #72727d;
-    float: right;
-    font-family: tahoma;
-    font-weight: bold;
-    font-size: 12px;
-}
-h2{
-        font-family: "Open Sans",Arial,sans-serif;
+
+.banner h2{
         font-size: 18px;
         letter-spacing: .25px;
         color: #72727d;
 }
-p{
-    color: #72727d;
-    font-family: calibri
-}
+
 .btns{
     font-weight: bold;
     font-size: 12px;
@@ -160,40 +88,14 @@ p{
     border: solid 1px #d1d1d7;
     color: #23232d;
 }
-.ancho{
-    width: 240px
-}
-body{
-    background-color: #f8f8f9;
-}
+
 label{
     color: #72727d;
     padding-left: 20px;
 }
 select{
-    font-family: calibri;
     color: #72727d;
     width: 30%;
     height: 20%;
     border-radius: 10%;
-}
-.btn-guardar{
-    font-weight: bold;
-    font-size: 12px;
-    padding: 9px;
-    border-radius: 4px;
-    background-color: #0b66cd;
-    border: solid 1px #d1d1d7;
-    color: #fff;
-
-}
-.eliminar-cuenta{
-    font-family: calibri; 
-    font-size: bold; 
-    background-color: #d6d6d6;
-    padding: 20px;
-    float: all; 
-}
-.tamanio{
-    width: 940px
 }

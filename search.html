@@ -1,210 +1,541 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="img/favicon.png">
-
     <title>Freezer - Flow your music</title>
-
-    <!-- Bootstrap core CSS -->
+    <link rel="icon" href="img/icon.png">
+    <!-- CSS -->
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="css/principal.css">
-   <link rel="stylesheet" href="css/favoritos.css">
+   <!-- <link rel="stylesheet" href="css/favorites.css"> -->
+   <link rel="stylesheet" href="css/player.css">
+
   </head>
 
   <body>
+        <div class="container-fluid">
+          <div class="row">
+            
+            <!-- Barra de Navegacion Lateral -->
+            <div id="sidebar" class="col-sm-3 col-md-3 col-lg-2 sidebar">
+              <a href="index.html"><img src="img/freezer.png" class="img-responsive" alt=""></a>
+              <div class="form-group has-feedback">
+                  <input type="text" name="search" class="form-control" placeholder="Buscar">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              </div>
+              <ul class="nav nav-sidebar" aria-hidden="true">
+                <!-- SI ESTA PAGINA NO ES EL INDEX QUITAR COMENTARIO DE LA SIGUIENTE-->
+                
+                <!-- <li><a href="index.html">INICIO</a></li>  -->
+                <li class="active"><a href="#">INICIO</a></li> 
+                
+                <!-- COMENTA LA ANTERIOR SI NO ESTAS EN EL INDEX -->
+                <li>
+                  <a href="#">RECOMENDACIONES</a>
+                </li>
+                <hr>
+                <li>
+                  <a>
+                    <span class="link-profile" onclick="alert(4)">
+                      <img src="img/user.jpg"  class="img-profile img-circle" alt="">
+                      &nbsp;&nbsp;&nbsp; <span>Mi Música</span>
+                    </span>
+                    <span class="glyphicon glyphicon-cog settings" onclick="floatBar.toggle()"></span>
+                  </a>
+                </li>
+                    <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-xs-12">
+                            <button type="button" class="btn btn-info center-block">
+                              <span class="glyphicon glyphicon-plus"></span> SUSCRIBIRSE
+                            </button>
+                          </div>
+                      </div>
+                    </div>
+                <li>
+                  <a href="favorites.html">
+                      <span class="glyphicon glyphicon-heart"></span> 
+                      &nbsp;&nbsp;&nbsp; Mis favoritas
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                      <span class="glyphicon glyphicon-list"></span> 
+                      &nbsp;&nbsp;&nbsp; Playlists
+                    </a>
+                </li> 
+                  <li>
+                  <a href="#">
+                      <span class="glyphicon glyphicon-cd"></span> 
+                      &nbsp;&nbsp;&nbsp; Álbumes
+                    </a>
+                  </li>
+                  <li>
+                  <a href="#">
+                      <span class="glyphicon glyphicon-time"></span> 
+                      &nbsp;&nbsp;&nbsp; Actividad
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-expand"></span> 
+                        &nbsp;&nbsp;&nbsp; Aplicaciones
+                      </a>
+                  </li>
+              </ul>
+
+              <div class="player" id="player">
+                <div class="container-fluid">
+                  <div class="row player-info">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <h4>
+                        <span id="player-artist">Ed Sheeran</span>
+                        <br>
+                        <span id="player-title">Photograph</span>
+                        </h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2">
+                          <span class="glyphicon glyphicon-heart"></span>
+                        </div>
+                        <div class="col-sm-2">
+                          <span class="glyphicon glyphicon-list"></span>
+                        </div>
+                        <div class="col-sm-2">
+                          <span class="glyphicon glyphicon-plus"></span>
+                        </div>
+                        <div class="col-sm-6"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row player-btn player-change">
+                    <div class="col-sm-4">
+                      <button type="button" class="btn btn-none" onclick="lista.prev()">
+                        <span class="glyphicon glyphicon-step-backward player-prev"></span>
+                      </button>
+                    </div >
+                    <div class="col-sm-4">
+                      <button type="button" class="btn btn-none" onclick="lista.toogle()">
+                        <span class="glyphicon glyphicon-play" id="player-play"></span>
+                      </button>
+                    </div >
+                    <div class="col-sm-4">
+                      <button type="button" class="btn btn-none" onclick="lista.next()">
+                        <span class="glyphicon glyphicon-step-forward player-next"></span>
+                      </button>
+                    </div >
+                  </div>
+
+                  <div class="row player-btn player-opt">
+                    <div class="col-sm-3">
+                      <button type="button" class="btn btn-none" onclick="alert(4)">
+                        <span class="glyphicon glyphicon-volume-up"></span>
+                      </button>
+                    </div>
+                    <div class="col-sm-3">
+                      <button type="button" class="btn btn-none" onclick="alert(5)">
+                        <span class="glyphicon glyphicon-repeat"></span>
+                      </button>
+                    </div>
+                    <div class="col-sm-3">
+                      <button type="button" class="btn btn-none" onclick="alert(6)">
+                        <span class="glyphicon glyphicon-random"></span>
+                      </button>
+                    </div>
+                    <div class="col-sm-3">
+                      <button type="button" class="btn btn-none" onclick="viewPlayList()">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fin Barra de Navegacion Lateral -->
+            
+            <!-- Barra Flotante Aparece Oculta display: none -->
+            <!-- Aparece oculta en moviles -->
+            <div class="col-sm-offset-3 col-md-offset-3 col-lg-offset-2 col-sm-3 col-md-3 col-lg-3 float-bar" id="float-bar">
+              <div class="container-fluid">
+                    <h5>Cuenta</h5>
+                    <hr>
+                    <ul class="section">
+                        <li>
+                          <a href="#">
+                            <span class="icon glyphicon glyphicon-user"></span>
+                            <span class="icon-label">Ajustes de la cuenta</span>
+                            <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <span class="icon glyphicon glyphicon-question-sign" style="background-color: #76D016"></span>
+                            <span class="icon-label">Ayuda</span>
+                            <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <span class="icon glyphicon glyphicon-barcode" style="background-color: #8D05AD"></span>
+                            <span class="icon-label">Activar un código</span>
+                            <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                          </a>
+                        </li>
+                    </ul>
+
+                    <h5>Audio</h5>
+                    <hr>
+                    <ul class="section">
+                      <li>
+                        <span class="icon-label">
+                          Alta calidad
+                          <input class="chb" type="checkbox" name="ckb-high-quality" value="ckb-high-quality">
+                        </span>
+                      </li>
+                      <li>
+                        <span class="icon-label">
+                          Cross-fade
+                        </span>
+                        <!-- <span class="slider">
+                          <span id="cross-fade-val">0</span>
+                          <input id="cross-fade-slider" type="range" min="0" max="10" step="1">
+                          <span id="cross-fade-max">10</span>
+                        </span> -->
+                      </li>
+                    </ul>
+
+                    <h5>Descubrir Deezer</h5>
+                    <hr>
+                    <ul class="section">
+                      <li>
+                        <a href="#">
+                          <span class="icon-label">Ofertas</span>
+                          <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                        </li>
+                      <li>
+                        <a href="#">
+                          <span class="icon-label">Quiénes somos</span>
+                          <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                        </li>
+                      <li>
+                        <a href="search.html">
+                          <span class="icon-label">Ventajas</span>
+                          <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                        </li>
+                      <li>
+                        <a href="#">
+                          <span class="icon-label">Trabajos</span>
+                          <span class="arrow glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                        </li>
+                    </ul>
+                    <div class="panel-footer">
+                      <div class="col-sm-12">
+                        <button type="button" class="btn btn-danger btn-block" onclick="location.href='login.html'">
+                        Desconectarse
+                        </button>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <!-- FIN Floatbar -->
+            <div id="float-bar-overlay" class="float-bar-overlay" onclick="floatBar.hidePanel();listaBar.hidePanel()"></div>
+             
+
+            <div class="col-sm-offset-3 col-md-offset-3 col-lg-offset-2 col-sm-3 col-md-3 col-lg-3 float-bar" id="list-bar">
+              <div class="container-fluid">
+                <div class="header">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <h4>Cola</h4>
+                          <h5 id="total-cancion">20 canciones · 01:30:25</h5>
+                          <p><label><input type="checkbox" name="reco-autom"> Recomendaciones automáticas</label></p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="list-body">
+                  <ul class="list-items section">
+                    <li>
+                        <div class="row">
+                          <div class="col-sm-2 cover"><img src="img/cover/x.jpg" alt="cover" class="img-rounded img-responsive"></div>
+                          <div class="col-sm-8">
+                            <p>Photograph</p>
+                          </div>
+                          <div class="col-sm-2">
+                            <button type="button" class="btn btn-none">
+                              <span class="glyphicon glyphicon-heart"></span>
+                            </button>
+                          </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
+                          <div class="col-sm-2 cover"><img src="img/cover/x.jpg" alt="cover" class="img-rounded img-responsive"></div>
+                          <div class="col-sm-8">
+                            <p>Photograph</p>
+                          </div>
+                          <div class="col-sm-2">
+                            <button type="button" class="btn btn-none">
+                              <span class="glyphicon glyphicon-heart"></span>
+                            </button>
+                          </div>
+                        </div>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                  <div class="container-fluid">
+                      <div class="well card">
+                          <div class="page-header">
+                            <h3>Resultados de Búsqueda para «Frank Sinatra»</h3>
+                                             
+
+                          <div class="row col-lg-12">
+                              <div class="col-lg-10 col-md-12">
+                                    <nav class="navbar navbar-center">
+                                      <div class="container-fluid">
+                                        <ul class="nav navbar-nav">
+                                          <li><a href="#">Todo</a></li>
+                                          <li><a href="#">Artistas</a></li> 
+                                          <li><a href="#">Álbumes</a></li>
+                                          <li><a href="#">Playlists</a></li>
+                                          <li><a href="#">Mixes</a></li>
+                                          <li><a href="#">Perfiles</a></li> 
+                                        </ul>
+                                      </div>
+                                    </nav>
+                              </div> 
+                          </div>
+
+                        </div>
+                      </div>
+                      </div>
+        
+                  <div class="container-fluid">
+                    <div class="row">
+                      <!-- SUGGEST -->
+                      <div class="col-sm-3 col-lg-3 col-xs-6">
+                        <a class="title" href="#"><h4><span class="blue">300</span> Artistas <span class="glyphicon glyphicon-chevron-right"></span></h4></a>
+                        <a href="#">
+                          <div class="well card container-fluid">
+                            <div class="col-lg-4 col-sm-6 col-xs-12 col-md-4">
+                              <img src="img/frank.jpg" class="img-circle img-responsive">
+                            </div>
+                            <div class="col-lg-8 col-sm-6 col-xs-12 col-md-8">
+                              Frank Sinatra
+                              <span class="help-block"><p>1.350.538 fans</p></span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <!-- SUGGEST -->
+                      <div class="col-sm-3 col-lg-3 col-xs-6">
+                        <a class="title" href="#"><h4><span class="blue">300</span> Artistas <span class="glyphicon glyphicon-chevron-right"></span></h4></a>
+                        <a href="#">
+                          <div class="well card container-fluid">
+                            <div class="col-lg-4 col-sm-6 col-xs-12 col-md-4">
+                              <img src="img/frank.jpg" class="img-responsive img-rounded img-person">
+                            </div>
+                            <div class="col-lg-8 col-sm-6 col-xs-12 col-md-8">
+                              Frank Sinatra
+                              <span class="help-block"><p>1.350.538 fans</p></span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <!-- SUGGEST -->
+                      <div class="col-sm-3 col-lg-3 col-xs-6">
+                        <a class="title" href="#"><h4><span class="blue">300</span> Artistas <span class="glyphicon glyphicon-chevron-right"></span></h4></a>
+                        <a href="#">
+                          <div class="well card container-fluid">
+                            <div class="col-lg-4 col-sm-6 col-xs-12 col-md-4">
+                              <img src="img/frank.jpg" class="img-responsive img-rounded img-person">
+                            </div>
+                            <div class="col-lg-8 col-sm-6 col-xs-12 col-md-8">
+                              Frank Sinatra
+                              <span class="help-block"><p>1.350.538 fans</p></span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      
+                      <!-- SUGGEST -->
+                      <div class="col-sm-3 col-lg-3 col-xs-6">
+                        <a class="title" href="#"><h4><span class="blue">300</span> Artistas <span class="glyphicon glyphicon-chevron-right"></span></h4></a>
+                        <a href="#">
+                          <div class="well card container-fluid">
+                            <div class="col-lg-4 col-sm-6 col-xs-12 col-md-4">
+                              <img src="img/frank.jpg" class="img-responsive img-rounded img-person">
+                            </div>
+                            <div class="col-lg-8 col-sm-6 col-xs-12 col-md-8">
+                              Frank Sinatra
+                              <span class="help-block"><p>1.350.538 fans</p></span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+
+                    </div>
+      
+                    <div class="row">
+                          <div class="col-sm-12">
+                            
+                            <table class="table table-striped table-responsiv">
+                              <thead class="th">
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>Canción</th>
+                                <th></th>
+                                <th></th>
+                                <th>Artista</th>
+                                <th>Álbum</th>
+                                <th>D.</th>
+                                <th>Pop.</th>
+                              </thead>
+                              <tbody>
+                              <!-- ROW -->
+                                <tr id="song1">
+                                  
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>Lorem ipsum dolor sit amet, consectetur</td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>Frank Sinatra</td>
+                                  <td>Lorem</td>
+                                  <td>03:00</td>
+                                  <td>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                  </td>
+                                </tr>
+                                <!-- ROW -->
+                                <tr id="song2">
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>Lorem ipsum dolor sit amet, consectetur</td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>Frank Sinatra</td>
+                                  <td>Lorem</td>
+                                  <td>03:00</td>
+                                  <td>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                  </td>
+                                </tr>
+
+                                <tr id="song3">
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>Lorem ipsum dolor sit amet, consectetur</td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-none btn-xs">
+                                      <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                                    </button>
+                                  </td>
+                                  <td>Frank Sinatra</td>
+                                  <td>Lorem</td>
+                                  <td>03:00</td>
+                                  <td>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                  </td>
+                                </tr>
+                                
+                              </tbody>
+
+                            </table>
+                          </div>
+                    </div>
+                  </div>
+
+                  
+            </div>
+          
+            
+          </div>
+        </div>
 
         <!-- Contenido Principal -->
-        <!-- <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
-                <div class="container-fluid">
-                  <div class="page-header">
-                    <h1>Resultados de Búsqueda para «Frank Sinatra»</h1>
-                  </div>
-                </div>
 
-                  <div class="row">
-                      <div class="col-lg-10 col-md-12">
-                            <nav class="navbar navbar-center">
-                              <div class="container-fluid">
-                                <ul class="nav navbar-nav">
-                                  <li><a href="#" class="active-tab">Mi Musica</a></li>
-                                  <li><a href="#">Mis Favoritas</a></li> 
-                                  <li><a href="#">Playlist</a></li>
-                                  <li><a href="#">Álbumes</a></li>
-                                  <li><a href="#">Artistas</a></li>
-                                  <li><a href="#">Perfiles</a></li> 
-                                </ul>
-                              </div>
-                            </nav>
-                      </div> 
-                       
-                </div>
-
-                <div class="container-fluid">
-                  <div class="row">
-                    <!-- SUGGEST -->
-                    <div class="col-sm-3 col-lg-3 col-xs-6">
-                      <a href="#"><h4>300 Artistas ›</h4></a>
-                      <a href="#">
-                        <div class="well card container-fluid">
-                          <div class="col-lg-4 col-sm-6 col-xs-12 col-md-4">
-                            <img src="img/frank.jpg" class="img-circle img-responsive">
-                          </div>
-                          <div class="col-lg-8 col-sm-6 col-xs-12 col-md-8">
-                            <p>Frank Sinatra</p>
-                            <p>1.350.538 fans</p>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <!-- SUGGEST -->
-                    <div class="col-sm-3 col-lg-3 col-xs-6">
-                      <a href="#"><h4>300 Artistas ›</h4></a>
-                      <a href="#">
-                        <div class="well card container-fluid">
-                          <div class="col-lg-4 col-sm-6 col-xs-12 col-md-4">
-                            <img src="img/frank.jpg" class="img-responsive img-rounded img-person">
-                          </div>
-                          <div class="col-lg-8 col-sm-6 col-xs-12 col-md-8">
-                            <p>Frank Sinatra</p>
-                            <p>1.350.538 fans</p>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <!-- SUGGEST -->
-                    <div class="col-sm-3 col-lg-3 col-xs-6">
-                      <a href="#"><h4>300 Artistas ›</h4></a>
-                      <a href="#">
-                        <div class="well card container-fluid">
-                          <div class="col-lg-4 col-sm-6 col-xs-12 col-md-4">
-                            <img src="img/frank.jpg" class="img-responsive img-rounded img-person">
-                          </div>
-                          <div class="col-lg-8 col-sm-6 col-xs-12 col-md-8">
-                            <p>Frank Sinatra</p>
-                            <p>1.350.538 fans</p>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    
-                    <!-- SUGGEST -->
-                    <div class="col-sm-3 col-lg-3 col-xs-6">
-                      <a href="#"><h4>300 Artistas ›</h4></a>
-                      <a href="#">
-                        <div class="well card container-fluid">
-                          <div class="col-lg-4 col-sm-6 col-xs-12 col-md-4">
-                            <img src="img/frank.jpg" class="img-responsive img-rounded img-person">
-                          </div>
-                          <div class="col-lg-8 col-sm-6 col-xs-12 col-md-8">
-                            <p>Frank Sinatra</p>
-                            <p>1.350.538 fans</p>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-
-                  </div>
-                </div>
-
-                <table class="table table-striped table-responsive">
-                  <thead>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th>Canción</th>
-                    <th></th>
-                    <th></th>
-                    <th>Artista</th>
-                    <th>Álbum</th>
-                    <th>D.</th>
-                    <th>Pop.</th>
-                  </thead>
-                  <tbody>
-                  <!-- ROW -->
-                    <tr id="song1">
-                      
-                      <td>
-                        <button type="button" class="btn btn-none btn-xs">
-                          <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                        </button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-none btn-xs">
-                          <span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>
-                        </button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-none btn-xs">
-                          <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                        </button>
-                      </td>
-                      <td>Lorem ipsum dolor sit amet, consectetur</td>
-                      <td>
-                        <button type="button" class="btn btn-none btn-xs">
-                          <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
-                        </button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-none btn-xs">
-                          <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-                        </button>
-                      </td>
-                      <td>Frank Sinatra</td>
-                      <td>Lorem</td>
-                      <td>03:00</td>
-                      <td>
-                        <span class="glyphicon glyphicon-star"></span>
-                      </td>
-                    </tr>
-                    <!-- ROW -->
-                    <tr id="song2">
-                      
-                      <td>
-                        <button type="button" class="btn btn-none btn-xs">
-                          <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                        </button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-none btn-xs">
-                          <span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>
-                        </button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-none btn-xs">
-                          <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                        </button>
-                      </td>
-                      <td>Lorem ipsum dolor sit amet, consectetur</td>
-                      <td>
-                        <button type="button" class="btn btn-none btn-xs">
-                          <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
-                        </button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-none btn-xs">
-                          <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-                        </button>
-                      </td>
-                      <td>Frank Sinatra</td>
-                      <td>Lorem</td>
-                      <td>03:00</td>
-                      <td>
-                        <span class="glyphicon glyphicon-star"></span>
-                      </td>
-                    </tr>
-                  </tbody>
-
-
-          <!-- </div> -->
-      
       </div>
     </div>
-
+    <script type="text/javascript" src="js/soundmanager2.min.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/panel.js"></script>
   </body>
 </html>
