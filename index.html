@@ -24,7 +24,12 @@
               <span class="glyphicon glyphicon-search form-control-feedback"></span>
           </div>
           <ul class="nav nav-sidebar" aria-hidden="true">
-            <li class="active"><a href="#">INICIO</a></li>
+            <!-- SI ESTA PAGINA NO ES EL INDEX QUITAR COMENTARIO DE LA SIGUIENTE-->
+            
+            <!-- <li><a href="index.html">INICIO</a></li>  -->
+            <li class="active"><a href="#">INICIO</a></li> 
+            
+            <!-- COMENTA LA ANTERIOR SI NO ESTAS EN EL INDEX -->
             <li>
               <a href="#">RECOMENDACIONES</a>
             </li>
@@ -48,7 +53,7 @@
                   </div>
                 </div>
             <li>
-              <a href="#">
+              <a href="favorites.html">
                   <span class="glyphicon glyphicon-heart"></span> 
                   &nbsp;&nbsp;&nbsp; Mis favoritas
                 </a>
@@ -231,7 +236,9 @@
                 </ul>
                 <div class="panel-footer">
                   <div class="col-sm-12">
-                    <button type="button" class="btn btn-danger btn-block">Desconectarse</button>
+                    <button type="button" class="btn btn-danger btn-block" onclick="location.href='login.html'">
+                    Desconectarse
+                    </button>
                   </div>
                 </div>
           </div>
@@ -478,7 +485,7 @@
       </div> <!-- FIN ROW -->
     </div> <!-- FIN container -->
     
-    <script type="text/javascript" src="js/soundmanager2.js"></script>
+    <script type="text/javascript" src="js/soundmanager2.min.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/panel.js"></script>
