@@ -193,6 +193,7 @@ header {
   /*padding: 15px 60px 15px 40px;
   margin-top:20px;
   margin-bottom: 30px;*/
+  margin-top:20px;
   color: white;
   font-size: 9px;
   text-align: center;
@@ -212,6 +213,12 @@ a{
     margin:6px;
 }
 a:hover{
+    color: #ffffff;
+    text-decoration: none;
+    margin:6px;
+}
+
+a:disable{
     color: #ffffff;
     text-decoration: none;
     margin:6px;
