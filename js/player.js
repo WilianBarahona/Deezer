@@ -24,14 +24,14 @@ function playList(){
 			title: "Photograph",
 			artist: "Ed Sheeran",
 			url:"music/photo.mp3",
-			cover: "img/x.jpg",
+			cover: "img/cover/x.jpg",
 		},
 		{
 			id:"rend",
 			title: "My Lighthouse",
 			artist: "Rend Collective",
 			url:"music/rend.mp3",
-			cover: "img/art_of_celebration.jpg",
+			cover: "img/cover/art_of_celebration.jpg",
 		}
 	];
 	this.i=0; // CONTADOR DE REPRODUCCION
