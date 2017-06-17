@@ -133,6 +133,7 @@ body{
   color:#32323d;
   margin-bottom: 5px;
   text-decoration:none;
+  display:block;
 }
 
 .float-bar .icon{
@@ -164,6 +165,25 @@ body{
   float: right;
   line-height: 32px;
   color: #C5C5CD;
+}
+
+.float-bar .header{
+  position:fixed;
+  height: 125px;
+  margin-left: -30px;
+  padding-top: 20px;
+  width: 375px;
+  z-index: 7;
+  background-color: #F8F8FA;
+  border-bottom: 1px solid #d1d1d7;
+}
+
+.float-bar .list-body{
+  margin-top: 145px;
+}
+
+.list-body li{
+  height: 50px;
 }
 
 // .float-bar .slider{

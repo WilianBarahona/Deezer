@@ -1,12 +1,11 @@
-var floatBar= new panel();
-document.ready=function(){
-	floatBar.showPanel();
-}
-function panel(){
+var floatBar= new panel("#float-bar");
+var listaBar= new panel("#list-bar");
+function panel(id){
+	this.panel=$(id);
 	this.visible=false;
 	this.hidePanel = function() {
-		var panel = $("#float-bar");
-		panel.animate({
+		
+		this.panel.animate({
 			"margin-left":-500,
 			"display":"none"
 		},300);
@@ -14,12 +13,12 @@ function panel(){
 		this.visible=false;
 	}
 	this.showPanel= function(){
-		var panel = $("#float-bar");
+		
 		var a = $("#sidebar").width();
-		panel.css({
+		this.panel.css({
 			"display":"block"
 		});
-		panel.animate({
+		this.panel.animate({
 			"margin-left":(a+30)
 		},300);
 		$("#float-bar-overlay").css({"display": "block"});
@@ -32,4 +31,10 @@ function panel(){
 			this.showPanel();
 		}
 	}
+}
+
+function viewPlayList(){
+	console.log(lista);
+	// $("#list-bar").html("Hola")
+	listaBar.toggle();
 }
