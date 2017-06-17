@@ -256,4 +256,23 @@ a:hover{
 	color: white;
 }
 
+.cuadro{
+	padding: 100px 100px 10px 100px;
+	border: 10px black solid;
+	margin-top: -20px;
+	margin-left: -70px;
+	margin-right:  -70px;
+	background-color: black;
+	color: white;text-align: center
+}
 
+.filas{
+	background-color: white;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 10px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid rgb(232, 232, 236);
+}
