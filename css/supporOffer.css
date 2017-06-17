@@ -1,23 +1,12 @@
-/*a{
-	color: blue;
-}
-h4{
-	color: orange;
-}
-#titulo{
-	font-size: 3em;
-}
-*/
 
-body {
-  min-height: 2000px;
-}
+/*CODIGO CSS EVELIN*/
 
-.navbar-static-top {
-  margin-bottom: 19px;
+/*header{
+	background-color: #000;
+	height: 80px;
+	position: fixed;
+	width: 100%;
 }
-   
-
 li{
 	padding: 2px;
 	border: 2px;
@@ -25,19 +14,43 @@ li{
 	list-style: none;
 	position: relative;
 	color: #d1d1d7;
+}
+.nav-li{
+	float: left;
+	letter-spacing: 1px;
+	margin: 7px;
+	padding: 10px;
+    border: transparent;
+    border-radius: 4px
+    line-height: 16px;
+    max-width: 220px;
 
 }
+.nav-link{
+	font-family: "Open Sans",Arial,sans-serif;
+	color: #fff;
+    background-color: rgba(10,10,22,.3);
+    border-color: rgba(255,255,255,.4);
+    font-weight: bold;
+    font-size: 11px;
+}
 
- 
-li{
-  margin-top: 10px;
+a:hover{
+	text-decoration: none;
+	color: #fff;
+}
+li:hover{
+	
+	border: solid;
+	border-radius: 4px;
+	border-color: white;
 }
 .btn-registro{
 	background-color: #0A5DBB;
 	padding: 7px;
 	border-color: #0A5DBB;
 	border-radius: 4px;
-	margin: 10px;
+	margin: 20px;
 	color: #fff;
 	font-weight: bold;
 
@@ -48,11 +61,94 @@ li{
 	padding: 7px;
 	border-color: transparent;
 	border-radius: 4px;
-	margin: 10px;
+	margin: 20px;
 	color: #fff;
 	font-weight: bold;
 
 }
+.contenedor{
+    background-color: #fff;
+    width: 100%;
+    float: left;
+    border: 20px;
+    padding: 70px;
+
+}
+p{
+	text-align: justify;
+    color: #72727d;
+    font-size: 16px;
+    line-height: 25px;
+}
+h1{
+	font-family: arial;
+}
+.contenedor2{
+    background-color: #42424D;
+    width: 100%;
+    float: right;
+    border: 20px;
+    padding: 40px;
+
+}
+.fuente{
+	color: #fff;
+	font-family: "Open Sans",Arial,sans-serif;
+    font-size: 20px;
+}
+.contenedor3{
+    background-color: #23232D;
+    width: 100%;
+    float: right;
+    border: 20px;
+    padding: 40px;
+
+}
+.pp{
+	color: #007feb;
+    font-family: "Open Sans",Arial,sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+
+}
+
+.op{
+	padding: 2px;
+	border: 2px;
+	color: #fff;
+	list-style: none;
+	position: relative;
+	color: blue;
+}
+.op:hover{
+	color: blue;
+}*/
+
+body {
+  min-height: 2000px;
+}
+
+.navbar-static-top {
+  margin-bottom: 19px;
+}
+   
+
+a {
+    color: #c5c5c5;
+    text-decoration: none;
+}
+
+li{
+	padding: 2px;
+	border: 2px;
+	color: #fff;
+	list-style: none;
+	position: relative;
+	margin-top: 10px;
+
+}
+
+
 .contenedor{
     background-color: #fff;
     width: 100%;
@@ -114,16 +210,18 @@ h1{
 .navbar-default {
     background-color: #000;
     border-color: #000;
+    color: white;
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #cac8d0;
+    color: #fff;
 }
 
 
 .navbar-default {
     background-color: #23232D;
     border-color: #23232D;
+    color: white;
 }
 
 .btn-registro{
@@ -149,16 +247,13 @@ h1{
 
 }
 
-/*.nav-link{
+.nav-link: {
 	font-family: "Open Sans",Arial,sans-serif;
-	color: white;
-    background-color: rgba(10,10,22,.3);
-    border-color: rgba(255,255,255,.4);
-    font-weight: bold;
-    font-size: 11px;
 }
-*/
+
 a:hover{
 	text-decoration: none;
 	color: white;
 }
+
+
