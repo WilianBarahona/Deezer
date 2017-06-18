@@ -413,6 +413,10 @@ background-color: #fff;
 	background-color:#32323d
 }
 
+.sticker-evento{
+	background-color: #FF7300
+}
+
 .info .titulo_album{
 	border-bottom:1px solid #efeff2;
 	color:#c2c2ca;
@@ -464,4 +468,15 @@ background-color: #fff;
 
 .subtitulo_down>a{
 	color:#65656d
+}
+
+.btn-default:hover {
+    background-color: #f8f8f9;
+	border: solid 1px #d1d1d7;
+	color: #23232d;
+}
+
+.track-hide
+{
+	display:none
 }
