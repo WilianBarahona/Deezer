@@ -120,26 +120,37 @@ h1{
 }
 
 .btn-registro{
-	background-color: #0A5DBB;
-	padding: 8px;
-	border:1px;
+	background-color: #007feb;
+	padding:7px 16px;
 	border-color: #0A5DBB;
-	/*border-radius: 4px;*/
+	border-radius: 4px;
+	border: 1px solid transparent;
 	margin: 15px 10px 10px 10px;
 	color: #fff;
-	font-weight: bold;
-
+	/*font-weight: bold;*/
+	font-size: 14px;
+	font-weight:700;
 }
+
+.btn-registro:hover {
+	background-color: #0B66CD;
+}
+
 .btn-conectar{
-	background-color: #12121E;
-	padding: 8px;
-	border:1px;
+	background-color: rgba(10,10,22,.45);
+	padding:7px 16px;
 	border-color: #12121E;
+	border-radius: 4px;
+	border: 1px solid transparent;
 	/*border-radius: 4px;*/
 	margin: 15px 10px 10px 10px;
 	color: #fff;
-	font-weight: bold;
+	font-size: 14px;
+	font-weight:700;
+}
 
+.btn-conectar:hover {
+	background-color: #13131E;
 }
 
 .nav-link: {
