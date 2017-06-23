@@ -329,9 +329,10 @@ background-color: #E8E8EC;
     color: white
 }
 
-.table td{
+.table > tbody > tr > td{
     color: #72727d;
     font-size: 12px;
+    border-top: none;
 }
 
 .btn-none{
