@@ -23,10 +23,20 @@ body {
   font-family: Open-Sans,Arial,sans-serif;
 }
 
-.navbar-static-top {
-  margin-bottom: 19px;
+.navbar-inverse {
+    background-color: #23232D;
+    border-color: #23232D;
 }
-   
+
+@media (min-width: 768px)
+navbar.less:661
+.navbar {
+    border-radius: 0px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #c5c5c5;
+}
 
 a {
     color: #c5c5c5;
@@ -102,7 +112,7 @@ h1{
 	color: blue;
 }
 
-.navbar-default {
+/*.navbar-default {
     background-color: #000;
     border-color: #000;
     color: white;
@@ -118,7 +128,7 @@ h1{
     border-color: #23232D;
     color: white;
 }
-
+*/
 .btn-registro{
 	background-color: #0A5DBB;
 	padding: 8px;
