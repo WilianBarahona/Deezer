@@ -26,13 +26,10 @@ body {
 .navbar-inverse {
     background-color: #23232D;
     border-color: #23232D;
-}
-
-@media (min-width: 768px)
-navbar.less:661
-.navbar {
     border-radius: 0px;
 }
+
+
 
 .navbar-inverse .navbar-nav>li>a {
     color: #c5c5c5;
