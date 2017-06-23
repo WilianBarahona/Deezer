@@ -120,37 +120,26 @@ h1{
 }
 
 .btn-registro{
-	background-color: #007feb;
-	padding:7px 16px;
+	background-color: #0A5DBB;
+	padding: 8px;
+	border:1px;
 	border-color: #0A5DBB;
-	border-radius: 4px;
-	border: 1px solid transparent;
-	margin: 15px 10px 10px 10px;
-	color: #fff;
-	/*font-weight: bold;*/
-	font-size: 14px;
-	font-weight:700;
-}
-
-.btn-registro:hover {
-	background-color: #0B66CD;
-}
-
-.btn-conectar{
-	background-color: rgba(10,10,22,.45);
-	padding:7px 16px;
-	border-color: #12121E;
-	border-radius: 4px;
-	border: 1px solid transparent;
 	/*border-radius: 4px;*/
 	margin: 15px 10px 10px 10px;
 	color: #fff;
-	font-size: 14px;
-	font-weight:700;
-}
+	font-weight: bold;
 
-.btn-conectar:hover {
-	background-color: #13131E;
+}
+.btn-conectar{
+	background-color: #12121E;
+	padding: 8px;
+	border:1px;
+	border-color: #12121E;
+	/*border-radius: 4px;*/
+	margin: 15px 10px 10px 10px;
+	color: #fff;
+	font-weight: bold;
+
 }
 
 .nav-link: {
@@ -182,26 +171,23 @@ a:hover{
     vertical-align: top;
     border-top: 1px solid rgb(232, 232, 236);
 }
-.icons{
-	background-color: rgb(66, 66, 77);
-	border:0px rgb(66, 66, 77) solid;
-}
-.icons:hover{
-	background-color: rgb(66, 66, 77);
-	color: white;
-	border:0px rgb(66, 66, 77) solid;
-}
+.nav1{
 
-
-.headings-2{
-	color:#191922;
-	font-size:25px;
-	font-weight:100;
-	margin-bottom:12px;
 
 }
+.Disp{
+	width: 25%;
+	height: 400px;
+	text-align: top center;
+	
+}
+.dispositivos{
+	width: 75%;
+	height: 400px;
+	float: right;
+}
 
-.headings-sub-2{
-	color: rgb(0, 127, 235);
-	margin-right: 10px;
+.version{
+	color: #c2c2ca;
+	font-size: 13px;
 }
