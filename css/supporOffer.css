@@ -191,3 +191,17 @@ a:hover{
 	color: white;
 	border:0px rgb(66, 66, 77) solid;
 }
+
+
+.headings-2{
+	color:#191922;
+	font-size:25px;
+	font-weight:100;
+	margin-bottom:12px;
+
+}
+
+.headings-sub-2{
+	color: rgb(0, 127, 235);
+	margin-right: 10px;
+}
