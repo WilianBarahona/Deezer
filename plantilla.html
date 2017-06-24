@@ -53,7 +53,7 @@
                   </div>
                 </div>
             <li>
-              <a href="favorites.html">
+              <a href="#favoritas" id="favoritas">
                   <span class="glyphicon glyphicon-heart"></span> 
                   &nbsp;&nbsp;&nbsp; Mis favoritas
                 </a>
@@ -163,7 +163,7 @@
                 <hr>
                 <ul class="section">
                     <li>
-                      <a href="#">
+                      <a href="#cuenta" id="cuenta">
                         <span class="icon glyphicon glyphicon-user"></span>
                         <span class="icon-label">Ajustes de la cuenta</span>
                         <span class="arrow glyphicon glyphicon-chevron-right"></span>
@@ -248,7 +248,7 @@
          
 
         <!-- Contenido Principal -->
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-3 col-lg-offset-2 main">
+        <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-3 col-lg-offset-2 main">
           
         </div>
         <!-- Fin Contenido Principal -->
@@ -260,5 +260,15 @@
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/panel.js"></script>
+
+    <script type="text/javascript">
+      $("#favoritas").click(function() {
+        $("#main").load("templates/feed.html");
+      });
+
+      $("#cuenta").click(function() {
+        $("#main").load("templates/configuration.html");
+      });
+    </script>
   </body>
 </html>
