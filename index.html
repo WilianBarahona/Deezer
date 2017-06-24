@@ -138,7 +138,7 @@
                   </button>
                 </div>
                 <div class="col-sm-3">
-                  <button type="button" class="btn btn-none" class="btn-float">
+                  <button type="button" class="btn btn-none btn-float" id="float-playlist-playing">
                     <span class="glyphicon glyphicon-list-alt"></span>
                   </button>
                 </div>
@@ -150,88 +150,11 @@
         <!-- Barra Flotante Aparece Oculta display: none -->
         <!-- Aparece oculta en moviles -->
         <div class="col-sm-offset-3 col-md-offset-3 col-lg-offset-2 col-sm-3 col-md-3 col-lg-3 float-bar" id="float-bar">
+        <!-- CONTENIDO BARRA FLOTANTE -->
           <div class="container-fluid" id="float-bar-content">
-                <h5>Cuenta</h5>
-                <hr>
-                <ul class="section">
-                    <li>
-                      <a href="#cuenta" id="cuenta">
-                        <span class="icon glyphicon glyphicon-user"></span>
-                        <span class="icon-label">Ajustes de la cuenta</span>
-                        <span class="arrow glyphicon glyphicon-chevron-right"></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <span class="icon glyphicon glyphicon-question-sign" style="background-color: #76D016"></span>
-                        <span class="icon-label">Ayuda</span>
-                        <span class="arrow glyphicon glyphicon-chevron-right"></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <span class="icon glyphicon glyphicon-barcode" style="background-color: #8D05AD"></span>
-                        <span class="icon-label">Activar un código</span>
-                        <span class="arrow glyphicon glyphicon-chevron-right"></span>
-                      </a>
-                    </li>
-                </ul>
-                <h5>Audio</h5>
-                <hr>
-                <ul class="section">
-                  <li>
-                    <span class="icon-label">
-                      Alta calidad
-                      <input class="chb" type="checkbox" name="ckb-high-quality" value="ckb-high-quality">
-                    </span>
-                  </li>
-                  <li>
-                    <span class="icon-label">
-                      Cross-fade
-                    </span>
-                    <!-- <span class="slider">
-                      <span id="cross-fade-val">0</span>
-                      <input id="cross-fade-slider" type="range" min="0" max="10" step="1">
-                      <span id="cross-fade-max">10</span>
-                    </span> -->
-                  </li>
-                </ul>
-                <h5>Descubrir Deezer</h5>
-                <hr>
-                <ul class="section">
-                  <li>
-                    <a href="offers.html" target="blank" onclick="floatBar.hidePanel()">
-                      <span class="icon-label">Ofertas</span>
-                      <span class="arrow glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                    </li>
-                  <li>
-                    <a href="#">
-                      <span class="icon-label">Quiénes somos</span>
-                      <span class="arrow glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                    </li>
-                  <li>
-                    <a href="search.html">
-                      <span class="icon-label">Ventajas</span>
-                      <span class="arrow glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                    </li>
-                  <li>
-                    <a href="#">
-                      <span class="icon-label">Trabajos</span>
-                      <span class="arrow glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                    </li>
-                </ul>
-                <div class="panel-footer">
-                  <div class="col-sm-12">
-                    <button type="button" class="btn btn-danger btn-block" onclick="location.href='login.html'">
-                    Desconectarse
-                    </button>
-                  </div>
-                </div>
-          </div>
+          
+          </div> 
+          <!-- FIN CONTENIDO BARRA FLOTANTE -->
         </div>
         <!-- FIN Floatbar -->
         <div id="float-bar-overlay" class="float-bar-overlay" onclick="floatBar.hidePanel()"></div>
