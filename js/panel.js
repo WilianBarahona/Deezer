@@ -10,7 +10,8 @@ function panel(id){
 			"display":"none"
 		},300);
 		$("#float-bar-overlay").css({"display": "none"});
-		$(".active-white").removeClass().addClass("active")
+		$(".active-white").removeClass().addClass("active");
+		$("#search").focusout();
 		this.visible=false;
 	}
 	this.showPanel= function(){

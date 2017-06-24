@@ -9,38 +9,34 @@
     <!-- CSS -->
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="css/principal.css">
+   <link rel="stylesheet" href="css/favorites.css">
    <link rel="stylesheet" href="css/player.css">
-
   </head>
   <body>
     <div class="container-fluid">
       <div class="row">
-        
         <!-- Barra de Navegacion Lateral -->
         <div id="sidebar" class="col-sm-3 col-md-3 col-lg-2 sidebar">
-          <a href="index.html"><img src="img/freezer.png" class="img-responsive" alt=""></a>
+          <a href="#" id="img-index"><img src="img/freezer.png" class="img-responsive" alt=""></a>
           <div class="form-group has-feedback">
-              <input type="text" name="search" class="form-control" placeholder="Buscar">
+              <input type="text" id="search" name="search" class="form-control" placeholder="Buscar">
               <span class="glyphicon glyphicon-search form-control-feedback"></span>
           </div>
           <ul class="nav nav-sidebar" aria-hidden="true">
-            <!-- SI ESTA PAGINA NO ES EL INDEX QUITAR COMENTARIO DE LA SIGUIENTE-->
-            
-            <!-- <li><a href="index.html">INICIO</a></li>  -->
-            <li class="active"><a href="#">INICIO</a></li> 
-            
-            <!-- COMENTA LA ANTERIOR SI NO ESTAS EN EL INDEX -->
+            <li class="active">
+              <a href="#" id="index">INICIO</a>
+            </li> 
             <li>
-              <a href="feed.html">RECOMENDACIONES</a>
+              <a href="#feed" id="recomendaciones">RECOMENDACIONES</a>
             </li>
             <hr>
             <li>
               <a>
-                <span class="link-profile" onclick="location.href='favorites.html'">
+                <span class="link-profile" id="mi-musica">
                   <img src="img/user.jpg"  class="img-profile img-circle" alt="">
                   &nbsp;&nbsp;&nbsp; <span>Mi Música</span>
                 </span>
-                <span class="glyphicon glyphicon-cog settings" onclick="floatBar.toggle()"></span>
+                <span class="glyphicon glyphicon-cog settings btn-float" onclick="floatBar.toggle()"></span>
               </a>
             </li>
                 <div class="container-fluid">
@@ -53,37 +49,36 @@
                   </div>
                 </div>
             <li>
-              <a href="favorites.html">
+              <a href="#favoritas" id="favoritas">
                   <span class="glyphicon glyphicon-heart"></span> 
                   &nbsp;&nbsp;&nbsp; Mis favoritas
                 </a>
             </li>
             <li>
-                <a href="#" onclick="floatBar.toggle()">
+                <a href="#" onclick="floatBar.toggle()" class="btn-float">
                   <span class="glyphicon glyphicon-list"></span> 
                   &nbsp;&nbsp;&nbsp; Playlists
                 </a>
             </li> 
               <li>
-              <a href="#" onclick="floatBar.toggle()">
+              <a href="#" onclick="floatBar.toggle()" class="btn-float">
                   <span class="glyphicon glyphicon-cd"></span> 
                   &nbsp;&nbsp;&nbsp; Álbumes
                 </a>
               </li>
               <li>
-              <a href="#" onclick="floatBar.toggle()">
+              <a href="#" onclick="floatBar.toggle()" class="btn-float">
                   <span class="glyphicon glyphicon-time"></span> 
                   &nbsp;&nbsp;&nbsp; Actividad
                 </a>
               </li>
               <li>
-                <a href="#" onclick="floatBar.toggle()">
+                <a href="#" onclick="floatBar.toggle()" class="btn-float">
                     <span class="glyphicon glyphicon-expand"></span> 
                     &nbsp;&nbsp;&nbsp; Aplicaciones
                   </a>
               </li>
           </ul>
-
           <div class="player" id="player">
             <div class="container-fluid">
               <div class="row player-info">
@@ -109,7 +104,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="row player-btn player-change">
                 <div class="col-sm-4">
                   <button type="button" class="btn btn-none" onclick="lista.prev()">
@@ -127,7 +121,6 @@
                   </button>
                 </div >
               </div>
-
               <div class="row player-btn player-opt">
                 <div class="col-sm-3">
                   <button type="button" class="btn btn-none" onclick="alert(4)">
@@ -145,7 +138,7 @@
                   </button>
                 </div>
                 <div class="col-sm-3">
-                  <button type="button" class="btn btn-none" onclick="floatBar.toggle()">
+                  <button type="button" class="btn btn-none" onclick="floatBar.toggle()" class="btn-float">
                     <span class="glyphicon glyphicon-list-alt"></span>
                   </button>
                 </div>
@@ -154,7 +147,6 @@
           </div>
         </div>
         <!-- Fin Barra de Navegacion Lateral -->
-        
         <!-- Barra Flotante Aparece Oculta display: none -->
         <!-- Aparece oculta en moviles -->
         <div class="col-sm-offset-3 col-md-offset-3 col-lg-offset-2 col-sm-3 col-md-3 col-lg-3 float-bar" id="float-bar">
@@ -163,7 +155,7 @@
                 <hr>
                 <ul class="section">
                     <li>
-                      <a href="configuration.html">
+                      <a href="#cuenta" id="cuenta">
                         <span class="icon glyphicon glyphicon-user"></span>
                         <span class="icon-label">Ajustes de la cuenta</span>
                         <span class="arrow glyphicon glyphicon-chevron-right"></span>
@@ -184,7 +176,6 @@
                       </a>
                     </li>
                 </ul>
-
                 <h5>Audio</h5>
                 <hr>
                 <ul class="section">
@@ -205,12 +196,11 @@
                     </span> -->
                   </li>
                 </ul>
-
                 <h5>Descubrir Deezer</h5>
                 <hr>
                 <ul class="section">
                   <li>
-                    <a href="#">
+                    <a href="offers.html" target="blank" onclick="floatBar.hidePanel()">
                       <span class="icon-label">Ofertas</span>
                       <span class="arrow glyphicon glyphicon-chevron-right"></span>
                     </a>
@@ -245,249 +235,62 @@
         </div>
         <!-- FIN Floatbar -->
         <div id="float-bar-overlay" class="float-bar-overlay" onclick="floatBar.hidePanel()"></div>
-         
-
-        <div class="col-sm-offset-3 col-md-offset-3 col-lg-offset-2 col-sm-3 col-md-3 col-lg-3 float-bar" id="list-bar">
-          <div class="container-fluid">
-            <div class="header">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <h4>Cola</h4>
-                      <h5 id="total-cancion">20 canciones · 01:30:25</h5>
-                      <p><label><input type="checkbox" name="reco-autom"> Recomendaciones automáticas</label></p>
-                    </div>
-                  </div>
-                </div>
-            </div>
-            <div class="list-body">
-              <ul class="list-items section">
-                <li>
-                    <div class="row">
-                      <div class="col-sm-2 cover"><img src="img/cover/x.jpg" alt="cover" class="img-rounded img-responsive"></div>
-                      <div class="col-sm-8">
-                        <p>Photograph</p>
-                      </div>
-                      <div class="col-sm-2">
-                        <button type="button" class="btn btn-none">
-                          <span class="glyphicon glyphicon-heart"></span>
-                        </button>
-                      </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                      <div class="col-sm-2 cover"><img src="img/cover/x.jpg" alt="cover" class="img-rounded img-responsive"></div>
-                      <div class="col-sm-8">
-                        <p>Photograph</p>
-                      </div>
-                      <div class="col-sm-2">
-                        <button type="button" class="btn btn-none">
-                          <span class="glyphicon glyphicon-heart"></span>
-                        </button>
-                      </div>
-                    </div>
-                </li>
-
-              </ul>
-            </div>
-          </div>
-        </div>
-
         <!-- Contenido Principal -->
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-3 col-lg-offset-2 main">
-                <div class="container-fluid well card"> 
-                  <div class="row">
-                    <div class="col-sm-12">
-                        BANNER
-                    </div>
-                  </div>  
-                </div>
-                          <div class="container-fluid well card">
-                      <div class="row heading">
-                        <div class="text-center">
-                          <a href="#" class="title">
-                            <h4>EXPLORAR<span class="glyphicon glyphicon-chevron-right"></span></h4>
-                          </a>
-                        </div>
-                        <span  class="text-center help-block text-center">
-                          <h5 >Descubre los canales de música, entretenimiento y podcast</h5>
-                        </span>
-                      </div>
-                          
-                      <div class="row">
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/explorar/a100x214.jpg" class="img-rounded img-responsive center-block">
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/explorar/b100x214.jpg" class="img-rounded img-responsive center-block">
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/explorar/c100x214.jpg" class="img-rounded img-responsive center-block">
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/explorar/d100x214.jpg" class="img-rounded img-responsive center-block">
-                        </div>
-                      </div>
-                      
-                      <div class="row heading">
-                        <div class="text-center">
-                          <!-- <a href="#" class="title"> -->
-                            <h4>SELECCIÓN DE PLAYLISTS</h4>
-                          <!-- </a> -->
-                        </div>
-                        <span  class="text-center help-block text-center">
-                          <h5>Recomendaciones de nuestros Editores</h5>
-                        </span>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/playlist/a264x264.jpg"  class="img-rounded img-responsive center-block img-album"><br>
-                            <a href="#" >El mejor rock de todos los tiempos</a>
-                            <span  class="help-block text-center"><h6>19 canciones - 1.920 fans</h6></span>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/playlist/b264x264.jpg"  class="img-rounded img-responsive center-block img-album" ><br>
-                          <a href="#">Back to school</a>
-                          <span  class="help-block text-center"><h6>13 canciones - 4.632 fans</h6></span>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/playlist/c264x264.jpg" class="img-rounded img-responsive center-block img-album"><br>
-                          <a href="#">Prince covers y colaboraciones</a>
-                          <span  class="help-block text-center"><h6>51 canciones - 6.245 fans</h6></span>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/playlist/d264x264.jpg"  class="img-rounded img-responsive center-block img-album"><br>
-                          <a href="#">Epicos de los 80' y 90'</a>
-                          <span  class="help-block text-center"><h6>32 canciones - 7.455 fans</h6></span>
-                        </div>
-                      </div>
-                      
-                      <div class="row heading">
-                        <div class="text-center">
-                          <a href="#" class="title">
-                            <h4>POPULAR
-                              <span class="glyphicon glyphicon-chevron-right"></span>
-                            </h4>
-                          </a>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/popular/a264x264.jpg" class="img-rounded img-responsive center-block img-album"><br>
-                          <a href="#">Iconos del rock</a>
-                          <span  class="help-block text-center"><h6>102 canciones - 10.365 fans</h6></span>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/popular/b264x264.jpg" class="img-rounded img-responsive center-block img-album"><br>
-                          <a href="#">Hits del momento</a>
-                          <span  class="help-block text-center"><h6>14 canciones - 263.452 fans</h6></span>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/popular/c264x264.jpg" class="img-rounded img-responsive center-block img-album"><br>
-                          <a href="#">Reggaeton</a>
-                          <span  class="help-block text-center"><h6>100 canciones - 102.365 fans</h6></span>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/popular/d264x264.jpg" class="img-rounded img-responsive center-block img-album"><br>
-                          <a href="#">POP</a>
-                          <span  class="help-block text-center"><h6>62 canciones - 301.548 fans</h6></span>
-                        </div>
-                      </div>
-                    </div> <!-- FIN container-fluid -->
-                    <div class="clear"></div>
-                    <div class="container-fluid">
-                      <div class="row heading">
-                        <div class="col-xs-12">
-                          <div class="text-center">
-                            <a href="#" class="title">
-                              <h4>ESCUCHAS
-                              <span class="glyphicon glyphicon-chevron-right"></span>
-                              </h4>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 text-right top-chart">
-                          <img src="img/index/top honduras.jpg" class="img-rounded img-responsive pull-right">    
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                          <ol class="listens">
-                            <li>
-                              <a href="#"> Felices los 4</a>
-                              <span  class="help-block"><h6>de <a href="#">Maluma</a></h6></span>
-                            </li>
-                            <li>
-                              <a href="#">Me rehuso</a>
-                              <span  class="help-block"><h6>de <a href="#">Danny Ocean</a></h6></span>
-                            </li>
-                            <li>
-                              <a href="#">Despacito</a>
-                              <span  class="help-block"><h6>de <a href="#">Luis Fonsi</a></h6></span>
-                            </li>
-                            <li>
-                              <a href="#">Stronger</a>
-                              <span  class="help-block"><h6>de <a href="#">Clean Bandit</a></h6></span>
-                            </li>
-                            <div class="clear"></div>
-                            <span class="help-block">
-                                <a href="#">VER TODO<span class="glyphicon glyphicon-chevron-right"></span></a>
-                            </span>
-                          </ol>
-                        </div>
-                      </div>        
-                    </div> <!-- FIN container-fluid -->
-                    <div class="clear"></div>
-                        <div class="container-fluid well card">
-                      <div class="row heading">
-                        <div class="col-xs-12">
-                          <div class="text-center">
-                            <a href="#" class="title">
-                              <h4>NUEVOS LANZAMIENTOS
-                              <span class="glyphicon glyphicon-chevron-right"></span>
-                              </h4>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/nuevos/a264x264.jpg" class="img-rounded img-responsive img-album"><br>
-                          <a href="#">Rarities of fetichism</a>
-                          <span  class="help-block text-center"><h6>De Nephrectomy</h6></span>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/nuevos/b264x264.jpg" class="img-rounded img-responsive img-album"><br>
-                          <a href="#">Amor Supremo Desnudo</a>
-                          <span  class="help-block text-center"><h6>De Carla Morrison</h6></span>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/nuevos/c264x264.jpg" class="img-rounded img-responsive img-album"><br>
-                          <a href="#">Ctrl</a>
-                          <span  class="help-block text-center"><h6>De SZA</h6></span>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">
-                          <img src="img/index/nuevos/d264x264.jpg" class="img-rounded img-responsive img-album"><br>
-                          <a href="#">Wonder</a>
-                          <span  class="help-block text-center"><h6>De Hillsong United</h6></span>
-                        </div>
-                      </div>
-
-                        </div>
-                        <div class="clear"></div>
+        <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-3 col-lg-offset-2 main">
         </div>
         <!-- Fin Contenido Principal -->
-        
       </div> <!-- FIN ROW -->
     </div> <!-- FIN container -->
-    
     <script type="text/javascript" src="js/soundmanager2.min.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/panel.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          $("#main").load("templates/index.html");
+      });
+
+      $("#index").click(function(){
+          floatBar.hidePanel();
+          $("#main").load("templates/index.html");
+          $(".active").removeClass();
+          $("#index").parent().addClass("active");
+      });
+
+      $("#img-index").click(function(){
+          floatBar.hidePanel();
+          $("#main").load("templates/index.html");
+          $(".active").removeClass();
+          $("#index").parent().addClass("active");
+      });
+
+      $("#recomendaciones").click(function(){
+          floatBar.hidePanel();
+          $("#main").load("templates/feed.html");
+          $(".active").removeClass();
+          $("#recomendaciones").parent().addClass("active");
+      });
+      $("#cuenta").click(function(){
+          floatBar.hidePanel();
+          $("#main").load("templates/configuration.html");
+          $(".active").removeClass();
+      });
+      $("#mi-musica").click(function(){
+          floatBar.hidePanel();
+          $("#main").load("templates/favorites.html");
+          $(".active").removeClass();
+          $("#mi-musica").parent().parent().addClass("active");
+      });
+      $("#favoritas").click(function(){
+          floatBar.hidePanel();
+          $("#main").load("templates/favorites.html");
+          $(".active").removeClass();
+          $("#favoritas").parent().addClass("active");
+      });
+
+      $("#search").focus(function() {
+          floatBar.toggle();
+      });
+    </script>
   </body>
 </html>
