@@ -37,7 +37,7 @@ function panel(id){
 
 	this.load=function(id){
 		var content = $("#float-bar-content");
-		var path ="float-bar/";
+		var path ="templates/float-bar/";
 		switch(id){
 			case "txt-search":
 			content.load(path+"search.html");
