@@ -158,14 +158,15 @@ a:hover{
 	color: white;
 }
 
-.cuadro{
-	padding: 100px 100px 10px 100px;
-	/*border: 10px black solid;*/
-	margin-top: -20px;
-	margin-left: -70px;
-	margin-right:  -70px;
-	background-color: black;
-	color: white;text-align: center
+.cuadro {
+    padding: 100px 100px 10px 100px;
+    /* border: 10px black solid; */
+    margin-top: -20px;
+    margin-left: -70px;
+    margin-right: -30px;
+    background-color: black;
+    color: white;
+    text-align: center;
 }
 
 .filas{
