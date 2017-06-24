@@ -92,8 +92,12 @@ body{
 		background-color:#15151E;
 	}
 
-	.active-white{
-		border-color:#C2C2CA;
+	.nav-sidebar > .active-white > a,
+	.nav-sidebar > .active-white > a:hover,
+	.nav-sidebar > .active-white > a:focus {
+		padding-left: 20px;
+		border-left:solid 10px #C2C2CA;
+		background-color:#15151E;
 	}
 
 	.nav-sidebar > li a:hover,

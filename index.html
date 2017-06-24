@@ -31,7 +31,7 @@
             </li>
             <hr>
             <li>
-              <a>
+              <a href="#me">
                 <span class="link-profile" id="mi-musica">
                   <img src="img/user.jpg"  class="img-profile img-circle" alt="">
                   &nbsp;&nbsp;&nbsp; <span>Mi Música</span>
@@ -55,25 +55,25 @@
                 </a>
             </li>
             <li>
-                <a href="#" onclick="floatBar.toggle()" class="btn-float">
+                <a href="#playlists" onclick="floatBar.toggle()" class="btn-float">
                   <span class="glyphicon glyphicon-list"></span> 
                   &nbsp;&nbsp;&nbsp; Playlists
                 </a>
             </li> 
               <li>
-              <a href="#" onclick="floatBar.toggle()" class="btn-float">
+              <a href="#albums" onclick="floatBar.toggle()" class="btn-float">
                   <span class="glyphicon glyphicon-cd"></span> 
                   &nbsp;&nbsp;&nbsp; Álbumes
                 </a>
               </li>
               <li>
-              <a href="#" onclick="floatBar.toggle()" class="btn-float">
+              <a href="#activity" onclick="floatBar.toggle()" class="btn-float">
                   <span class="glyphicon glyphicon-time"></span> 
                   &nbsp;&nbsp;&nbsp; Actividad
                 </a>
               </li>
               <li>
-                <a href="#" onclick="floatBar.toggle()" class="btn-float">
+                <a href="#apps" onclick="floatBar.toggle()" class="btn-float">
                     <span class="glyphicon glyphicon-expand"></span> 
                     &nbsp;&nbsp;&nbsp; Aplicaciones
                   </a>
@@ -245,52 +245,6 @@
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/panel.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-          $("#main").load("templates/index.html");
-      });
-
-      $("#index").click(function(){
-          floatBar.hidePanel();
-          $("#main").load("templates/index.html");
-          $(".active").removeClass();
-          $("#index").parent().addClass("active");
-      });
-
-      $("#img-index").click(function(){
-          floatBar.hidePanel();
-          $("#main").load("templates/index.html");
-          $(".active").removeClass();
-          $("#index").parent().addClass("active");
-      });
-
-      $("#recomendaciones").click(function(){
-          floatBar.hidePanel();
-          $("#main").load("templates/feed.html");
-          $(".active").removeClass();
-          $("#recomendaciones").parent().addClass("active");
-      });
-      $("#cuenta").click(function(){
-          floatBar.hidePanel();
-          $("#main").load("templates/configuration.html");
-          $(".active").removeClass();
-      });
-      $("#mi-musica").click(function(){
-          floatBar.hidePanel();
-          $("#main").load("templates/favorites.html");
-          $(".active").removeClass();
-          $("#mi-musica").parent().parent().addClass("active");
-      });
-      $("#favoritas").click(function(){
-          floatBar.hidePanel();
-          $("#main").load("templates/favorites.html");
-          $(".active").removeClass();
-          $("#favoritas").parent().addClass("active");
-      });
-
-      $("#search").focus(function() {
-          floatBar.toggle();
-      });
-    </script>
+    <script type="text/javascript" src="js/navigation.js"></script>
   </body>
 </html>
