@@ -225,3 +225,7 @@ a:hover{
     background-color:#F8F8FB;
 }
 
+.col-center{
+    float: none;
+    margin: 0 auto;
+}
