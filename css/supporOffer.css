@@ -35,6 +35,14 @@ body {
     color: #c5c5c5;
 }
 
+.navbar-inverse 
+.navbar-nav>.open>a, 
+.navbar-inverse 
+.navbar-nav>.open>a:focus,
+.navbar-inverse .navbar-nav>.open>a:hover {
+    color: #fff;
+    background-color: #23232D;
+}
 a {
     color: #c5c5c5;
     text-decoration: none;
