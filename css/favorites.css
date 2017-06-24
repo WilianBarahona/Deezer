@@ -35,6 +35,14 @@
     background-color: #4389c1;
     border-color: #2e6da4;
 }
+.btn-azul:hover,
+.btn-guardar:hover,
+.btn-azul:focus,
+.btn-guardar:focus{
+    color: #fff;
+    background-color: #2E77B2;
+    
+}
 
 
 .reproductor{

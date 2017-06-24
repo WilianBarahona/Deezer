@@ -18,8 +18,8 @@ margin-left: 170px"" width="140">
     <button id="botones" class="btn btn-azul">
         <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><strong>  FLOW</strong>
     </button>
-    <button class=" btn cuenta" id="botones">
-        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span><strong>  Mi cuenta</strong>
+    <button class="btn btn-default" id="btn-cuenta">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span><strong>Mi cuenta</strong>
     </button>
 </div>
 <div class="col-md-4 col-md-3"></div>
@@ -33,7 +33,7 @@ margin-left: 170px"" width="140">
     <nav class="navbar navbar-center">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
-          <li><a href="#">Mi Musica</a></li>
+          <li><a class="active" href="#">Mi Musica</a></li>
           <li><a href="#">Mis Favoritas</a></li> 
           <li><a href="#">Playlist</a></li>
           <li><a href="#">Álbumes</a></li>
@@ -229,4 +229,11 @@ margin-left: 170px"" width="140">
 <!--Fin de tabla-->
 <!-- Fin Contenido Principal -->
 
-
+<!-- LINKS -->
+<script type="text/javascript">
+  $("#btn-cuenta").click(function(){
+          floatBar.hidePanel();
+          $("#main").load("templates/configuration.html");
+          $(".active").removeClass();
+  });
+</script>

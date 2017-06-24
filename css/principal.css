@@ -296,6 +296,11 @@ a.title:hover{
     background-color: white;
 
 }
+.navbar-nav>li>a.active{
+	border-color: #007feb;
+    color: #32323d;
+    background-color: white;	
+}
 .navbar-nav>li>a, 
 .navbar-nav>li>button {
     font-size: 14px;

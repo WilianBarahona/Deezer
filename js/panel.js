@@ -1,10 +1,9 @@
 var floatBar= new panel("#float-bar");
-var listaBar= new panel("#list-bar");
 function panel(id){
 	this.panel=$(id);
 	this.visible=false;
+	this.event="";
 	this.hidePanel = function() {
-		
 		this.panel.animate({
 			"margin-left":-500,
 			"display":"none"
@@ -14,8 +13,9 @@ function panel(id){
 		$("#txt-search").focusout();
 		this.visible=false;
 	}
-	this.showPanel= function(){
-		
+	this.showPanel= function(id){
+		this.event=id;
+		console.log("this.id: "+id)
 		var a = $("#sidebar").width();
 		this.panel.css({
 			"display":"block"
@@ -27,11 +27,17 @@ function panel(id){
 		$("#float-bar-overlay").css({"display": "block"});
 		this.visible=true;
 	}
-	this.toggle = function(){
+	this.toggle = function(id){
+		console.log(id);
+		console.log("(toggle)this.id: "+id)
 		if (this.visible) {
-			this.hidePanel();
+			if (this.event==id) {
+				this.hidePanel();
+			}else{
+				showPanel(id);
+			}
 		}else{
-			this.showPanel();
+			this.showPanel(id);
 		}
 	}
 }

@@ -36,7 +36,7 @@
                   <img src="img/user.jpg"  class="img-profile img-circle" alt="">
                   &nbsp;&nbsp;&nbsp; <span>Mi Música</span>
                 </span>
-                <span class="glyphicon glyphicon-cog settings btn-float" onclick="floatBar.toggle()"></span>
+                <span class="glyphicon glyphicon-cog settings btn-float" id="float-settings"></span>
               </a>
             </li>
                 <div class="container-fluid">
@@ -55,25 +55,25 @@
                 </a>
             </li>
             <li>
-                <a href="#playlists" onclick="floatBar.toggle()" class="btn-float">
+                <a href="#playlists" id="float-playlist" class="btn-float">
                   <span class="glyphicon glyphicon-list"></span> 
                   &nbsp;&nbsp;&nbsp; Playlists
                 </a>
             </li> 
               <li>
-              <a href="#albums" onclick="floatBar.toggle()" class="btn-float">
+              <a href="#albums" id="float-albums" class="btn-float">
                   <span class="glyphicon glyphicon-cd"></span> 
                   &nbsp;&nbsp;&nbsp; Álbumes
                 </a>
               </li>
               <li>
-              <a href="#activity" onclick="floatBar.toggle()" class="btn-float">
+              <a href="#activity" id="float-activity" class="btn-float">
                   <span class="glyphicon glyphicon-time"></span> 
                   &nbsp;&nbsp;&nbsp; Actividad
                 </a>
               </li>
               <li>
-                <a href="#apps" onclick="floatBar.toggle()" class="btn-float">
+                <a href="#apps" id="float-apps" class="btn-float">
                     <span class="glyphicon glyphicon-expand"></span> 
                     &nbsp;&nbsp;&nbsp; Aplicaciones
                   </a>
@@ -138,7 +138,7 @@
                   </button>
                 </div>
                 <div class="col-sm-3">
-                  <button type="button" class="btn btn-none" onclick="floatBar.toggle()" class="btn-float">
+                  <button type="button" class="btn btn-none" class="btn-float">
                     <span class="glyphicon glyphicon-list-alt"></span>
                   </button>
                 </div>
@@ -150,7 +150,7 @@
         <!-- Barra Flotante Aparece Oculta display: none -->
         <!-- Aparece oculta en moviles -->
         <div class="col-sm-offset-3 col-md-offset-3 col-lg-offset-2 col-sm-3 col-md-3 col-lg-3 float-bar" id="float-bar">
-          <div class="container-fluid">
+          <div class="container-fluid" id="float-bar-content">
                 <h5>Cuenta</h5>
                 <hr>
                 <ul class="section">
@@ -246,5 +246,12 @@
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/panel.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
+
+    <script>
+      $(".btn-float").click(function(){
+        var id = $(this).attr("id");
+        floatBar.toggle(id);
+      })
+    </script>
   </body>
 </html>

@@ -22,16 +22,20 @@ $("#recomendaciones").click(function(){
     $(".active").removeClass();
     $("#recomendaciones").parent().addClass("active");
 });
+
 $("#cuenta").click(function(){
     floatBar.hidePanel();
     $("#main").load("templates/configuration.html");
     $(".active").removeClass();
 });
+
 $("#mi-musica").click(function(){
     floatBar.hidePanel();
-    $("#main").load("templates/favorites.html");
     $(".active").removeClass();
     $("#mi-musica").parent().parent().addClass("active");
+    $("#main").load("templates/favorites.html", function(){
+
+    });
 });
 $("#favoritas").click(function(){
     floatBar.hidePanel();
@@ -41,7 +45,7 @@ $("#favoritas").click(function(){
 });
 
 $("#txt-search").focus(function() {
-    floatBar.toggle();
+    floatBar.toggle("txt-search");
 });
 
 $("#btn-search").click(function(){
