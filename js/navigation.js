@@ -40,6 +40,11 @@ $("#favoritas").click(function(){
     $("#favoritas").parent().addClass("active");
 });
 
-$("#search").focus(function() {
+$("#txt-search").focus(function() {
     floatBar.toggle();
+});
+
+$("#btn-search").click(function(){
+    floatBar.hidePanel();
+    $("#main").load("templates/search.html");
 });

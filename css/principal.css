@@ -68,6 +68,9 @@ body{
 		margin-bottom: 20px;
 		margin-left: -20px;
 	}
+	.form-group .form-control-feedback {
+	  pointer-events: initial; /* or - auto // or -  unset  */
+	}
 	.nav-sidebar  li {
 		height: 30px;
 	}

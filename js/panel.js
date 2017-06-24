@@ -11,7 +11,7 @@ function panel(id){
 		},300);
 		$("#float-bar-overlay").css({"display": "none"});
 		$(".active-white").removeClass().addClass("active");
-		$("#search").focusout();
+		$("#txt-search").focusout();
 		this.visible=false;
 	}
 	this.showPanel= function(){
