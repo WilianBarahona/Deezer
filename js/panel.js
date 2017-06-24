@@ -10,6 +10,7 @@ function panel(id){
 			"display":"none"
 		},300);
 		$("#float-bar-overlay").css({"display": "none"});
+		$(".active-white").removeClass().addClass("active")
 		this.visible=false;
 	}
 	this.showPanel= function(){
@@ -18,6 +19,7 @@ function panel(id){
 		this.panel.css({
 			"display":"block"
 		});
+		$(".active").removeClass().addClass("active-white")
 		this.panel.animate({
 			"margin-left":(a+30)
 		},300);
