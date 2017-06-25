@@ -13,8 +13,10 @@ $(document).keypress(function(event){
 
 	switch(char){
 		case 32:
-			event.preventDefault();
-			lista.toggle();
+			if (event.target!=$("#txt-search")[0]) {
+				event.preventDefault();
+				lista.toggle();
+			}
 		break; default:
 			//DEFAULT
 		break;
