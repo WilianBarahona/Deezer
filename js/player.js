@@ -19,19 +19,19 @@ function playList(){
 	// {id:"photo",url:"path/to/song.mp3", cover: "path/to/img.jpg(png) , artist: John Doe, title: Some song"}
 	this.arraySong = [
 	//, + iteraciones // Agregar coverimage, artist, titulo
+	{
+			id:"db",
+			title: "Chala head chala",
+			artist: "Ricardo Silva",
+			url:"music/db.mp3",
+			cover: "img/cover/db.jpg",
+		},
 		{
 			id:"photo",
 			title: "Photograph",
 			artist: "Ed Sheeran",
 			url:"music/photo.mp3",
 			cover: "img/cover/x.jpg",
-		},
-		{
-			id:"rend",
-			title: "My Lighthouse",
-			artist: "Rend Collective",
-			url:"music/rend.mp3",
-			cover: "img/cover/art_of_celebration.jpg",
 		}
 	];
 	this.i=0; // CONTADOR DE REPRODUCCION
@@ -71,7 +71,7 @@ function playList(){
 		document.getElementById("player-play").setAttribute("class","glyphicon glyphicon-play");	
 	}
 	// Reproducir/Pausar Cancion Actual
-	this.toogle=function(){
+	this.toggle=function(){
 		if (this.isPlaying==true) {
 			this.pause();
 			this.isPlaying=false;

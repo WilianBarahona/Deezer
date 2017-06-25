@@ -52,3 +52,8 @@ $("#btn-search").click(function(){
     floatBar.hidePanel();
     $("#main").load("templates/search.html");
 });
+
+$(".btn-float").click(function(){
+  var id = $(this).attr("id");
+  floatBar.toggle(id);
+})
