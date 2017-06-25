@@ -496,3 +496,32 @@ background-color: #fff;
 {
 	display:none
 }
+
+.footers{
+	color: #92929D;
+	font-family:"Open Sans",Arial,sans-serif;
+}
+
+.footers .btn-link{
+	float:left;
+    border-right-width: 0px;
+    margin-right: 0px;
+    color:#92929D;
+    padding-left: 0px;
+    padding-right: 25px;
+}
+
+.footers .btn-link:hover{
+	color:#92929D;
+}
+
+.footers .label{
+	color:#92929D;font-family:Open-Sans;padding-left: 0px;padding-right: 0px;
+	font-size:12px
+}
+
+.footers .label:hover{
+	color: #2f2f33;
+}
+
+
