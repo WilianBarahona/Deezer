@@ -170,5 +170,14 @@
     <script type="text/javascript" src="js/panel.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
     <script type="text/javascript" src="js/keys.js"></script>
+
+    <script type="text/javascript">
+        //REDIRECCION A LANDING PAGE
+        $(document).ready(function(){
+          if (window.history.length==1) {
+            location.href="register.html";
+          }
+        })
+    </script>
   </body>
 </html>

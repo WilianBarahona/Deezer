@@ -23,12 +23,6 @@ $("#recomendaciones").click(function(){
     $("#recomendaciones").parent().addClass("active");
 });
 
-$("#cuenta").click(function(){
-    floatBar.hidePanel();
-    $("#main").load("templates/configuration.html");
-    $(".active").removeClass();
-});
-
 $("#mi-musica").click(function(){
     floatBar.hidePanel();
     $(".active").removeClass();
