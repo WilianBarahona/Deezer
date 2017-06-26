@@ -252,3 +252,20 @@ body {
   }
 }
 
+.txt-center{
+  text-align: center;
+}
+
+.txt-color-offer{
+  color:#C4C6C9;
+}
+
+
+.margin-tag-offer{
+    margin-bottom: 3px;
+    margin-top:10px
+}
+
+
+
+
