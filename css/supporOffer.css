@@ -199,6 +199,32 @@ a:hover{
     vertical-align: top;
     border-top: 1px solid rgb(232, 232, 236);
 }
+
+.divider{
+    height:27px;
+    line-height:27px;
+    margin:20px 0;
+    text-align:center;
+    position:relative
+}
+
+.divider-line{
+    background-color:#e8e8ec;
+    height:1px;
+    margin-top:13px;
+    position:absolute;
+    width:100%
+}
+
+.divider-text{
+    color:#92929d;
+    background-color:#f8f8f9;
+    font-size:11px;
+    padding:0 10px;
+    display:inline-block;
+    position:relative;
+}
+
 .Disp{
 	width: 25%;
 	height: 400px;
