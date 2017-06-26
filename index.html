@@ -174,8 +174,9 @@
     <script type="text/javascript">
         //REDIRECCION A LANDING PAGE
         $(document).ready(function(){
-          if (window.history.length==1) {
-            location.href="register.html";
+          console.log(window.history);
+          if (window.history.length<3) {
+            location.href="landingPage.html";
           }
         })
     </script>
