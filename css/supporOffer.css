@@ -225,6 +225,9 @@ a:hover{
     position:relative;
 }
 
+.cont-press{
+    background-color: #F9F9FB;
+}
 .Disp{
 	width: 25%;
 	height: 400px;
@@ -256,12 +259,23 @@ a:hover{
     background-color:#F8F8FB;
 }
 
+.press{
+    color: #2491EE;
+    padding: 5px 0px 5px 0px;
+}
+
+.press>a{
+    color: #2491EE;
+}
+
+
 .col-center{
     float: none;
     margin: 0 auto;
 }
 
-.column-left{position:absolute;
+.column-left{
+    position:absolute;
     top:0;
     width:200px;
     z-index:20
