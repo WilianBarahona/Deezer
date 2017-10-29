@@ -1,35 +1,75 @@
 <?php
 	include("class-persona.php");
-	class Usuario extends Persona{
+	class Usuario{
+
 		private $idUsuario;
 		private $idSuscripcion;
 		private $idPais;
 		private $usuario;
 		private $urlFotoPerfil;
+		private $email;
+		private $contrasenia;
 
-		function public __construct($nombre,$apellido,$sexo,$email,$contrasenia,$fechaNacimiento,$ultimaSesion,$idUsuario,$idSuscripcion,$idPais,$usuario,$urlFotoPerfil){
-			parent::__construct($nombre,$apellido,$sexo,$email,$contrasenia,$fechaNacimiento,$ultimaSesion);
+		public function __construct($nombre,$apellido,$sexo,$fechaNacimiento,$idUsuario,$idSuscripcion,$idPais,$usuario,$urlFotoPerfil,$email,$contrasenia){
+			public::__construct($nombre,$apellido,$sexo,$fechaNacimiento);
 			$this->idUsuario = $idUsuario;
 			$this->idSuscripcion = $idSuscripcion;
 			$this->idPais = $idPais;
 			$this->usuario = $usuario;
 			$this->urlFotoPerfil = $urlFotoPerfil;
+			$this->email = $email;
+			$this->contrasenia = $contrasenia;
 		}
-
-		function setIdUsuario($idUsuario) { $this->idUsuario = $idUsuario; }
-		function getIdUsuario() { return $this->idUsuario; }
-		function setIdSuscripcion($idSuscripcion) { $this->idSuscripcion = $idSuscripcion; }
-		function getIdSuscripcion() { return $this->idSuscripcion; }
-		function setIdPais($idPais) { $this->idPais = $idPais; }
-		function getIdPais() { return $this->idPais; }
-		function setUsuario($usuario) { $this->usuario = $usuario; }
-		function getUsuario() { return $this->usuario; }
-		function setUrlFotoPerfil($urlFotoPerfil) { $this->urlFotoPerfil = $urlFotoPerfil; }
-		function getUrlFotoPerfil() { return $this->urlFotoPerfil; }
-
+		public function getIdUsuario(){
+			return $this->idUsuario;
+		}
+		public function setIdUsuario($idUsuario){
+			$this->idUsuario = $idUsuario;
+		}
+		public function getIdSuscripcion(){
+			return $this->idSuscripcion;
+		}
+		public function setIdSuscripcion($idSuscripcion){
+			$this->idSuscripcion = $idSuscripcion;
+		}
+		public function getIdPais(){
+			return $this->idPais;
+		}
+		public function setIdPais($idPais){
+			$this->idPais = $idPais;
+		}
+		public function getUsuario(){
+			return $this->usuario;
+		}
+		public function setUsuario($usuario){
+			$this->usuario = $usuario;
+		}
+		public function getUrlFotoPerfil(){
+			return $this->urlFotoPerfil;
+		}
+		public function setUrlFotoPerfil($urlFotoPerfil){
+			$this->urlFotoPerfil = $urlFotoPerfil;
+		}
+		public function getEmail(){
+			return $this->email;
+		}
+		public function setEmail($email){
+			$this->email = $email;
+		}
+		public function getContrasenia(){
+			return $this->contrasenia;
+		}
+		public function setContrasenia($contrasenia){
+			$this->contrasenia = $contrasenia;
+		}
 		public function __toString(){
-			return parent::__toString." idUsuario: ".$this->idUsuario." idSuscripcion: ".$this->idSuscripcion." idPais: ".$this->idPais." Usuario: ".$this->usuario." urlFotoPerfil: ".$this->urlFotoPerfil;
+			return parent::__toString()." IdUsuario: " . $this->idUsuario . 
+				" IdSuscripcion: " . $this->idSuscripcion . 
+				" IdPais: " . $this->idPais . 
+				" Usuario: " . $this->usuario . 
+				" UrlFotoPerfil: " . $this->urlFotoPerfil . 
+				" Email: " . $this->email . 
+				" Contrasenia: " . $this->contrasenia;
 		}
-
 	}
 ?>

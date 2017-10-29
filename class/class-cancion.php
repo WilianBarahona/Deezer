@@ -54,6 +54,14 @@
 			return $this->urlAudio; 
 		}
 	}
+
+		public function __toString(){
+				return "IdCancion: " . $this->idCancion . 
+					" IdAlbum: " . $this->idAlbum . 
+					" IdIdioma: " . $this->idIdioma . 
+					" NombreCancion: " . $this->nombreCancion . 
+					" UrlAudio: " . $this->urlAudio;
+		}
 	
 
 ?>

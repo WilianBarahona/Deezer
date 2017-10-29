@@ -55,7 +55,11 @@
 		}
 
 		public function __toString(){
-			return "IdAlbum: ".$this->idAlbum. " IdArtista: ".$this->idArtista." NombreAlbum: ".$this->nombreAlbum." Año: ".$this->anio." CoverAlbumUrl: ".$this->coverAlbumUrl;
+			return "IdAlbum: " . $this->idAlbum . 
+				" IdArtista: " . $this->idArtista . 
+				" NombreAlbum: " . $this->nombreAlbum . 
+				" Anio: " . $this->anio . 
+				" CoverAlbumUrl: " . $this->coverAlbumUrl;
 		}
 	}
 ?>

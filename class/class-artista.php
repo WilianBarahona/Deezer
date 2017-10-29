@@ -55,7 +55,11 @@
 		}
 
 		public function __toString(){
-			return "idArtista: ".$this->idArtista." idPais: ".$this->idPais." nombreArtista: ".$this->nombreArtista." biografia: ".$this->biografia." urlFoto: ".$this->urlFoto;
+			return "IdArtista: " . $this->idArtista . 
+				" IdPais: " . $this->idPais . 
+				" NombreArtista: " . $this->nombreArtista . 
+				" Biografia: " . $this->biografia . 
+				" UrlFoto: " . $this->urlFoto;
 		}
 
 	}
