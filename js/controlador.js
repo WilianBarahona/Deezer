@@ -48,3 +48,93 @@ function registrarUsuario(){
 							});
 						}}}}}}
 };	
+
+
+ $(document).ready(function(){
+          $.ajax({
+          url:"ajax/get-dom.php?evento=cargar_index",
+          data:"",
+          method:"POST",
+          success:function(resultado){
+            $("#main").html(resultado);
+          },
+          error:function(){
+            alert("error")
+          }
+        }); 
+  })
+
+ $("#index,#index-image").click(function(){
+          $.ajax({
+          url:"ajax/get-dom.php?evento=cargar_index",
+          data:"",
+          method:"POST",
+          success:function(resultado){
+            $("#main").html(resultado);
+          },
+          error:function(){
+            alert("error")
+          }
+        }); 
+
+
+  })
+
+
+ $("#recomendaciones").click(function(){
+ 	 $.ajax({
+          url:"ajax/get-dom.php?evento=cargar_recomendaciones",
+          data:"",
+          method:"POST",
+          success:function(resultado){
+            $("#main").html(resultado);
+          },
+          error:function(){
+            alert("error")
+          }
+        }); 
+   
+});
+
+$("#mi-musica").click(function(){
+    $.ajax({
+          url:"ajax/get-dom.php?evento=cargar_musica",
+          data:"",
+          method:"POST",
+          success:function(resultado){
+            $("#main").html(resultado);
+          },
+          error:function(){
+            alert("error")
+          }
+        }); 
+});
+
+$("#favoritas").click(function(){
+     $.ajax({
+          url:"ajax/get-dom.php?evento=cargar_favoritas",
+          data:"",
+          method:"POST",
+          success:function(resultado){
+            $("#main").html(resultado);
+          },
+          error:function(){
+            alert("error")
+          }
+        }); 
+});
+
+
+$("#btn-search").click(function(){
+    $.ajax({
+          url:"ajax/get-dom.php?evento=cargar_buscador",
+          data:"",
+          method:"POST",
+          success:function(resultado){
+            $("#main").html(resultado);
+          },
+          error:function(){
+            alert("error")
+          }
+        }); 
+});
