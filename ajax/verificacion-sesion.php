@@ -16,7 +16,5 @@
 	else {
 		echo'correo o contrasenia invalidos';	
 		}
-		
-	echo  mysqli_error(	$link);	
 
 ?>
