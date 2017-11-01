@@ -74,7 +74,7 @@
                           <tr>
                             <td>
                                 <em>
-                                        <select class="form-control" >
+                                        <select id="slc-sexo" class="form-control" >
                                             <option value="0">Sexo</option>
                                             <option value="1"> Mujer</option>
                                             <option value="2">Hombre</option>
@@ -83,7 +83,7 @@
                             </td>
                             <td>
                                 <em>
-                                        <select class="form-control">
+                                        <select id="slc-edad" class="form-control">
                                         <option value="0">Edad</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -190,7 +190,10 @@
                       </tr>
                     </table>
                     <h6></h6>
-                    <button onclick="location='index.html'" class="btn btn-info btn-block" type="submit" style="font-size: 12px; position: relative;">
+                    <div id="div-mensaje" style="-webkit-border-radius: 0px 20px 20px 40px;box-shadow: 3px 5px 4px 2px rgb(215, 234, 239);;background-color: rgb(243, 247, 242);padding: 5px;display: none;text-align: center;font-size: 12px;margin: 0px 28px 0px 28px;border:">
+                    </div>
+                    <br>
+                    <button onclick="registrarUsuario();" class="btn btn-info btn-block" type="button" style="font-size: 12px; position: relative;">
                          Registrarse
                     </button>
                     <h6 class="tamaño" style="position: relative;">
@@ -220,6 +223,8 @@
         </div>
        
   <script src="js/particles.min.js"></script>
+  <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/controlador.js"></script>
 </body>
 </html>
