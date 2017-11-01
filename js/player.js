@@ -35,6 +35,9 @@ function playList(){
 		}
 	];
 	this.i=0; // CONTADOR DE REPRODUCCION
+	this.setArraySong = function(arraySong){
+		this.arraySong = arraySong;
+	}
 	this.initSounds = function(){
 		for (var i = 0; i < this.arraySong.length; i++) {
 			soundManager.createSound({
@@ -120,6 +123,7 @@ function playList(){
 	this.clear = function(){
 		this.arraySong =[];
 	}
-	// METODOS DE INICIO
+
+	// METODOS DE INICIO __constructor
 	this.initSounds();
 }
