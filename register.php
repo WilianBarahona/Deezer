@@ -22,10 +22,9 @@
             </div>
             <div class="col-lg-5 col-md-4 col-sm-0 col-xs-0"></div>
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
-                <button onclick="location='register.html'" class="btn btn-shadow coneccion" id="login_button">
-                     <!-- VUELVE A LA PAGINA REGISTRE.HTML POR SI EL USUARIO NO TINENE UNA CUENTA -->
-                      <span class="label">Resgistrarse</span>
-                </button>
+              <button onclick="location='login.php'" class="btn btn-shadow coneccion" id="login_button">
+            <span class="label">Conectarse</span>
+          </button>
             </div>
           </div>
     </header>
@@ -34,9 +33,9 @@
             <div class="row parrafo-blanco">
              <div class="col-md-3"></div>
                <div class="col-md-6">
-                    <p><strong><h1>¿Qué vas a escuchar hoy?</h1></strong></p>
-                    <p><h4>Escucha las canciones de tu Flow en Freezer </h4></p>
-                    <p><h4>Registrarse</h4></p>
+                    <p><strong><h1>Tu música. Tu Flow.</h1></strong></p>
+                    <p><h4>Disfruta de tu música donde quieras y cuando quieras.</h4></p>
+                    <p><h4>y descubre las colecciones de música por género.</h4></p>
                 </div>
                 <div class="col-md-3"></div>
            </div>
@@ -52,39 +51,69 @@
                     <br>
                     <table>
                         <tr>
-                          <td>
+                          <td colspan="2">
                               <em>
-                                    <input type="email" style="padding: 15px 90px 15px 93px;" id="inputEmail" class="form-control" placeholder="Correo Electronico">
+                                    <input type="email" id="inputEmail" class="form-control" placeholder="Correo Electronico" required autofocus>
                                 </em>
                           </td>
                         </tr>
                         <tr>
-                          <td>
+                          <td colspan="2">
                             <em>
-                                   <input type="password" style="padding: 15px 90px 15px 93px;" id="inputPassword" class="form-control" placeholder="Contraseña">
-                            </em>
-                            <br>
-                            <div id="div-mensaje" style="-webkit-border-radius: 0px 20px 20px 40px;box-shadow: 3px 5px 8px 2px rgb(215, 234, 239);;background-color: rgb(243, 247, 242);padding: 5px;display: none;text-align: center;font-size: 12px;">
-                            </div>
+                                   <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña (6 caracteres minimo)" required>
+                                </em>
                           </td>
                         </tr>
-                        
+                        <tr>
+                          <td colspan="2">
+                              <em>
+                                  <input type="text" id="inputText" class="form-control" placeholder="Nombre de usuario" required>
+                                </em>
+                          </td>
+                        </tr>
+                          <tr>
+                            <td>
+                                <em>
+                                        <select id="slc-sexo" class="form-control" >
+                                            <option value="0">Sexo</option>
+                                            <option value="1"> Mujer</option>
+                                            <option value="2">Hombre</option>
+                                        </select>
+                                    </em>
+                            </td>
+                            <td>
+                                <em>
+
+                                        <select id="slc-edad" class="form-control">
+                                          <option value="0">Edad</option>
+                                          <?php  
+                                            for ($i=1; $i <100 ; $i++) { 
+                                            echo '<option value="'.$i.'">'.$i.'</option>';
+                                          }
+
+                                          ?>
+                                  </select>
+                              </em>
+                          </td>
+                      </tr>
                     </table>
                     <h6></h6>
-                    <h6 class="tamaño" style="position: relative;">
-                         <a href="Freezer-Legal.html" class="tamaño">¿Has olvidado tu contraseña?</a>
-                     </h6>
-                    <button id="btn-conexion" class="btn btn-info btn-block" type="button" onclick="conexion();" style="font-size: 12px; position: relative;">
-                        <!--onclick="location='index.html'"-->
-                         Conectarse
+                    <div id="div-mensaje" style="-webkit-border-radius: 0px 20px 20px 40px;box-shadow: 3px 5px 4px 2px rgb(215, 234, 239);;background-color: rgb(243, 247, 242);padding: 5px;display: none;text-align: center;font-size: 12px;margin: 0px 28px 0px 28px;border:">
+                    </div>
+                    <br>
+                    <button onclick="registrarUsuario();" class="btn btn-info btn-block" type="button" style="font-size: 12px; position: relative;">
+                         Registrarse
                     </button>
-                    
+                    <h6 class="tamaño" style="position: relative;">
+                         Al hacer clic en "Registrarse", aceptas las
+                         <a href="Freezer-Legal.html" class="tamaño">Condiciones generales de uso.</a>
+                     </h6>
        
                   </form>
         </div>
       
       <!--Enlaces-->
-      <div class="row barra" style="margin-top: 115px;">
+      <div class="row barra">
           <div class="col-md-2 col-lg-3"></div>
         <div class="col-md-8 col-lg-8">
             <p class="navbar-text" style="font-size:11px;">
@@ -102,8 +131,8 @@
         </div>
        
   <script src="js/particles.min.js"></script>
-  <script src="js/app.js"></script>
   <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/app.js"></script>
   <script src="js/controlador.js"></script>
 </body>
 </html>
