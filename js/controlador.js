@@ -138,3 +138,31 @@ $("#btn-search").click(function(){
           }
         }); 
 });
+function iniciarSesion(){
+    var parametros=
+      "inputEmail="+$("#inputEmail").val()+"&"+
+      "inputPassword="+$("#inputPassword").val();
+      $.ajax({
+
+    url:"ajax/verificacion-sesion.php",
+    data:parametros,
+    method: "POST",
+    success:function(respuesta){
+        var direccion=respuesta;
+        if(direccion=='correo y contrasenia validos'){
+          alert(direccion);
+             location='index.html';
+             }
+              else {
+                alert(direccion);
+              // $("#div-respuesta").html($("#div-respuesta").html()+respuesta);
+             }
+           
+
+    },
+    error:function(e){
+      alert(e);
+    }
+
+  });
+};  

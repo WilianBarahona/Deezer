@@ -74,7 +74,7 @@
                     <h6 class="tamaño" style="position: relative;">
                          <a href="Freezer-Legal.html" class="tamaño">¿Has olvidado tu contraseña?</a>
                      </h6>
-                    <button id="btn-conexion" class="btn btn-info btn-block" type="button" onclick="conexion();" style="font-size: 12px; position: relative;">
+                    <button id="btn-conexion" class="btn btn-info btn-block" type="button" onclick="iniciarSesion();" style="font-size: 12px; position: relative;">
                         <!--onclick="location='index.html'"-->
                          Conectarse
                     </button>
