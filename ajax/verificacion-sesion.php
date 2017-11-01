@@ -2,6 +2,7 @@
 	include ("../class/class-conexion.php");
 	$correo=$_POST["inputEmail"];
 	$password=$_POST["inputPassword"];
+	$password = hash('sha512',$password);
 	 		
 	$objConexion= new Conexion();
 	$link = $objConexion->getLink();
