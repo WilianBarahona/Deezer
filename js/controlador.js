@@ -147,22 +147,18 @@ function iniciarSesion(){
     url:"ajax/verificacion-sesion.php",
     data:parametros,
     method: "POST",
-    success:function(respuesta){
+    success: function(respuesta){
         var direccion=respuesta;
-        if(direccion=='correo y contrasenia validos'){
-          alert(direccion);
-             location='index.html';
-             }
-              else {
+              if (direccion=="correo y contrasenia validos") {
+                location='index.php';
+              }
+              if (direccion=='correo o contrasenia invalidos') {
                 alert(direccion);
-              // $("#div-respuesta").html($("#div-respuesta").html()+respuesta);
-             }
-           
+              }
 
     },
     error:function(e){
-      alert(e);
+        alert(e);
     }
-
   });
-};  
+}
