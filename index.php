@@ -20,7 +20,7 @@ session_start();
       <div class="row">
         <!-- Barra de Navegacion Lateral -->
         <div id="sidebar" class="col-sm-3 col-md-3 col-lg-2 sidebar">
-          <a href="" id="img-index"><img src="img/freezer.png" class="img-responsive" alt=""></a>
+          <a href="#" id="index-image"><img src="img/freezer.png" class="img-responsive" alt=""></a>
           <div class="form-group has-feedback">
               <input type="text" id="txt-search" name="search" class="form-control" placeholder="Buscar">
               <span class="glyphicon glyphicon-search form-control-feedback" id="btn-search"></span>
