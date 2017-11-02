@@ -1,6 +1,6 @@
 <?php 
 
-	include ("../class/class-conexion.php");
+	include ("../class/class_conexion.php");
 	$correo=$_POST["inputEmail"];
 	$password=$_POST["inputPassword"];
 	$password = hash('sha512',$password); 		
