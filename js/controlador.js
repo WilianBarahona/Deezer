@@ -64,21 +64,27 @@ function registrarUsuario(){
         }); 
   })
 
- $("#index,#index-image").click(function(){
-          $.ajax({
-          url:"ajax/get-dom.php?evento=cargar_index",
-          data:"",
-          method:"POST",
-          success:function(resultado){
-            $("#main").html(resultado);
-          },
-          error:function(){
-            alert("error")
-          }
-        }); 
+$("#index").click(function(event){
+    cargar_inicio();
+});
 
+$("#index-image").click(function(event){
+    cargar_inicio();
+});
 
-  })
+function cargar_inicio(){
+  $.ajax({
+  url:"ajax/get-dom.php?evento=cargar_index",
+  data:"",
+  method:"POST",
+  success:function(resultado){
+    $("#main").html(resultado);
+  },
+  error:function(){
+    alert("error")
+  }
+  }); 
+}
 
 
  $("#recomendaciones").click(function(){
