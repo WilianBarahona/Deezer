@@ -23,7 +23,7 @@ function playList(){
 			id:"db",
 			title: "Chala head chala",
 			artist: "Ricardo Silva",
-			url:"music/db.mp3",
+			url:"https://api.telegram.org/file/bot464421159:AAHHw65FOaFe_qcOpxDb2i4aKNmjSFEYPzI/music/file_6.mp3",
 			cover: "img/cover/db.jpg",
 		},
 		{
@@ -56,22 +56,23 @@ function playList(){
 		var id = this.arraySong[this.i].id;
 		// soundManager.getSoundById(id).play();
 		soundManager.play(id, {
-			// onfinish: lista.next
 			whileplaying : function(){
+				console.log(this);
 				// Update position
 			},
+			// onfinish: lista.next
 			onfinish: nextSound
 		});
 		// Cambiar icono
-		document.getElementById("player-play").setAttribute("class","");
-		document.getElementById("player-play").setAttribute("class","glyphicon glyphicon-pause");
+		$("#player-play").attr("class","");
+		$("#player-play").attr("class","glyphicon glyphicon-pause");
 	}
 	// Pausar canción Actual
 	this.pause=function(){
 		soundManager.pauseAll();
 		// Cambiar icono
-		document.getElementById("player-play").setAttribute("class","");
-		document.getElementById("player-play").setAttribute("class","glyphicon glyphicon-play");	
+		$("#player-play").attr("class","");
+		$("#player-play").attr("class","glyphicon glyphicon-play");	
 	}
 	// Reproducir/Pausar Cancion Actual
 	this.toggle=function(){
@@ -107,18 +108,18 @@ function playList(){
 	this.changeInfoSong = function(){
 		var cancion = this.arraySong[this.i];
 		// Cambiar titulo
-		document.getElementById("player-title").innerHTML=cancion.title;
+		$("#player-title").innerHTML=cancion.title;
 		// Cambiar artista
-		document.getElementById("player-artist").innerHTML=cancion.artist;
+		$("#player-artist").innerHTML=cancion.artist;
 		// Cmabiar cover
 		var imgURL = cancion.cover;
-		document.getElementById("player").style.backgroundImage="url("+imgURL+")";
+		$("#player").style.backgroundImage="url("+imgURL+")";
 	}
 	this.stop = function(){
 		soundManager.stopAll();
 		// Cambiar icono
-		document.getElementById("player-play").setAttribute("class","");
-		document.getElementById("player-play").setAttribute("class","glyphicon glyphicon-play");	
+		$("#player-play").attr("class","");
+		$("#player-play").attr("class","glyphicon glyphicon-play");	
 	}
 	this.clear = function(){
 		this.arraySong =[];
