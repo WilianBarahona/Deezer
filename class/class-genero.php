@@ -33,7 +33,8 @@
 				SELECT 
 				  id_genero as id,
 				  nombre_genero as nombre
-				FROM tbl_generos;	
+				FROM tbl_generos
+				ORDER BY nombre ASC;
 			";
 
 			$resultado = $conexion->ejecutarConsulta($sql);

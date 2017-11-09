@@ -40,15 +40,18 @@
               <table class="table table-striped" id="tbl-generos">
                 <thead>
                   <th>Género</th>
+                  <th>Editar</th>
                 </thead>
-                <tbody>
-                  <tr >
-                    <td>Cumbia</td>
-                  </tr>           
-                  <tr>
-                    <td>Cumbia</td>
-                  </tr>
-                </tbody>
+                <tbody></tbody>
+              </table>
+              <table class="table table-striped">
+                <tr>
+                  <td><input type="text" class="form form-control" name="txt-agregar-genero" value="" placeholder="Género"></td>
+                  <td>
+                    <button id="btn-guardar-genero" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                    <button id="btn-actualizar-genero" type="button" class="btn btn-primary" style="display: none"><span class="glyphicon glyphicon-save"></span> Actualizar</button>
+                  </td>
+                </tr>
               </table>
             </div>
           </div>
@@ -60,5 +63,12 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript" src="../js/soundmanager2.min.js"></script>
+  <script type="text/javascript" src="../js/player.js"></script>
+  <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="../js/navigation.js"></script>
+  <script type="text/javascript" src="../js/keys.js"></script>
+  <script type="text/javascript" src="../js/admin.js"></script>
 </body>
 </html>
