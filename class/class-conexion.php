@@ -2,11 +2,11 @@
 
 	class Conexion{
 
-		private $usuario="root";
-		private $contrasena="";
-		private $host="localhost";
+		private $usuario="kakaroto";
+		private $contrasena="sayayin32";
+		private $host="db4free.net";
 		private $baseDatos="freezer_db";
-		private $puerto="3306";
+		private $puerto="3307";
 		private $link;
 
 		public function __construct(){
