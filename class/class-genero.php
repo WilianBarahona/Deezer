@@ -28,5 +28,24 @@
 			return "idGenero: ".$this->idGenero." nombreGenero: ".$this->nombreGenero;
 		}
 
+		public static function listarGeneros($conexion){
+			$sql = "
+				SELECT 
+				  id_genero as id,
+				  nombre_genero as nombre
+				FROM tbl_generos;	
+			";
+
+			$resultado = $conexion->ejecutarConsulta($sql);
+			$generos=array();
+			while($fila=$conexion->obtenerFila($resultado)){
+				$genero = array();
+				$genero["id"]= $fila["id"];
+				$genero["nombre"]= $fila["nombre"];
+
+				$generos[]=$genero;
+			}
+			return json_encode($generos);
+		}
 	}
 ?>
