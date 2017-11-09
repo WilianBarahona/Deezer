@@ -6,9 +6,9 @@
 		private $idTipoSuscripcion;
 		private $inicioSuscripcion;
 
-		public function __construct($idSuscripcion,
-					$idTipoSuscripcion,
-					$inicioSuscripcion){
+		public function __construct($idSuscripcion=null,
+					$idTipoSuscripcion=null,
+					$inicioSuscripcion=null){
 			$this->idSuscripcion = $idSuscripcion;
 			$this->idTipoSuscripcion = $idTipoSuscripcion;
 			$this->inicioSuscripcion = $inicioSuscripcion;

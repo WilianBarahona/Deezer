@@ -6,7 +6,7 @@
 		private $anio;
 		private $coverAlbumUrl;
 
-		public function __construct($idAlbum, $idArtista, $nombreAlbum, $anio, $coverAlbumUrl){
+		public function __construct($idAlbum=null, $idArtista=null, $nombreAlbum=null, $anio=null, $coverAlbumUrl=null){
 			$this->idAlbum = $idAlbum;
 			$this->idArtista = $idArtista;
 			$this->nombreAlbum = $nombreAlbum;
@@ -61,5 +61,9 @@
 				" Anio: " . $this->anio . 
 				" CoverAlbumUrl: " . $this->coverAlbumUrl;
 		}
+
+		// CRUD
+		
+		// INSERTAR REGISTRO DE ALBUM
 	}
 ?>

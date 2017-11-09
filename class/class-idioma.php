@@ -3,7 +3,7 @@
 		private $idIdioma;
 		private $nombreIdioma;
 
-		public function __construct($idIdioma, $nombreIdioma){
+		public function __construct($idIdioma=null, $nombreIdioma=null){
 			$this->idIdioma = $idIdioma;
 			$this->nombreIdioma = $nombreIdioma;
 		}

@@ -8,11 +8,11 @@
 		private $idUsuario;
 		private $urlImagenPlaylist;
 
-		public function __construct($idPlaylist,
-					$idTipoVisibilidad,
-					$nombrePlaylist,
-					$idUsuario,
-					$urlImagenPlaylist){
+		public function __construct($idPlaylist=null,
+					$idTipoVisibilidad=null,
+					$nombrePlaylist=null,
+					$idUsuario=null,
+					$urlImagenPlaylist=null){
 			$this->idPlaylist = $idPlaylist;
 			$this->idTipoVisibilidad = $idTipoVisibilidad;
 			$this->nombrePlaylist = $nombrePlaylist;

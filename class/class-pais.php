@@ -3,7 +3,7 @@
 		private $idPais;
 		private $nombrePais;
 
-		public function __construct($idPais, $nombrePais){
+		public function __construct($idPais=null, $nombrePais=null){
 			$this->idPais = $idPais;
 			$this->nombrePais = $nombrePais;
 		}

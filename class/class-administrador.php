@@ -9,12 +9,13 @@ include("class-persona.php");
 		private $ultimaSesion;
 		private $urlFoto;
 
-		public function __construct($nombre,$apellido,$sexo,$fechaNacimiento, $idAdministrador,
-					$usuario,
-					$email,
-					$contrasenia,
-					$ultimaSesion,
-					$urlFoto){
+		public function __construct($nombre=null,$apellido=null,$sexo=null,$fechaNacimiento=null, 
+					$idAdministrador=null,
+					$usuario=null,
+					$email=null,
+					$contrasenia=null,
+					$ultimaSesion=null,
+					$urlFoto=null){
 			parent::__construct($nombre,$apellido,$sexo,$fechaNacimiento);
 			$this->idAdministrador = $idAdministrador;
 			$this->usuario = $usuario;

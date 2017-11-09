@@ -6,7 +6,7 @@
 		private $biografia;
 		private $urlFoto;
 
-		public function __construct($idArtista,$idPais,$nombreArtista,$biografia,$urlFoto){
+		public function __construct($idArtista=null,$idPais=null,$nombreArtista=null,$biografia=null,$urlFoto=null){
 			$this->idArtista = $idArtista;
 			$this->idPais = $idPais;
 			$this->nombreArtista = $nombreArtista;
@@ -62,5 +62,44 @@
 				" UrlFoto: " . $this->urlFoto;
 		}
 
+		#### LISTAR TODOS LOS ARTISTAS
+		public static function listarTodos($conexion){
+			# SIMILARES
+		}
+
+		#### SELECCIONAR REGISTRO DE ARTISTA POR CODIGO
+		public function seleccionar($conexion){
+			# SIMILARES
+		}
+
+		####  INSERTAR RESGISTRO DE ARTISTA
+		####  return false or true ####  JSON
+		public function insertarRegistro($conexion){
+			$sql=sprintf("
+				INSERT INTO tbl_artistas
+				(id_pais, nombre_artista, biografia_artista, url_foto_artista)
+				VALUES(%s, '%s', '%s', '%s');
+				",
+				$conexion->antiInyeccion($this->getIdPais()),
+				$conexion->antiInyeccion($this->getNombreArtista()),
+				$conexion->antiInyeccion($this->getBiografia()),
+				$conexion->antiInyeccion($this->getUrlFoto())
+			);
+			$resultado=$conexion->ejecutarConsulta($sql);
+			return json_encode($resultado);
+		}
+		
+		#### ACTUALIZAR REGISTRO ARTISTA
+		####  return false or true ####  JSON
+		public static function actualizarRegistro($conexion){
+
+		}
+
+		#### ELEMINAR REGISTRO ARTISTAS
+		####  return false or true ####  JSON
+		public static function eliminarRegistro($conexion, $id){
+			
+		}
+		
 	}
 ?>

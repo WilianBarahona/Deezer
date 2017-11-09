@@ -4,7 +4,7 @@
 		private $tipoSuscripcion;
 		private $diasDuracion;
 
-		public function __construct($idTipoSuscripcion, $tipoSuscripcion, $diasDuracion){
+		public function __construct($idTipoSuscripcion=null, $tipoSuscripcion=null, $diasDuracion=null){
 			$this->idTipoSuscripcion = $idTipoSuscripcion;
 			$this->tipoSuscripcion = $tipoSuscripcion;
 			$this->diasDuracion = $diasDuracion;

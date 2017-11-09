@@ -3,7 +3,7 @@
 		private $idTipoDispositivo;
 		private $nombreDispositivo;
 
-		public function __construct($idTipoDispositivo, $nombreDispositivo){
+		public function __construct($idTipoDispositivo=null, $nombreDispositivo=null){
 			$this->idTipoDispositivo = $idTipoDispositivo;
 			$this->nombreDispositivo = $nombreDispositivo;
 		}

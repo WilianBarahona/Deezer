@@ -3,7 +3,7 @@
 		private $idTipoVisibilidad;
 		private $tipoVisibilidad;
 
-		public function __construct($idTipoVisibilidad, $tipoVisibilidad){
+		public function __construct($idTipoVisibilidad=null, $tipoVisibilidad=null){
 			$this->idTipoVisibilidad = $idTipoVisibilidad;
 			$this->tipoVisibilidad = $tipoVisibilidad;
 		}

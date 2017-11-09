@@ -7,7 +7,7 @@
 		private $usuario;
 		private $urlFotoPerfil;
 
-		public function __construct($nombre,$apellido,$sexo,$email,$contrasenia,$fechaNacimiento,$ultimaSesion,$idUsuario,$idSuscripcion,$idPais,$usuario,$urlFotoPerfil){
+		public function __construct($nombre=null,$apellido=null,$sexo=null,$email=null,$contrasenia=null,$fechaNacimiento=null,$ultimaSesion=null,$idUsuario=null,$idSuscripcion=null,$idPais=null,$usuario=null,$urlFotoPerfil=null){
 			parent::__construct($nombre,$apellido,$sexo,$email,$contrasenia,$fechaNacimiento,$ultimaSesion);
 			$this->idUsuario = $idUsuario;
 			$this->idSuscripcion = $idSuscripcion;

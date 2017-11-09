@@ -2,6 +2,9 @@ $(document).ready(function(){
 	setTblGeneros();
 });
 
+
+//######################################## GENEROS
+
 // LLENADO tbl-generos
 function setTblGeneros(){
 	$.ajax({
@@ -50,3 +53,7 @@ function editarGenero(idGenero){
 $("#btn-actualizar-genero").click(function(){
 	alert("Hi");
 });
+
+
+//######################################## ARTISTAS
+
