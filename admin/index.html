@@ -37,6 +37,16 @@
           <div class="row">
             <div class="col-md-6">
               <h3>Géneros Musicales</h3>
+              <input type="hidden"  id="txt-id-genero" name="txt-id-genero" value="">
+              <table class="table table-striped">
+                <tr>
+                  <td><input type="text" class="form form-control" id="txt-nombre-genero" name="txt-nombre-genero" value="" placeholder="Género"></td>
+                  <td>
+                    <button id="btn-guardar-genero" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                    <button id="btn-actualizar-genero" type="button" class="btn btn-primary" style="display: none"><span class="glyphicon glyphicon-save"></span> Actualizar</button>
+                  </td>
+                </tr>
+              </table>
               <table class="table table-striped" id="tbl-generos">
                 <thead>
                   <th>Género</th>
@@ -44,15 +54,8 @@
                 </thead>
                 <tbody></tbody>
               </table>
-              <table class="table table-striped">
-                <tr>
-                  <td><input type="text" class="form form-control" name="txt-agregar-genero" value="" placeholder="Género"></td>
-                  <td>
-                    <button id="btn-guardar-genero" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Guardar</button>
-                    <button id="btn-actualizar-genero" type="button" class="btn btn-primary" style="display: none"><span class="glyphicon glyphicon-save"></span> Actualizar</button>
-                  </td>
-                </tr>
-              </table>
+              
+
             </div>
           </div>
 

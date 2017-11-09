@@ -2,7 +2,7 @@ $(document).ready(function(){
 	setTblGeneros();
 });
 
-// LLENAR tbl-generos
+// LLENADO tbl-generos
 function setTblGeneros(){
 	$.ajax({
 		url: "../ajax/get-info.php?accion=get_generos",
@@ -27,7 +27,26 @@ function setTblGeneros(){
 	});
 }
 
+// EDITAR UN GENERO
 function editarGenero(idGenero){
-	alert(idGenero);
+	$("#btn-guardar-genero").hide();
+	$("#btn-actualizar-genero").show();
+	var datos =	"&id_genero="+idGenero;
+	$.ajax({
+		url: '../ajax/get-info.php?accion=get_genero'+datos,
+		type: 'GET',
+		data: "",
+		dataType: 'JSON',
+		success: function(response){
+			$("#txt-nombre-genero").val(response.nombre);
+			$("#txt-id-genero").val(response.id);
+		},
+		error: function(response){
+			console.log(response);
+		}
+	});	
 }
 
+$("#btn-actualizar-genero").click(function(){
+	alert("Hi");
+});

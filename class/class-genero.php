@@ -3,7 +3,7 @@
 		private $idGenero;
 		private $nombreGenero;
 
-		public function __construct($idGenero, $nombreGenero){
+		public function __construct($idGenero=null, $nombreGenero=null){
 			$this->idGenero = $idGenero;
 			$this->nombreGenero = $nombreGenero;
 		}
@@ -47,6 +47,20 @@
 				$generos[]=$genero;
 			}
 			return json_encode($generos);
+		}
+
+		public function seleccionarGenero($conexion){
+			$resultado=$conexion->ejecutarConsulta(sprintf("
+				SELECT 
+					nombre_genero as nombre,
+					id_genero as id
+				FROM tbl_generos
+				WHERE id_genero = %s
+				",
+				$conexion->antiInyeccion($this->getIdGenero())
+			));
+			$fila=$conexion->obtenerFila($resultado);
+			return json_encode($fila);
 		}
 	}
 ?>

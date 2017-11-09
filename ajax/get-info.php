@@ -18,6 +18,12 @@
 				echo Genero::listarGeneros($conexion);
 			break;
 
+			case "get_genero": 
+				include("../class/class-genero.php");
+				$genero = new Genero($_GET["id_genero"], null);
+				echo $genero->seleccionarGenero($conexion);
+			break;
+
 			default:
 				echo json_encode("Petición inválida");
 				break;
