@@ -525,3 +525,7 @@ background-color: #fff;
 }
 
 
+#dashboard  li,
+#dashboard > li > a {
+	height: 35px;
+}
