@@ -65,9 +65,27 @@
 		#### LISTAR TODOS LOS ALBUMS
 		#	return objeto json con todos los ALBUMS
 		public static function listarTodos($conexion){
+		$sql='SELECT a.id_album, b.nombre_artista, a.nombre_album, a.anio, a.album_cover_url 
+			  FROM tbl_albumes a
+			  INNER JOIN tbl_artistas b
+			  ON (a.id_artista = b.id_artista)';
+		
+		$resultado = $conexion->ejecutarConsulta($sql);
+		
+		while ($fila=$conexion->obtenerFila($resultado)) {
+			
+		#	echo $fila["id_album"].'<br>';
+		#	echo $fila["nombre_album"].'<br>';
+		#	echo $fila["id_artista"].'<br>';
+			echo '<ul>';
+			echo '		<li>'.$fila["nombre_album"].'';
+			echo '		</li>'	;
+			echo '		<li>'.$fila["nombre_artista"].'';
+			echo '		</li>'	;
+			echo '</ul>';
 		}
-		#### SELECCIONAR REGISTRO DE ALBUM POR CODIGO
-		#	return objeto json con todos los ALBUMS
+		
+		}
 		public function seleccionar($conexion){
 		}
 		####  INSERTAR RESGISTRO DE ALBUM

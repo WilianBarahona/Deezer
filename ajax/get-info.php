@@ -13,7 +13,7 @@
 			case 'registrar_usuario':
 				echo "Registro de usuarios";
 				break;
-			
+			####################################### GENEROS
 			case 'listar_generos':
 				include("../class/class-genero.php");
 				echo Genero::listarTodos($conexion);
@@ -25,6 +25,11 @@
 				echo $genero->seleccionar($conexion);
 			break;
 
+			###################################### ALBUMES
+			case 'get_albumes':
+				include("../class/class-album.php");
+				Album::listarTodos($conexion);
+			break;
 			default:
 				echo json_encode("Petición inválida");
 				break;
