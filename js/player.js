@@ -23,7 +23,7 @@ function playList(){
 			id:"db",
 			title: "Chala head chala",
 			artist: "Ricardo Silva",
-			url:"https://api.telegram.org/file/bot464421159:AAHHw65FOaFe_qcOpxDb2i4aKNmjSFEYPzI/music/file_6.mp3",
+			url:"http://download1504.mediafire.com/vd6ai62fm1fg/zs421rcqgiw3mb2/db.mp3",
 			cover: "img/cover/db.jpg",
 		},
 		{
@@ -108,12 +108,14 @@ function playList(){
 	this.changeInfoSong = function(){
 		var cancion = this.arraySong[this.i];
 		// Cambiar titulo
-		$("#player-title").innerHTML=cancion.title;
+		$("#player-title").html(cancion.title);
 		// Cambiar artista
-		$("#player-artist").innerHTML=cancion.artist;
+		$("#player-artist").html(cancion.artist);
 		// Cmabiar cover
 		var imgURL = cancion.cover;
-		$("#player").style.backgroundImage="url("+imgURL+")";
+		$("#player").css({
+			"background-image":"url("+imgURL+")"
+		});
 	}
 	this.stop = function(){
 		soundManager.stopAll();

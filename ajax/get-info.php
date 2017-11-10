@@ -14,12 +14,12 @@
 				echo "Registro de usuarios";
 				break;
 			
-			case 'get_generos':
+			case 'listar_generos':
 				include("../class/class-genero.php");
 				echo Genero::listarTodos($conexion);
 			break;
 
-			case "get_genero": 
+			case "seleccionar_genero": 
 				include("../class/class-genero.php");
 				$genero = new Genero($_POST["id_genero"], null);
 				echo $genero->seleccionar($conexion);

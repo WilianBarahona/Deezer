@@ -82,12 +82,28 @@
 		}
 		#### ACTUALIZAR REGISTRO GENERO
 		#     return false or true ####  JSON
-		public static function actualizarRegistro($conexion){
+		public function actualizarRegistro($conexion){
+			$sql=sprintf("
+				UPDATE tbl_generos SET
+				nombre_genero='%s'
+				WHERE id_genero=%s;
+			",
+				$conexion->antiInyeccion($this->getNombreGenero()),
+				$conexion->antiInyeccion($this->getIdGenero())
+			);
+			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);
 		}
 		#### ELIMINAR REGISTRO GENEROS
 		#     return false or true ####  JSON
 		public static function eliminarRegistro($conexion, $id){
+			$sql = sprintf("
+				DELETE FROM tbl_generos
+				WHERE id_genero = %s;
+			",
+				$conexion->antiInyeccion($id)
+			);
+			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);
 		}
 	}
