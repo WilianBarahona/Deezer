@@ -1,8 +1,8 @@
 <?php
 	include("../class/class-conexion.php");
-	if(isset($_GET["accion"])){
+	if(isset($_POST["accion"])){
 		$conexion = new Conexion;
-		switch ($_GET['accion']) {
+		switch ($_POST['accion']) {
 			case 'validar_login':
 				include("../class/class-usuario.php");
 				$password = $_POST['inputPassword'];
@@ -20,7 +20,7 @@
 
 			case "get_genero": 
 				include("../class/class-genero.php");
-				$genero = new Genero($_GET["id_genero"], null);
+				$genero = new Genero($_POST["id_genero"], null);
 				echo $genero->seleccionar($conexion);
 			break;
 

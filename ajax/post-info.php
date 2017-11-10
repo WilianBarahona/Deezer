@@ -1,7 +1,7 @@
 <?php  
 	include("../class/class-conexion.php");
-	if(isset($_GET["accion"])){
-		$accion = $_GET["accion"];
+	if(isset($_POST["accion"])){
+		$accion = $_POST["accion"];
 		$conexion = new Conexion();
 		switch ($accion) {
 			// case : break;
@@ -20,7 +20,15 @@
 				echo $resultado; // FORMATO JSON
 			break;
 
-			##########################################
+			########################################## GENERO
+			case 'insertar-genero':
+				include("../class/class-genero.php");
+				$genero = new Genero();
+				$genero->setNombreGenero($_POST["nombre_genero"]);
+				$resultado = $genero->insertarRegistro($conexion);
+				echo $resultado;
+			break;
+			
 			default:
 				echo "Instrucción post no reconocida";
 				break;

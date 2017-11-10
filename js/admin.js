@@ -8,13 +8,13 @@ $(document).ready(function(){
 // LLENADO tbl-generos
 function setTblGeneros(){
 	$.ajax({
-		url: "../ajax/get-info.php?accion=get_generos",
-		method:"GET",
-		data:"",
+		url: "../ajax/get-info.php",
+		method:"POST",
+		data:{"accion":"get_generos"},
 		dataType:"JSON",
-		success:function(response){
-			for (var i = 0; i < response.length; i++) {
-				var genero = response[i];
+		success:function(respuesta){
+			for (var i = 0; i < respuesta.length; i++) {
+				var genero = respuesta[i];
 				var fila = 
 				'<tr id="tbl-generos-fila-'+genero.id+'">'+
 				'  <td>'+genero.nombre+'</td>'+
@@ -25,27 +25,56 @@ function setTblGeneros(){
 			}
 		},
 		error:function(error){
-			console.log(error)
+			console.log(error);
 		}
 	});
 }
+
+// INSERTAR GENERO
+$("#btn-guardar-genero").click(function() {
+	var nombreGenero = $("#txt-nombre-genero").val()
+	alert(nombreGenero);
+	if(nombreGenero!=""){
+		$.ajax({
+			url:"../ajax/post-info.php",
+			method:"POST",
+			dataType:"JSON",
+			data:{
+				"accion":"insertar-genero",
+				"nombre_genero":nombreGenero
+			},
+			success:function(respuesta){
+				if (respuesta==true) {
+					alert("Se insertó");
+				}else{
+					alert("No se insertó");
+				}
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	}
+});
 
 // EDITAR UN GENERO
 function editarGenero(idGenero){
 	$("#btn-guardar-genero").hide();
 	$("#btn-actualizar-genero").show();
-	var datos =	"&id_genero="+idGenero;
 	$.ajax({
-		url: '../ajax/get-info.php?accion=get_genero'+datos,
-		type: 'GET',
-		data: "",
-		dataType: 'JSON',
-		success: function(response){
-			$("#txt-nombre-genero").val(response.nombre);
-			$("#txt-id-genero").val(response.id);
+		url: '../ajax/get-info.php',
+		type: 'POST',
+		data: {
+			"accion":"get_genero", 
+			"id_genero": idGenero
 		},
-		error: function(response){
-			console.log(response);
+		dataType: 'JSON',
+		success: function(respuesta){
+			$("#txt-nombre-genero").val(respuesta.nombre);
+			$("#txt-id-genero").val(respuesta.id);
+		},
+		error: function(error){
+			console.log(error);
 		}
 	});	
 }

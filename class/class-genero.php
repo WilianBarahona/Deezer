@@ -70,6 +70,14 @@
 		####  INSERTAR RESGISTRO DE GENERO
 		#     return false or true ####  JSON
 		public function insertarRegistro($conexion){
+			$sql = sprintf("
+				INSERT INTO tbl_generos
+				(nombre_genero)
+				VALUES ('%s');
+				",
+				$conexion->antiInyeccion($this->getNombreGenero())
+			);
+			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);
 		}
 		#### ACTUALIZAR REGISTRO GENERO
