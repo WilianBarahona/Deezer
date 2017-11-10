@@ -46,5 +46,30 @@
 				" Sexo: " . $this->sexo . 
 				" FechaNacimiento: " . $this->fechaNacimiento;
 		}
+
+		#### LISTAR TODOS LOS PERSONAS
+		#	return objeto json con todos los PERSONAS
+		public static function listarTodos($conexion){
+		}
+		#### SELECCIONAR REGISTRO DE PERSONA POR CODIGO
+		#	return objeto json con todos los PERSONAS
+		public function seleccionar($conexion){
+		}
+		####  INSERTAR RESGISTRO DE PERSONA
+		#     return false or true ####  JSON
+		public function insertarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ACTUALIZAR REGISTRO PERSONA
+		#     return false or true ####  JSON
+		public static function actualizarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ELIMINAR REGISTRO PERSONAS
+		#     return false or true ####  JSON
+		public static function eliminarRegistro($conexion, $id){
+			return json_encode($resultado);
+		}
+
 	}
 ?>

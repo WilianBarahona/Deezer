@@ -17,7 +17,7 @@ public function insertarRegistro($conexion){
 public static function actualizarRegistro($conexion){
 	return json_encode($resultado);
 }
-#### ELEMINAR REGISTRO <CLASE>S
+#### ELIMINAR REGISTRO <CLASE>S
 #     return false or true ####  JSON
 public static function eliminarRegistro($conexion, $id){
 	return json_encode($resultado);

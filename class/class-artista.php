@@ -89,16 +89,28 @@
 			return json_encode($resultado);
 		}
 		
-		#### ACTUALIZAR REGISTRO ARTISTA
-		####  return false or true ####  JSON
-		public static function actualizarRegistro($conexion){
-
+		#### LISTAR TODOS LOS ARTISTAS
+		#	return objeto json con todos los ARTISTAS
+		public static function listarTodos($conexion){
 		}
-
-		#### ELEMINAR REGISTRO ARTISTAS
-		####  return false or true ####  JSON
+		#### SELECCIONAR REGISTRO DE ARTISTA POR CODIGO
+		#	return objeto json con todos los ARTISTAS
+		public function seleccionar($conexion){
+		}
+		####  INSERTAR RESGISTRO DE ARTISTA
+		#     return false or true ####  JSON
+		public function insertarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ACTUALIZAR REGISTRO ARTISTA
+		#     return false or true ####  JSON
+		public static function actualizarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ELIMINAR REGISTRO ARTISTAS
+		#     return false or true ####  JSON
 		public static function eliminarRegistro($conexion, $id){
-			
+			return json_encode($resultado);
 		}
 		
 	}

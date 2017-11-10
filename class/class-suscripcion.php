@@ -36,5 +36,7 @@
 				" IdTipoSuscripcion: " . $this->idTipoSuscripcion . 
 				" InicioSuscripcion: " . $this->inicioSuscripcion;
 		}
+
+		
 	}
 ?>

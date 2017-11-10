@@ -27,5 +27,30 @@
 		public function __toString(){
 			return "idPais: ".$this->idPais." nombrePais: ".$this->nombrePais;
 		}
+
+		#### LISTAR TODOS LOS PAISES
+		#	return objeto json con todos los PAISES
+		public static function listarTodos($conexion){
+		}
+		#### SELECCIONAR REGISTRO DE PAIS POR CODIGO
+		#	return objeto json con todos los PAISES
+		public function seleccionar($conexion){
+		}
+		####  INSERTAR RESGISTRO DE PAIS
+		#     return false or true ####  JSON
+		public function insertarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ACTUALIZAR REGISTRO PAIS
+		#     return false or true ####  JSON
+		public static function actualizarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ELIMINAR REGISTRO PAISES
+		#     return false or true ####  JSON
+		public static function eliminarRegistro($conexion, $id){
+			return json_encode($resultado);
+		}
+
 	}
 ?>

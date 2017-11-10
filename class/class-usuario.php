@@ -34,6 +34,31 @@
 			echo "Verificando en la base";
 		}
 
+		#### LISTAR TODOS LOS USUARIOS
+		#	return objeto json con todos los USUARIOS
+		public static function listarTodos($conexion){
 		}
+		#### SELECCIONAR REGISTRO DE USUARIO POR CODIGO
+		#	return objeto json con todos los USUARIOS
+		public function seleccionar($conexion){
+		}
+		####  INSERTAR RESGISTRO DE USUARIO
+		#     return false or true ####  JSON
+		public function insertarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ACTUALIZAR REGISTRO USUARIO
+		#     return false or true ####  JSON
+		public static function actualizarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ELIMINAR REGISTRO USUARIOS
+		#     return false or true ####  JSON
+		public static function eliminarRegistro($conexion, $id){
+			return json_encode($resultado);
+		}
+
+
+	}
 	
 ?>

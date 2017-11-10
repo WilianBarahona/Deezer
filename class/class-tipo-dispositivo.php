@@ -27,5 +27,6 @@
 		public function __toString(){
 			return "idTitpoDispositivo: ".$this->idTitpoDispositivo." nombreDispositivo: ".$this->nombreDispositivo;
 		}
+		
 	}
 ?>

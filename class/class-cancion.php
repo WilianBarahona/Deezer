@@ -53,7 +53,6 @@
 		public function getUrlAudio() { 
 			return $this->urlAudio; 
 		}
-	}
 
 		public function __toString(){
 				return "IdCancion: " . $this->idCancion . 
@@ -62,6 +61,29 @@
 					" NombreCancion: " . $this->nombreCancion . 
 					" UrlAudio: " . $this->urlAudio;
 		}
-	
-
+		
+		#### LISTAR TODOS LOS CANCIONES
+		#	return objeto json con todos los CANCIONES
+		public static function listarTodos($conexion){
+		}
+		#### SELECCIONAR REGISTRO DE CANCION POR CODIGO
+		#	return objeto json con todos los CANCIONES
+		public function seleccionar($conexion){
+		}
+		####  INSERTAR RESGISTRO DE CANCION
+		#     return false or true ####  JSON
+		public function insertarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ACTUALIZAR REGISTRO CANCION
+		#     return false or true ####  JSON
+		public static function actualizarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ELIMINAR REGISTRO CANCIONES
+		#     return false or true ####  JSON
+		public static function eliminarRegistro($conexion, $id){
+			return json_encode($resultado);
+		}
+	}
 ?>

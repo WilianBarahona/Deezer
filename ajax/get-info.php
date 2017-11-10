@@ -15,13 +15,13 @@
 			
 			case 'get_generos':
 				include("../class/class-genero.php");
-				echo Genero::listarGeneros($conexion);
+				echo Genero::listarTodos($conexion);
 			break;
 
 			case "get_genero": 
 				include("../class/class-genero.php");
 				$genero = new Genero($_GET["id_genero"], null);
-				echo $genero->seleccionarGenero($conexion);
+				echo $genero->seleccionar($conexion);
 			break;
 
 			default:

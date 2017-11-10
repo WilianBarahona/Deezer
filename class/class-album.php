@@ -62,8 +62,28 @@
 				" CoverAlbumUrl: " . $this->coverAlbumUrl;
 		}
 
-		// CRUD
-		
-		// INSERTAR REGISTRO DE ALBUM
+		#### LISTAR TODOS LOS ALBUMS
+		#	return objeto json con todos los ALBUMS
+		public static function listarTodos($conexion){
+		}
+		#### SELECCIONAR REGISTRO DE ALBUM POR CODIGO
+		#	return objeto json con todos los ALBUMS
+		public function seleccionar($conexion){
+		}
+		####  INSERTAR RESGISTRO DE ALBUM
+		#     return false or true ####  JSON
+		public function insertarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ACTUALIZAR REGISTRO ALBUM
+		#     return false or true ####  JSON
+		public static function actualizarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ELIMINAR REGISTRO ALBUMS
+		#     return false or true ####  JSON
+		public static function eliminarRegistro($conexion, $id){
+			return json_encode($resultado);
+		}
 	}
 ?>

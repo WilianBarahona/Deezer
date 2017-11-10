@@ -28,7 +28,9 @@
 			return "idGenero: ".$this->idGenero." nombreGenero: ".$this->nombreGenero;
 		}
 
-		public static function listarGeneros($conexion){
+		#### LISTAR TODOS LOS GENEROS
+		#	return objeto json con todos los GENEROS
+		public static function listarTodos($conexion){
 			$sql = "
 				SELECT 
 				  id_genero as id,
@@ -49,7 +51,9 @@
 			return json_encode($generos);
 		}
 
-		public function seleccionarGenero($conexion){
+		#### SELECCIONAR REGISTRO DE GENERO POR CODIGO
+		#	return objeto json con todos los GENEROS
+		public function seleccionar($conexion){
 			$resultado=$conexion->ejecutarConsulta(sprintf("
 				SELECT 
 					nombre_genero as nombre,
@@ -61,6 +65,22 @@
 			));
 			$fila=$conexion->obtenerFila($resultado);
 			return json_encode($fila);
+		}
+		
+		####  INSERTAR RESGISTRO DE GENERO
+		#     return false or true ####  JSON
+		public function insertarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ACTUALIZAR REGISTRO GENERO
+		#     return false or true ####  JSON
+		public static function actualizarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ELIMINAR REGISTRO GENEROS
+		#     return false or true ####  JSON
+		public static function eliminarRegistro($conexion, $id){
+			return json_encode($resultado);
 		}
 	}
 ?>

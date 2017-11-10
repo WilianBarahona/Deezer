@@ -68,5 +68,29 @@ include("class-persona.php");
 				" UltimaSesion: " . $this->ultimaSesion . 
 				" UrlFoto: " . $this->urlFoto;
 		}
+
+		#### LISTAR TODOS LOS ADMINISTRADORES
+		#	return objeto json con todos los ADMINISTRADORES
+		public static function listarTodos($conexion){
+		}
+		#### SELECCIONAR REGISTRO DE ADMINISTRADOR POR CODIGO
+		#	return objeto json con todos los ADMINISTRADORES
+		public function seleccionar($conexion){
+		}
+		####  INSERTAR RESGISTRO DE ADMINISTRADOR
+		#     return false or true ####  JSON
+		public function insertarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ACTUALIZAR REGISTRO ADMINISTRADOR
+		#     return false or true ####  JSON
+		public static function actualizarRegistro($conexion){
+			return json_encode($resultado);
+		}
+		#### ELIMINAR REGISTRO ADMINISTRADORES
+		#     return false or true ####  JSON
+		public static function eliminarRegistro($conexion, $id){
+			return json_encode($resultado);
+		}
 	}
 ?>
