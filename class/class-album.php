@@ -79,24 +79,61 @@
 				echo '</ul>';
 			}
 		}
+
 		#### SELECCIONAR REGISTRO DE ALBUM POR CODIGO
 		#	return objeto json con todos los ALBUMS
 		public function seleccionar($conexion){
+			$resultado=$conexion->ejecutarConsulta(sprintf("
+				//SELECT
+				//FROM
+				//WHERE
+				",
+				//$conexion->antiInyeccion($this->getIdGenero())
+			));
+			$fila=$conexion->obtenerFila($resultado);
+			return json_encode($fila);
 		}
+
 		####  INSERTAR RESGISTRO DE ALBUM
 		#     return false or true ####  JSON
 		public function insertarRegistro($conexion){
+			$sql=sprintf("
+				//INSERT INTO
+				//()
+				//VALUES();
+				",
+				//$conexion->antiInyeccion($this->get...),
+			);
+			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);
 		}
+
+
 		#### ACTUALIZAR REGISTRO ALBUM
 		#     return false or true ####  JSON
 		public static function actualizarRegistro($conexion){
+			$sql=sprintf("
+				//UPDATE
+				//... = ...
+				//WHERE
+			",
+				//$conexion->antiInyeccion($this->getNombreGenero()),
+			);
+			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);
 		}
 		#### ELIMINAR REGISTRO ALBUMS
 		#     return false or true ####  JSON
 		public static function eliminarRegistro($conexion, $id){
+			$sql = sprintf("
+				//DELETE FROM 
+				//WHERE
+			",
+				$conexion->antiInyeccion($id)
+			);
+			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);
 		}
+
 	}
 ?>
