@@ -5,6 +5,7 @@
   <title>Administración</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/principal.css">
+  <link rel="stylesheet" href="../css/jquery-confirm.min.css">
 </head>
 <body>
   <div class="container-fluid">
@@ -51,6 +52,7 @@
                 <thead>
                   <th>Género</th>
                   <th>Editar</th>
+                  <th>Eliminar</th>
                 </thead>
                 <tbody></tbody>
               </table>
@@ -70,6 +72,7 @@
   <script type="text/javascript" src="../js/soundmanager2.min.js"></script>
   <script type="text/javascript" src="../js/player.js"></script>
   <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-confirm.min.js"></script>
   <script type="text/javascript" src="../js/navigation.js"></script>
   <script type="text/javascript" src="../js/keys.js"></script>
   <script type="text/javascript" src="../js/admin.js"></script>

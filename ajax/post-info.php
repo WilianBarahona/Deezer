@@ -8,7 +8,7 @@
 				// include("../class/class-conexion.php");
 			
 			########################################### ARTISTA
-			case 'insertar-artista': 
+			case 'insertar_artista': 
 				include("../class/class-artista.php");
 				$artista = new Artista();
 				$artista->setIdPais($_POST["id_pais"]);
@@ -21,7 +21,7 @@
 			break;
 
 			########################################## GENERO
-			case 'insertar-genero':
+			case 'insertar_genero':
 				include("../class/class-genero.php");
 				$genero = new Genero();
 				$genero->setNombreGenero($_POST["nombre_genero"]);

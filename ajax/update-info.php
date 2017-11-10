@@ -5,6 +5,9 @@
 		$conexion = new Conexion();
 		switch ($accion) {
 			// case : break
+			
+			###################################### GENERO
+			case 'actualizar_genero':
 			default:
 				echo "Instrucción post no reconocida";
 				break;

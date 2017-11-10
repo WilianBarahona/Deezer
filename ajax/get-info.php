@@ -3,6 +3,7 @@
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
+			
 			case 'validar_login':
 				include("../class/class-usuario.php");
 				$password = $_POST['inputPassword'];

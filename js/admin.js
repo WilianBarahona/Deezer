@@ -19,6 +19,7 @@ function setTblGeneros(){
 				'<tr id="tbl-generos-fila-'+genero.id+'">'+
 				'  <td>'+genero.nombre+'</td>'+
 				'  <td><button onclick="editarGenero('+genero.id+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></td>'+
+				'  <td><button onclick="eliminarGenero('+genero.id+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 				'</tr>';
 
 				$("#tbl-generos tbody").append(fila);
@@ -40,14 +41,16 @@ $("#btn-guardar-genero").click(function() {
 			method:"POST",
 			dataType:"JSON",
 			data:{
-				"accion":"insertar-genero",
+				"accion":"insertar_genero",
 				"nombre_genero":nombreGenero
 			},
 			success:function(respuesta){
 				if (respuesta==true) {
-					alert("Se insertó");
+					$.alert({title: '¡Éxito!',content: 'Se insertó registro',});
+					$("#tbl-generos tbody").html("");
+					setTblGeneros();
 				}else{
-					alert("No se insertó");
+					$.alert({title: '¡Ocurrión un problema!',content: 'No se pudo ingresar registro',});
 				}
 			},
 			error: function(error){
@@ -80,7 +83,9 @@ function editarGenero(idGenero){
 }
 
 $("#btn-actualizar-genero").click(function(){
-	alert("Hi");
+	var nombreGenero=$("#txt-nombre-genero").val();
+	var idGenero=$("#txt-id-genero").val();
+
 });
 
 
