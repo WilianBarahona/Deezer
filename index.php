@@ -1,13 +1,10 @@
 <?php
-
-// if(isset($_SESSION)) { 
-//     session_start(); 
-
-// }else{
-//     session_start();
-//     session_destroy();
-//     header("Location: login.php");
-// }
+session_start();
+if($_SESSION['loggedin']==false) 
+{ 
+    session_destroy();
+    header("Location: login.php");
+}
 
 ?>
 <!DOCTYPE html>
@@ -74,7 +71,7 @@
             </li> 
               <li>
               <a id="float-albums" class="btn-float">
-                  <span class="glyphicon glyphicon-cd"></span> 
+                  <span class="glyphicon glyphicon-cd" onclick="cargarGeneros()"></span> 
                   &nbsp;&nbsp;&nbsp; Álbumes
                 </a>
               </li>
@@ -183,6 +180,7 @@
     <script type="text/javascript" src="js/navigation.js"></script>
     <script type="text/javascript" src="js/controlador.js"></script>
     <script type="text/javascript" src="js/keys.js"></script>
+    <script type="text/javascript" src="js/albumes.js"></script>
 
 
     <script type="text/javascript">
