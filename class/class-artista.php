@@ -62,16 +62,6 @@
 				" UrlFoto: " . $this->urlFoto;
 		}
 
-		#### LISTAR TODOS LOS ARTISTAS
-		public static function listarTodos($conexion){
-			# SIMILARES
-		}
-
-		#### SELECCIONAR REGISTRO DE ARTISTA POR CODIGO
-		public function seleccionar($conexion){
-			# SIMILARES
-		}
-
 		####  INSERTAR RESGISTRO DE ARTISTA
 		####  return false or true ####  JSON
 		public function insertarRegistro($conexion){
@@ -93,21 +83,30 @@
 		#	return objeto json con todos los ARTISTAS
 		public static function listarTodos($conexion){
 			$sql = "
-				//SELECT 
-				//FROM
-				//ORDER BY ... ASC; // Opcional
+				SELECT
+				  a. id_artista as id,
+				  b.nombre_pais as pais,
+				  b.abreviatura_pais,
+				  a.nombre_artista as nombre,
+				  a.biografia_artista as biografia,
+				  a.url_foto_artista as foto
+				FROM tbl_artistas a
+				INNER JOIN tbl_paises b
+				ON(a.id_pais=b.id_pais);
 			";
-
 			$resultado = $conexion->ejecutarConsulta($sql);
-			$objetos=array();
+			$artistas=array();
 			while($fila=$conexion->obtenerFila($resultado)){
-				$objeto = array();
-				//$objeto["campo1"]= $fila["id"];
-				// $objeto["campo2"]= $fila["id"]; //...
-
-				$objetos[]=$objeto;
+				$artista = array();
+				$artista["id"]= $fila["id"];
+				$artista["pais"]= $fila["pais"];
+				$artista["abreviatura_pais"]= $fila["abreviatura_pais"];
+				$artista["nombre"]= $fila["nombre"];
+				$artista["biografia"]= $fila["biografia"];
+				$artista["foto"]= $fila["foto"];
+				$artistas[]=$artista;
 			}
-			return json_encode($objetos);
+			return json_encode($artistas);
 		}
 		#### SELECCIONAR REGISTRO DE ARTISTA POR CODIGO
 		#	return objeto json con todos los ARTISTAS
@@ -117,7 +116,7 @@
 				//FROM
 				//WHERE
 				",
-				//$conexion->antiInyeccion($this->getIdGenero())
+				$conexion->antiInyeccion($this->getIdGenero())
 			));
 			$fila=$conexion->obtenerFila($resultado);
 			return json_encode($fila);
@@ -130,7 +129,7 @@
 				//... = ...
 				//WHERE
 			",
-				//$conexion->antiInyeccion($this->getNombreGenero()),
+				$conexion->antiInyeccion($this->getNombreGenero())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);

@@ -41,6 +41,7 @@
               <input type="hidden"  id="txt-id-genero" name="txt-id-genero" value="">
               <table class="table table-striped">
                 <tr>
+                  <td>Insertar Género:</td>
                   <td><input type="text" class="form form-control" id="txt-nombre-genero" name="txt-nombre-genero" value="" placeholder="Género"></td>
                   <td>
                     <button id="btn-guardar-genero" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Guardar</button>
@@ -75,6 +76,6 @@
   <script type="text/javascript" src="../js/jquery-confirm.min.js"></script>
   <script type="text/javascript" src="../js/navigation.js"></script>
   <script type="text/javascript" src="../js/keys.js"></script>
-  <script type="text/javascript" src="../js/admin.js"></script>
+  <script type="text/javascript" src="../js/admin-index.js"></script>
 </body>
 </html>

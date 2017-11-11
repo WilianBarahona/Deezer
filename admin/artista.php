@@ -25,29 +25,63 @@
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-3 col-lg-offset-2 main">
         <div class="container-fluid">
          <div class="row">
+           
            <h1>Artistas</h1>
            <hr>
-            <div class="col-md-12">
-              <h3>Listado de Artistas</h3>
+           
+           <div class="col-md-12">
+              <h3>Agregar Artista</h3>
               <table class="table table-striped">
                 <tr>
-                  <input type="hidden"  id="txt-id-genero" name="txt-id-genero" value="">
-                  <td><input type="text" class="form form-control" id="txt-nombre-genero" name="txt-nombre-genero" value="" placeholder="Género"></td>
+                  <td>Fotografía: </td>
                   <td>
-                    <button id="btn-guardar-genero" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Guardar</button>
-                    <button id="btn-actualizar-genero" type="button" class="btn btn-primary" style="display: none"><span class="glyphicon glyphicon-save"></span> Actualizar</button>
+                    <label class="btn btn-default">
+                        Examinar <input type="file" id="foto-artista" hidden>
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nombre del artista: </td>
+                  <td><input type="text" id="txt-nombre-artista" id="txt-artista" value="" placeholder="Nombre" class="form form-control"></td>
+                </tr>
+                <tr>
+                  <td>Pais: </td>
+                  <td>
+                    <select id="slc-pais-artista" class="form form-control" placeholder="Seleccionar">
+                      <option value="" hidden>Seleccionar Pais</option>}
+                      option
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Biografía: </td>
+                  <td>
+                    <textarea id="txt-biografia-artista" class="form form-control" placeholder="3000 caracteres."></textarea>
                   </td>
                 </tr>
               </table>
-              <table class="table table-striped" id="tbl-generos">
+
+              <h3>Listado de Artistas</h3>
+              <table class="table table-striped" id="tbl-artistas">
                 <thead>
-                  <th>Género</th>
+                  <th>Foto</th>
+                  <th>Nombre del Artista</th>
+                  <th>Pais</th>
+                  <th>Biografía</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                  <tr>
+                    <td>
+                      <img class="img img-circle img-responsive" src="https://cps-static.rovicorp.com/3/JPG_400/MI0003/852/MI0003852493.jpg" Title="Frank Sinatra">
+                    </td>
+                    <td>Frank Sinatra</td>
+                    <td>Estados Unidos (USA)</td>
+                    <td><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-paperclip"></span></button></td>
+                  </tr>
+                </tbody>
               </table>
-              
 
             </div>
           </div>
