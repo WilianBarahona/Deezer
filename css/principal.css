@@ -538,3 +538,9 @@ table img{
 [hidden] {
   display: none !important;
 }
+
+.loading{
+	width: 	25px;
+	height: 25px;
+	display: none;
+}

@@ -35,9 +35,14 @@
                 <tr>
                   <td>Fotografía: </td>
                   <td>
-                    <label class="btn btn-default">
-                        Examinar <input type="file" id="foto-artista" hidden>
-                    </label>
+                    <input type="hidden" id="txt-url-foto-artista">
+                    <form method="post" id="form-foto-artista" enctype="multipart/form-data">
+                      <label class="btn btn-default">
+                          Examinar <input type="file" name="file" id="file-foto-artista" hidden>
+                      </label>
+                      <img src="../img/load.gif" id="carga-foto-artista" class="img loading" height="20px">
+                      <img src="../img/good.png" id="lista-carga-foto-artista" class="img loading" height="20px">
+                    </form>
                   </td>
                 </tr>
                 <tr>
@@ -48,7 +53,7 @@
                   <td>Pais: </td>
                   <td>
                     <select id="slc-pais-artista" class="form form-control" placeholder="Seleccionar">
-                      <option value="" hidden>Seleccionar Pais</option>}
+                      <option value="" hidden>Seleccionar Pais</option>
                       option
                     </select>
                   </td>
@@ -99,7 +104,6 @@
   <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="../js/jquery-confirm.min.js"></script>
   <script type="text/javascript" src="../js/navigation.js"></script>
-  <script type="text/javascript" src="../js/keys.js"></script>
   <script type="text/javascript" src="../js/admin-artista.js"></script>
 </body>
 </html>

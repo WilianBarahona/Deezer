@@ -8,7 +8,7 @@ $(document).ready(function(){
 // LLENADO TBL-GENEROS
 function llenarTablaGeneros(){
 	$.ajax({
-		url: "../ajax/get-info.php",
+		url: "../ajax/gestionar-genero.php",
 		method:"POST",
 		data:{"accion":"listar_generos"},
 		dataType:"JSON",
@@ -39,7 +39,7 @@ $("#btn-guardar-genero").click(function() {
 	var nombreGenero = $("#txt-nombre-genero").val()
 	if(nombreGenero!=""){
 		$.ajax({
-			url:"../ajax/post-info.php",
+			url:"../ajax/gestionar-genero.php",
 			method:"POST",
 			dataType:"JSON",
 			data:{
@@ -77,7 +77,7 @@ function editarGenero(idGenero){
 	$("#btn-guardar-genero").hide();
 	$("#btn-actualizar-genero").show();
 	$.ajax({
-		url: '../ajax/get-info.php',
+		url: '../ajax/gestionar-genero.php',
 		type: 'POST',
 		data: {
 			"accion":"seleccionar_genero", 
@@ -102,7 +102,7 @@ $("#btn-actualizar-genero").click(function(){
 	var nombreGenero=$("#txt-nombre-genero").val();
 	var idGenero=$("#txt-id-genero").val();
 	$.ajax({
-		url:"../ajax/update-info.php",
+		url:"../ajax/gestionar-genero.php",
 		method:"POST",
 		dataType:"JSON",
 		data:{
@@ -145,7 +145,7 @@ function eliminarGenero(idGenero){
 		buttons: {
 			Aceptar: function(){
 				$.ajax({
-					url:"../ajax/delete-info.php",
+					url:"../ajax/gestionar-genero.php",
 					method:"POST",
 					dataType:"JSON",
 					data:{

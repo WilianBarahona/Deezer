@@ -23,7 +23,7 @@ function playList(){
 			id:"db",
 			title: "Chala head chala",
 			artist: "Ricardo Silva",
-			url:"http://download1504.mediafire.com/vd6ai62fm1fg/zs421rcqgiw3mb2/db.mp3",
+			url:"http://download1504.mediafire.com/db5zs6ybsjkg/zs421rcqgiw3mb2/db.mp3",
 			cover: "img/cover/db.jpg",
 		},
 		{

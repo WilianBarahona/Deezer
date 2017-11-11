@@ -32,21 +32,24 @@
 		#	return objeto json con todos los PAISES
 		public static function listarTodos($conexion){
 			$sql = "
-				//SELECT 
-				//FROM
-				//ORDER BY ... ASC; // Opcional
+				SELECT
+				  id_pais as id,
+				  nombre_pais as pais,
+				  abreviatura_pais,
+				  codigo_telefono_pais as codigo
+				FROM tbl_paises;
 			";
-
 			$resultado = $conexion->ejecutarConsulta($sql);
-			$objetos=array(); // Renombrar
+			$paises=array(); // Renombrar
 			while($fila=$conexion->obtenerFila($resultado)){
-				$objeto = array(); //Renombrar
-				//$objeto["campo1"]= $fila["id"];
-				// $objeto["campo2"]= $fila["id"]; //...
-
-				$objetos[]=$objeto;
+				$pais = array(); //Renombrar
+				$pais["id"]= $fila["id"];
+				$pais["pais"]= $fila["pais"];
+				$pais["abreviatura_pais"]= $fila["abreviatura_pais"];
+				$pais["codigo"]= $fila["codigo"];
+				$paises[]=$pais;
 			}
-			return json_encode($objetos);
+			return json_encode($paises);
 		}
 
 		#### SELECCIONAR REGISTRO DE PAIS POR CODIGO
@@ -57,7 +60,7 @@
 				//FROM
 				//WHERE
 				",
-				//$conexion->antiInyeccion($this->getIdGenero())
+				""
 			));
 			$fila=$conexion->obtenerFila($resultado);
 			return json_encode($fila);
@@ -71,7 +74,7 @@
 				//()
 				//VALUES();
 				",
-				//$conexion->antiInyeccion($this->get...),
+				""
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);
@@ -86,7 +89,7 @@
 				//... = ...
 				//WHERE
 			",
-				//$conexion->antiInyeccion($this->getNombreGenero()),
+				""
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);

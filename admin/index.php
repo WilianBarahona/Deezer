@@ -75,7 +75,6 @@
   <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="../js/jquery-confirm.min.js"></script>
   <script type="text/javascript" src="../js/navigation.js"></script>
-  <script type="text/javascript" src="../js/keys.js"></script>
   <script type="text/javascript" src="../js/admin-index.js"></script>
 </body>
 </html>
