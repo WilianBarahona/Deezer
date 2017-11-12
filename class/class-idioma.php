@@ -110,8 +110,8 @@
 						$objConexion->antiInyeccion($this->nombreIdioma),
 						$objConexion->antiInyeccion($this->abreviaturaIdioma)
 				);
-			$objConexion->ejecutarConsulta($sql);
-			echo json_encode($objConexion->ejecutarConsulta($sql));
+			$resultado = $objConexion->ejecutarConsulta($sql);
+			echo json_encode($resultado);
 
 		}
 
