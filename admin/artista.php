@@ -36,7 +36,7 @@
                   <td>Fotografía: </td>
                   <td>
                     <input type="hidden" id="txt-url-foto-artista">
-                    <form method="post" id="form-foto-artista" enctype="multipart/form-data">
+                    <form method="post" id="form-foto-artista" name="form-foto-artista" enctype="multipart/form-data">
                       <label class="btn btn-default">
                           Examinar <input type="file" name="file" id="file-foto-artista" hidden>
                       </label>
@@ -62,6 +62,11 @@
                   <td>Biografía: </td>
                   <td>
                     <textarea id="txt-biografia-artista" class="form form-control" placeholder="3000 caracteres."></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button id="btn-guardar-artista" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Guardar</button>
                   </td>
                 </tr>
               </table>
