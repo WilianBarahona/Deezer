@@ -3,7 +3,7 @@
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
-			//case '': 
+			case '': 
 			////
 			//break;
 			default:
