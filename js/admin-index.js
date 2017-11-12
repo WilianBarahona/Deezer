@@ -36,7 +36,7 @@ function llenarTablaGeneros(){
 
 // INSERTAR GENERO
 $("#btn-guardar-genero").click(function() {
-	var nombreGenero = $("#txt-nombre-genero").val()
+	var nombreGenero = $("#txt-nombre-genero").val();
 	if(nombreGenero!=""){
 		$.ajax({
 			url:"../ajax/gestionar-genero.php",
@@ -176,16 +176,97 @@ function eliminarGenero(idGenero){
 }
 
 //######################################## ARTISTAS
-// LLENADO TBL-GENEROS
+// LLENADO TBL-ARTISTAS
 function llenarTablaArtistas(idArtista){
-	
+	$.ajax({
+		url: "../ajax/gestionar-artista.php",
+		method: "POST",
+		data: {"accion":"listar_artistas"},
+		dataType: "JSON",
+		success:function(respuesta){
+			for(var i = 0; i < respuesta.length; i++){
+				var artista = respuesta[i];
+				var fila = 
+				'<tr id="tbl-artistas-fila-'+artista.id+
+				'	<td>'+artista.nombre+'</td>'+
+				'	<td><button onclick="editarArtista('+artista.id+')"class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></td>'+
+				'	<td><button onclick="eliminarArtista('+artista.id+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
+				'</tr>';
+
+				$("#tbl-artistas tbody").append(fila);
+			}
+		},
+		error:function(error){
+			console.log(error);
+		},
+		complete: function(){
+
+		}
+	});
 }
 
 // INSERTAR ARTISTA
+$("#btn-guardar-artista").click(function(){
+	var nombreArtista = $("#txt-nombre-artistas").val();
+	var idPais = $("#slc-pais-artista").val();
+	var biografia = $().val("#txt-biografia-artista");
+	if(nombreArtista!=""){
+		$.ajax({
+			url: "../ajax/gestionar-artista.php",
+			method:"POST",
+			dataType:"JSON",
+			data:{
+				"accion":"insertar_artista",
+				"nombre_artista":nombreArtista,
+				"id_pais":idPais,
+				"biografia_artista":biografia
+			},
+			success:function(respuesta){
+				if(respuesta)
+				{
+					$.alert({
+						title: '¡Éxito!',
+						content: 'Se insertó el registro'
+					});
+					$("#tbl-artistas tbody").html("");
+					llenarTablaArtistas();
+				}
+				else
+				{
+					$.alert({
+						title: '¡Ocurrió un problema!',
+						content: 'No se pudo ingresar el registro'
+					});
+				}
+			},
+			error: function(error){
+				console.log(error);
+			},
+			complete: function(){
+
+			}
+		});
+	}
+
+
+});
+
 
 // EDITAR UN ARTISTA
 function editarArtista(idArtista){
+	$("#btn-guardar-artista").hide();
+	$("#btn-actualizar-artista").show();
+	$.ajax({
+		url: '../ajax/gestionar-artista.php',
+		type: "POST",
+		data:{
+			"accion":"insertar_artista",
+			"nombre_artista":nombreArtista,
+			"id_pais":idPais,
+			"biografia_artista":biografia
+		}
 
+	});
 }
 
 //ELIMINAR ARTISTA
