@@ -176,4 +176,20 @@ function eliminarGenero(idGenero){
 }
 
 //######################################## ARTISTAS
+// LLENADO TBL-GENEROS
+function llenarTablaArtistas(idArtista){
+	
+}
+
+// INSERTAR ARTISTA
+
+// EDITAR UN ARTISTA
+function editarArtista(idArtista){
+
+}
+
+//ELIMINAR ARTISTA
+function eliminarArtista(idArtista){
+
+}
 
