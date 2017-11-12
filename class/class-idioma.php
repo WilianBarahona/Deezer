@@ -2,10 +2,12 @@
 	class Idioma{
 		private $idIdioma;
 		private $nombreIdioma;
+		private $abreviaturaIdioma;
 
-		public function __construct($idIdioma=null, $nombreIdioma=null){
+		public function __construct($idIdioma=null, $nombreIdioma=null, $abreviaturaIdioma=null){
 			$this->idIdioma = $idIdioma;
 			$this->nombreIdioma = $nombreIdioma;
+			$this->abreviaturaIdioma = $abreviaturaIdioma;
 		}
 
 		public function setIdIdioma($idIdioma) { 
@@ -13,7 +15,9 @@
 		}
 
 		public function getIdIdioma() { 
-			return $this->idIdioma; }
+			return $this->idIdioma; 
+		}
+
 		public function setNombreIdioma($nombreIdioma) { 
 			$this->nombreIdioma = $nombreIdioma; 
 		}
@@ -22,84 +26,115 @@
 			return $this->nombreIdioma; 
 		}
 
+		public function setAbreviaturaIdioma($abreviaturaIdioma) { 
+			$this->abreviaturaIdioma = $abreviaturaIdioma; 
+		}
+
+		public function getAbreviaturaIdioma() { 
+			return $this->abreviaturaIdioma; 
+		}
+
 		public function __toString(){
 			return "idIdioma: ".$this->idIdioma." nombreIdioma: ".$this->nombreIdioma;
 		}
 
-		#### LISTAR TODOS LOS IDIOMAS
-		#	return objeto json con todos los IDIOMAS
-		public static function listarTodos($conexion){
+		public static function listarIdiomas($conexion){
 			$sql = "
-				//SELECT 
-				//FROM
-				//ORDER BY ... ASC; // Opcional
-			";
+				SELECT 
+				  id_idioma,
+				  nombre_idioma,
+				  abreviatura_idioma
+				FROM tbl_idioma";
 
 			$resultado = $conexion->ejecutarConsulta($sql);
-			$objetos=array(); // Renombrar
-			while($fila=$conexion->obtenerFila($resultado)){
-				$objeto = array(); //Renombrar
-				//$objeto["campo1"]= $fila["id"];
-				// $objeto["campo2"]= $fila["id"]; //...
-
-				$objetos[]=$objeto;
+			$idiomas=array();
+			while(($fila=$conexion->obtenerFila($resultado))){
+				$idiomas[] = $fila;
 			}
-			return json_encode($objetos);
+			//var_dump($idiomas);
+			echo json_encode($idiomas);
 		}
 
-		#### SELECCIONAR REGISTRO DE IDIOMA POR CODIGO
-		#	return objeto json con todos los IDIOMAS
-		public function seleccionar($conexion){
-			$resultado=$conexion->ejecutarConsulta(sprintf("
-				//SELECT
-				//FROM
-				//WHERE
-				",
-				//$conexion->antiInyeccion($this->getIdGenero())
-			));
-			$fila=$conexion->obtenerFila($resultado);
-			return json_encode($fila);
+		public static function seleccionarIdioma($objConexion,$idIdioma){
+			$sql = sprintf("select id_idioma,
+									nombre_idioma,
+									abreviatura_idioma
+								   	from tbl_idioma where id_idioma='%s'",
+						$objConexion->antiInyeccion($idIdioma)
+				);
+			$informacion = $objConexion->ejecutarConsulta($sql);
+			$totalFilas  = $objConexion->cantidadRegistros($informacion);
+				$idiomas=array();
+				while(($fila = $objConexion->obtenerFila($informacion))){
+					$idiomas["id_idioma"] = $fila["id_idioma"];
+					$idiomas["nombre_idioma"] = $fila["nombre_idioma"];
+					$idiomas["abreviatura_idioma"] = $fila["abreviatura_idioma"];
+				}
+				echo json_encode($idiomas);
+				//var_dump($idiomas);
+			
 		}
 
-		####  INSERTAR RESGISTRO DE IDIOMA
-		#     return false or true ####  JSON
-		public function insertarRegistro($conexion){
+		public static function buscarIdioma($objConexion,$busqueda){
+			$sql = sprintf("select id_idioma,
+									nombre_idioma,
+									abreviatura_idioma
+								   	from tbl_idioma where nombre_idioma='%s'",
+						$objConexion->antiInyeccion($busqueda)
+				);
+			$informacion = $objConexion->ejecutarConsulta($sql);
+			$totalFilas  = $objConexion->cantidadRegistros($informacion);
+			if ($totalFilas >= 1){
+				$idiomas=array();
+				while(($fila = $objConexion->obtenerFila($informacion))){
+					$idiomas["id_idioma"] = $fila["id_idioma"];
+					$idiomas["nombre_idioma"] = $fila["nombre_idioma"];
+					$idiomas["abreviatura_idioma"] = $fila["abreviatura_idioma"];
+				}
+				echo json_encode($idiomas);
+				//var_dump($idiomas);
+			}
+			else{
+				$idiomas=array();
+				$idiomas["id_idioma"]="not founded";
+				$idiomas["nombre_idioma"]="not founded";
+				$idiomas["abreviatura_idioma"]="not founded";
+				echo json_encode($idiomas);
+				//var_dump($idiomas);
+			}
+		}
+
+		public function guardarIdioma($objConexion){
+			$sql = sprintf("insert into tbl_idioma(nombre_idioma,
+												   abreviatura_idioma) values ('%s','%s')",
+						$objConexion->antiInyeccion($this->nombreIdioma),
+						$objConexion->antiInyeccion($this->abreviaturaIdioma)
+				);
+			$objConexion->ejecutarConsulta($sql);
+			echo json_encode($objConexion->ejecutarConsulta($sql));
+
+		}
+
+		public function actualizarIdioma($conexion){
 			$sql=sprintf("
-				//INSERT INTO
-				//()
-				//VALUES();
-				",
-				//$conexion->antiInyeccion($this->get...),
+				UPDATE tbl_idioma SET
+				nombre_idioma='%s',
+				abreviatura_idioma='%s'
+				WHERE id_idioma=%s;
+			",
+				$conexion->antiInyeccion($this->getNombreIdioma()),
+				$conexion->antiInyeccion($this->getAbreviaturaIdioma()),
+				$conexion->antiInyeccion($this->getIdIdioma())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);
 		}
 
-
-		#### ACTUALIZAR REGISTRO IDIOMA
-		#     return false or true ####  JSON
-		public static function actualizarRegistro($conexion){
-			$sql=sprintf("
-				//UPDATE
-				//... = ...
-				//WHERE
-			",
-				//$conexion->antiInyeccion($this->getNombreGenero()),
-			);
-			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
-		}
-		#### ELIMINAR REGISTRO IDIOMAS
-		#     return false or true ####  JSON
-		public static function eliminarRegistro($conexion, $id){
-			$sql = sprintf("
-				//DELETE FROM 
-				//WHERE
-			",
-				$conexion->antiInyeccion($id)
-			);
-			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+		public static function eliminarIdioma($objConexion,$codigo){
+			$sql = sprintf("delete from tbl_idioma where id_idioma=%s",
+						$objConexion->antiInyeccion($codigo)
+				);
+			$objConexion->ejecutarConsulta($sql);
 		}
 	}
 ?>
