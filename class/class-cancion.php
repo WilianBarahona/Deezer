@@ -100,12 +100,14 @@
 		####  INSERTAR RESGISTRO DE CANCION
 		#     return false or true ####  JSON
 		public function insertarRegistro($conexion){
-			$sql=sprintf("
-				//INSERT INTO
-				//()
-				//VALUES();
+			$sql=sprintf("INSERT INTO tbl_canciones
+				(id_album, id_idioma, nombre_cancion, url_audio, reproducciones)
+				VALUES(%s, %s, '%s', '%s')
 				",
-				//$conexion->antiInyeccion($this->get...),
+				$conexion->antiInyeccion($this->getIdAlbum),
+				$conexion->antiInyeccion($this->getIdIdioma),
+				$conexion->antiInyeccion($this->getNombreCancion),
+				$conexion->antiInyeccion($this->getUrlAudio),
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);

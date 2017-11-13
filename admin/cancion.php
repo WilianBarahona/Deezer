@@ -74,13 +74,13 @@
                 <tr>
                 	<td>Incluir canción: </td>
                 	<td>
-                    <input type="hidden" id="txt-url-foto-cancion">
-                      <form method="post" id="form-foto-cancion" name="form-foto-cancion" enctype="multipart/form-data">
+                    <input type="hidden" id="txt-url-cancion">
+                      <form method="post" id="form-cancion" name="form-cancion" enctype="multipart/form-data">
                         <label class="btn btn-default">
-                            Examinar <input type="file" name="file" id="file-foto-cancion" hidden>
+                            Examinar <input type="file" name="file" id="file-cancion" hidden>
                         </label>
                         <img src="../img/load.gif" id="carga-foto-cancion" class="img loading" height="20px">
-                        <img src="../img/good.png" id="lista-carga-foto-cancion" class="img loading" height="20px">
+                        <img src="../img/good.png" id="lista-carga-cancion" class="img loading" height="20px">
                       </form>
                   </td>
                 </tr>

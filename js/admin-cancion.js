@@ -147,7 +147,35 @@ $("btn-guardar-cancion").click(function(){
 });
 
 
-
+/*EXAMINAR-CHANGE*/
+$("#file-cancion").change(function(){
+	var formData = new FormData($("form-cancion")[0]);
+	$("#lista-carga-cancion").hide();
+	$("#carga-foto-cancion").show();
+	$.ajax({
+		url: "../ajax/subir-cancion.php",
+		type: "POST",
+		data: formData,
+		contentType: false,
+		processData: false,
+		dataType: "JSON",
+		success:function(respuesta){
+			if(respuesta.status){
+				$("#txt-url-cancion").val("music/"+respuesta.ruta);
+				$("#lista-carga-cancion").show();
+			}
+			else{
+				$.alert(respuesta.mensaje);
+			}
+		},
+		error: function(error){
+			console.log(error);
+		},
+		complete: function(){			
+			$("#carga-foto-cancion").hide();
+		}
+	});
+});
 
 
 function limpiarSelect(){
