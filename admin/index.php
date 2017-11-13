@@ -52,8 +52,7 @@
               <table class="table table-striped" id="tbl-generos">
                 <thead>
                   <th>Género</th>
-                  <th>Editar</th>
-                  <th>Eliminar</th>
+                  <th>Editar/Eliminar</th>
                 </thead>
                 <tbody></tbody>
               </table>

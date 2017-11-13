@@ -11,7 +11,7 @@ $(document).ready(function(){
 			for (var i = 0; i < respuesta.length; i++) {
 				var pais=respuesta[i];
 				$("#slc-pais-artista").append(
-					'<option value="'+pais.id+'">'+pais.pais+'</option>'
+					'<option value="'+pais.id_pais+'">'+pais.nombre_pais+'</option>'
 				);
 			}
 		},

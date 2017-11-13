@@ -18,8 +18,8 @@ function llenarTablaGeneros(){
 				var fila = 
 				'<tr id="tbl-generos-fila-'+genero.id+'">'+
 				'  <td>'+genero.nombre+'</td>'+
-				'  <td><button onclick="editarGenero('+genero.id+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></td>'+
-				'  <td><button onclick="eliminarGenero('+genero.id+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
+				'  <td><button onclick="editarGenero('+genero.id+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>'+
+				'  <button onclick="eliminarGenero('+genero.id+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 				'</tr>';
 
 				$("#tbl-generos tbody").append(fila);
