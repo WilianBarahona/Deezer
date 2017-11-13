@@ -58,6 +58,14 @@
                   </td>
                 </tr>
                 <tr>
+                  <td>Idioma: </td>
+                  <td>
+                    <select id="slc-idioma" class="form form-control" placeholder="Seleccionar">
+                      <option value="" hidden>Seleccionar</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
                   <td>Nombre: </td>
                   <td>
                     <input class="form-control" type="text" name="txt-nombre-cancion" id="txt-nombre-cancion">

@@ -1,5 +1,10 @@
 $(document).ready(function(){
-	$.ajax({
+	listarArtistas();
+	listarGeneros();
+});
+
+	function listarArtistas(){
+		$.ajax({
 		url:"../ajax/gestionar-artista.php",
 		method:"POST",
 		dataType: "JSON",
@@ -18,9 +23,11 @@ $(document).ready(function(){
 		error:function(error){
 			console.log(error);
 		}
-	});
+		});
+	}
 
-	$.ajax({
+	function listarGeneros(){
+		$.ajax({
 		url:"../ajax/gestionar-genero.php",
 		method:"POST",
 		dataType: "JSON",
@@ -39,9 +46,12 @@ $(document).ready(function(){
 		error:function(error){
 			console.log(error);
 		}
-	});
-});
+		});
+	}
 
+	function listarIdiomas(){
+
+	}
 
 	$("#slc-artista").change(function(){
 		var codigoArtista = $("#slc-artista").val();
