@@ -1,22 +1,19 @@
 <?php
 	include("../class/class-conexion.php");
+	include("../class/class-pais.php");
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion();
 		switch ($_POST['accion']) {
 			case 'listar_pais':
-				include("../class/class-pais.php");
-				echo Pais::listarPaises($conexion);
+				Pais::listarPaises($conexion);
 			break;
 			case 'seleccionar_pais':
-				include("../class/class-pais.php");
 				Pais::seleccionarPais($conexion,$_POST['id_pais']);
 			break;
 			case 'buscar_pais':
-				include("../class/class-pais.php");
 				Pais::buscarPais($conexion,$_POST['txt-busqueda']);
 			break;
 			case 'guardar_pais':
-				include("../class/class-pais.php");
 				$pais = new Pais(null,
 							 $_POST['inputNombre'],
 							 $_POST['inputName'],
@@ -27,11 +24,9 @@
 				$pais->guardarPais($conexion);
 			break;
 			case 'eliminar_pais':
-				include("../class/class-pais.php");
 				Pais::eliminarPais($conexion,$_POST['codigoPais']);
 			break;
 			case "actualizar_pais":
-				include("../class/class-pais.php");
 				$pais = new Pais();
 				$pais->setIdPais($_POST["id_pais"]);
 				$pais->setNombrePais($_POST["nombre_pais"]);

@@ -72,6 +72,8 @@
 				SELECT 
 				  id_pais,
 				  nombre_pais,
+				  name_pais,
+				  nom_pais,
 				  abreviatura_pais,
 				  codigo_telefono_pais
 				FROM tbl_paises";
@@ -79,14 +81,9 @@
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$paises=array();
 			while(($fila=$conexion->obtenerFila($resultado))){
-				$pais[] = array();
-				$pais["id_pais"] = $fila["id_pais"];
-				$pais["nombre_pais"] = $fila["nombre_pais"];
-				$pais["abreviatura_pais"] = $fila["abreviatura_pais"];
-				$pais["codigo_telefono_pais"] = $fila["codigo_telefono_pais"];
-				$paises[] = $pais;
+				$paises[] = $fila;
 			}
-			var_dump($paises);
+			//var_dump($paises);
 			echo json_encode($paises);
 		}
 
