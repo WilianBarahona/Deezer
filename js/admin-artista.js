@@ -69,7 +69,20 @@ $(document).ready(function(){
 			"accion":"listar_artistas"
 		},
 		success:function(respuesta){
-			console.log(respuesta);
+			for(var i = 0; i < respuesta.length; i++)
+			{
+				var artistas = respuesta[i];
+				$("#tbl-artistas").append(
+					'<tr id="tbl-artistas-fila-'+artista.id+'">'+
+				'	<td><img class="img img-circle img-responsive" src="'+artista.url+'" title="'+artista.nombre+'">'+
+				'	<td>'+artistas.nombre+'</td>'+
+				'	<td>'+artistas.pais+'</td>'+
+				'	<td>'+artistas.biografia+'</td>'+
+				'	<td><button onclick="editarArtista('+artistas.id+')"class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></td>'+
+				'	<td><button onclick="eliminarArtista('+artistas.id+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
+				'</tr>';
+				);
+			}
 		},
 		error: function(error){
 			console.log(error);

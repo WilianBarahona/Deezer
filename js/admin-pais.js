@@ -9,18 +9,16 @@ function listarPais(){
 		data:{"accion":"listar_pais"},
 		dataType:"JSON",
 		success:function(respuesta){
-			$("#div-pais #tbl-pais tbody").empty();
 			for (var i = 0; i < respuesta.length; i++) {
 				var pais = respuesta[i];
 				var fila = 
-				'<tr id="tbl-paiss-fila-'+pais.id_pais+'">'+
+				'<tr id="tbl-pais-fila-'+pais.id_pais+'">'+
 				'  <td>'+pais.nombre_pais+'</td>'+
 				'  <td>'+pais.abreviatura_pais+'</td>'+
 				'  <td>'+pais.codigo_telefono_pais+'</td>'+
 				'  <td><button onclick="editarPais('+pais.id_pais+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>'+
 				'  <button onclick="eliminarPais('+pais.id_pais+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 				'</tr>';
-
 				$("#div-pais #tbl-pais tbody").append(fila);
 			}
 		},
@@ -28,7 +26,6 @@ function listarPais(){
 			console.log(error);
 		},
 		complete: function(){
-			//TO-DO
 		}
 	});
 }
