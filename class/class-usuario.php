@@ -154,6 +154,7 @@
 				$fila = $objConexion->obtenerFila($resultado);
 				session_start();
 				$_SESSION['status']=true;
+				$_SESSION['id_usuario']=$fila['id_usuario'];
 				$_SESSION['id_suscripcion']=$fila['id_suscripcion'];
 				$_SESSION['id_pais']=$fila['id_pais'];
 				$_SESSION['usuario']=$fila['usuario'];
@@ -163,6 +164,7 @@
 				$_SESSION['email']=$fila['email'];
 				$_SESSION['fecha_nacimiento']=$fila['fecha_nacimiento'];
 				$_SESSION['url_foto_perfil']=$fila['url_foto_perfil'];
+				$_SESSION['tipo_usuario']=$fila['tipo_usuario'];
 				$respuesta['tipo_usuario']=$fila['tipo_usuario'];
 				$respuesta['loggedin'] = 1;
 				$respuesta["mensaje"]="tiene acceso" ;
@@ -177,6 +179,40 @@
 				}	  
 			echo json_encode($respuesta);
 		}
+		public  function actualizarRegistro($conexion){
+		$sql=sprintf("
+		UPDATE tbl_usuarios 
+		SET id_usuario=%s,
+			id_suscripcion=%s,
+			id_pais='%s',
+			usuario='%s',
+			nombre='%s',
+			apellido='%s',
+			sexo='%s',
+			email='%s',
+			contrasenia='%s',
+			ultima_sesion='%s',
+			fecha_nacimiento='%s',
+			url_foto_perfil='%s',
+			WHERE id_usuario=%s
+		",
+		$conexion->antiInyeccion($this->getIdUsuario()),
+		$conexion->antiInyeccion($this->getIdSuscripcion()),
+		$conexion->antiInyeccion($this->getIdPais()),
+		$conexion->antiInyeccion($this->getUsuario()),
+		$conexion->antiInyeccion($this->getNombre()),
+		$conexion->antiInyeccion($this->getApellido()),
+		$conexion->antiInyeccion($this->getSexo()),
+		$conexion->antiInyeccion($this->getEmail()),
+		$conexion->antiInyeccion($this->contrasenia()),
+		$conexion->antiInyeccion($this->getUltimaSesion()),
+		$conexion->antiInyeccion($this->getUrlFotoPerfil())
+
+	);
+	$resultado=$conexion->ejecutarConsulta($sql);
+	
+	return json_encode($resultado);
+}
 		
 	}
 ?>

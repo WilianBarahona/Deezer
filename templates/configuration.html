@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
 
   <!--Barra de navegacion-->
@@ -217,3 +218,19 @@
 <!--Fin Formulario-->  
 
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $.ajax({
+        url:"ajax/gestionar-usuario.php",
+        method:"POST",
+        data:{"accion":"cargar-datos"},
+        dataType: "JSON",
+        error:function(e){
+          console.log(e);
+        },
+        success:function(respuesta){
+          console.log(e);
+        }
+      });
+  });
+</script>>
