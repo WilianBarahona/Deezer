@@ -1,3 +1,14 @@
+<?php 
+
+session_start();
+if($_SESSION['loggedin']==false) { // O el usuario no es administrador
+    header("Location: login.php");
+}else{
+  
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -156,7 +156,10 @@ function iniciarSesion(){
     success: function(respuesta){
         var direccion=respuesta;
               if (direccion=="correo y contrasenia validos") {
+                // usuario normal
                 location='index.php';
+                // admin
+                // location='admin/index.php';
               }
               if (direccion=='correo o contrasenia invalidos') {
                 alert(direccion);
