@@ -19,11 +19,11 @@ function playList(){
 	// {id:"photo",url:"path/to/song.mp3", cover: "path/to/img.jpg(png) , artist: John Doe, title: Some song"}
 	this.arraySong = [
 	//, + iteraciones // Agregar coverimage, artist, titulo
-	{
+		{
 			id:"db",
 			title: "Chala head chala",
 			artist: "Ricardo Silva",
-			url:"http://download1504.mediafire.com/db5zs6ybsjkg/zs421rcqgiw3mb2/db.mp3",
+			url:"http://freezer.rf.gd/musica/db.mp3",
 			cover: "img/cover/db.jpg",
 		},
 		{

@@ -1,10 +1,9 @@
 <?php
-session_start();
-if($_SESSION['loggedin']==false) 
-{ 
-    session_destroy();
-    header("Location: login.php");
-}
+// session_start();
+// if($_SESSION['loggedin']==false) { 
+//     session_destroy();
+//     header("Location: login.php");
+// }
 
 ?>
 <!DOCTYPE html>
