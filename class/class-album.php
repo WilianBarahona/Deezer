@@ -65,40 +65,57 @@
 		#### LISTAR TODOS LOS ALBUMS
 		#	return objeto json con todos los ALBUMS
 		public static function listarTodos($conexion){
-			$sql='SELECT a.id_album as id, b.nombre_artista as nombreArtista, a.nombre_album as nombreAlbum, a.anio as anio, a.album_cover_url as foto 
-				  FROM tbl_albumes a
-				  INNER JOIN tbl_artistas b
-				  ON (a.id_artista = b.id_artista)';
-			$resultado = $conexion->ejecutarConsulta($sql);
-			$albumes = array();
-			while ($fila=$conexion->obtenerFila($resultado)) {
-				$album = array();
-				$album["id"] = $fila["id"];
-				$album["nombreArtista"] = $fila["nombreArtista"];
-				$album["nombreAlbum"] = $fila["nombreAlbum"];
-				$album["anio"] = $fila["anio"];
-				$album["foto"] = $fila["foto"];
-				$albumes[] = $album;
-			}
-			return json_encode($albumes);
-		}
-
-		public static function listarPorArtista($conexion,$codigo){
-			$sql= "SELECT a.id_album, b.nombre_artista, a.nombre_album, a.anio, a.album_cover_url as foto 
-				  FROM tbl_albumes a
-				  INNER JOIN tbl_artistas b
-				  ON (a.id_artista = b.id_artista)
-				  where b.id_artista = ".$codigo;
-				
+			$sql='SELECT 
+				a.id_album, 
+				a.id_artista,
+				b.nombre_artista,
+				a.nombre_album,
+				a.anio,
+				a.album_cover_url
+				FROM tbl_albumes a
+				INNER JOIN tbl_artistas b
+				ON (a.id_artista = b.id_artista);
+			';
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$albumes = array();
 			while ($fila=$conexion->obtenerFila($resultado)) {
 				$album = array();
 				$album["id_album"] = $fila["id_album"];
+				$album["id_artista"] = $fila["id_artista"];
 				$album["nombre_artista"] = $fila["nombre_artista"];
 				$album["nombre_album"] = $fila["nombre_album"];
 				$album["anio"] = $fila["anio"];
-				$album["foto"] = $fila["foto"];
+				$album["album_cover_url"] = $fila["album_cover_url"];
+				$albumes[] = $album;
+			}
+			return json_encode($albumes);
+		}
+
+		public static function listarPorArtista($conexion,$codigoArtista){
+			$sql= "SELECT 
+						a.id_album, 
+						b.id_artista,
+						b.nombre_artista,
+						a.nombre_album, 
+						a.anio, 
+						a.album_cover_url
+				  FROM tbl_albumes a
+				  INNER JOIN tbl_artistas b
+				  ON (a.id_artista = b.id_artista)
+				  where b.id_artista = ".$codigoArtista;
+				
+			$resultado = $conexion->ejecutarConsulta($sql);
+			$albumes = array();
+			while ($fila=$conexion->obtenerFila($resultado)) {
+				$album = array();
+				
+				$album["id_album"] = $fila["id_album"];
+				$album["id_artista"] = $fila["id_artista"];
+				$album["nombre_artista"] = $fila["nombre_artista"];
+				$album["nombre_album"] = $fila["nombre_album"];
+				$album["anio"] = $fila["anio"];
+				$album["album_cover_url"] = $fila["album_cover_url"];
+				
 				$albumes[] = $album;
 			}
 			return json_encode($albumes);
@@ -106,13 +123,21 @@
 
 		#### SELECCIONAR REGISTRO DE ALBUM POR CODIGO
 		#	return objeto json con todos los ALBUMS
-		public function seleccionar($conexion){
+		public function seleccionar($conexion, $codigoAlbum){
 			$resultado=$conexion->ejecutarConsulta(sprintf("
-				//SELECT
-				//FROM
-				//WHERE
+				SELECT
+				  a.id_album,
+				  a.id_artista,
+				  b.nombre_artista,
+				  a.nombre_album,
+				  a.anio,
+				  a.album_cover_url
+				FROM tbl_albumes a
+				INNER JOIN tbl_artistas b
+				ON (a.id_artista = b.id_artista)
+				WHERE a.id_album = %s;
 				",
-				//$conexion->antiInyeccion($this->getIdGenero())
+				$conexion->antiInyeccion($codigoAlbum)
 			));
 			$fila=$conexion->obtenerFila($resultado);
 			return json_encode($fila);
@@ -122,11 +147,9 @@
 		#     return false or true ####  JSON
 		public function insertarRegistro($conexion){
 			$sql=sprintf("
-				//INSERT INTO
-				//()
-				//VALUES();
+				
 				",
-				//$conexion->antiInyeccion($this->get...),
+				""
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);
@@ -141,7 +164,7 @@
 				//... = ...
 				//WHERE
 			",
-				//$conexion->antiInyeccion($this->getNombreGenero()),
+				""
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);
@@ -159,5 +182,17 @@
 			return json_encode($resultado);
 		}
 
+		function static getNumeroCanciones($conexion, $idAlbum){
+			$sql =sprintf("
+				SELECT COUNT(*) as numero_canciones
+				FROM tbl_canciones
+				WHERE id_album=%s"
+			,
+				$conexion->antiInyeccion($idAlbum);
+			);
+			$resultado=$conexion->ejecutarConsulta($sql);
+			$fila = $conexion->obtenerFila($resultado);
+			return $fila["numero_canciones"];
+		}
 	}
 ?>

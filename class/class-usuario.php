@@ -6,6 +6,7 @@
 		private $idPais;
 		private $usuario;
 		private $urlFotoPerfil;
+		private $tipoUsuario;
 
 		public function __construct($nombre=null,$apellido=null,$sexo=null,$email=null,$contrasenia=null,$fechaNacimiento=null,$ultimaSesion=null,$idUsuario=null,$idSuscripcion=null,$idPais=null,$usuario=null,$urlFotoPerfil=null){
 			parent::__construct($nombre,$apellido,$sexo,$email,$contrasenia,$fechaNacimiento,$ultimaSesion);
@@ -26,6 +27,8 @@
 		function getUsuario() { return $this->usuario; }
 		function setUrlFotoPerfil($urlFotoPerfil) { $this->urlFotoPerfil = $urlFotoPerfil; }
 		function getUrlFotoPerfil() { return $this->urlFotoPerfil; }
+		function getTipoUsuario(){return $this.tipoUsuario}
+		function setTipoUsuario($tipoUsuario){$this->tipoUsuario=$tipoUsuario;}
 
 		public function __toString(){
 			return parent::__toString." idUsuario: ".$this->idUsuario." idSuscripcion: ".$this->idSuscripcion." idPais: ".$this->idPais." Usuario: ".$this->usuario." urlFotoPerfil: ".$this->urlFotoPerfil;
