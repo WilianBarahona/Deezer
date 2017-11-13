@@ -6,7 +6,7 @@
 		private $nombreCancion;
 		private $urlAudio;
 
-		public function __construct($idCancion=null,$idAlbum=null,$idIdioma=null,$nombreCancion=null,$urlAudio=null){
+		public function __construct($idCancion,$idAlbum,$idIdioma,$nombreCancion,$urlAudio){
 			$this->idCancion = $idCancion;
 			$this->idAlbum = $idAlbum;
 			$this->idIdioma = $idIdioma;
