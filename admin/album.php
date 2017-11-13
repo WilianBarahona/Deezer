@@ -15,8 +15,8 @@
         <ul class="nav nav-sidebar" id="dashboard">
           <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
           <li class="active"><a href="artista.php"><span class="glyphicon glyphicon-star"></span> Artistas</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-cd"></span> Álbumes</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-music"></span> Canciones</a></li>
+          <li><a href="album.php"><span class="glyphicon glyphicon-cd"></span> Álbumes</a></li>
+          <li><a href="cancion.php"><span class="glyphicon glyphicon-music"></span> Canciones</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-list"></span> Playlists</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-user"></span> Gestión de Usuarios</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Ajustes</a></li>
@@ -26,67 +26,52 @@
         <div class="container-fluid">
          <div class="row">
            
-           <h1>Canciones</h1>
+           <h1>Álbumes</h1>
            <hr>
            
            <div class="col-md-12">
-              <h3>Agregar Canción</h3>
+              <h3>Agregar Álbum</h3>
               <table class="table table-striped">
                 <tr>
-                  <td>Artista: </td>
+                  <td>Fotografía: </td>
                   <td>
-                    <select id="slc-artista" class="form form-control" placeholder="Seleccionar">
-                      <option value="" hidden>Seleccionar Artista</option>
-                    </select>
+                    <input type="hidden" id="txt-url-foto-album">
+                    <form method="post" id="form-foto-album" name="form-foto-album" enctype="multipart/form-data">
+                      <label class="btn btn-default">
+                          Examinar <input type="file" name="file" id="file-foto-album" hidden>
+                      </label>
+                      <img src="../img/load.gif" id="carga-foto-album" class="img loading" height="20px">
+                      <img src="../img/good.png" id="lista-carga-foto-album" class="img loading" height="20px">
+                    </form>
                   </td>
                 </tr>
                 <tr>
-                  <td>Álbum: </td>
+                	<td>Artista: </td>
+                	<td>
+                		<select name="slc-artista" id="slc-artista" class="form-control" placeholder="Seleccionar">
+                			<option value="" hidden="">Seleccionar</option>
+                		</select>
+                	</td>
+                </tr>
+                <tr>
+                  <td>Nombre del álbum: </td>
+                  <td><input type="text" id="txt-nombre-album" id="txt-album" value="" placeholder="Nombre" class="form form-control"></td>
+                </tr>
+                <tr>
+                  <td>Año: </td>
                   <td>
-                    <select id="slc-album" class="form form-control" placeholder="Seleccionar">
-                      <option value="" hidden>Seleccionar Álbum</option>
-                    </select>
+                    <input class="form-control" type="date" name="txt-fecha" id="txt-fecha">
                   </td>
                 </tr>
                 <tr>
-                  <td>Genero: </td>
                   <td>
-                    <select id="slc-genero" class="form form-control" placeholder="Seleccionar">
-                      <option value="" hidden>Seleccionar</option>
-                      option
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Idioma: </td>
-                  <td>
-                    <select id="slc-idioma" class="form form-control" placeholder="Seleccionar">
-                      <option value="" hidden>Seleccionar</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Nombre: </td>
-                  <td>
-                    <input class="form-control" type="text" name="txt-nombre-cancion" id="txt-nombre-cancion">
-                  </td>
-                </tr>
-                <tr>
-                	<td>Url: </td>
-                	<td><input class="form-control" type="text" name="txt-nombre-cancion" id="txt-url-cancion"></td>
-                </tr>
-                <tr>
-                  <td>
-                    <button id="btn-guardar-cancion" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span>Guardar</button>
+                    <button id="btn-guardar-album" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Guardar</button>
                   </td>
                 </tr>
               </table>
             </div>
           </div>
         </div>
-
-
-
       </div>
     </div>
   </div>
@@ -96,6 +81,6 @@
   <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="../js/jquery-confirm.min.js"></script>
   <script type="text/javascript" src="../js/navigation.js"></script>
-  <script type="text/javascript" src="../js/admin-cancion.js"></script>
+  <script type="text/javascript" src="../js/admin-album.js"></script>
 </body>
 </html>

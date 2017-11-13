@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	listarArtistas();
 	listarGeneros();
+	listarIdiomas();
 });
 
 	function listarArtistas(){
@@ -50,7 +51,26 @@ $(document).ready(function(){
 	}
 
 	function listarIdiomas(){
-
+		$.ajax({
+			url:"../ajax/gestionar-idioma.php",
+			method:"POST",
+			dataType: "JSON",
+			data:{
+				"accion":"listar_idiomas"
+			},
+			success: function(respuesta){
+				for(var i = 0; i < respuesta.length; i++)
+				{
+					var idioma = respuesta[i];
+					$("#slc-idioma").append(
+						'<option value="'+idioma.id_idioma+'">'+idioma.nombre_idioma+'</option>'
+					);
+				}
+			},
+			error:function(error){
+				console.log(error);
+			}
+		});
 	}
 
 	$("#slc-artista").change(function(){
@@ -69,7 +89,7 @@ $(document).ready(function(){
 				{
 					var albumes = respuesta[i];
 					$("#slc-album").append(
-						'<option value="'+albumes.id+'">'+ albumes.nombreAlbum +'</option>'
+						'<option value="'+albumes.id_album+'">'+ albumes.nombre_album +'</option>'
 					);
 				}
 			},

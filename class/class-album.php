@@ -83,21 +83,20 @@
 			return json_encode($albumes);
 		}
 
-		public static function listarPorArtista($conexion, $codigo){
-			$sql= sprintf("SELECT a.id_album as id, b.nombre_artista as nombreArtista, a.nombre_album as nombreAlbum, a.anio as anio, a.album_cover_url as foto 
+		public static function listarPorArtista($conexion,$codigo){
+			$sql= "SELECT a.id_album, b.nombre_artista, a.nombre_album, a.anio, a.album_cover_url as foto 
 				  FROM tbl_albumes a
 				  INNER JOIN tbl_artistas b
 				  ON (a.id_artista = b.id_artista)
-				  where b.id_artista = %s",
-				  conexion->antiInyeccion($codigo)
-				)
+				  where b.id_artista = ".$codigo;
+				
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$albumes = array();
 			while ($fila=$conexion->obtenerFila($resultado)) {
 				$album = array();
-				$album["id"] = $fila["id"];
-				$album["nombreArtista"] = $fila["nombreArtista"];
-				$album["nombreAlbum"] = $fila["nombreAlbum"];
+				$album["id_album"] = $fila["id_album"];
+				$album["nombre_artista"] = $fila["nombre_artista"];
+				$album["nombre_album"] = $fila["nombre_album"];
 				$album["anio"] = $fila["anio"];
 				$album["foto"] = $fila["foto"];
 				$albumes[] = $album;

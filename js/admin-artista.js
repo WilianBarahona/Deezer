@@ -1,11 +1,12 @@
 // CARGAR PAISES
 $(document).ready(function(){
+	llenarTablaArtistas();
 	$.ajax({
 		url:"../ajax/gestionar-pais.php",
 		method:"POST",
 		dataType:"JSON",
 		data:{
-			"accion":"listar_paises"
+			"accion":"listar_pais"
 		},
 		success:function(respuesta){
 			for (var i = 0; i < respuesta.length; i++) {
@@ -26,7 +27,7 @@ $(document).ready(function(){
 
 //CARGAR TABLA DE ARTISTAS
 
-/*
+
 // LLENADO TBL-ARTISTAS
 function llenarTablaArtistas(idArtista){
 	$.ajax({
@@ -39,7 +40,7 @@ function llenarTablaArtistas(idArtista){
 				var artista = respuesta[i];
 				var fila = 
 				'<tr id="tbl-artistas-fila-'+artista.id+'">'+
-				'	<td><img class="img img-circle img-responsive" src="'+artista.url+'" title="'+artista.nombre+'">'+
+				'	<td><img class="img img-circle img-responsive" src="../'+artista.foto+'" title="'+artista.nombre+'">'+
 				'	<td>'+artista.nombre+'</td>'+
 				'	<td>'+artista.pais+'</td>'+
 				'	<td>'+artista.biografia+'</td>'+
@@ -58,7 +59,7 @@ function llenarTablaArtistas(idArtista){
 		}
 	});
 }
-*/
+
 
 $(document).ready(function(){
 	$.ajax({
@@ -95,7 +96,6 @@ $("#file-foto-artista").change(function(){
 			if(respuesta.status){
 				$("#txt-url-foto-artista").val("img/"+respuesta.mensaje);
 				$("#lista-carga-foto-artista").show();
-				alert($("#txt-url-foto-artista").val());
 			}else{
 				$.alert(respuesta.mensaje);
 			}
@@ -108,16 +108,15 @@ $("#file-foto-artista").change(function(){
 			$("#carga-foto-artista").hide();
 		}
 	});
-	alert("E:" + $("#txt-url-foto-artista").val());
 });
 
 
 // INSERTAR ARTISTA
 $("#btn-guardar-artista").click(function(){
-	var nombreArtista = $("#txt-nombre-artistas").val();
+	var nombreArtista = $("#txt-nombre-artista").val();
 	var idPais = $("#slc-pais-artista").val();
 	var biografia = $("#txt-biografia-artista").val();
-	var url = $("input[name='form-foto-artista']").val();
+	var url = $("#txt-url-foto-artista").val();
 	if(nombreArtista!=""){
 		$.ajax({
 			url: "../ajax/gestionar-artista.php",
@@ -127,7 +126,8 @@ $("#btn-guardar-artista").click(function(){
 				"accion":"insertar_artista",
 				"nombre_artista":nombreArtista,
 				"id_pais":idPais,
-				"biografia_artista":biografia
+				"biografia":biografia,
+				"url_foto":url
 			},
 			success:function(respuesta){
 				if(respuesta)

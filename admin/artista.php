@@ -82,14 +82,6 @@
                   <th>Eliminar</th>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <img class="img img-circle img-responsive" src="https://cps-static.rovicorp.com/3/JPG_400/MI0003/852/MI0003852493.jpg" Title="Frank Sinatra">
-                    </td>
-                    <td>Frank Sinatra</td>
-                    <td>Estados Unidos (USA)</td>
-                    <td><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-paperclip"></span></button></td>
-                  </tr>
                 </tbody>
               </table>
 
