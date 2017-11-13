@@ -4,7 +4,7 @@
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
-			case 'insertar_cancion': 
+			case 'insertar_registro': 
 				$cancion = new Cancion(
 					null,
 					$_POST["id_album"],
@@ -14,6 +14,20 @@
 				);
 				$resultado = $cancion->insertarRegistro($conexion);
 				echo $resultado;
+			break;
+			case 'eliminar_registro':
+				
+				break;
+			case 'actualizar_registro':
+
+				break;
+
+			case 'listar_todos':
+		
+				break;
+			case 'seleccionar':
+				
+				break;
 			default:
 				echo json_encode("Petición inválida");
 				break;
