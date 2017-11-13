@@ -8,13 +8,19 @@
 				echo Album::listarTodos($conexion);
 			break;
 			case 'listar-por-artista':
-				echo Album::listarPorArtista($conexion, $_POST["codigo_artista"]);
+				$resultado = Album::listarPorArtista($conexion, $_POST["codigo_artista"]);
+				echo json_encode($resultado);
 			break;
 			case "seleccionar":
 				$album = new Album();
 				$album->setIdAlbum($_POST["id_album"]);
 				echo $album->seleccionar($conexion);
 			break;
+
+			case "eliminar-registro":
+				echo json_encode(Album::eliminarRegistro($conexion, $_POST["id_album"]));
+			break;
+
 			default:
 				echo json_encode("Petición inválida");
 			break;

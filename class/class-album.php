@@ -98,7 +98,7 @@
 				$album["numero_canciones"] = $this->getNumeroCanciones($conexion, $album["id_album"]);
 				$albumes[] = $album;
 			}
-			return json_encode($albumes);
+			return $albumes;
 		}
 
 		#### SELECCIONAR REGISTRO DE ALBUM POR CODIGO
@@ -143,11 +143,19 @@
 		#     return false or true ####  JSON
 		public static function actualizarRegistro($conexion){
 			$sql=sprintf("
-				//UPDATE
-				//... = ...
-				//WHERE
+				UPDATE tbl_albumes
+				SET
+				  id_artista=%s,
+				  nombre_album='%s',
+				  anio='%s',
+				  album_cover_url='%s'
+				WHERE id_album=%s;
 			",
-				""
+				$conexion->antiInyeccion($this->getIdArtista()),
+				$conexion->antiInyeccion($this->getNombreAlbum()),
+				$conexion->antiInyeccion($this->getAnio()),
+				$conexion->antiInyeccion($this->getCoverAlbumUrl()),
+				$conexion->antiInyeccion($this->getIdAlbum())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return json_encode($resultado);
@@ -155,14 +163,28 @@
 		#### ELIMINAR REGISTRO ALBUMS
 		#     return false or true ####  JSON
 		public static function eliminarRegistro($conexion, $id){
-			$sql = sprintf("
-				//DELETE FROM 
-				//WHERE
+			$sql1 = sprintf("
+				DELETE FROM tbl_canciones
+				WHERE id_album = %s;
 			",
 				$conexion->antiInyeccion($id)
 			);
-			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			$sql2 = sprintf("
+				DELETE FROM tbl_comentarios_por_album
+				WHERE id_album= %s;
+			",
+				$conexion->antiInyeccion($id)
+			);
+			$sql3=sprintf("
+				DELETE FROM tbl_albumes
+				WHERE id_album= %s;
+			",
+				$conexion->antiInyeccion($id)
+			);
+			$resultado1=$conexion->ejecutarConsulta($sql1);
+			$resultado2=$conexion->ejecutarConsulta($sql2);
+			$resultado3=$conexion->ejecutarConsulta($sql3);
+			return ($resultado1)&&($resultado2)&&($resultado3);
 		}
 
 		public static function getNumeroCanciones($conexion, $idAlbum){
