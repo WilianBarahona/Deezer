@@ -1,11 +1,11 @@
 <?php
-session_start();
-if($_SESSION['loggedin']==false) { // CUALQUIER USUARIO REGISTRADO PUEDE VER ESTA PAGINA
-    // session_destroy();
-    header("Location: login.php");
-}else{
+// session_start();
+// if($_SESSION['loggedin']==false) { // CUALQUIER USUARIO REGISTRADO PUEDE VER ESTA PAGINA
+//     // session_destroy();
+//     header("Location: login.php");
+// }else{
 
-}
+// }
 
 ?>
 <!DOCTYPE html>

@@ -94,7 +94,7 @@ $("#file-foto-artista").change(function(){
 	    dataType:"JSON",
 	    success:function(respuesta){
 			if(respuesta.status){
-				$("#txt-url-foto-artista").val("img/"+respuesta.mensaje);
+				$("#txt-url-foto-artista").val("img/"+respuesta.ruta);
 				$("#lista-carga-foto-artista").show();
 			}else{
 				$.alert(respuesta.mensaje);

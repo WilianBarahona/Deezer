@@ -30,7 +30,7 @@
 		}
 
 		public function obtenerFila($resultado){
-			return mysqli_fetch_array($resultado);
+			return mysqli_fetch_array($resultado, MYSQL_ASSOC);
 		}
 
 		public function cantidadRegistros($resultado){

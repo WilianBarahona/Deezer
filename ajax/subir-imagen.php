@@ -30,7 +30,8 @@ if (isset($_FILES["file"])){
     else{
         $src = $carpeta.$nombre;
         move_uploaded_file($ruta_provisional, $src);
-        $respuesta["mensaje"]=$nombre;
+        $respuesta["mensaje"]="La imagen se cargó correctamente";
+        $respuesta["ruta"]= $nombre;
         $respuesta["status"] = true;
     }
     echo json_encode($respuesta);

@@ -4,11 +4,16 @@
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion();
 		switch ($_POST['accion']) {
-			case "listar-albumes": 
+			case "listar-todos": 
 				echo Album::listarTodos($conexion);
 			break;
-			case 'listar-albumes-artista':
+			case 'listar-por-artista':
 				echo Album::listarPorArtista($conexion, $_POST["codigo_artista"]);
+			break;
+			case "seleccionar":
+				$album = new Album();
+				$album->setIdAlbum($_POST["id_album"]);
+				echo $album->seleccionar($conexion);
 			break;
 			default:
 				echo json_encode("Petición inválida");
