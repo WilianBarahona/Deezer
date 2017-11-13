@@ -145,29 +145,34 @@ $("#btn-search").click(function(){
         }); 
 });
 function iniciarSesion(){
-    var parametros=
-      "inputEmail="+$("#inputEmail").val()+"&"+
-      "inputPassword="+$("#inputPassword").val();
-      $.ajax({
+      var correo=$("#inputEmail").val();
+      var contrasenia=$("#inputPassword").val();
+       $.ajax({
 
-    url:"ajax/verificacion-sesion.php",
-    data:parametros,
+   url:"ajax/verificacion-sesion.php",
+    data:{
+            "inputEmail":correo,
+            "inputPassword":contrasenia
+          },
+    dataType: 'json ',
     method: "POST",
-    success: function(respuesta){
-        var direccion=respuesta;
-              if (direccion=="correo y contrasenia validos") {
-                // usuario normal
-                location='index.php';
-                // admin
-                // location='admin/index.php';
-              }
-              if (direccion=='correo o contrasenia invalidos') {
-                alert(direccion);
-              }
+    success: function(respuesta){  
+    console.log(respuesta) ;
+           if (respuesta.loggedin==0) {
 
+              $("#status").html(respuesta.mensaje);
+            }
+            else {
+               if (respuesta.tipo_usuario==1) {
+                  window.location="admin/index.php";
+               }
+               else if (respuesta.tipo_usuario==2) {
+                  window.location="index.php";
+               }  
+            }
     },
     error:function(e){
-        alert(e);
+        console.log(e);
     }
   });
 }
