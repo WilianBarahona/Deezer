@@ -8,7 +8,7 @@ if (isset($_FILES["file"])){
     $size = $file["size"];
     $carpeta = "../music/";
     
-    if ($tipo != 'audio/mpeg3' && $tipo!='audio/x-mpeg-3' && $tipo!='video/mpeg' && $tipo!='video/x-mpeg'){
+    if ($tipo != 'audio/mpeg3' && $tipo!='audio/x-mpeg-3' && $tipo!='video/mpeg' && $tipo!='video/x-mpeg' && $tipo!='audio/mpeg'){
       $respuesta["mensaje"]="Error, el archivo no es un archivo mp3";
       $respuesta["status"] = false;
     }

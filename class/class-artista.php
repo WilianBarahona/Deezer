@@ -96,7 +96,6 @@ class Artista{
 		$resultado = $conexion->ejecutarConsulta($sql);
 		$artistas=array();
 		while($artista=$conexion->obtenerFila($resultado)){
-			
 			$artistas[]=$artista;
 		}
 		return $artistas;

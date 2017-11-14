@@ -33,10 +33,10 @@
 		public static function listarTodos($conexion){
 			$sql = "
 				SELECT 
-				  id_genero as id,
-				  nombre_genero as nombre
+				  id_genero,
+				  nombre_genero
 				FROM tbl_generos
-				ORDER BY nombre ASC;
+				ORDER BY nombre_genero ASC
 			";
 
 			$resultado = $conexion->ejecutarConsulta($sql);

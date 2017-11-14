@@ -3,50 +3,52 @@ $(document).ready(function(){
 	listarGeneros();
 	listarIdiomas();
 });
-
 	function listarArtistas(){
 		$.ajax({
-		url:"../ajax/gestionar-artista.php",
-		method:"POST",
-		dataType: "JSON",
-		data:{
-			"accion":"listar_artistas"
-		},
-		success: function(respuesta){
-			for(var i = 0; i < respuesta.length; i++)
-			{
-				var artistas = respuesta[i];
-				$("#slc-artista").append(
-					'<option value="'+artistas.id+'">'+artistas.nombre+'</option>'
-				);
+			url:"../ajax/gestionar-artista.php",
+			method:"POST",
+			dataType: "JSON",
+			data:{
+				"accion":"listar-todos"
+			},
+			success: function(respuesta){
+				for(var i = 0; i < respuesta.length; i++)
+				{
+					var artistas = respuesta[i];
+					var fila = 
+					'<option value="'+artistas.id_artista+'">'+artistas.nombre_artista+'</option>';
+					$("#slc-artista").append(fila);
+				}
+			},
+			error:function(error){
+				console.log(error);
+			},
+			complete: function(respuesta){
+
 			}
-		},
-		error:function(error){
-			console.log(error);
-		}
 		});
 	}
 
 	function listarGeneros(){
 		$.ajax({
-		url:"../ajax/gestionar-genero.php",
-		method:"POST",
-		dataType: "JSON",
-		data:{
-			"accion":"listar_generos"
-		},
-		success: function(respuesta){
-			for(var i = 0; i < respuesta.length; i++)
-			{
-				var generos = respuesta[i];
-				$("#slc-genero").append(
-					'<option value="'+generos.id+'">'+generos.nombre+'</option>'
-				);
+			url:"../ajax/gestionar-genero.php",
+			method:"POST",
+			dataType: "JSON",
+			data:{
+				"accion":"listar-todos"
+			},
+			success: function(respuesta){
+				for(var i = 0; i < respuesta.length; i++)
+				{
+					var generos = respuesta[i];
+					var fila =
+						'<option value="'+generos.id_genero+'">'+generos.nombre_genero+'</option>';
+					$("#slc-genero").append(fila);
+				}
+			},
+			error:function(error){
+				console.log(error);
 			}
-		},
-		error:function(error){
-			console.log(error);
-		}
 		});
 	}
 
@@ -56,15 +58,15 @@ $(document).ready(function(){
 			method:"POST",
 			dataType: "JSON",
 			data:{
-				"accion":"listar_idiomas"
+				"accion":"listar-todos"
 			},
 			success: function(respuesta){
 				for(var i = 0; i < respuesta.length; i++)
 				{
 					var idioma = respuesta[i];
-					$("#slc-idioma").append(
-						'<option value="'+idioma.id_idioma+'">'+idioma.nombre_idioma+'</option>'
-					);
+					var fila = 
+					'<option value="'+idioma.id_idioma+'">'+idioma.nombre_idioma+'</option>';
+					$("#slc-idioma").append(fila);
 				}
 			},
 			error:function(error){
@@ -81,16 +83,15 @@ $(document).ready(function(){
 			method: "POST",
 			dataType:"JSON",
 			data: {
-				"accion":"listar_albumes_por_codigo",
-				"codigo_artista":codigoArtista
+				"accion":"listar-por-artista",
+				"id_artista":codigoArtista
 			},
 			success: function(respuesta){
 				for(var i = 0; i < respuesta.length; i++)
 				{
 					var albumes = respuesta[i];
-					$("#slc-album").append(
-						'<option value="'+albumes.id_album+'">'+ albumes.nombre_album +'</option>'
-					);
+					var fila = '<option value="'+albumes.id_album+'">'+ albumes.nombre_album +'</option>';
+					$("#slc-album").append(fila);
 				}
 			},
 			error:function(error){
@@ -149,7 +150,7 @@ $("btn-guardar-cancion").click(function(){
 
 /*EXAMINAR-CHANGE*/
 $("#file-cancion").change(function(){
-	var formData = new FormData($("form-cancion")[0]);
+	var formData = new FormData($("#form-cancion")[0]);
 	$("#lista-carga-cancion").hide();
 	$("#carga-foto-cancion").show();
 	$.ajax({
