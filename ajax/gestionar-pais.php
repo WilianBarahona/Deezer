@@ -15,30 +15,29 @@
 				echo json_encode($respuesta);
 			break;
 			case 'buscar-por-nombre':
-				Pais::buscarPais($conexion,$_POST['nombre_pais']);
+				$respuesta = Pais::buscarPorNombre($conexion,$_POST['nombre_pais']);
+				echo json_encode($respuesta);
 			break;
 			case 'insertar-registro':
-				$pais = new Pais(null,
-							 $_POST['inputNombre'],
-							 $_POST['inputName'],
-							 $_POST['inputNom'],
-							 $_POST['inputAbreviatura'],
-							 $_POST['inputCodigoTelefono']
-							 );
-				$pais->guardarPais($conexion);
+				$pais = new Pais();
+				$pais->setNombrePais($_POST['nombre_pais']);
+				$pais->setAbreviaturaPais($_POST['abreviatura_pais']);
+				$pais->setCodigoTelefonoPais($_POST['codigo_telefono_pais']);
+				$respuesta = $pais->insertarRegistro($conexion);
+				echo json_encode($respuesta);
 			break;
 			case 'eliminar-registro':
-				Pais::eliminarPais($conexion,$_POST['codigoPais']);
+				$respuesta = Pais::eliminarRegistro($conexion,$_POST['id_pais']);
+				echo json_encode($respuesta);
 			break;
 			case "actualizar-registro":
 				$pais = new Pais();
 				$pais->setIdPais($_POST["id_pais"]);
 				$pais->setNombrePais($_POST["nombre_pais"]);
-				$pais->setNamePais($_POST["name_pais"]);
-				$pais->setNomPais($_POST["nom_pais"]);
 				$pais->setAbreviaturaPais($_POST["abreviatura_pais"]);
 				$pais->setCodigoTelefonoPais($_POST["codigo_telefono_pais"]);
-				echo $pais->actualizarPais($conexion);
+				$respuesta = $pais->actualizarRegistro($conexion);
+				echo json_encode($respuesta);
 			break;
 			default:
 				echo json_encode("Petición inválida");
