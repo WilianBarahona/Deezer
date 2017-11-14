@@ -6,7 +6,12 @@
 		private $nombreCancion;
 		private $urlAudio;
 
-		public function __construct($idCancion,$idAlbum,$idIdioma,$nombreCancion,$urlAudio){
+		public function __construct($idCancion=null,
+									$idAlbum=null,
+									$idIdioma=null,
+									$nombreCancion=null,
+									$urlAudio=null
+		){
 			$this->idCancion = $idCancion;
 			$this->idAlbum = $idAlbum;
 			$this->idIdioma = $idIdioma;
@@ -66,78 +71,101 @@
 		#	return objeto json con todos los CANCIONES
 		public static function listarTodos($conexion){
 			$sql = "
-				//SELECT 
-				//FROM
-				//ORDER BY ... ASC; // Opcional
+				SELECT
+				  a.id_cancion, a.id_album, b.nombre_album, b.album_cover_url,
+				  b.id_artista, c.nombre_artista,
+				  a.id_idioma, d.nombre_idioma, d.abreviatura_idioma,
+				  a.nombre_cancion,
+				  a.url_audio,
+				  a.reproducciones
+				FROM tbl_canciones a
+				INNER JOIN tbl_albumes b
+				ON (a.id_album=b.id_album)
+				INNER JOIN tbl_artistas c
+				ON (b.id_artista=c.id_artista)
+				INNER JOIN tbl_idioma d
+				ON (a.id_idioma=d.id_idioma);
 			";
-
 			$resultado = $conexion->ejecutarConsulta($sql);
-			$objetos=array(); // Renombrar
-			while($fila=$conexion->obtenerFila($resultado)){
-				$objeto = array(); //Renombrar
-				//$objeto["campo1"]= $fila["id"];
-				// $objeto["campo2"]= $fila["id"]; //...
-
-				$objetos[]=$objeto;
+			$canciones=array(); // Renombrar
+			while($cancion=$conexion->obtenerFila($resultado)){
+				$canciones[]=$cancion;
 			}
-			return json_encode($objetos);
+			return $canciones;
 		}
 
 		#### SELECCIONAR REGISTRO DE CANCION POR CODIGO
 		#	return objeto json con todos los CANCIONES
 		public function seleccionar($conexion){
 			$resultado=$conexion->ejecutarConsulta(sprintf("
-				//SELECT
-				//FROM
-				//WHERE
+				SELECT
+				  a.id_cancion, a.id_album, b.nombre_album, b.album_cover_url,
+				  b.id_artista, c.nombre_artista,
+				  a.id_idioma, d.nombre_idioma, d.abreviatura_idioma,
+				  a.nombre_cancion,
+				  a.url_audio,
+				  a.reproducciones
+				FROM tbl_canciones a
+				INNER JOIN tbl_albumes b
+				ON (a.id_album=b.id_album)
+				INNER JOIN tbl_artistas c
+				ON (b.id_artista=c.id_artista)
+				INNER JOIN tbl_idioma d
+				ON (a.id_idioma=d.id_idioma)
+				WHERE id_cancion=%s;
 				",
-				//$conexion->antiInyeccion($this->getIdGenero())
+				$conexion->antiInyeccion($this->getIdCancion())
 			));
-			$fila=$conexion->obtenerFila($resultado);
-			return json_encode($fila);
+			$cancion=$conexion->obtenerFila($resultado);
+			return $cancion;
 		}
 
 		####  INSERTAR RESGISTRO DE CANCION
 		#     return false or true ####  JSON
 		public function insertarRegistro($conexion){
 			$sql=sprintf("INSERT INTO tbl_canciones
-				(id_album, id_idioma, nombre_cancion, url_audio, reproducciones)
+				(id_album, id_idioma, nombre_cancion, url_audio)
 				VALUES(%s, %s, '%s', '%s')
 				",
-				$conexion->antiInyeccion($this->getIdAlbum),
-				$conexion->antiInyeccion($this->getIdIdioma),
-				$conexion->antiInyeccion($this->getNombreCancion),
-				$conexion->antiInyeccion($this->getUrlAudio),
+				$conexion->antiInyeccion($this->getIdAlbum()),
+				$conexion->antiInyeccion($this->getIdIdioma()),
+				$conexion->antiInyeccion($this->getNombreCancion()),
+				$conexion->antiInyeccion($this->getUrlAudio())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			return $resultado;
 		}
 
 
 		#### ACTUALIZAR REGISTRO CANCION
 		#     return false or true ####  JSON
-		public static function actualizarRegistro($conexion){
+		public function actualizarRegistro($conexion){
 			$sql=sprintf("
-				//UPDATE
-				//... = ...
-				//WHERE
+				UPDATE tbl_canciones SET
+				  id_idioma=%s,
+				  nombre_cancion='%s',
+				  url_audio='%s'
+				WHERE id_cancion=%s;
 			",
-				//$conexion->antiInyeccion($this->getNombreGenero()),
+				$conexion->antiInyeccion($this->getIdIdioma()),
+				$conexion->antiInyeccion($this->getNombreCancion()),
+				$conexion->antiInyeccion($this->getUrlAudio()),
+				$conexion->antiInyeccion($this->getIdCancion())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			return $resultado;
 		}
 		#### ELIMINAR REGISTRO CANCIONES
 		#     return false or true ####  JSON
-		public static function eliminarRegistro($conexion, $id){
+		public static function eliminarRegistro($conexion, $idCancion){
 			$sql = sprintf("
-				//DELETE FROM 
-				//WHERE
+				DELETE FROM tbl_canciones
+				WHERE id_cancion = %s;
 			",
-				$conexion->antiInyeccion($id)
+				$conexion->antiInyeccion($idCancion)
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			return $resultado;
 		}
 	}
 ?>

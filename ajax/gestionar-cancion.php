@@ -4,30 +4,38 @@
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
-			case 'insertar_registro': 
-				$cancion = new Cancion(
-					null,
-					$_POST["id_album"],
-					$_POST["id_idioma"],
-					$_POST["nombre"],
-					$_POST["url"]
-				);
-				$resultado = $cancion->insertarRegistro($conexion);
-				echo $resultado;
+			case 'insertar-registro': 
+				$cancion = new Cancion();
+				$cancion->setIdAlbum($_POST["id_album"]);
+				$cancion->setIdIdioma($_POST["id_idioma"]);
+				$cancion->setNombreCancion($_POST["nombre_cancion"]);
+				$cancion->setUrlAudio($_POST["url_audio"]);
+				$respuesta = $cancion->insertarRegistro($conexion);
+				echo json_encode($respuesta);
 			break;
-			case 'eliminar_registro':
-				
-				break;
-			case 'actualizar_registro':
-
-				break;
-
-			case 'listar_todos':
-		
-				break;
 			case 'seleccionar':
-				
-				break;
+				$cancion = new Cancion();
+				$cancion->setIdCancion($_POST["id_cancion"]);
+				$respuesta=$cancion->seleccionar($conexion);
+				echo json_encode($respuesta);
+			break;
+			case 'eliminar-registro':
+				$respuesta = Cancion::eliminarRegistro($conexion, $_POST["id_cancion"]);
+				echo json_encode($respuesta);
+			break;
+			case 'actualizar-registro':
+				$cancion = new Cancion();
+				$cancion->setIdCancion($_POST["id_cancion"]);
+				$cancion->setIdIdioma($_POST["id_idioma"]);
+				$cancion->setNombreCancion($_POST["nombre_cancion"]);
+				$cancion->setUrlAudio($_POST["url_audio"]);
+				$respuesta = $cancion->actualizarRegistro($conexion);
+				echo json_encode($respuesta);
+			break;
+			case 'listar-todos':
+				$respuesta = Cancion::listarTodos($conexion);
+				echo json_encode($respuesta);
+			break;
 			default:
 				echo json_encode("Petición inválida");
 				break;
@@ -37,4 +45,3 @@
 		echo json_encode("No se especificó petición");
 	}
 ?>
-
