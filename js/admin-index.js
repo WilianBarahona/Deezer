@@ -10,16 +10,17 @@ function llenarTablaGeneros(){
 	$.ajax({
 		url: "../ajax/gestionar-genero.php",
 		method:"POST",
-		data:{"accion":"listar_generos"},
+		data:{"accion":"listar-todos"},
 		dataType:"JSON",
 		success:function(respuesta){
+			console.log(respuesta);
 			for (var i = 0; i < respuesta.length; i++) {
 				var genero = respuesta[i];
 				var fila = 
-				'<tr id="tbl-generos-fila-'+genero.id+'">'+
-				'  <td>'+genero.nombre+'</td>'+
-				'  <td><button onclick="editarGenero('+genero.id+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>'+
-				'  <button onclick="eliminarGenero('+genero.id+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
+				'<tr id="tbl-generos-fila-'+genero.id_genero+'">'+
+				'  <td>'+genero.nombre_genero+'</td>'+
+				'  <td><button onclick="editarGenero('+genero.id_genero+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>'+
+				'  <button onclick="eliminarGenero('+genero.id_genero+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 				'</tr>';
 
 				$("#tbl-generos tbody").append(fila);
@@ -43,7 +44,7 @@ $("#btn-guardar-genero").click(function() {
 			method:"POST",
 			dataType:"JSON",
 			data:{
-				"accion":"insertar_genero",
+				"accion":"insertar-registro",
 				"nombre_genero":nombreGenero
 			},
 			success:function(respuesta){
@@ -80,7 +81,7 @@ function editarGenero(idGenero){
 		url: '../ajax/gestionar-genero.php',
 		type: 'POST',
 		data: {
-			"accion":"seleccionar_genero", 
+			"accion":"seleccionar", 
 			"id_genero": idGenero
 		},
 		dataType: 'JSON',
@@ -106,7 +107,7 @@ $("#btn-actualizar-genero").click(function(){
 		method:"POST",
 		dataType:"JSON",
 		data:{
-			"accion":"actualizar_genero",
+			"accion":"actualizar-registro",
 			"id_genero": idGenero,
 			"nombre_genero": nombreGenero
 		},
@@ -149,7 +150,7 @@ function eliminarGenero(idGenero){
 					method:"POST",
 					dataType:"JSON",
 					data:{
-						"accion":"eliminar_genero",
+						"accion":"eliminar-registro",
 						"id_genero":idGenero,
 					},
 					success:function(respuesta){
