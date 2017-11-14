@@ -35,8 +35,9 @@
 				$respuesta = $artista->actualizarRegistro($conexion);
 				echo json_encode($respuesta);
 			break;
-			case "eleminar-registro":
-				$respuesta = Artista::
+			case "eliminar-registro":
+				$respuesta = Artista::eliminarRegistro($conexion, $_POST["id_artista"]);
+				echo json_encode($respuesta);
 			break;
 			default:
 				echo json_encode("Petición inválida");

@@ -146,15 +146,38 @@
 		}
 		#### ELIMINAR REGISTRO ARTISTAS
 		#     return false or true ####  JSON
-		public static function eliminarRegistro($conexion, $id){
-			$sql1 = sprintf("
+		public static function eliminarRegistro($conexion, $idArtista){
+			$sql1= sprintf("
 				DELETE FROM tbl_artistas
 				WHERE id_artista=%s;
 			",
-				$conexion->antiInyeccion($id)
+				$conexion->antiInyeccion($idArtista)
 			);
-			$resultado=$conexion->ejecutarConsulta($sql);
-			return $resultado;
+			// BORRAR ALBUMES
+			include_once("class-album.php");
+			$albumes = Album::listarPorArtista($conexion, $idArtista);
+			for ($i=0; $i < count($albumes) ; $i++) { 
+				$idAlbum = $albumes[$i]["id_album"];
+				Album::eliminarRegistro($conexion, $idAlbum);
+			}
+			// FAVORITOS DE USUARIO
+			$sql2= sprintf("
+				DELETE FROM tbl_artistas_por_usuarios
+				WHERE id_artista=%s
+			",
+				$conexion->antiInyeccion($idArtista)
+			);
+			// COMENTARIOS DE ARTISTA
+			$sql3= sprintf("
+				DELETE FROM tbl_comentarios_por_artista
+				WHERE id_artista=%s
+			",
+				$conexion->antiInyeccion($idArtista)
+			);
+			$resultado1=$conexion->ejecutarConsulta($sql1);
+			$resultado2=$conexion->ejecutarConsulta($sql2);
+			$resultado3=$conexion->ejecutarConsulta($sql3);
+			return $resultado1 && $resultado2 && $resultado3;
 		}
 		
 		public static function getNumeroAlbumes($conexion, $idArtista){
