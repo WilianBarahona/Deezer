@@ -43,7 +43,7 @@ function llenarTablaArtistas(idArtista){
 				'	<td><img class="img img-circle img-responsive" src="../'+artista.url_foto_artista+'" title="'+artista.nombre_artista+'">'+
 				'	<td>'+artista.nombre_artista+'</td>'+
 				'	<td>'+artista.nombre_pais+'</td>'+
-				'	<td>'+artista.biografia_artista+'</td>'+
+				// '	<td>'+artista.biografia_artista+'</td>'+
 				'	<td><button onclick="editarArtista('+artista.id_artista+')"class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></td>'+
 				'	<td><button onclick="eliminarArtista('+artista.id_artista+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 				'</tr>';

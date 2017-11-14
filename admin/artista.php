@@ -77,7 +77,7 @@
                   <th>Foto</th>
                   <th>Nombre del Artista</th>
                   <th>Pais</th>
-                  <th>Biografía</th>
+                  <!-- <th>Biografía</th> -->
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </thead>
