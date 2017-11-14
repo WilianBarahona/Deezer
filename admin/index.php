@@ -26,8 +26,8 @@
         <ul class="nav nav-sidebar" id="dashboard">
           <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
           <li><a href="artista.php"><span class="glyphicon glyphicon-star"></span> Artistas</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-cd"></span> Álbumes</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-music"></span> Canciones</a></li>
+          <li><a href="album.php"><span class="glyphicon glyphicon-cd"></span> Álbumes</a></li>
+          <li><a href="cancion.php"><span class="glyphicon glyphicon-music"></span> Canciones</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-list"></span> Playlists</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-user"></span> Gestión de Usuarios</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Ajustes</a></li>
