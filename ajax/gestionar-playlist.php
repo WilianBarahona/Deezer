@@ -36,6 +36,8 @@
 				echo json_encode($respuesta);
 			break;
 			case "eliminar-registro":
+				$respuesta=Playlist::eliminarRegistro($conexion,$_POST["id_playlist"]);
+				echo json_encode($respuesta);
 			break;
 			default:
 				echo json_encode("Petición inválida");

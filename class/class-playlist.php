@@ -124,7 +124,17 @@ class Playlist{
 			$conexion->antiInyeccion($this->getUrlImagenPlaylist())
 		);
 		$resultado=$conexion->ejecutarConsulta($sql);
-		return $resultado;
+
+		$sql2=sprintf("
+			INSERT INTO tbl_playlists_por_usuarios
+			(id_usuario, id_playlist)
+			VALUES(%s,%s)			
+		",
+			$conexion->antiInyeccion($this->getIdUsuario()),
+			$conexion->antiInyeccion($conexion->ultimoId())
+		);
+		$resultado2=$conexion->ejecutarConsulta($sql2);
+		return $resultado && $resultado2;
 	}
 
 
@@ -151,14 +161,35 @@ class Playlist{
 	#### ELIMINAR REGISTRO PLAYLISTS
 	#     return false or true ####  JSON
 	public static function eliminarRegistro($conexion, $idPlaylist){
-		$sql = sprintf("
-			//DELETE FROM 
-			//WHERE
+		$sql1 = sprintf("
+			DELETE FROM tbl_comentarios_por_playlist
+			WHERE id_playlist=%s;
 		",
 			$conexion->antiInyeccion($idPlaylist)
 		);
-		$resultado=$conexion->ejecutarConsulta($sql);
-		return json_encode($resultado);
+		$sql2 = sprintf("
+			DELETE FROM tbl_playlists_por_usuarios
+			WHERE id_playlist=%s;
+		",
+			$conexion->antiInyeccion($idPlaylist)
+		);
+		$sql3 = sprintf("
+			DELETE FROM tbl_canciones_por_playlist
+			WHERE id_playlist=%s;
+		",
+			$conexion->antiInyeccion($idPlaylist)
+		);
+		$sql4 = sprintf("
+			DELETE FROM tbl_playlists
+			WHERE id_playlist=%s;
+		",
+			$conexion->antiInyeccion($idPlaylist)
+		);
+		$resultado1=$conexion->ejecutarConsulta($sql1);
+		$resultado2=$conexion->ejecutarConsulta($sql2);
+		$resultado3=$conexion->ejecutarConsulta($sql3);
+		$resultado4=$conexion->ejecutarConsulta($sql4);
+		return $resultado1 && $resultado2 && $resultado3 && $resultado4;
 	}
 
 	public static function getCanciones($conexion, $idPlaylist){

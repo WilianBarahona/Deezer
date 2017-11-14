@@ -199,5 +199,9 @@
 			$album = $conexion->obtenerFila($resultado);
 			return $album["numero_canciones"];
 		}
+
+		public static function getCanciones($conexion, $idAlbum){
+
+		}
 	}
 ?>
