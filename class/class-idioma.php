@@ -44,7 +44,9 @@
 				  id_idioma,
 				  nombre_idioma,
 				  abreviatura_idioma
-				FROM tbl_idioma";
+				FROM tbl_idioma
+				ORDER BY nombre_idioma ASC
+			";
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$idiomas=array();
 			while(($idioma=$conexion->obtenerFila($resultado))){

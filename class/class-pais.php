@@ -57,7 +57,9 @@ class Pais{
 			  id_pais,nombre_pais,
 			  abreviatura_pais,
 			  codigo_telefono_pais
-			FROM tbl_paises";
+			FROM tbl_paises
+			ORDER BY nombre_pais ASC
+			";
 		$resultado = $conexion->ejecutarConsulta($sql);
 		$paises=array();
 		while(($pais=$conexion->obtenerFila($resultado))){
