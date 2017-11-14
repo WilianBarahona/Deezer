@@ -4,31 +4,36 @@
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion();
 		switch ($_POST['accion']) {
-			case 'listar_idiomas':
-				Idioma::listarIdiomas($conexion);
+			case 'listar-todos':
+				$respuesta = Idioma::listarTodos($conexion);
+				echo json_encode($respuesta);
 			break;
-			case 'seleccionar_idioma':
-				Idioma::seleccionarIdioma($conexion,$_POST['id_idioma']);
+			case 'seleccionar':
+				$respuesta = Idioma::seleccionar($conexion,$_POST['id_idioma']);
+				echo json_encode($respuesta);
 			break;
-			case 'buscar_idioma':
-				Idioma::buscarIdioma($conexion,$_POST['txt-busqueda']);
+			case 'buscar-por-nombre':
+				$respuesta = Idioma::buscarPorNombre($conexion,$_POST['nombre_idioma']);
+				echo json_encode($respuesta);
 			break;
-			case 'guardar_idioma':
-				$idioma = new Idioma(null,
-							 $_POST['inputNombre'],
-							 $_POST['inputAbreviatura']
-							 );
-				$idioma->guardarIdioma($conexion);
+			case 'insertar-registro':
+				$idioma = new Idioma();
+				$idioma->setNombreIdioma($_POST['nombre_idioma']);
+				$idioma->setAbreviaturaIdioma($_POST['abreviatura_idioma']);
+				$respuesta = $idioma->insertarRegistro($conexion);
+				echo json_encode($respuesta);
 			break;
-			case 'eliminar_idioma':
-				Idioma::eliminarIdioma($conexion,$_POST['codigoIdioma']);
+			case 'eliminar-registro':
+				$respuesta = Idioma::eliminarRegistro($conexion,$_POST['id_idioma']);
+				echo json_encode($respuesta);
 			break;
-			case "actualizar_idioma":
+			case "actualizar-registro":
 				$idioma = new Idioma();
 				$idioma->setIdIdioma($_POST["id_idioma"]);
 				$idioma->setNombreIdioma($_POST["nombre_idioma"]);
 				$idioma->setAbreviaturaIdioma($_POST["abreviatura_idioma"]);
-				echo $idioma->actualizarIdioma($conexion);
+				$respuesta = $idioma->actualizarRegistro($conexion);
+				echo json_encode($respuesta);
 			break;
 			default:
 				echo json_encode("Petición inválida");

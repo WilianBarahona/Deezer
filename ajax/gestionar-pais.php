@@ -4,16 +4,20 @@
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion();
 		switch ($_POST['accion']) {
-			case 'listar_pais':
-				Pais::listarPaises($conexion);
+			case 'listar-todos':
+				$respuesta = Pais::listarTodos($conexion);
+				echo json_encode($respuesta);
 			break;
-			case 'seleccionar_pais':
-				Pais::seleccionarPais($conexion,$_POST['id_pais']);
+			case 'seleccionar':
+				$pais=new Pais();
+				$pais->setIdPais($_POST['id_pais']);
+				$respuesta = $pais->seleccionar($conexion);
+				echo json_encode($respuesta);
 			break;
-			case 'buscar_pais':
-				Pais::buscarPais($conexion,$_POST['txt-busqueda']);
+			case 'buscar-por-nombre':
+				Pais::buscarPais($conexion,$_POST['nombre_pais']);
 			break;
-			case 'guardar_pais':
+			case 'insertar-registro':
 				$pais = new Pais(null,
 							 $_POST['inputNombre'],
 							 $_POST['inputName'],
@@ -23,10 +27,10 @@
 							 );
 				$pais->guardarPais($conexion);
 			break;
-			case 'eliminar_pais':
+			case 'eliminar-registro':
 				Pais::eliminarPais($conexion,$_POST['codigoPais']);
 			break;
-			case "actualizar_pais":
+			case "actualizar-registro":
 				$pais = new Pais();
 				$pais->setIdPais($_POST["id_pais"]);
 				$pais->setNombrePais($_POST["nombre_pais"]);

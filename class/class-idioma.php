@@ -38,84 +38,76 @@
 			return "idIdioma: ".$this->idIdioma." nombreIdioma: ".$this->nombreIdioma;
 		}
 
-		public static function listarIdiomas($conexion){
+		public static function listarTodos($conexion){
 			$sql = "
 				SELECT 
 				  id_idioma,
 				  nombre_idioma,
 				  abreviatura_idioma
 				FROM tbl_idioma";
-
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$idiomas=array();
-			while(($fila=$conexion->obtenerFila($resultado))){
-				$idiomas[] = $fila;
+			while(($idioma=$conexion->obtenerFila($resultado))){
+				$idiomas[] = $idioma;
 			}
-			//var_dump($idiomas);
-			echo json_encode($idiomas);
+			return $idiomas;
 		}
 
-		public static function seleccionarIdioma($objConexion,$idIdioma){
-			$sql = sprintf("select id_idioma,
-									nombre_idioma,
-									abreviatura_idioma
-								   	from tbl_idioma where id_idioma='%s'",
-						$objConexion->antiInyeccion($idIdioma)
-				);
-			$informacion = $objConexion->ejecutarConsulta($sql);
-			$totalFilas  = $objConexion->cantidadRegistros($informacion);
-				$idiomas=array();
-				while(($fila = $objConexion->obtenerFila($informacion))){
-					$idiomas["id_idioma"] = $fila["id_idioma"];
-					$idiomas["nombre_idioma"] = $fila["nombre_idioma"];
-					$idiomas["abreviatura_idioma"] = $fila["abreviatura_idioma"];
-				}
-				echo json_encode($idiomas);
-				//var_dump($idiomas);
-			
+		public static function seleccionar($conexion,$idIdioma){
+			$sql = sprintf("
+				SELECT 
+					id_idioma,
+					nombre_idioma,
+					abreviatura_idioma
+				FROM tbl_idioma 
+				WHERE id_idioma='%s'
+			",
+				$conexion->antiInyeccion($idIdioma)
+			);
+			$resultado = $conexion->ejecutarConsulta($sql);
+			$idioma = $conexion->obtenerFila($resultado);
+			return $idioma;
 		}
 
-		public static function buscarIdioma($objConexion,$busqueda){
-			$sql = sprintf("select id_idioma,
-									nombre_idioma,
-									abreviatura_idioma
-								   	from tbl_idioma where nombre_idioma='%s'",
-						$objConexion->antiInyeccion($busqueda)
-				);
-			$informacion = $objConexion->ejecutarConsulta($sql);
-			$totalFilas  = $objConexion->cantidadRegistros($informacion);
+		public static function buscarPorNombre($conexion,$nombreIdioma){
+			$sql = sprintf("
+				SELECT id_idioma,
+					nombre_idioma,
+					abreviatura_idioma
+				FROM tbl_idioma 
+				WHERE nombre_idioma='%s'
+			",
+				$conexion->antiInyeccion($nombreIdioma)
+			);
+			$resultado = $conexion->ejecutarConsulta($sql);
+			$totalFilas  = $conexion->cantidadRegistros($resultado);
+			$idiomas=array();
 			if ($totalFilas >= 1){
-				$idiomas=array();
-				while(($fila = $objConexion->obtenerFila($informacion))){
-					$idiomas["id_idioma"] = $fila["id_idioma"];
-					$idiomas["nombre_idioma"] = $fila["nombre_idioma"];
-					$idiomas["abreviatura_idioma"] = $fila["abreviatura_idioma"];
+				while(($idioma = $conexion->obtenerFila($resultado))){
+					$idiomas[]=$idioma;
 				}
-				echo json_encode($idiomas);
-				//var_dump($idiomas);
+				return $idiomas;
 			}
 			else{
-				$idiomas=array();
-				$idiomas["id_idioma"]="not founded";
-				$idiomas["nombre_idioma"]="not founded";
-				$idiomas["abreviatura_idioma"]="not founded";
-				echo json_encode($idiomas);
-				//var_dump($idiomas);
+				return false;
 			}
 		}
 
-		public function guardarIdioma($objConexion){
-			$sql = sprintf("insert into tbl_idioma(nombre_idioma,
-												   abreviatura_idioma) values ('%s','%s')",
-						$objConexion->antiInyeccion($this->nombreIdioma),
-						$objConexion->antiInyeccion($this->abreviaturaIdioma)
-				);
-			$resultado = $objConexion->ejecutarConsulta($sql);
-			echo json_encode($resultado);
+		public function insertarRegistro($conexion){
+			$sql = sprintf("
+				INSERT INTO tbl_idioma
+				(nombre_idioma,abreviatura_idioma) 
+				VALUES ('%s','%s')
+			",
+				$conexion->antiInyeccion($this->nombreIdioma),
+				$conexion->antiInyeccion($this->abreviaturaIdioma)
+			);
+			$resultado = $conexion->ejecutarConsulta($sql);
+			return $resultado;
 
 		}
 
-		public function actualizarIdioma($conexion){
+		public function actualizarRegistro($conexion){
 			$sql=sprintf("
 				UPDATE tbl_idioma SET
 				nombre_idioma='%s',
@@ -127,14 +119,18 @@
 				$conexion->antiInyeccion($this->getIdIdioma())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			return $resultado;
 		}
 
-		public static function eliminarIdioma($objConexion,$codigo){
-			$sql = sprintf("delete from tbl_idioma where id_idioma=%s",
-						$objConexion->antiInyeccion($codigo)
-				);
-			$objConexion->ejecutarConsulta($sql);
+		public static function eliminarRegistro($conexion,$idIdioma){
+			$sql = sprintf("
+				DELETE FROM tbl_idioma 
+				WHERE id_idioma=%s
+			",
+				$conexion->antiInyeccion($idIdioma)
+			);
+			$resultado=$conexion->ejecutarConsulta($sql);
+			return $resultado;
 		}
 	}
 ?>
