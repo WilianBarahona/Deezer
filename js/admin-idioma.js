@@ -6,7 +6,7 @@ function listarIdiomas(){
 	$.ajax({
 		url: "../ajax/gestionar-idioma.php",
 		method:"POST",
-		data:{"accion":"listar_idiomas"},
+		data:{"accion":"listar-todos"},
 		dataType:"JSON",
 		success:function(respuesta){
 			$("#div-idiomas #tbl-idiomas tbody").empty();
