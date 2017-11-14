@@ -16,13 +16,27 @@
 				$artista->setBiografia($_POST["biografia_artista"]);
 				$artista->setUrlFoto($_POST["url_foto_artista"]);
 				$resultado = $artista->insertarRegistro($conexion);
-				echo $resultado; // FORMATO JSON
+				echo json_encode($resultado); // FORMATO JSON
 			break;
 			case "seleccionar":
 				$artista = new Artista();
 				$artista->setIdArtista($_POST["id_artista"]);
 				$respuesta = $artista->seleccionar($conexion);
 				echo json_encode($respuesta);
+			break;
+			case "actualizar-registro":
+				$artista = new Artista();
+				$artista->setIdArtista($_POST["id_artista"]);
+				$artista->setIdPais($_POST["id_pais"]);
+				$artista->setNombreArtista($_POST["nombre_artista"]);
+				$artista->setBiografia($_POST["biografia_artista"]);
+				$artista->setUrlFoto($_POST["url_foto_artista"]);
+				echo $artista;
+				$respuesta = $artista->actualizarRegistro($conexion);
+				echo json_encode($respuesta);
+			break;
+			case "eleminar-registro":
+				$respuesta = Artista::
 			break;
 			default:
 				echo json_encode("Petición inválida");

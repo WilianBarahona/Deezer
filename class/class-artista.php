@@ -125,28 +125,36 @@
 		}
 		#### ACTUALIZAR REGISTRO ARTISTA
 		#     return false or true ####  JSON
-		public static function actualizarRegistro($conexion){
+		public function actualizarRegistro($conexion){
 			$sql=sprintf("
-				//UPDATE
-				//... = ...
-				//WHERE
+				UPDATE tbl_artistas SET
+				  id_pais=%s,
+				  nombre_artista='%s',
+				  biografia_artista='%s',
+				  url_foto_artista='%s'
+				WHERE id_artista=%s;
 			",
-				$conexion->antiInyeccion($this->getNombreGenero())
+				$conexion->antiInyeccion($this->getIdPais()),
+				$conexion->antiInyeccion($this->getNombreArtista()),
+				$conexion->antiInyeccion($this->getBiografia()),
+				$conexion->antiInyeccion($this->getUrlFoto()),
+				$conexion->antiInyeccion($this->getIdArtista())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			var_dump($resultado);
+			return $resultado;
 		}
 		#### ELIMINAR REGISTRO ARTISTAS
 		#     return false or true ####  JSON
 		public static function eliminarRegistro($conexion, $id){
-			$sql = sprintf("
-				//DELETE FROM 
-				//WHERE
+			$sql1 = sprintf("
+				DELETE FROM tbl_artistas
+				WHERE id_artista=%s;
 			",
 				$conexion->antiInyeccion($id)
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			return $resultado;
 		}
 		
 		public static function getNumeroAlbumes($conexion, $idArtista){

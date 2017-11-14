@@ -41,14 +41,10 @@
 
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$generos=array();
-			while($fila=$conexion->obtenerFila($resultado)){
-				$genero = array();
-				$genero["id"]= $fila["id"];
-				$genero["nombre"]= $fila["nombre"];
-
+			while($genero=$conexion->obtenerFila($resultado)){
 				$generos[]=$genero;
 			}
-			return json_encode($generos);
+			return $generos;
 		}
 
 		#### SELECCIONAR REGISTRO DE GENERO POR CODIGO
@@ -63,8 +59,8 @@
 				",
 				$conexion->antiInyeccion($this->getIdGenero())
 			));
-			$fila=$conexion->obtenerFila($resultado);
-			return json_encode($fila);
+			$genero=$conexion->obtenerFila($resultado);
+			return $genero;
 		}
 		
 		####  INSERTAR RESGISTRO DE GENERO
@@ -78,7 +74,7 @@
 				$conexion->antiInyeccion($this->getNombreGenero())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			return $resultado;
 		}
 		#### ACTUALIZAR REGISTRO GENERO
 		#     return false or true ####  JSON
@@ -92,7 +88,7 @@
 				$conexion->antiInyeccion($this->getIdGenero())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			return $resultado;
 		}
 		#### ELIMINAR REGISTRO GENEROS
 		#     return false or true ####  JSON
@@ -104,7 +100,7 @@
 				$conexion->antiInyeccion($id)
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			return $resultado;
 		}
 	}
 ?>

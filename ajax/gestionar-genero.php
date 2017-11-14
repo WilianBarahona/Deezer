@@ -4,36 +4,40 @@
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
 
-			case 'listar_generos':
+			case 'listar-todos':
 				include("../class/class-genero.php");
-				echo Genero::listarTodos($conexion);
+				$respuesta = Genero::listarTodos($conexion);
+				echo json_encode($respuesta);
 			break;
 			
-			case "seleccionar_genero": 
+			case "seleccionar": 
 				include("../class/class-genero.php");
 				$genero = new Genero($_POST["id_genero"], null);
-				echo $genero->seleccionar($conexion);
+				$respuesta = $genero->seleccionar($conexion);
+				echo json_encode($respuesta);
 			break;
 			
-			case "actualizar_genero":
+			case "actualizar-registro":
 				include("../class/class-genero.php");
 				$genero = new Genero();
 				$genero->setIdGenero($_POST["id_genero"]);
 				$genero->setNombreGenero($_POST["nombre_genero"]);
-				echo $genero->actualizarRegistro($conexion);
+				$respuesta = $genero->actualizarRegistro($conexion);
+				echo json_encode($respuesta);
 			break;
 			
-			case "eliminar_genero": 
+			case "eliminar-registro": 
 				include("../class/class-genero.php");
-				echo Genero::eliminarRegistro($conexion, $_POST["id_genero"]);
+				$respuesta= Genero::eliminarRegistro($conexion, $_POST["id_genero"]);
+				echo json_encode($respuesta);
 			break;
 
-			case 'insertar_genero':
+			case 'insertar-registro':
 				include("../class/class-genero.php");
 				$genero = new Genero();
 				$genero->setNombreGenero($_POST["nombre_genero"]);
-				$resultado = $genero->insertarRegistro($conexion);
-				echo $resultado;
+				$respuesta = $genero->insertarRegistro($conexion);
+				echo json_encode($respuesta);
 			break;
 
 			default:
