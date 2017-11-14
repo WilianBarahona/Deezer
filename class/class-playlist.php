@@ -100,11 +100,13 @@ class Playlist{
 			ON (a.id_usuario=b.id_usuario)
 			INNER JOIN tbl_tipo_visibilidad c
 			ON(c.id_tipo_visibilidad=a.id_tipo_visibilidad)
-			WHERE id_playlist=1;
-			",
-			""
+			WHERE id_playlist=%s;
+		",
+			$conexion->antiInyeccion($this->getIdPlaylist())
 		));
 		$playlist=$conexion->obtenerFila($resultado);
+		$playlist["numero_canciones"] = Playlist::getNumeroCanciones($conexion, $this->getIdPlaylist());
+		$playlist["canciones"] = Playlist::getCanciones($conexion, $this->getIdPlaylist());
 		return $playlist;
 	}
 
@@ -112,29 +114,39 @@ class Playlist{
 	#     return false or true ####  JSON
 	public function insertarRegistro($conexion){
 		$sql=sprintf("
-			//INSERT INTO
-			//()
-			//VALUES();
+			INSERT INTO tbl_playlists
+			(id_tipo_visibilidad, nombre_playlist, id_usuario, url_foto_playlist)
+			VALUES (%s,'%s',%s,'%s')
 			",
-			""
+			$conexion->antiInyeccion($this->getIdTipoVisibilidad()),
+			$conexion->antiInyeccion($this->getNombrePlaylist()),
+			$conexion->antiInyeccion($this->getIdUsuario()),
+			$conexion->antiInyeccion($this->getUrlImagenPlaylist())
 		);
 		$resultado=$conexion->ejecutarConsulta($sql);
-		return json_encode($resultado);
+		return $resultado;
 	}
 
 
 	#### ACTUALIZAR REGISTRO PLAYLIST
 	#     return false or true ####  JSON
-	public static function actualizarRegistro($conexion){
+	public function actualizarRegistro($conexion){
 		$sql=sprintf("
-			//UPDATE
-			//... = ...
-			//WHERE
+			UPDATE tbl_playlists SET
+			id_tipo_visibilidad=%s,
+			nombre_playlist='%s',
+			id_usuario=%s,
+			url_foto_playlist='%s'
+			WHERE id_playlist=%s
 		",
-			""
+			$conexion->antiInyeccion($this->getIdTipoVisibilidad()),
+			$conexion->antiInyeccion($this->getNombrePlaylist()),
+			$conexion->antiInyeccion($this->getIdUsuario()),
+			$conexion->antiInyeccion($this->getUrlImagenPlaylist()),
+			$conexion->antiInyeccion($this->getIdPlaylist())
 		);
 		$resultado=$conexion->ejecutarConsulta($sql);
-		return json_encode($resultado);
+		return $resultado;
 	}
 	#### ELIMINAR REGISTRO PLAYLISTS
 	#     return false or true ####  JSON
@@ -151,10 +163,41 @@ class Playlist{
 
 	public static function getCanciones($conexion, $idPlaylist){
 		$sql=sprintf("
+			SELECT
+			  a.id_playlist,a.id_cancion,
+			  b.nombre_cancion,c.id_artista,d.nombre_artista,b.id_album,
+			  c.nombre_album,c.album_cover_url,
+			  b.url_audio,b.reproducciones
+			FROM tbl_canciones_por_playlist a
+			INNER JOIN tbl_canciones b
+			ON (b.id_cancion = a.id_cancion)
+			INNER JOIN tbl_albumes c
+			ON (b.id_album = c.id_album)
+			INNER JOIN tbl_artistas d
+			ON(c.id_artista = d.id_artista)
+			WHERE id_playlist=%s
 		",
-			""
+			$conexion->antiInyeccion($idPlaylist)
 		);
+		$canciones = array();
+		$resultado = $conexion->ejecutarConsulta($sql);
+		while($cancion = $conexion->obtenerFila($resultado)){
+			$canciones[] = $cancion;
+		}
+		return $canciones;
 	}
 
+	public static function getNumeroCanciones($conexion, $idPlaylist){
+		$sql =sprintf("
+			SELECT COUNT(*) as numero_canciones
+			FROM tbl_canciones_por_playlist
+			WHERE id_playlist=%s"
+		,
+			$conexion->antiInyeccion($idPlaylist)
+		);
+		$resultado=$conexion->ejecutarConsulta($sql);
+		$playlist = $conexion->obtenerFila($resultado);
+		return $playlist["numero_canciones"];
+	}
 }
 ?>

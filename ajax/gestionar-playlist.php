@@ -17,6 +17,23 @@
 				echo json_encode($respuesta);
 			break;
 			case "actualizar-registro":
+				$playlist = new Playlist();
+				$playlist->setIdPlaylist($_POST["id_playlist"]);
+				$playlist->setIdTipoVisibilidad($_POST["id_tipo_visibilidad"]);
+				$playlist->setNombrePlaylist($_POST["nombre_playlist"]);
+				$playlist->setIdUsuario($_POST["id_usuario"]);
+				$playlist->setUrlImagenPlaylist($_POST["url_foto_playlist"]);
+				$respuesta = $playlist->actualizarRegistro($conexion);
+				echo json_encode($respuesta);
+			break;
+			case "insertar-registro":
+				$playlist = new Playlist();
+				$playlist->setIdTipoVisibilidad($_POST["id_tipo_visibilidad"]);
+				$playlist->setNombrePlaylist($_POST["nombre_playlist"]);
+				$playlist->setIdUsuario($_POST["id_usuario"]);
+				$playlist->setUrlImagenPlaylist($_POST["url_foto_playlist"]);
+				$respuesta = $playlist->insertarRegistro($conexion);
+				echo json_encode($respuesta);
 			break;
 			case "eliminar-registro":
 			break;
