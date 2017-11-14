@@ -151,7 +151,7 @@ class Artista{
 	public static function eliminarRegistro($conexion, $idArtista){
 		$sql1= sprintf("
 			DELETE FROM tbl_artistas
-			WHERE id_artista=%s;
+			WHERE id_artista=%s
 		",
 			$conexion->antiInyeccion($idArtista)
 		);

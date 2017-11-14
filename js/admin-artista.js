@@ -6,14 +6,14 @@ $(document).ready(function(){
 		method:"POST",
 		dataType:"JSON",
 		data:{
-			"accion":"listar_pais"
+			"accion":"listar-todos"
 		},
 		success:function(respuesta){
 			for (var i = 0; i < respuesta.length; i++) {
 				var pais=respuesta[i];
-				$("#slc-pais-artista").append(
-					'<option value="'+pais.id_pais+'">'+pais.nombre_pais+'</option>'
-				);
+				var fila = 
+					'<option value="'+pais.id_pais+'">'+pais.nombre_pais+'</option>';
+				$("#slc-pais-artista").append(fila);
 			}
 		},
 		error: function(error){
@@ -123,11 +123,11 @@ $("#btn-guardar-artista").click(function(){
 			method:"POST",
 			dataType:"JSON",
 			data:{
-				"accion":"insertar_artista",
+				"accion":"insertar-registro",
 				"nombre_artista":nombreArtista,
 				"id_pais":idPais,
-				"biografia":biografia,
-				"url_foto":url
+				"biografia_artista":biografia,
+				"url_foto_artista":url
 			},
 			success:function(respuesta){
 				if(respuesta)
@@ -137,6 +137,7 @@ $("#btn-guardar-artista").click(function(){
 						content: 'Se insertó el registro'
 					});
 					$("#tbl-artistas tbody").html("");
+					limpiar();
 					llenarTablaArtistas();
 				}
 				else
@@ -172,11 +173,50 @@ function editarArtista(idArtista){
 			"id_pais":idPais,
 			"biografia_artista":biografia
 		}
-
 	});
 }
 
 //ELIMINAR ARTISTA
 function eliminarArtista(idArtista){
+	$.ajax({
+		url: '../ajax/gestionar-artista.php',
+		type: "POST",
+		data:{
+			"accion":"eliminar-registro",
+			"id_artista": idArtista
+		},
+		dataType:"JSON",
+		success:function(respuesta){
+			if(respuesta)
+				{
+					$.alert({
+						title: '¡Éxito!',
+						content: 'Se elimino el registro'
+					});
+					$("#tbl-artistas tbody").html("");
+					llenarTablaArtistas();
+				}
+				else
+				{
+					$.alert({
+						title: '¡Ocurrió un problema!',
+						content: 'No se pudo eliminar el registro'
+					});
+				}
+		},
+		error:function(e){
+			console.log(e);
+		},
+		complete: function(respuesta){
+			
+		}
+	});
+}
 
+function limpiar()
+{
+	$("#lista-carga-foto-artista").hide();
+	$('#txt-nombre-artista').val("");
+	$('#txt-biografia-artista').val("");
+	$('#slc-pais-artista').val("Seleccionar Pais");
 }
