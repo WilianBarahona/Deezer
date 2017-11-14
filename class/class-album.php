@@ -117,7 +117,8 @@
 				$conexion->antiInyeccion($this->getIdAlbum())
 			));
 			$album=$conexion->obtenerFila($resultado);
-			$album["numero_canciones"] = $this->getNumeroCanciones($conexion, $album["id_album"]);
+			$album["numero_canciones"] = Album::getNumeroCanciones($conexion, $album["id_album"]);
+			$album["canciones"] = Album::getCanciones($conexion, $album["id_album"]);
 			return $album;
 		}
 
@@ -201,7 +202,26 @@
 		}
 
 		public static function getCanciones($conexion, $idAlbum){
-
+			$sql=sprintf("
+				SELECT
+				  a.id_cancion,a.nombre_cancion,c.id_artista,
+				  c.nombre_artista,a.id_album,b.nombre_album,
+				  b.album_cover_url,a.url_audio,a.reproducciones
+				FROM tbl_canciones a
+				INNER JOIN tbl_albumes b
+				ON (a.id_album=b.id_album)
+				INNER JOIN tbl_artistas c
+				ON(b.id_artista=c.id_artista)
+				WHERE a.id_album=%s;
+			",
+				$conexion->antiInyeccion($idAlbum)
+			);
+			$canciones=array();
+			$resultado=$conexion->ejecutarConsulta($sql);
+			while ($cancion = $conexion->obtenerFila($resultado)) {
+				$canciones[]=$cancion;
+			}
+			return $canciones;
 		}
 	}
 ?>
