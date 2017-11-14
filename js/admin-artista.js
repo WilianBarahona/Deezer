@@ -33,19 +33,19 @@ function llenarTablaArtistas(idArtista){
 	$.ajax({
 		url: "../ajax/gestionar-artista.php",
 		method: "POST",
-		data: {"accion":"listar_artistas"},
+		data: {"accion":"listar-todos"},
 		dataType: "JSON",
 		success:function(respuesta){
 			for(var i = 0; i < respuesta.length; i++){
 				var artista = respuesta[i];
 				var fila = 
-				'<tr id="tbl-artistas-fila-'+artista.id+'">'+
-				'	<td><img class="img img-circle img-responsive" src="../'+artista.foto+'" title="'+artista.nombre+'">'+
-				'	<td>'+artista.nombre+'</td>'+
-				'	<td>'+artista.pais+'</td>'+
-				'	<td>'+artista.biografia+'</td>'+
-				'	<td><button onclick="editarArtista('+artista.id+')"class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></td>'+
-				'	<td><button onclick="eliminarArtista('+artista.id+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
+				'<tr id="tbl-artistas-fila-'+artista.id_artista+'">'+
+				'	<td><img class="img img-circle img-responsive" src="../'+artista.url_foto_artista+'" title="'+artista.nombre_artista+'">'+
+				'	<td>'+artista.nombre_artista+'</td>'+
+				'	<td>'+artista.nombre_pais+'</td>'+
+				'	<td>'+artista.biografia_artista+'</td>'+
+				'	<td><button onclick="editarArtista('+artista.id_artista+')"class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></td>'+
+				'	<td><button onclick="eliminarArtista('+artista.id_artista+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 				'</tr>';
 
 				$("#tbl-artistas tbody").append(fila);

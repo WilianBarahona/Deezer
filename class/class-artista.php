@@ -88,7 +88,8 @@
 				  b.nombre_pais,
 				  b.abreviatura_pais,
 				  a.nombre_artista,
-				  a.url_foto_artista
+				  a.url_foto_artista,
+				  a.biografia_artista
 				FROM tbl_artistas a
 				INNER JOIN tbl_paises b
 				ON(a.id_pais=b.id_pais);
@@ -96,6 +97,7 @@
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$artistas=array();
 			while($artista=$conexion->obtenerFila($resultado)){
+				
 				$artistas[]=$artista;
 			}
 			return $artistas;
