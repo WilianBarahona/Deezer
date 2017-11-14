@@ -8,15 +8,15 @@ function listarArtistas(){
 		method:"POST",
 		dataType: "JSON",
 		data:{
-			"accion":"listar_artistas"
+			"accion":"listar-todos"
 		},
 		success: function(respuesta){
 			for(var i = 0; i < respuesta.length; i++)
 			{
 				var artistas = respuesta[i];
-				$("#slc-artista").append(
-					'<option value="'+artistas.id+'">'+artistas.nombre+'</option>'
-				);
+				var fila = 
+				'<option value="'+artistas.id_artista+'">'+artistas.nombre_artista+'</option>';
+				$("#slc-artista").append(fila);
 			}
 		},
 		error:function(error){
@@ -53,4 +53,51 @@ function listarArtistas(){
 			$("#carga-foto-album").hide();
 		}
 	});
+});
+
+$("#btn-guardar-album").click(function(){
+	var idArtista = $("#slc-artista").val();
+	var nombreAlbum = $("#txt-nombre-album").val();
+	var fecha = $("#txt-fecha").val();
+	var url = $("#txt-url-foto-album").val();
+	if(nombreAlbum!="")
+	{
+		$.ajax({
+			url: "../ajax/gestionar-album.php",
+			method: "POST",
+			dataType: "JSON",
+			data:{
+				"accion":"insertar-registro",
+				"id_artista":idArtista,
+				"nombre_album":nombreAlbum,
+				"anio":fecha,
+				"album_cover_url":url
+			},
+			success:function(respuesta){
+				if(respuesta)
+				{
+					$.alert({
+						title: '¡Éxito!',
+						content: 'Se insertó el registro'
+					});
+					$("#tbl-artistas tbody").html("");
+					limpiar();
+					llenarTablaArtistas();
+				}
+				else
+				{
+					$.alert({
+						title: '¡Ocurrió un problema!',
+						content: 'No se pudo ingresar el registro'
+					});
+				}
+			},
+			error: function(error){
+				console.log(error);
+			},
+			complete: function(){
+
+			}
+		});
+	}
 });
