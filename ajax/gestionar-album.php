@@ -5,20 +5,41 @@
 		$conexion = new Conexion();
 		switch ($_POST['accion']) {
 			case "listar-todos": 
-				echo Album::listarTodos($conexion);
+				$respuesta = Album::listarTodos($conexion);
+				echo json_encode($respuesta);
 			break;
 			case 'listar-por-artista':
-				$resultado = Album::listarPorArtista($conexion, $_POST["codigo_artista"]);
-				echo json_encode($resultado);
+				$respuesta = Album::listarPorArtista($conexion, $_POST["id_artista"]);
+				echo json_encode($respuesta);
 			break;
 			case "seleccionar":
 				$album = new Album();
 				$album->setIdAlbum($_POST["id_album"]);
-				echo $album->seleccionar($conexion);
+				$respuesta = $album->seleccionar($conexion);
+				echo json_encode($respuesta);
+			break;
+			case "eliminar-registro":
+				$respuesta=Album::eliminarRegistro($conexion, $_POST["id_album"]);
+				echo json_encode($respuesta);
 			break;
 
-			case "eliminar-registro":
-				echo json_encode(Album::eliminarRegistro($conexion, $_POST["id_album"]));
+			case "insertar-registro":
+				$album= new Album();
+				$album->setIdArtista($_POST["id_artista"]);
+				$album->setNombreAlbum($_POST["nombre_album"]);
+				$album->setAnio($_POST["anio"]);
+				$album->setCoverAlbumUrl($_POST["album_cover_url"]);
+				$respuesta = $album->insertarRegistro($conexion);
+				echo json_encode($respuesta);
+			break;
+			case "actualizar-registro":
+				$album= new Album();
+				$album->setIdArtista($_POST["id_artista"]);
+				$album->setNombreAlbum($_POST["nombre_album"]);
+				$album->setAnio($_POST["anio"]);
+				$album->setCoverAlbumUrl($_POST["album_cover_url"]);
+				$respuesta = $album->actualizarRegistro($conexion);
+				echo json_encode($respuesta);
 			break;
 
 			default:

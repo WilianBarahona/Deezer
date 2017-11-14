@@ -76,13 +76,13 @@
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$albumes = array();
 			while ($album=$conexion->obtenerFila($resultado)) {
-				$album["numero_canciones"] = $this->getNumeroCanciones($conexion, $album["id_album"]);
+				$album["numero_canciones"] = Album::getNumeroCanciones($conexion, $album["id_album"]);
 				$albumes[] = $album;
 			}
-			return json_encode($albumes);
+			return $albumes;
 		}
 
-		public static function listarPorArtista($conexion,$codigoArtista){
+		public static function listarPorArtista($conexion,$idArtista){
 			$sql= "SELECT 
 						a.id_album, b.id_artista,
 						b.nombre_artista,a.nombre_album, 
@@ -90,12 +90,12 @@
 				  FROM tbl_albumes a
 				  INNER JOIN tbl_artistas b
 				  ON (a.id_artista = b.id_artista)
-				  where b.id_artista = ".$codigoArtista;
+				  where b.id_artista = ".$idArtista;
 				
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$albumes = array();
 			while ($album=$conexion->obtenerFila($resultado)) {
-				$album["numero_canciones"] = $this->getNumeroCanciones($conexion, $album["id_album"]);
+				$album["numero_canciones"] = Album::getNumeroCanciones($conexion, $album["id_album"]);
 				$albumes[] = $album;
 			}
 			return $albumes;
@@ -118,7 +118,7 @@
 			));
 			$album=$conexion->obtenerFila($resultado);
 			$album["numero_canciones"] = $this->getNumeroCanciones($conexion, $album["id_album"]);
-			return json_encode($album);
+			return $album;
 		}
 
 		####  INSERTAR RESGISTRO DE ALBUM
@@ -135,7 +135,7 @@
 				$conexion->antiInyeccion($this->getCoverAlbumUrl())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			return $resultado;
 		}
 
 
@@ -158,7 +158,7 @@
 				$conexion->antiInyeccion($this->getIdAlbum())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			return $resultado;
 		}
 		#### ELIMINAR REGISTRO ALBUMS
 		#     return false or true ####  JSON
@@ -196,8 +196,8 @@
 				$conexion->antiInyeccion($idAlbum)
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			$fila = $conexion->obtenerFila($resultado);
-			return $fila["numero_canciones"];
+			$album = $conexion->obtenerFila($resultado);
+			return $album["numero_canciones"];
 		}
 	}
 ?>

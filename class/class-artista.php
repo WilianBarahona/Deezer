@@ -76,7 +76,7 @@
 				$conexion->antiInyeccion($this->getUrlFoto())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
-			return json_encode($resultado);
+			return $resultado;
 		}
 		
 		#### LISTAR TODOS LOS ARTISTAS
@@ -84,42 +84,44 @@
 		public static function listarTodos($conexion){
 			$sql = "
 				SELECT
-				  a. id_artista as id,
-				  b.nombre_pais as pais,
+				  a. id_artista,
+				  b.nombre_pais,
 				  b.abreviatura_pais,
-				  a.nombre_artista as nombre,
-				  a.biografia_artista as biografia,
-				  a.url_foto_artista as foto
+				  a.nombre_artista,
+				  a.url_foto_artista
 				FROM tbl_artistas a
 				INNER JOIN tbl_paises b
 				ON(a.id_pais=b.id_pais);
 			";
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$artistas=array();
-			while($fila=$conexion->obtenerFila($resultado)){
-				$artista = array();
-				$artista["id"]= $fila["id"];
-				$artista["pais"]= $fila["pais"];
-				$artista["abreviatura_pais"]= $fila["abreviatura_pais"];
-				$artista["nombre"]= $fila["nombre"];
-				$artista["biografia"]= $fila["biografia"];
-				$artista["foto"]= $fila["foto"];
+			while($artista=$conexion->obtenerFila($resultado)){
 				$artistas[]=$artista;
 			}
-			return json_encode($artistas);
+			return $artistas;
 		}
 		#### SELECCIONAR REGISTRO DE ARTISTA POR CODIGO
 		#	return objeto json con todos los ARTISTAS
 		public function seleccionar($conexion){
 			$resultado=$conexion->ejecutarConsulta(sprintf("
-				//SELECT
-				//FROM
-				//WHERE
+					SELECT
+					  a. id_artista,
+					  b.nombre_pais,
+					  b.abreviatura_pais,
+					  a.nombre_artista,
+					  a.url_foto_artista
+					FROM tbl_artistas a
+					INNER JOIN tbl_paises b
+					ON(a.id_pais=b.id_pais)
+					WHERE id_artista=%s;
 				",
-				$conexion->antiInyeccion($this->getIdGenero())
+				$conexion->antiInyeccion($this->getIdArtista())
 			));
-			$fila=$conexion->obtenerFila($resultado);
-			return json_encode($fila);
+			$artista=$conexion->obtenerFila($resultado);
+			$artista["numero_albumes"] = Artista::getNumeroAlbumes($conexion, $artista["id_artista"]);
+			include_once("class-album.php");
+			$artista["albumes"] = Album::listarPorArtista($conexion, $artista["id_artista"]);
+			return $artista;
 		}
 		#### ACTUALIZAR REGISTRO ARTISTA
 		#     return false or true ####  JSON
@@ -147,5 +149,17 @@
 			return json_encode($resultado);
 		}
 		
+		public static function getNumeroAlbumes($conexion, $idArtista){
+			$sql =sprintf("
+				SELECT COUNT(*) as numero_albumes
+				FROM tbl_albumes
+				WHERE id_artista=%s"
+			,
+				$conexion->antiInyeccion($idArtista)
+			);
+			$resultado=$conexion->ejecutarConsulta($sql);
+			$artista = $conexion->obtenerFila($resultado);
+			return $artista["numero_albumes"];
+		}
 	}
 ?>
