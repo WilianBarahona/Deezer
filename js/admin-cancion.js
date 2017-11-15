@@ -162,7 +162,7 @@ $("#file-cancion").change(function(){
 		dataType: "JSON",
 		success:function(respuesta){
 			if(respuesta.status){
-				$("#txt-url-cancion").val("music/"+respuesta.ruta);
+				$("#txt-url-cancion").val("musica/"+respuesta.ruta);
 				$("#lista-carga-cancion").show();
 			}
 			else{

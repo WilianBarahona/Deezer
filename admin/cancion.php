@@ -74,7 +74,7 @@
                 <tr>
                 	<td>Incluir canción: </td>
                 	<td>
-                    <input type="hidden" id="txt-url-cancion">
+                    <input type="text" id="txt-url-cancion">
                       <form method="post" id="form-cancion" name="form-cancion" enctype="multipart/form-data">
                         <label class="btn btn-default">
                             Examinar <input type="file" name="file" id="file-cancion" hidden>

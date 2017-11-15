@@ -1,9 +1,9 @@
 <?php
-  session_start();
- if($_SESSION['status']==true) { // CUALQUIER USUARIO REGISTRADO PUEDE VER ESTA PAGINA
+ //  session_start();
+ // if($_SESSION['status']==true) { // CUALQUIER USUARIO REGISTRADO PUEDE VER ESTA PAGINA
 
-     header("Location: index.php");
- }
+ //     header("Location: index.php");
+ // }
 ?>
 
 <!DOCTYPE html>
