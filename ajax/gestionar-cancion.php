@@ -39,6 +39,17 @@
 				$respuesta = Cancion::listarTodos($conexion);
 				echo json_encode($respuesta);
 			break;
+
+			case "agregar-favorito":
+				$respuesta = Cancion::agregarFavorito($conexion,  $_POST["id_usuario"], $_POST["id_cancion"]);
+				echo json_encode($respuesta);
+			break;
+
+			case "eliminar-favorito":
+				$respuesta = Cancion::eliminarFavorito($conexion,  $_POST["id_usuario"], $_POST["id_cancion"]);
+				echo json_encode($respuesta);
+			break;
+
 			default:
 				echo json_encode("Petición inválida");
 				break;
