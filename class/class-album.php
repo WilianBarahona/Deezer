@@ -1,5 +1,5 @@
 <?php
-	class Album{
+class Album{
 		private $idAlbum;
 		private $idArtista;
 		private $nombreAlbum;
@@ -177,6 +177,12 @@
 				$conexion->antiInyeccion($id)
 			);
 			$sql3=sprintf("
+				DELETE FROM tbl_albumes_por_usuario
+				WHERE id_album= %s;
+			",
+				$conexion->antiInyeccion($id)
+			);
+			$sql4=sprintf("
 				DELETE FROM tbl_albumes
 				WHERE id_album= %s;
 			",
@@ -185,7 +191,8 @@
 			$resultado1=$conexion->ejecutarConsulta($sql1);
 			$resultado2=$conexion->ejecutarConsulta($sql2);
 			$resultado3=$conexion->ejecutarConsulta($sql3);
-			return ($resultado1)&&($resultado2)&&($resultado3);
+			$resultado4=$conexion->ejecutarConsulta($sql4);
+			return ($resultado1)&&($resultado2)&&($resultado3)&&($resultado4);
 		}
 
 		public static function getNumeroCanciones($conexion, $idAlbum){
@@ -223,10 +230,96 @@
 			}
 			return $canciones;
 		}
+
+	public static function agregarComentario($conexion, $idAlbum, $idUsuario, $comentario){
+		$sql=sprintf("
+			INSERT INTO tbl_comentarios_por_album
+			(id_album, id_usuario, comentario, fecha)
+			VALUES(%s,%s,'%s', CURRENT_TIMESTAMP())
+		",
+			$conexion->antiInyeccion($idAlbum),
+			$conexion->antiInyeccion($idUsuario),
+			$conexion->antiInyeccion($comentario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
 	}
 
-
-	public static function ($conexion){
-
+	public static function editarComentario($conexion, $idComentario, $comentario){
+		$sql=sprintf("
+			UPDATE tbl_comentarios_por_album SET
+			comentario='%s'
+			WHERE id_comentario=%s
+		",
+			$conexion->antiInyeccion($comentario),
+			$conexion->antiInyeccion($idComentario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
 	}
+
+	public static function eliminarComentario($conexion, $idComentario){
+		$sql=sprintf("
+			DELETE FROM tbl_comentarios_por_album
+			WHERE id_comentario=%s
+		",
+			$conexion->antiInyeccion($idComentario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
+
+	public static function agregarFavorito($conexion, $idUsuario, $idAlbum){
+		$sql=sprintf("
+			INSERT INTO tbl_albumes_por_usuarios
+			(id_album, id_usuario)
+			VALUES(%s, %s)
+		",
+			$conexion->antiInyeccion($idAlbum),
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;	
+	}
+
+	public static function eliminarFavorito($conexion, $idUsuario, $idAlbum){
+		$sql=sprintf("
+			DELETE FROM tbl_albumes_por_usuarios
+			WHERE id_usuario = %s AND id_album = %s
+		",
+			$conexion->antiInyeccion($idAlbum),
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;	
+	}
+
+	public static function listarComentarios($conexion, $idAlbum){
+		$sql=sprintf("
+			SELECT
+			  a.id_comentario,
+			  a.id_album,
+			  a.id_usuario,
+			  CONCAT(b.nombre, ' ', b.apellido) as nombre_usuario,
+			  b.url_foto_perfil,
+			  b.usuario,
+			  b.email,
+			  a.comentario,
+			  a.fecha
+			FROM tbl_comentarios_por_album a
+			INNER JOIN tbl_usuarios b
+			ON(a.id_usuario = b.id_usuario)
+			WHERE id_album=%s
+
+		",
+			$conexion->antiInyeccion($idAlbum)
+		);
+		$comentarios=array();
+		$resultado = $conexion->ejecutarConsulta($sql);
+		while($comentario = $conexion->obtenerFila($resultado)){
+			$comentarios[]=$comentario;
+		}
+		return $comentarios;
+	}
+}
 ?>

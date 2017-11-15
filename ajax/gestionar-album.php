@@ -42,7 +42,33 @@
 				$respuesta = $album->actualizarRegistro($conexion);
 				echo json_encode($respuesta);
 			break;
-			
+			case "listar-comentarios":
+				$respuesta = Album::listarComentarios($conexion, $_POST["id_album"]);
+				echo json_encode($respuesta);
+			break;
+			case "agregar-comentario":
+				$respuesta = Album::agregarComentario($conexion, $_POST["id_album"], $_POST["id_usuario"], $_POST["comentario"]);
+				echo json_encode($respuesta);
+			break;
+			case "editar-comentario":
+				$respuesta = Album::editarComentario($conexion, $_POST["id_comentario"], $_POST["comentario"]);
+				echo json_encode($respuesta);
+			break;
+			case "eliminar-comentario":
+				$respuesta = Album::eliminarComentario($conexion, $_POST["id_comentario"]);
+				echo json_encode($respuesta);
+			break;
+
+			case "agregar-favorito":
+				$respuesta = Album::agregarFavorito($conexion,  $_POST["id_usuario"], $_POST["id_album"]);
+				echo json_encode($respuesta);
+			break;
+
+			case "eliminar-favorito":
+				$respuesta = Album::eliminarFavorito($conexion,  $_POST["id_usuario"], $_POST["id_album"]);
+				echo json_encode($respuesta);
+			break;
+
 			default:
 				echo json_encode("Petición inválida");
 			break;
