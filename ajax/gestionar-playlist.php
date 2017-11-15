@@ -8,8 +8,8 @@
 				$respuesta=Playlist::listarTodos($conexion);
 				echo json_encode($respuesta);
 			break;
-			case "listar-todos-top":
-			break;
+			/*case "listar-todos-top":
+			break;*/
 			case "seleccionar":
 				$playlist = new Playlist();
 				$playlist->setIdPlaylist($_POST["id_playlist"]);
@@ -38,6 +38,18 @@
 			case "eliminar-registro":
 				$respuesta=Playlist::eliminarRegistro($conexion,$_POST["id_playlist"]);
 				echo json_encode($respuesta);
+			break;
+			case "cargar-visibilidad":
+				$respuesta = Playlist::cargarVisibilidad($conexion);
+				echo $respuesta;
+			break;
+			case "cargar-usuarios":
+				$respuesta = Playlist::cargarUsuarios($conexion);
+				echo $respuesta;
+			break;
+			case "buscar-registro":
+				$respuesta = Playlist::buscarPorNombre($conexion,$_POST["txt-busqueda"]);
+				echo $respuesta;
 			break;
 			default:
 				echo json_encode("Petición inválida");

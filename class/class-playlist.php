@@ -230,5 +230,75 @@ class Playlist{
 		$playlist = $conexion->obtenerFila($resultado);
 		return $playlist["numero_canciones"];
 	}
-}
+
+	public static function cargarVisibilidad($conexion){
+			$sql = "
+				SELECT 
+				  id_tipo_visibilidad,
+				  tipo_visibilidad
+				FROM tbl_tipo_visibilidad";
+
+			$resultado = $conexion->ejecutarConsulta($sql);
+			$visibilidad=array();
+			while(($fila=$conexion->obtenerFila($resultado))){
+				$visibilidad[] = $fila;
+			}
+			return json_encode($visibilidad);
+	}
+
+	public static function cargarUsuarios($conexion){
+			$sql = "
+				SELECT 
+				  id_usuario,
+				  nombre,
+				  apellido
+				FROM tbl_usuarios";
+
+			$resultado = $conexion->ejecutarConsulta($sql);
+			$usuario=array();
+			while(($fila=$conexion->obtenerFila($resultado))){
+				$usuario[] = $fila;
+			}
+			return json_encode($usuario);
+	}
+
+	public static function buscarPorNombre($conexion,$nombrePlaylist){
+			$sql = sprintf("SELECT
+			  a.id_playlist,
+			  a.id_tipo_visibilidad,
+			  c.tipo_visibilidad,
+			  a.nombre_playlist,
+			  a.id_usuario,
+			  b.url_foto_perfil,
+			  CONCAT(b.nombre,' ', b.apellido) as nombre_usuario,
+			  b.email,
+			  b.usuario,
+			  a.url_foto_playlist
+			FROM tbl_playlists a
+			INNER JOIN tbl_usuarios b
+			ON (a.id_usuario=b.id_usuario)
+			INNER JOIN tbl_tipo_visibilidad c
+			ON(c.id_tipo_visibilidad=a.id_tipo_visibilidad)
+			WHERE nombre_playlist='%s'",
+			$conexion->antiInyeccion($nombrePlaylist)
+			);
+			$resultado = $conexion->ejecutarConsulta($sql);
+			$totalFilas  = $conexion->cantidadRegistros($resultado);
+			$playlist=array();
+			if ($totalFilas >= 1){
+				while(($fila = $conexion->obtenerFila($resultado))){
+					$playlist["id_playlist"]=$fila["id_playlist"];
+					$playlist["tipo_visibilidad"]=$fila["tipo_visibilidad"];
+					$playlist["nombre_playlist"]=$fila["nombre_playlist"];
+					$playlist["nombre_usuario"]=$fila["nombre_usuario"];
+					$playlist["url_foto_playlist"]=$fila["url_foto_playlist"];
+				}
+				echo json_encode($playlist);
+			}
+			else{
+				return false;
+			}
+		}
+
+	}
 ?>
