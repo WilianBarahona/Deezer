@@ -150,7 +150,7 @@ function iniciarSesion(){
        $.ajax({
 
    url:"ajax/verificacion-sesion.php",
-    data:{
+    data:{  "accion":"iniciar-sesion",
             "inputEmail":correo,
             "inputPassword":contrasenia
           },
