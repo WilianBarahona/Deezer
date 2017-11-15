@@ -5,7 +5,6 @@
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
-			switch ($_POST['accion']) {
 			case 'actualizar-datos': 
 					$usuario=new Usuario(
 
