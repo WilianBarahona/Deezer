@@ -136,6 +136,7 @@ class Usuario{
 
 			#resultado de la consulta				
 			$resultado=$objConexion->ejecutarConsulta($sql);
+			var_dump()
 			$cantidadRegistros=$objConexion->cantidadRegistros($resultado);
 			
 			if ($cantidadRegistros==1)  {
@@ -191,7 +192,7 @@ class Usuario{
 			$conexion->antiInyeccion($this->idUsuario)
 		);
 		$resultado=$conexion->ejecutarConsulta($sql);
-		retunr $resultado;
+		return $resultado;
 	}
 	function obtenerDatosUsuario($conexion,$idUsuarioActivo){
 		$sql= sprintf("

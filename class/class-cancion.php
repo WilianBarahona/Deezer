@@ -5,6 +5,7 @@
 		private $idIdioma;
 		private $nombreCancion;
 		private $urlAudio;
+		private $idGenero;
 
 		public function __construct($idCancion=null,
 									$idAlbum=null,
@@ -59,6 +60,14 @@
 			return $this->urlAudio; 
 		}
 
+		public function setIdGenero($idGenero){
+			$this->idGenero = $idGenero;
+		}
+
+		public function getIdGenero($idGenero){
+			return $this->idGenero;
+		}
+
 		public function __toString(){
 				return "IdCancion: " . $this->idCancion . 
 					" IdAlbum: " . $this->idAlbum . 
@@ -76,6 +85,8 @@
 				  b.id_artista, c.nombre_artista,
 				  a.id_idioma, d.nombre_idioma, d.abreviatura_idioma,
 				  a.nombre_cancion,
+				  a.id_genero,
+				  e.nombre_genero,
 				  a.url_audio,
 				  a.reproducciones
 				FROM tbl_canciones a
@@ -84,7 +95,9 @@
 				INNER JOIN tbl_artistas c
 				ON (b.id_artista=c.id_artista)
 				INNER JOIN tbl_idioma d
-				ON (a.id_idioma=d.id_idioma);
+				ON (a.id_idioma=d.id_idioma)
+				INNER JOIN tbl_generos e
+				ON (a.id_genero = e.id_genero)
 			";
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$canciones=array(); // Renombrar
@@ -103,6 +116,8 @@
 				  b.id_artista, c.nombre_artista,
 				  a.id_idioma, d.nombre_idioma, d.abreviatura_idioma,
 				  a.nombre_cancion,
+				  a.id_genero,
+				  e.nombre_genero,
 				  a.url_audio,
 				  a.reproducciones
 				FROM tbl_canciones a
@@ -112,6 +127,8 @@
 				ON (b.id_artista=c.id_artista)
 				INNER JOIN tbl_idioma d
 				ON (a.id_idioma=d.id_idioma)
+				INNER JOIN tbl_generos e
+				ON (a.id_genero = e.id_genero)
 				WHERE id_cancion=%s;
 				",
 				$conexion->antiInyeccion($this->getIdCancion())
@@ -124,13 +141,14 @@
 		#     return false or true ####  JSON
 		public function insertarRegistro($conexion){
 			$sql=sprintf("INSERT INTO tbl_canciones
-				(id_album, id_idioma, nombre_cancion, url_audio)
-				VALUES(%s, %s, '%s', '%s')
+				(id_album, id_idioma, nombre_cancion, url_audio, id_genero)
+				VALUES(%s, %s, '%s', '%s', %s)
 				",
 				$conexion->antiInyeccion($this->getIdAlbum()),
 				$conexion->antiInyeccion($this->getIdIdioma()),
 				$conexion->antiInyeccion($this->getNombreCancion()),
-				$conexion->antiInyeccion($this->getUrlAudio())
+				$conexion->antiInyeccion($this->getUrlAudio()),
+				$conexion->antiInyeccion($this->getIdGenero())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return $resultado;
@@ -145,13 +163,15 @@
 				  id_album=%s,
 				  id_idioma=%s,
 				  nombre_cancion='%s',
-				  url_audio='%s'
+				  url_audio='%s',
+				  id_genero=%s
 				WHERE id_cancion=%s;
 			",
 				$conexion->antiInyeccion($this->getIdAlbum()),
 				$conexion->antiInyeccion($this->getIdIdioma()),
 				$conexion->antiInyeccion($this->getNombreCancion()),
 				$conexion->antiInyeccion($this->getUrlAudio()),
+				$conexion->antiInyeccion($this->getIdGenero()),
 				$conexion->antiInyeccion($this->getIdCancion())
 			);
 			$resultado=$conexion->ejecutarConsulta($sql);
