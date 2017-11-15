@@ -5,19 +5,20 @@
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
-			case 'cargar-datos': 
+			switch ($_POST['accion']) {
+			case 'actualizar-datos': 
 					$usuario=new Usuario(
 
 						$_SESSION['id_usuario'],
 						$_SESSION['id_suscripcion'],
 						$_SESSION['id_pais'],
-						$_SESSION['usuario'],
-						$_SESSION['nombre'],
-						$_SESSION['apellido'],
+						$_POST['usuario'],
+						$_POST['nombre'],
+						$_POST['apellido'],
 						$_SESSION['sexo'],
-						$_SESSION['email'],
-						null,
-						null,
+						$_POST['email'],
+						$_POST['contrasenia'],
+						$_SESSION['url_foto_perfil'],
 						$_SESSION['fecha_nacimiento'],
 						$_SESSION['url_foto_perfil'],
 						$_SESSION['tipo_usuario']
@@ -39,10 +40,14 @@
 				$usuario->setTipoUsuario($_POST["id_tipo_usuario"]);
 				$respuesta=$usuario->insertarRegistro($conexion);
 				echo json_encode($respuesta);
-			break;
+			case 'obtener-datos-usuario':
+				Usuario::obtenerDatosUsuario($conexion,$_SESSION['id_usuario']);
+				break;
 			default:
 				echo json_encode("Petición inválida");
 				break;
+			break;
+
 		}
 		$conexion->cerrarConexion();
 	}else{
