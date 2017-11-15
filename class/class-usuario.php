@@ -170,61 +170,33 @@ class Usuario{
 		return $respuesta;
 	}
 
-		public  function actualizarRegistro($conexion){
+	public function actualizarRegistro($conexion){
 		$sql=sprintf("
-				UPDATE tbl_usuarios 
-				SET 
-					id_suscripcion=%s,
-					id_pais='%s',
-					usuario='%s',
-					nombre='%s',
-					apellido='%s',
-					sexo='%s',
-					email='%s',
-					contrasenia='%s',
-					url_foto_perfil='%s'
-					WHERE id_usuario=%s
-
-					",
-		
-		$conexion->antiInyeccion($this->idSuscripcion),
-		$conexion->antiInyeccion($this->idPais),
-		$conexion->antiInyeccion($this->usuario),
-		$conexion->antiInyeccion($this->nombre),
-		$conexion->antiInyeccion($this->apellido),
-		$conexion->antiInyeccion($this->sexo),
-		$conexion->antiInyeccion($this->email),
-		$conexion->antiInyeccion($this->contrasenia),
-		$conexion->antiInyeccion($this->urlFotoPerfil),
-		$conexion->antiInyeccion($this->idUsuario)
-
-	);
-
+			UPDATE tbl_usuarios SET 
+				id_suscripcion=%s,
+				id_pais='%s',
+				usuario='%s',
+				nombre='%s',
+				apellido='%s',
+				sexo='%s',
+				email='%s',
+				contrasenia='%s',
+				url_foto_perfil='%s'
+			WHERE id_usuario=%s
+		",		
+			$conexion->antiInyeccion($this->idSuscripcion),
+			$conexion->antiInyeccion($this->idPais),
+			$conexion->antiInyeccion($this->usuario),
+			$conexion->antiInyeccion($this->nombre),
+			$conexion->antiInyeccion($this->apellido),
+			$conexion->antiInyeccion($this->sexo),
+			$conexion->antiInyeccion($this->email),
+			$conexion->antiInyeccion($this->contrasenia),
+			$conexion->antiInyeccion($this->urlFotoPerfil),
+			$conexion->antiInyeccion($this->idUsuario)
+		);
 		$resultado=$conexion->ejecutarConsulta($sql);
-		
-	//echo json_encode($resultado);
-
-}
-	function obtenerDatosUsuario($conexion,$idUsuarioActivo){
-		$sql= sprintf("
-				SELECT id_suscripcion, 
-					   id_pais, 
-					   usuario,
-					   nombre, 
-					   apellido, 
-					   sexo, 
-					   email, 
-					   contrasenia,  
-					   fecha_nacimiento
-				FROM tbl_usuarios 
-				WHERE id_usuario=%s",
-				$conexion->antiInyeccion($idUsuarioActivo)
-			);
-		//var_dump($sql);
-		$resultado=$conexion->ejecutarConsulta($sql);
-		$fila = $conexion->obtenerFila($resultado);
-		//var_dump($fila);
-		echo json_encode($fila);
+		return $resultado;
 	}
 	
 	public function insertarRegistro($conexion){
@@ -261,9 +233,162 @@ class Usuario{
 			$conexion->antiInyeccion($this->getUrlFotoPerfil()),
 			$conexion->antiInyeccion($this->getTipoUsuario())
 		);
-		echo ($sql);
 		$resultado=$conexion->ejecutarConsulta($sql);
 		return $resultado;
+	}
+
+	public static function listarTodos($conexion){
+		$sql="
+			SELECT
+			  a.id_usuario,
+			  a.id_suscripcion,c.id_tipo_suscripcion,d.tipo_suscripcion,d.dias_duracion,
+			  c.inicio_suscripcion,
+			  a.id_pais,b.nombre_pais,b.abreviatura_pais,
+			  a.usuario,CONCAT(a.nombre,' ',a.apellido) as nombre_usuario,
+			  a.nombre,a.apellido,
+			  a.sexo,
+			  a.email,
+			  a.fecha_nacimiento,
+			  a.url_foto_perfil,
+			  a.id_tipo_usuario,e.tipo_usuario
+			FROM tbl_usuarios a
+			INNER JOIN tbl_paises b
+			ON (a.id_pais = b.id_pais)
+			INNER JOIN tbl_suscripciones c
+			ON (a.id_suscripcion = c.id_suscripcion)
+			INNER JOIN tbl_tipo_suscripcion d
+			ON(c.id_tipo_suscripcion = d.id_tipo_suscripcion)
+			INNER JOIN tbl_tipo_usuario e
+			ON(a.id_tipo_usuario=e.id_tipo_usuario)
+		";
+		$resultado=$conexion->ejecutarConsulta($sql);
+		$usuarios=array();
+		while($usuario = $conexion->obtenerFila($resultado)){
+			$usuarios[]=$usuario;
+		}
+		return $usuarios;
+	}
+
+	public function seleccionar($conexion){
+		$sql=sprintf("
+			SELECT
+			  a.id_usuario,
+			  a.id_suscripcion,c.id_tipo_suscripcion,d.tipo_suscripcion,d.dias_duracion,
+			  c.inicio_suscripcion,
+			  a.id_pais,b.nombre_pais,b.abreviatura_pais,
+			  a.usuario,CONCAT(a.nombre,' ',a.apellido) as nombre_usuario,
+			  a.nombre,a.apellido,
+			  a.sexo,
+			  a.email,
+			  a.fecha_nacimiento,
+			  a.url_foto_perfil,
+			  a.id_tipo_usuario,e.tipo_usuario
+			FROM tbl_usuarios a
+			INNER JOIN tbl_paises b
+			ON (a.id_pais = b.id_pais)
+			INNER JOIN tbl_suscripciones c
+			ON (a.id_suscripcion = c.id_suscripcion)
+			INNER JOIN tbl_tipo_suscripcion d
+			ON(c.id_tipo_suscripcion = d.id_tipo_suscripcion)
+			INNER JOIN tbl_tipo_usuario e
+			ON(a.id_tipo_usuario=e.id_tipo_usuario)
+			WHERE a.id_usuario = %s
+		",
+			$conexion->antiInyeccion($this->getIdUsuario())
+		);
+		$resultado=$conexion->ejecutarConsulta($sql);
+		$usuario=$conexion->obtenerFila($resultado);
+		return $usuario;
+	}
+
+	public static function eliminarRegistro($conexion, $idUsuario){
+		$temp = new Usuario();
+		$temp->setIdUsuario($idUsuario);
+		$temp_data = $temp->seleccionar($conexion);
+		$idSuscripcion = $temp_data["id_suscripcion"];
+
+		$sql1=sprintf("
+			DELETE FROM tbl_comentarios_por_artista
+			WHERE id_usuario = %s;
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$sql2=sprintf("
+			DELETE FROM tbl_comentarios_por_playlist
+			WHERE id_usuario = %s
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$sql3=sprintf("
+			DELETE FROM tbl_comentarios_por_album
+			WHERE id_usuario = %s
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$sql4=sprintf("
+			DELETE FROM tbl_albumes_por_usuarios
+			WHERE id_usuario = %s
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$sql5=sprintf("
+			DELETE FROM tbl_playlists_por_usuarios
+			WHERE id_usuario = %s
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$sql6=sprintf("
+			DELETE FROM tbl_canciones_por_usuario
+			WHERE id_usuario = %s
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$sql7=sprintf("
+			DELETE FROM tbl_artistas_por_usuarios
+			WHERE id_usuario = %s;
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$sql8=sprintf("
+			DELETE FROM tbl_seguidores
+			WHERE id_usuario = %s OR id_sigue_a_usuario=%s;
+		",
+			$conexion->antiInyeccion($idUsuario),
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$sql9=sprintf("
+			DELETE FROM tbl_historial_por_usuario
+			WHERE id_usuario = %s
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		
+		$sql10=sprintf("
+			DELETE FROM tbl_usuarios
+			WHERE id_usuario = %s
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+
+		$sql11=sprintf("
+			DELETE FROM tbl_suscripciones
+			WHERE id_suscripcion = %s
+		",
+			$conexion->antiInyeccion($idSuscripcion)
+		);
+
+		$resultado1 = $conexion->ejecutarConsulta($sql1);
+		$resultado2 = $conexion->ejecutarConsulta($sql2);
+		$resultado3 = $conexion->ejecutarConsulta($sql3);
+		$resultado4 = $conexion->ejecutarConsulta($sql4);
+		$resultado5 = $conexion->ejecutarConsulta($sql5);
+		$resultado6 = $conexion->ejecutarConsulta($sql6);
+		$resultado7 = $conexion->ejecutarConsulta($sql7);
+		$resultado8 = $conexion->ejecutarConsulta($sql8);
+		$resultado9 = $conexion->ejecutarConsulta($sql9);
+		$resultado10 = $conexion->ejecutarConsulta($sql10);
+		$resultado11 = $conexion->ejecutarConsulta($sql11);
+		return $resultado2 && $resultado1 && $resultado3 && $resultado4 && $resultado5 && $resultado6 && $resultado7 && $resultado8 && $resultado9 && $resultado10 && $resultado11;
 	}
 }
 ?>

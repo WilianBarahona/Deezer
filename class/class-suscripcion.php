@@ -47,5 +47,6 @@
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return $conexion->ultimoId();
 		}
+
 	}
 ?>
