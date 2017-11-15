@@ -287,8 +287,8 @@ class Album{
 			DELETE FROM tbl_albumes_por_usuarios
 			WHERE id_usuario = %s AND id_album = %s
 		",
-			$conexion->antiInyeccion($idAlbum),
-			$conexion->antiInyeccion($idUsuario)
+			$conexion->antiInyeccion($idUsuario),
+			$conexion->antiInyeccion($idAlbum)
 		);
 		$resultado = $conexion->ejecutarConsulta($sql);
 		return $resultado;	

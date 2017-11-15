@@ -124,97 +124,6 @@ class Usuario{
 	public function toString(){
 		return "IdUsuario: " . $this->idUsuario . " IdSuscripcion: " . $this->idSuscripcion . " IdPais: " . $this->idPais . " Usuario: " . $this->usuario . " Nombre: " . $this->nombre . " Apellido: " . $this->apellido . " Sexo: " . $this->sexo . " Email: " . $this->email . " Contrasenia: " . $this->contrasenia . " UltimaSesion: " . $this->ultimaSesion . " FechaNacimiento: " . $this->fechaNacimiento . " UrlFotoPerfil: " . $this->urlFotoPerfil . " TipoUsuario: " . $this->tipoUsuario;
 	}
-	public static function verificarUsuario($objConexion,$email,$password){
-			#consulta
-			$sql="SELECT  id_usuario, id_suscripcion, id_pais, usuario, 
-						  nombre, apellido, sexo, email, contrasenia, 
-						  ultima_sesion, fecha_nacimiento, url_foto_perfil, 
-						  tipo_usuario 
-				  FROM tbl_usuarios
-				  WHERE email='$email' && contrasenia='$password'";
-
-
-			#resultado de la consulta				
-			$resultado=$objConexion->ejecutarConsulta($sql);
-			var_dump()
-			$cantidadRegistros=$objConexion->cantidadRegistros($resultado);
-			
-			if ($cantidadRegistros==1)  {
-				$fila = $objConexion->obtenerFila($resultado);
-				session_start();
-				$_SESSION['status']=true;
-				$_SESSION['id_usuario']=$fila['id_usuario'];
-				$_SESSION['id_suscripcion']=$fila['id_suscripcion'];
-				$_SESSION['id_pais']=$fila['id_pais'];
-				$_SESSION['usuario']=$fila['usuario'];
-				$_SESSION['nombre']=$fila['nombre'];
-				$_SESSION['apellido']=$fila['apellido'];
-				$_SESSION['sexo']=$fila['sexo'];
-				$_SESSION['email']=$fila['email'];
-				$_SESSION['contrasenia']=$fila['contrasenia'];
-				$_SESSION['fecha_nacimiento']=$fila['fecha_nacimiento'];
-				$_SESSION['url_foto_perfil']=$fila['url_foto_perfil'];
-				$_SESSION['tipo_usuario']=$fila['tipo_usuario'];
-				$respuesta['tipo_usuario']=$fila['tipo_usuario'];
-				$respuesta['loggedin'] = 1;
-				$respuesta["mensaje"]="tiene acceso" ;
-
-			}
-			else {
-				//echo'correo o contrasenia invalidos';	
-				session_start();
-				$_SESSION['status']=false;
-				$respuesta['loggedin'] = 0;
-				$respuesta["mensaje"]="No tiene acceso" ;
-				}	  
-			echo json_encode($respuesta);
-		}
-		public  function actualizarRegistro($conexion){
-		$sql=sprintf("
-			UPDATE tbl_usuarios 
-			SET 
-				usuario='%s',
-				nombre='%s',
-				apellido='%s',
-				sexo='%s',
-				email='%s',
-				contrasenia='%s',
-				fecha_nacimiento='%s',
-				WHERE id_usuario=%s
-		",
-			$conexion->antiInyeccion($this->usuario),
-			$conexion->antiInyeccion($this->nombre),
-			$conexion->antiInyeccion($this->apellido),
-			$conexion->antiInyeccion($this->sexo),
-			$conexion->antiInyeccion($this->email),
-			$conexion->antiInyeccion($this->contrasenia),
-			$conexion->antiInyeccion($this->fechaNacimiento),
-			$conexion->antiInyeccion($this->idUsuario)
-		);
-		$resultado=$conexion->ejecutarConsulta($sql);
-		return $resultado;
-	}
-	function obtenerDatosUsuario($conexion,$idUsuarioActivo){
-		$sql= sprintf("
-				SELECT id_suscripcion, 
-					   id_pais, 
-					   usuario,
-					   nombre, 
-					   apellido, 
-					   sexo, 
-					   email, 
-					   contrasenia,  
-					   fecha_nacimiento
-				FROM tbl_usuarios 
-				WHERE id_usuario=%s",
-				$conexion->antiInyeccion($idUsuarioActivo)
-			);
-		//var_dump($sql);
-		$resultado=$conexion->ejecutarConsulta($sql);
-		$fila = $conexion->obtenerFila($resultado);
-		//var_dump($fila);
-		echo json_encode($fila);
-	}
 	
 	public function insertarRegistro($conexion){
 		include_once("class-suscripcion.php");
@@ -407,5 +316,108 @@ class Usuario{
 		$resultado11 = $conexion->ejecutarConsulta($sql11);
 		return $resultado2 && $resultado1 && $resultado3 && $resultado4 && $resultado5 && $resultado6 && $resultado7 && $resultado8 && $resultado9 && $resultado10 && $resultado11;
 	}
+			public static function verificarUsuario($objConexion,$email,$password){
+			#consulta
+			$sql="SELECT  id_usuario, id_suscripcion, id_pais, usuario, 
+						  nombre, apellido, sexo, email, contrasenia, 
+						  ultima_sesion, fecha_nacimiento, url_foto_perfil, 
+						  tipo_usuario 
+				  FROM tbl_usuarios
+				  WHERE email='$email' && contrasenia='$password'";
+
+
+			#resultado de la consulta				
+			$resultado=$objConexion->ejecutarConsulta($sql);
+			$cantidadRegistros=$objConexion->cantidadRegistros($resultado);
+			
+			if ($cantidadRegistros==1)  {
+				$fila = $objConexion->obtenerFila($resultado);
+				session_start();
+				$_SESSION['status']=true;
+				$_SESSION['id_usuario']=$fila['id_usuario'];
+				$_SESSION['id_suscripcion']=$fila['id_suscripcion'];
+				$_SESSION['id_pais']=$fila['id_pais'];
+				$_SESSION['usuario']=$fila['usuario'];
+				$_SESSION['nombre']=$fila['nombre'];
+				$_SESSION['apellido']=$fila['apellido'];
+				$_SESSION['sexo']=$fila['sexo'];
+				$_SESSION['email']=$fila['email'];
+				$_SESSION['contrasenia']=$fila['contrasenia'];
+				$_SESSION['fecha_nacimiento']=$fila['fecha_nacimiento'];
+				$_SESSION['url_foto_perfil']=$fila['url_foto_perfil'];
+				$_SESSION['tipo_usuario']=$fila['tipo_usuario'];
+				$respuesta['tipo_usuario']=$fila['tipo_usuario'];
+				$respuesta['loggedin'] = 1;
+				$respuesta["mensaje"]="tiene acceso" ;
+
+			}
+			else {
+				//echo'correo o contrasenia invalidos';	
+				session_start();
+				$_SESSION['status']=false;
+				$respuesta['loggedin'] = 0;
+				$respuesta["mensaje"]="No tiene acceso" ;
+				}	  
+			echo json_encode($respuesta);
+		}
+		public  function actualizarRegistro($conexion){
+		$sql=sprintf("
+				UPDATE tbl_usuarios 
+				SET 
+					id_suscripcion=%s,
+					id_pais='%s',
+					usuario='%s',
+					nombre='%s',
+					apellido='%s',
+					sexo='%s',
+					email='%s',
+					contrasenia='%s',
+					url_foto_perfil='%s'
+					WHERE id_usuario=%s
+
+					",
+		
+		$conexion->antiInyeccion($this->idSuscripcion),
+		$conexion->antiInyeccion($this->idPais),
+		$conexion->antiInyeccion($this->usuario),
+		$conexion->antiInyeccion($this->nombre),
+		$conexion->antiInyeccion($this->apellido),
+		$conexion->antiInyeccion($this->sexo),
+		$conexion->antiInyeccion($this->email),
+		$conexion->antiInyeccion($this->contrasenia),
+		$conexion->antiInyeccion($this->urlFotoPerfil),
+		$conexion->antiInyeccion($this->idUsuario)
+
+	);
+
+		$resultado=$conexion->ejecutarConsulta($sql);
+		
+	//echo json_encode($resultado);
+
+}
+	function obtenerDatosUsuario($conexion,$idUsuarioActivo){
+		$sql= sprintf("
+				SELECT id_suscripcion, 
+					   id_pais, 
+					   usuario,
+					   nombre, 
+					   apellido, 
+					   sexo, 
+					   email, 
+					   contrasenia, 
+					   url_foto_perfil, 
+					   fecha_nacimiento
+				FROM tbl_usuarios 
+				WHERE id_usuario=%s",
+				$conexion->antiInyeccion($idUsuarioActivo)
+			);
+		//var_dump($sql);
+		$resultado=$conexion->ejecutarConsulta($sql);
+		$fila = $conexion->obtenerFila($resultado);
+		//var_dump($fila);
+		echo json_encode($fila);
+	}
+	
+	
 }
 ?>

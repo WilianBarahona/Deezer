@@ -189,5 +189,33 @@
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return $resultado;
 		}
+
+		public static function agregarFavorito($conexion, $idUsuario, $idCancion){
+			$sql=sprintf("
+				INSERT INTO tbl_canciones_por_usuario
+				(id_cancion, id_usuario)
+				VALUES(%s, %s)
+			",
+				$conexion->antiInyeccion($idCancion),
+				$conexion->antiInyeccion($idUsuario)
+			);
+			$resultado = $conexion->ejecutarConsulta($sql);
+			return $resultado;	
+		}
+
+		public static function eliminarFavorito($conexion, $idUsuario, $idCancion){
+			$sql=sprintf("
+				DELETE FROM tbl_canciones_por_usuario
+				WHERE id_usuario = %s AND id_cancion = %s
+			",
+				$conexion->antiInyeccion($idUsuario),
+				$conexion->antiInyeccion($idCancion)
+			);
+			$resultado = $conexion->ejecutarConsulta($sql);
+			return $resultado;	
+		}
+
+
+
 	}
 ?>

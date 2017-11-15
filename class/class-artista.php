@@ -193,5 +193,96 @@ class Artista{
 		$artista = $conexion->obtenerFila($resultado);
 		return $artista["numero_albumes"];
 	}
+###
+	public static function agregarComentario($conexion, $idArtista, $idUsuario, $comentario){
+		$sql=sprintf("
+			INSERT INTO tbl_comentarios_por_artista
+			(id_artista, id_usuario, comentario, fecha)
+			VALUES(%s,%s,'%s', CURRENT_TIMESTAMP())
+		",
+			$conexion->antiInyeccion($idArtista),
+			$conexion->antiInyeccion($idUsuario),
+			$conexion->antiInyeccion($comentario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
+
+	public static function editarComentario($conexion, $idComentario, $comentario){
+		$sql=sprintf("
+			UPDATE tbl_comentarios_por_artista SET
+			comentario='%s'
+			WHERE id_comentario=%s
+		",
+			$conexion->antiInyeccion($comentario),
+			$conexion->antiInyeccion($idComentario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
+
+	public static function eliminarComentario($conexion, $idComentario){
+		$sql=sprintf("
+			DELETE FROM tbl_comentarios_por_artista
+			WHERE id_comentario=%s
+		",
+			$conexion->antiInyeccion($idComentario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
+
+	public static function agregarFavorito($conexion, $idUsuario, $idArtista){
+		$sql=sprintf("
+			INSERT INTO tbl_artistas_por_usuarios
+			(id_artista, id_usuario)
+			VALUES(%s, %s)
+		",
+			$conexion->antiInyeccion($idArtista),
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;	
+	}
+
+	public static function eliminarFavorito($conexion, $idUsuario, $idArtista){
+		$sql=sprintf("
+			DELETE FROM tbl_artistas_por_usuarios
+			WHERE id_usuario = %s AND id_artista = %s
+		",
+			$conexion->antiInyeccion($idUsuario),
+			$conexion->antiInyeccion($idArtista)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
+
+	public static function listarComentarios($conexion, $idArtista){
+		$sql=sprintf("
+			SELECT
+			  a.id_comentario,
+			  a.id_artista,
+			  a.id_usuario,
+			  CONCAT(b.nombre, ' ', b.apellido) as nombre_usuario,
+			  b.url_foto_perfil,
+			  b.usuario,
+			  b.email,
+			  a.comentario,
+			  a.fecha
+			FROM tbl_comentarios_por_artista a
+			INNER JOIN tbl_usuarios b
+			ON(a.id_usuario = b.id_usuario)
+			WHERE id_artista=%s
+
+		",
+			$conexion->antiInyeccion($idArtista)
+		);
+		$comentarios=array();
+		$resultado = $conexion->ejecutarConsulta($sql);
+		while($comentario = $conexion->obtenerFila($resultado)){
+			$comentarios[]=$comentario;
+		}
+		return $comentarios;
+	}
 }
 ?>

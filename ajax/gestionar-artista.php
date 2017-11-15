@@ -39,6 +39,34 @@
 				$respuesta = Artista::eliminarRegistro($conexion, $_POST["id_artista"]);
 				echo json_encode($respuesta);
 			break;
+###
+			case "listar-comentarios":
+				$respuesta = Artista::listarComentarios($conexion, $_POST["id_artista"]);
+				echo json_encode($respuesta);
+			break;
+			case "agregar-comentario":
+				$respuesta = Artista::agregarComentario($conexion, $_POST["id_artista"], $_POST["id_usuario"], $_POST["comentario"]);
+				echo json_encode($respuesta);
+			break;
+			case "editar-comentario":
+				$respuesta = Artista::editarComentario($conexion, $_POST["id_comentario"], $_POST["comentario"]);
+				echo json_encode($respuesta);
+			break;
+			case "eliminar-comentario":
+				$respuesta = Artista::eliminarComentario($conexion, $_POST["id_comentario"]);
+				echo json_encode($respuesta);
+			break;
+
+			case "agregar-favorito":
+				$respuesta = Artista::agregarFavorito($conexion,  $_POST["id_usuario"], $_POST["id_artista"]);
+				echo json_encode($respuesta);
+			break;
+
+			case "eliminar-favorito":
+				$respuesta = Artista::eliminarFavorito($conexion,  $_POST["id_usuario"], $_POST["id_artista"]);
+				echo json_encode($respuesta);
+			break;
+
 			default:
 				echo json_encode("Petición inválida");
 				break;
