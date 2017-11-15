@@ -42,7 +42,7 @@
 				$respuesta = $album->actualizarRegistro($conexion);
 				echo json_encode($respuesta);
 			break;
-
+			
 			default:
 				echo json_encode("Petición inválida");
 			break;

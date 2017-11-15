@@ -224,4 +224,9 @@
 			return $canciones;
 		}
 	}
+
+
+	public static function ($conexion){
+
+	}
 ?>
