@@ -30,15 +30,8 @@ function playList(){
 			id:"db",
 			title: "Chala head chala",
 			artist: "Ricardo Silva",
-			url:"music/db.wav",
+			url:"http://freezer.rf.gd/musica/db.mp3",
 			cover: "img/cover/db.jpg",
-		},
-		{
-			id:"photo",
-			title: "Photograph",
-			artist: "Ed Sheeran",
-			url:"music/photo.mp3",
-			cover: "img/cover/x.jpg",
 		}
 	];
 	this.i=0; // CONTADOR DE REPRODUCCION

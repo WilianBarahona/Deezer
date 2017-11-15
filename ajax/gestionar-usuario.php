@@ -5,21 +5,18 @@
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
-			case 'actualizar-datos': 
+			case 'actualizar-registro': 
 					$usuario=new Usuario();
-					$usuario -> setIdUsuario($_SESSION['id_usuario']);
-					$usuario -> setIdSuscripcion($_SESSION['id_suscripcion']);
-					$usuario -> setIdPais($_SESSION['id_pais']);
+					$usuario -> setIdUsuario($POST['id_usuario']);
 					$usuario -> setUsuario($_POST['usuario']);
 					$usuario -> setNombre($_POST['nombre']);
 					$usuario -> setApellido($_POST['apellido']);
-					$usuario -> setSexo($_SESSION['sexo']);
+					$usuario -> setSexo($_POST['sexo']);
 					$usuario -> setEmail($_POST['email']);
 					$usuario -> setContrasenia($_POST['contrasenia']);
-					$usuario -> setFechaNacimiento($_SESSION['fecha_nacimiento']);
-					$usuario -> setUrlFotoPerfil($_POST['url_foto_perfil']);
-					$usuario -> setTipoUsuario($_SESSION['tipo_usuario']);
-					$usuario->actualizarRegistro($conexion);
+					$usuario -> setFechaNacimiento($_POST['fecha_nacimiento']);
+					$respuesta = $usuario->actualizarRegistro($conexion);
+
 			break;
 			case 'insertar-registro': 
 				$usuario = new Usuario();
