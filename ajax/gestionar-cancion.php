@@ -8,6 +8,7 @@
 				$cancion = new Cancion();
 				$cancion->setIdAlbum($_POST["id_album"]);
 				$cancion->setIdIdioma($_POST["id_idioma"]);
+				$cancion->setIdGenero($_POST["id_genero"]);
 				$cancion->setNombreCancion($_POST["nombre_cancion"]);
 				$cancion->setUrlAudio($_POST["url_audio"]);
 				$respuesta = $cancion->insertarRegistro($conexion);
@@ -28,6 +29,7 @@
 				$cancion->setIdCancion($_POST["id_cancion"]);
 				$cancion->setIdAlbum($_POST["id_album"]);
 				$cancion->setIdIdioma($_POST["id_idioma"]);
+				$cancion->setIdGenero($_POST["id_genero"]);
 				$cancion->setNombreCancion($_POST["nombre_cancion"]);
 				$cancion->setUrlAudio($_POST["url_audio"]);
 				$respuesta = $cancion->actualizarRegistro($conexion);
