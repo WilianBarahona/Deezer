@@ -231,37 +231,6 @@ class Playlist{
 		return $playlist["numero_canciones"];
 	}
 
-	public static function cargarVisibilidad($conexion){
-			$sql = "
-				SELECT 
-				  id_tipo_visibilidad,
-				  tipo_visibilidad
-				FROM tbl_tipo_visibilidad";
-
-			$resultado = $conexion->ejecutarConsulta($sql);
-			$visibilidad=array();
-			while(($fila=$conexion->obtenerFila($resultado))){
-				$visibilidad[] = $fila;
-			}
-			return json_encode($visibilidad);
-	}
-
-	public static function cargarUsuarios($conexion){
-			$sql = "
-				SELECT 
-				  id_usuario,
-				  nombre,
-				  apellido
-				FROM tbl_usuarios";
-
-			$resultado = $conexion->ejecutarConsulta($sql);
-			$usuario=array();
-			while(($fila=$conexion->obtenerFila($resultado))){
-				$usuario[] = $fila;
-			}
-			return json_encode($usuario);
-	}
-
 	public static function buscarPorNombre($conexion,$nombrePlaylist){
 			$sql = sprintf("SELECT
 			  a.id_playlist,

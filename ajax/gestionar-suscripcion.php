@@ -3,9 +3,9 @@
 	if(isset($_POST["accion"])){
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
-			//case '': 
-			////
-			//break;
+			case "actualizar-suscripcion":
+				
+			break;
 			default:
 				echo json_encode("Petición inválida");
 				break;

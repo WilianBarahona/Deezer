@@ -39,16 +39,8 @@
 				$respuesta=Playlist::eliminarRegistro($conexion,$_POST["id_playlist"]);
 				echo json_encode($respuesta);
 			break;
-			case "cargar-visibilidad":
-				$respuesta = Playlist::cargarVisibilidad($conexion);
-				echo $respuesta;
-			break;
-			case "cargar-usuarios":
-				$respuesta = Playlist::cargarUsuarios($conexion);
-				echo $respuesta;
-			break;
-			case "buscar-registro":
-				$respuesta = Playlist::buscarPorNombre($conexion,$_POST["txt-busqueda"]);
+			case "buscar-por-nombre":
+				$respuesta = Playlist::buscarPorNombre($conexion,$_POST["nombre_playlist"]);
 				echo $respuesta;
 			break;
 			default:
