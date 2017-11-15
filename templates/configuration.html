@@ -42,12 +42,12 @@
             <table class="table" style="width: 500px">
                 <tr>
                     <td class="td">Tu correo electrónico:</td>
-                    <td ><input class="form-control" type="email" name="txt-correo"></td>
+                    <td ><input class="form-control" type="email" name="txt-correo" id="txt-correo"></td>
                     <td><button class="btns">Modificar</button></td>
                 </tr>
                 <tr>
                   <td class="td">Tu contraseña:</td>
-                  <td><input class="form-control" type="password" name="txt-contrasenia"></td>
+                  <td><input class="form-control" type="password" name="txt-contrasenia" id="txt-contrasenia"></td>
                   <td><button class="btns">Modificar</button></td>
                 </tr>
             </table>
@@ -74,7 +74,7 @@
               </tr>
               <tr>
                 <td class="td">Nombre de usuario</td>
-                <td><input class="form-control" type="text" name="txt-nombre-usuario"></td>
+                <td><input class="form-control" type="text" name="txt-nombre-usuario" id="txt-nombre-usuario"></td>        
 
               </tr>
           </table>
@@ -94,12 +94,12 @@
             <table class="table" style="width: 500px">
                 <tr>
                     <td class="td">Apellido(s):</td>
-                    <td ><input class="form-control" type="text" name="txt-apellido"></td>
+                    <td ><input class="form-control" type="text" name="txt-apellido" id="txt-apellido"></td>
                    
                 </tr>
                 <tr>
                   <td class="td">Nombre</td>
-                  <td><input class="form-control" type="text" name="txt-nombre"></td>                    
+                  <td><input class="form-control" type="text" name="txt-nombre" id="txt-nombre"></td>                    
                 </tr>
                 <tr>
                   <td class="td">Fecha de Nacimiento</td>
@@ -184,14 +184,7 @@
                   </select>
                   </td>
                 </tr>
-                <tr>
-                  <td class="td">Direccion</td>
-                  <td><input class="form-control" type="text" name="txt-direccion"></td>
-                </tr>
-                <tr>
-                  <td class="td">Codigo postal</td>
-                  <td><input class="form-control" type="text" name="txt-codigo-postal"></td>
-                </tr>
+               
                 <tr>
                   <td class="td">Movil</td>
                   <td><input type="phone" name="txt-telefono" class="form-control"></td>
@@ -206,7 +199,7 @@
                 </tr>
                 <tr>
                   <td colspan="2">
-                    <button type="button" class="btn btn-guardar">Guardar</button>
+                    <button type="button" class="btn btn-guardar" id="btn-guardar-actualizacion">Guardar</button>
                   </td>
                 </tr>
                 
@@ -223,14 +216,49 @@
       $.ajax({
         url:"ajax/gestionar-usuario.php",
         method:"POST",
-        data:{"accion":"cargar-datos"},
+        data:{"accion":"obtener-datos-usuario"},
         dataType: "JSON",
         error:function(e){
           console.log(e);
         },
         success:function(respuesta){
-          console.log(e);
+          console.log(respuesta);
+          $("#txt-nombre").val(respuesta.nombre);
+          $("#txt-apellido").val(respuesta.apellido);
+          $("#txt-correo").val(respuesta.email);
+          $("#txt-nombre-usuario").val(respuesta.usuario);
+          $("#txt-contrasenia").val(respuesta.contrasenia);
+  
         }
       });
+  });
+  $("#btn-guardar-actualizacion").click(function(){
+ 
+    var usuario=$("#txt-nombre-usuario").val();
+    var nombre=$("#txt-nombre").val();
+    var apellido=$("#txt-apellido").val();
+    var correo=$("#txt-correo").val();
+    var contrasenia=$("#txt-contrasenia").val();
+    
+
+
+    $.ajax({
+      url:"ajax/gestionar-usuario.php",
+      method:"POST",
+      data:{"accion":"actualizar-datos",
+            "usuario": usuario,
+            "nombre":nombre,
+            "apellido":apellido,
+            "email": correo,
+            "contrasenia":contrasenia
+
+            },
+      error:function(e){
+        alert(e);
+      },
+      success:function(r){
+        alert("Listo");
+      }
+    });
   });
 </script>>
