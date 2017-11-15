@@ -239,7 +239,7 @@
     var apellido=$("#txt-apellido").val();
     var correo=$("#txt-correo").val();
     var contrasenia=$("#txt-contrasenia").val();
-    
+    var sexo=$("input[type='radio'][name='rbt-sexo']:checked").val();  
 
 
     $.ajax({
@@ -251,7 +251,7 @@
             "apellido":apellido,
             "email": correo,
             "contrasenia":contrasenia
-
+            "sexo":sexo
             },
       error:function(e){
         alert(e);
