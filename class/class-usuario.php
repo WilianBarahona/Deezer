@@ -170,33 +170,61 @@ class Usuario{
 		return $respuesta;
 	}
 
-	public function actualizarRegistro($conexion){
+		public  function actualizarRegistro($conexion){
 		$sql=sprintf("
-			UPDATE tbl_usuarios SET 
-				id_suscripcion=%s,
-				id_pais='%s',
-				usuario='%s',
-				nombre='%s',
-				apellido='%s',
-				sexo='%s',
-				email='%s',
-				contrasenia='%s',
-				url_foto_perfil='%s'
-			WHERE id_usuario=%s
-		",		
-			$conexion->antiInyeccion($this->idSuscripcion),
-			$conexion->antiInyeccion($this->idPais),
-			$conexion->antiInyeccion($this->usuario),
-			$conexion->antiInyeccion($this->nombre),
-			$conexion->antiInyeccion($this->apellido),
-			$conexion->antiInyeccion($this->sexo),
-			$conexion->antiInyeccion($this->email),
-			$conexion->antiInyeccion($this->contrasenia),
-			$conexion->antiInyeccion($this->urlFotoPerfil),
-			$conexion->antiInyeccion($this->idUsuario)
-		);
+				UPDATE tbl_usuarios 
+				SET 
+					id_suscripcion=%s,
+					id_pais='%s',
+					usuario='%s',
+					nombre='%s',
+					apellido='%s',
+					sexo='%s',
+					email='%s',
+					contrasenia='%s',
+					url_foto_perfil='%s'
+					WHERE id_usuario=%s
+
+					",
+		
+		$conexion->antiInyeccion($this->idSuscripcion),
+		$conexion->antiInyeccion($this->idPais),
+		$conexion->antiInyeccion($this->usuario),
+		$conexion->antiInyeccion($this->nombre),
+		$conexion->antiInyeccion($this->apellido),
+		$conexion->antiInyeccion($this->sexo),
+		$conexion->antiInyeccion($this->email),
+		$conexion->antiInyeccion($this->contrasenia),
+		$conexion->antiInyeccion($this->urlFotoPerfil),
+		$conexion->antiInyeccion($this->idUsuario)
+
+	);
+
 		$resultado=$conexion->ejecutarConsulta($sql);
-		return $resultado;
+		
+	//echo json_encode($resultado);
+
+}
+	function obtenerDatosUsuario($conexion,$idUsuarioActivo){
+		$sql= sprintf("
+				SELECT id_suscripcion, 
+					   id_pais, 
+					   usuario,
+					   nombre, 
+					   apellido, 
+					   sexo, 
+					   email, 
+					   contrasenia,  
+					   fecha_nacimiento
+				FROM tbl_usuarios 
+				WHERE id_usuario=%s",
+				$conexion->antiInyeccion($idUsuarioActivo)
+			);
+		//var_dump($sql);
+		$resultado=$conexion->ejecutarConsulta($sql);
+		$fila = $conexion->obtenerFila($resultado);
+		//var_dump($fila);
+		echo json_encode($fila);
 	}
 	
 	public function insertarRegistro($conexion){
