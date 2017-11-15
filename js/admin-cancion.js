@@ -100,24 +100,26 @@ $(document).ready(function(){
 		});
 	});
 
-$("btn-guardar-cancion").click(function(){
+$("#btn-guardar-cancion").click(function(){
+	var idIdioma=$("#slc-idioma").val();
 	var idArtista = $("#slc-artista").val();
 	var idAlbum = $("#slc-album").val();
 	var idGenero = $("#slc-genero").val();
 	var nombre = $("#txt-nombre-cancion").val();
-	var url = $("#txt-nombre-cancion").val();
+	var url = "musica/"+$("#txt-url-cancion").val();
 	if(nombre!=""){
 		$.ajax({
 			url: "../ajax/gestionar-cancion.php",
 			method:"POST",
 			dataType: "JSON",
 			data:{
-				"accion":"insertar_cancion",
+				"accion":"insertar-registro",
 				"id_artista":idArtista,
 				"id_album":idAlbum,
-				"id_genero":idgenero,
-				"nombre":nombre,
-				"url":url
+				"id_genero":idGenero,
+				"nombre_cancion":nombre,
+				"url_audio":url,
+				"id_idioma":idIdioma
 			},
 			success:function(respuesta){
 				if(respuesta)
@@ -126,8 +128,11 @@ $("btn-guardar-cancion").click(function(){
 						title: '¡Éxito!',
 						content: 'Se insertó el registro'
 					});
+			
+					$("#txt-nombre-cancion").val("");
+					$("#txt-url-cancion").val("");
 					$("#tbl-artistas tbody").html("");
-					llenarTablaArtistas();
+					//llenarTablaArtistas();
 				}
 				else
 				{
@@ -146,6 +151,8 @@ $("btn-guardar-cancion").click(function(){
 		});
 	}
 });
+
+
 
 
 /*EXAMINAR-CHANGE*/

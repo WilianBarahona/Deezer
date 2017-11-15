@@ -64,7 +64,7 @@
 			$this->idGenero = $idGenero;
 		}
 
-		public function getIdGenero($idGenero){
+		public function getIdGenero(){
 			return $this->idGenero;
 		}
 
