@@ -106,6 +106,7 @@ class Artista{
 		$resultado=$conexion->ejecutarConsulta(sprintf("
 				SELECT
 				  a. id_artista,
+				  b.id_pais,
 				  b.nombre_pais,
 				  b.abreviatura_pais,
 				  a.nombre_artista,
