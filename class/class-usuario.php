@@ -16,7 +16,8 @@
 		private $urlFotoPerfil;
 		private $tipoUsuario;
 
-		public function __construct($idUsuario,
+		public function __construct(
+					$idUsuario,
 					$idSuscripcion,
 					$idPais,
 					$usuario,
@@ -181,37 +182,39 @@
 		}
 		public  function actualizarRegistro($conexion){
 		$sql=sprintf("
-		UPDATE tbl_usuarios 
-		SET id_usuario=%s,
-			id_suscripcion=%s,
-			id_pais='%s',
-			usuario='%s',
-			nombre='%s',
-			apellido='%s',
-			sexo='%s',
-			email='%s',
-			contrasenia='%s',
-			ultima_sesion='%s',
-			fecha_nacimiento='%s',
-			url_foto_perfil='%s',
-			WHERE id_usuario=%s
-		",
-		$conexion->antiInyeccion($this->getIdUsuario()),
-		$conexion->antiInyeccion($this->getIdSuscripcion()),
-		$conexion->antiInyeccion($this->getIdPais()),
-		$conexion->antiInyeccion($this->getUsuario()),
-		$conexion->antiInyeccion($this->getNombre()),
-		$conexion->antiInyeccion($this->getApellido()),
-		$conexion->antiInyeccion($this->getSexo()),
-		$conexion->antiInyeccion($this->getEmail()),
-		$conexion->antiInyeccion($this->contrasenia()),
-		$conexion->antiInyeccion($this->getUltimaSesion()),
-		$conexion->antiInyeccion($this->getUrlFotoPerfil())
+				UPDATE tbl_usuarios 
+				SET 
+					id_suscripcion=%s,
+					id_pais='%s',
+					usuario='%s',
+					nombre='%s',
+					apellido='%s',
+					sexo='%s',
+					email='%s',
+					contrasenia='%s',
+					url_foto_perfil='%s'
+					WHERE id_usuario=%s
+
+					",
+		
+		$conexion->antiInyeccion($this->idSuscripcion),
+		$conexion->antiInyeccion($this->idPais),
+		$conexion->antiInyeccion($this->usuario),
+		$conexion->antiInyeccion($this->nombre),
+		$conexion->antiInyeccion($this->apellido),
+		$conexion->antiInyeccion($this->sexo),
+		$conexion->antiInyeccion($this->email),
+		$conexion->antiInyeccion($this->contrasenia),
+		$conexion->antiInyeccion($this->urlFotoPerfil),
+		$conexion->antiInyeccion($this->idUsuario)
 
 	);
-	$resultado=$conexion->ejecutarConsulta($sql);
-	
-	return json_encode($resultado);
+		//var_dump($sql);
+		$resultado=$conexion->ejecutarConsulta($sql);
+		
+		$fila=$conexion->obtenerFila($resultado);
+	//return json_encode($resultado);
+
 }
 		
 	}
