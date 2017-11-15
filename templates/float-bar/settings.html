@@ -73,7 +73,7 @@
 </ul>
 <div class="panel-footer">
   <div class="col-sm-12">
-    <button type="button" class="btn btn-danger btn-block" onclick="location.href='login.php'">
+    <button type="button" class="btn btn-danger btn-block" onclick="destruirSesion()">
     Desconectarse
     </button>
   </div>
@@ -85,4 +85,20 @@
       $("#main").load("templates/configuration.html");
       $(".active").removeClass();
   });
+  function destruirSesion(){
+    $.ajax({
+        url:"ajax/verificacion-sesion.php",
+        data:{"accion":"cerrar-sesion"},
+        method:"POST",
+        dataType: 'json ',
+        error:function(e){
+          console.log(e);
+        },
+        success:function(respuesta){
+          if (respuesta.loggedin==0) {
+              window.location="login.php";
+          }
+        }
+    });
+  }
 </script>
