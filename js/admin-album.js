@@ -39,7 +39,7 @@ function listarArtistas(){
 	    dataType:"JSON",
 	    success:function(respuesta){
 			if(respuesta.status){
-				$("#txt-url-foto-album").val("img/"+respuesta.mensaje);
+				$("#txt-url-foto-album").val("img/"+respuesta.ruta);
 				$("#lista-carga-foto-album").show();
 			}else{
 				$.alert(respuesta.mensaje);
