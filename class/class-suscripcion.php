@@ -38,6 +38,14 @@
 		}
 
 		
-		
+		public static function insertarRegistro($conexion){
+			$sql ="
+				INSERT INTO tbl_suscripciones
+				(inicio_suscripcion)
+				VALUES (CURRENT_TIMESTAMP())
+			";
+			$resultado=$conexion->ejecutarConsulta($sql);
+			return $conexion->ultimoId();
+		}
 	}
 ?>

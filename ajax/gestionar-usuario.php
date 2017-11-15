@@ -25,6 +25,21 @@
 						);
 					$usuario->actualizarRegistro($conexion);
 			break;
+			case 'insertar-registro': 
+				$usuario = new Usuario();
+				$usuario->setIdPais($_POST["id_pais"]);
+				$usuario->setUsuario($_POST["usuario"]);
+				$usuario->setNombre($_POST["nombre"]);
+				$usuario->setApellido($_POST["apellido"]);
+				$usuario->setSexo($_POST["sexo"]);
+				$usuario->setEmail($_POST["email"]);
+				$usuario->setContrasenia($_POST["contrasenia"]);
+				$usuario->setFechaNacimiento($_POST["fecha_nacimiento"]);
+				$usuario->setUrlFotoPerfil($_POST["url_foto_perfil"]);
+				$usuario->setTipoUsuario($_POST["id_tipo_usuario"]);
+				$respuesta=$usuario->insertarRegistro($conexion);
+				echo json_encode($respuesta);
+			break;
 			default:
 				echo json_encode("Petición inválida");
 				break;

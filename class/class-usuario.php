@@ -16,19 +16,19 @@ class Usuario{
 	private $tipoUsuario;
 
 	public function __construct(
-				$idUsuario,
-				$idSuscripcion,
-				$idPais,
-				$usuario,
-				$nombre,
-				$apellido,
-				$sexo,
-				$email,
-				$contrasenia,
-				$ultimaSesion,
-				$fechaNacimiento,
-				$urlFotoPerfil,
-				$tipoUsuario){
+				$idUsuario=null,
+				$idSuscripcion=null,
+				$idPais=null,
+				$usuario=null,
+				$nombre=null,
+				$apellido=null,
+				$sexo=null,
+				$email=null,
+				$contrasenia=null,
+				$ultimaSesion=null,
+				$fechaNacimiento=null,
+				$urlFotoPerfil=null,
+				$tipoUsuario=null){
 		$this->idUsuario = $idUsuario;
 		$this->idSuscripcion = $idSuscripcion;
 		$this->idPais = $idPais;
@@ -122,50 +122,43 @@ class Usuario{
 		$this->tipoUsuario = $tipoUsuario;
 	}
 	public function toString(){
-		return "IdUsuario: " . $this->idUsuario . 
-			" IdSuscripcion: " . $this->idSuscripcion . 
-			" IdPais: " . $this->idPais . 
-			" Usuario: " . $this->usuario . 
-			" Nombre: " . $this->nombre . 
-			" Apellido: " . $this->apellido . 
-			" Sexo: " . $this->sexo . 
-			" Email: " . $this->email . 
-			" Contrasenia: " . $this->contrasenia . 
-			" UltimaSesion: " . $this->ultimaSesion . 
-			" FechaNacimiento: " . $this->fechaNacimiento . 
-			" UrlFotoPerfil: " . $this->urlFotoPerfil . 
-			" TipoUsuario: " . $this->tipoUsuario;
+		return "IdUsuario: " . $this->idUsuario . " IdSuscripcion: " . $this->idSuscripcion . " IdPais: " . $this->idPais . " Usuario: " . $this->usuario . " Nombre: " . $this->nombre . " Apellido: " . $this->apellido . " Sexo: " . $this->sexo . " Email: " . $this->email . " Contrasenia: " . $this->contrasenia . " UltimaSesion: " . $this->ultimaSesion . " FechaNacimiento: " . $this->fechaNacimiento . " UrlFotoPerfil: " . $this->urlFotoPerfil . " TipoUsuario: " . $this->tipoUsuario;
 	}
 	public static function verificarUsuario($conexion,$email,$password){
 		#consulta
-		$sql="SELECT  id_usuario, id_suscripcion, id_pais, usuario, 
-					  nombre, apellido, sexo, email, contrasenia, 
-					  ultima_sesion, fecha_nacimiento, url_foto_perfil, 
-					  tipo_usuario 
-			  FROM tbl_usuarios
-			  WHERE email='$email' && contrasenia='$password'";
+		$sql=sprintf("
+			SELECT  
+				id_usuario, id_suscripcion, id_pais, usuario, 
+				nombre, apellido, sexo, email, contrasenia, 
+				ultima_sesion, fecha_nacimiento, url_foto_perfil, 
+				tipo_usuario
+		  	FROM tbl_usuarios
+		  	WHERE email='%s' && contrasenia='$%s'
+		",
+			$conexion->antiInyeccion($email),
+			$conexion->antiInyeccion($password)
+		);
 		#resultado de la consulta				
 		$resultado=$conexion->ejecutarConsulta($sql);
 		$cantidadRegistros=$conexion->cantidadRegistros($resultado);
 		if ($cantidadRegistros==1)  {
-			$fila = $conexion->obtenerFila($resultado);
+			$usuario = $conexion->obtenerFila($resultado);
 			session_start();
 			$_SESSION['status']=true;
-			$_SESSION['id_usuario']=$fila['id_usuario'];
-			$_SESSION['id_suscripcion']=$fila['id_suscripcion'];
-			$_SESSION['id_pais']=$fila['id_pais'];
-			$_SESSION['usuario']=$fila['usuario'];
-			$_SESSION['nombre']=$fila['nombre'];
-			$_SESSION['apellido']=$fila['apellido'];
-			$_SESSION['sexo']=$fila['sexo'];
-			$_SESSION['email']=$fila['email'];
-			$_SESSION['fecha_nacimiento']=$fila['fecha_nacimiento'];
-			$_SESSION['url_foto_perfil']=$fila['url_foto_perfil'];
-			$_SESSION['tipo_usuario']=$fila['tipo_usuario'];
-			$respuesta['tipo_usuario']=$fila['tipo_usuario'];
+			$_SESSION['id_usuario']=$usuario['id_usuario'];
+			$_SESSION['id_suscripcion']=$usuario['id_suscripcion'];
+			$_SESSION['id_pais']=$usuario['id_pais'];
+			$_SESSION['usuario']=$usuario['usuario'];
+			$_SESSION['nombre']=$usuario['nombre'];
+			$_SESSION['apellido']=$usuario['apellido'];
+			$_SESSION['sexo']=$usuario['sexo'];
+			$_SESSION['email']=$usuario['email'];
+			$_SESSION['fecha_nacimiento']=$usuario['fecha_nacimiento'];
+			$_SESSION['url_foto_perfil']=$usuario['url_foto_perfil'];
+			$_SESSION['tipo_usuario']=$usuario['tipo_usuario'];
+			$respuesta['tipo_usuario']=$usuario['tipo_usuario'];
 			$respuesta['loggedin'] = 1;
 			$respuesta["mensaje"]="tiene acceso" ;
-
 		}
 		else {
 			//echo'correo o contrasenia invalidos';	
@@ -177,7 +170,7 @@ class Usuario{
 		return $respuesta;
 	}
 
-	public  function actualizarRegistro($conexion){
+	public function actualizarRegistro($conexion){
 		$sql=sprintf("
 			UPDATE tbl_usuarios SET 
 				id_suscripcion=%s,
@@ -206,5 +199,43 @@ class Usuario{
 		return $resultado;
 	}
 	
+	public function insertarRegistro($conexion){
+		include_once("class-suscripcion.php");
+		$this->setIdSuscripcion(Suscripcion::insertarRegistro($conexion));
+		$sql=sprintf("
+			INSERT INTO tbl_usuarios
+			(
+				id_suscripcion, id_pais, 
+				usuario,nombre,
+				apellido,sexo,
+				email,contrasenia,
+				fecha_nacimiento, url_foto_perfil,
+				id_tipo_usuario
+			)
+			VALUES(
+				%s, %s,
+				'%s','%s',
+				'%s','%s',
+				'%s','%s',
+				'%s','%s',
+				%s
+			)
+		",
+			$conexion->antiInyeccion($this->getIdSuscripcion()),
+			$conexion->antiInyeccion($this->getIdPais()),
+			$conexion->antiInyeccion($this->getUsuario()),
+			$conexion->antiInyeccion($this->getNombre()),
+			$conexion->antiInyeccion($this->getApellido()),
+			$conexion->antiInyeccion($this->getSexo()),
+			$conexion->antiInyeccion($this->getEmail()),
+			$conexion->antiInyeccion($this->getContrasenia()),
+			$conexion->antiInyeccion($this->getFechaNacimiento()),
+			$conexion->antiInyeccion($this->getUrlFotoPerfil()),
+			$conexion->antiInyeccion($this->getTipoUsuario())
+		);
+		echo ($sql);
+		$resultado=$conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
 }
 ?>
