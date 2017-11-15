@@ -145,6 +145,12 @@
         },
         success:function(respuesta){
           console.log(respuesta);
+           if (respuesta.sexo=="m") {
+            $("input[value='m']").attr('checked', true);
+          }
+          if (respuesta.sexo=='f') {
+            $("input[value='f']").attr('checked', true);
+          }
           $("#txt-nombre").val(respuesta.nombre);
           $("#txt-apellido").val(respuesta.apellido);
           $("#txt-correo").val(respuesta.email);
