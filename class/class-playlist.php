@@ -253,16 +253,14 @@ class Playlist{
 			);
 			$resultado = $conexion->ejecutarConsulta($sql);
 			$totalFilas  = $conexion->cantidadRegistros($resultado);
-			$playlist=array();
+			$playlists=array();
 			if ($totalFilas >= 1){
-				while(($fila = $conexion->obtenerFila($resultado))){
-					$playlist["id_playlist"]=$fila["id_playlist"];
-					$playlist["tipo_visibilidad"]=$fila["tipo_visibilidad"];
-					$playlist["nombre_playlist"]=$fila["nombre_playlist"];
-					$playlist["nombre_usuario"]=$fila["nombre_usuario"];
-					$playlist["url_foto_playlist"]=$fila["url_foto_playlist"];
+				while(($playlist = $conexion->obtenerFila($resultado))){
+					$playlist["numero_canciones"] = Playlist::getNumeroCanciones($conexion, $this->getIdPlaylist());
+					$playlist["canciones"] = Playlist::getCanciones($conexion, $this->getIdPlaylist());
+					$playlists[]=$playlist;
 				}
-				echo json_encode($playlist);
+				return $playlists;
 			}
 			else{
 				return false;

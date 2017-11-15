@@ -41,7 +41,7 @@
 			break;
 			case "buscar-por-nombre":
 				$respuesta = Playlist::buscarPorNombre($conexion,$_POST["nombre_playlist"]);
-				echo $respuesta;
+				echo json_encode($respuesta;);
 			break;
 			default:
 				echo json_encode("Petición inválida");
