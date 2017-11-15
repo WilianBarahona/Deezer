@@ -43,9 +43,45 @@
 				$respuesta = Playlist::buscarPorNombre($conexion,$_POST["nombre_playlist"]);
 				echo json_encode($respuesta);
 			break;
+
+			case "listar-comentarios":
+				$respuesta = Playlist::listarComentarios($conexion, $_POST["id_playlist"]);
+				echo json_encode($respuesta);
+			break;
+			case "agregar-comentario":
+				$respuesta = Playlist::agregarComentario($conexion, $_POST["id_playlist"], $_POST["id_usuario"], $_POST["comentario"]);
+				echo json_encode($respuesta);
+			break;
+			case "editar-comentario":
+				$respuesta = Playlist::editarComentario($conexion, $_POST["id_comentario"], $_POST["comentario"]);
+				echo json_encode($respuesta);
+			break;
+			case "eliminar-comentario":
+				$respuesta = Playlist::eliminarComentario($conexion, $_POST["id_comentario"]);
+				echo json_encode($respuesta);
+			break;
+
+			case "agregar-favorito":
+				$respuesta = Playlist::agregarFavorito($conexion,  $_POST["id_usuario"], $_POST["id_playlist"]);
+				echo json_encode($respuesta);
+			break;
+
+			case "eliminar-favorito":
+				$respuesta = Playlist::eliminarFavorito($conexion,  $_POST["id_usuario"], $_POST["id_playlist"]);
+				echo json_encode($respuesta);
+			break;
+
+			case "agregar-cancion":
+				$respuesta = Playlist::agregarCancion($conexion,  $_POST["id_cancion"], $_POST["id_playlist"]);
+				echo json_encode($respuesta);
+			break;
+			case "eliminar-cancion":
+				$respuesta = Playlist::eliminarCancion($conexion,  $_POST["id_cancion"], $_POST["id_playlist"]);
+				echo json_encode($respuesta);
+			break;
 			default:
 				echo json_encode("Petición inválida");
-				break;
+			break;
 		}
 		$conexion->cerrarConexion();
 	}else{

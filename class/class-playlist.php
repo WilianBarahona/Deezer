@@ -267,5 +267,121 @@ class Playlist{
 			}
 		}
 
+	public static function agregarComentario($conexion, $idPlaylist, $idUsuario, $comentario){
+		$sql=sprintf("
+			INSERT INTO tbl_comentarios_por_playlist
+			(id_playlist, id_usuario, comentario, fecha)
+			VALUES(%s,%s,'%s', CURRENT_TIMESTAMP())
+		",
+			$conexion->antiInyeccion($idPlaylist),
+			$conexion->antiInyeccion($idUsuario),
+			$conexion->antiInyeccion($comentario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
+
+	public static function editarComentario($conexion, $idComentario, $comentario){
+		$sql=sprintf("
+			UPDATE tbl_comentarios_por_playlist SET
+			comentario='%s'
+			WHERE id_comentario=%s
+		",
+			$conexion->antiInyeccion($comentario),
+			$conexion->antiInyeccion($idComentario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
+
+	public static function eliminarComentario($conexion, $idComentario){
+		$sql=sprintf("
+			DELETE FROM tbl_comentarios_por_playlist
+			WHERE id_comentario=%s
+		",
+			$conexion->antiInyeccion($idComentario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
+
+	public static function agregarFavorito($conexion, $idUsuario, $idPlaylist){
+		$sql=sprintf("
+			INSERT INTO tbl_playlists_por_usuarios
+			(id_playlist, id_usuario)
+			VALUES(%s, %s)
+		",
+			$conexion->antiInyeccion($idPlaylist),
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;	
+	}
+
+	public static function eliminarFavorito($conexion, $idUsuario, $idPlaylist){
+		$sql=sprintf("
+			DELETE FROM tbl_playlists_por_usuarios
+			WHERE id_usuario = %s AND id_playlist = %s
+		",
+			$conexion->antiInyeccion($idUsuario),
+			$conexion->antiInyeccion($idPlaylist)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;	
+	}
+
+	public static function listarComentarios($conexion, $idPlaylist){
+		$sql=sprintf("
+			SELECT
+			  a.id_comentario,
+			  a.id_playlist,
+			  a.id_usuario,
+			  CONCAT(b.nombre, ' ', b.apellido) as nombre_usuario,
+			  b.url_foto_perfil,
+			  b.usuario,
+			  b.email,
+			  a.comentario,
+			  a.fecha
+			FROM tbl_comentarios_por_playlist a
+			INNER JOIN tbl_usuarios b
+			ON(a.id_usuario = b.id_usuario)
+			WHERE id_playlist=%s
+
+		",
+			$conexion->antiInyeccion($idPlaylist)
+		);
+		$comentarios=array();
+		$resultado = $conexion->ejecutarConsulta($sql);
+		while($comentario = $conexion->obtenerFila($resultado)){
+			$comentarios[]=$comentario;
+		}
+		return $comentarios;
+	}
+
+	public static function agregarCancion($conexion, $idCancion, $idPlaylist){
+		$sql=sprintf("
+			INSERT INTO tbl_canciones_por_playlist
+			(id_cancion, id_playlist)
+			VALUES (%s, %s)
+		",
+			$conexion->antiInyeccion($idCancion),
+			$conexion->antiInyeccion($idPlaylist)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
+
+	public static function eliminarCancion($conexion, $idCancion, $idPlaylist){
+		$sql=sprintf("
+			DELETE FROM tbl_canciones_por_playlist
+			WHERE id_cancion=%s AND id_playlist=%s
+		",
+			$conexion->antiInyeccion($idCancion),
+			$conexion->antiInyeccion($idPlaylist)
+		);
+		$resultado = $conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
+
 	}
 ?>

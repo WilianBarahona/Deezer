@@ -162,7 +162,6 @@ class Usuario{
 		$resultado=$conexion->ejecutarConsulta($sql);
 		return $resultado;
 	}
-
 	public static function listarTodos($conexion){
 		$sql="
 			SELECT
@@ -194,7 +193,6 @@ class Usuario{
 		}
 		return $usuarios;
 	}
-
 	public function seleccionar($conexion){
 		$sql=sprintf("
 			SELECT
@@ -226,7 +224,6 @@ class Usuario{
 		$usuario=$conexion->obtenerFila($resultado);
 		return $usuario;
 	}
-
 	public static function eliminarRegistro($conexion, $idUsuario){
 		$temp = new Usuario();
 		$temp->setIdUsuario($idUsuario);
@@ -316,7 +313,7 @@ class Usuario{
 		$resultado11 = $conexion->ejecutarConsulta($sql11);
 		return $resultado2 && $resultado1 && $resultado3 && $resultado4 && $resultado5 && $resultado6 && $resultado7 && $resultado8 && $resultado9 && $resultado10 && $resultado11;
 	}
-			public static function verificarUsuario($objConexion,$email,$password){
+	public static function verificarUsuario($objConexion,$email,$password){
 			#consulta
 			$sql="SELECT  id_usuario, id_suscripcion, id_pais, usuario, 
 						  nombre, apellido, sexo, email, contrasenia, 
@@ -359,42 +356,35 @@ class Usuario{
 				$respuesta["mensaje"]="No tiene acceso" ;
 				}	  
 			echo json_encode($respuesta);
-		}
-		public  function actualizarRegistro($conexion){
+	}
+	public  function actualizarRegistro($conexion){
 		$sql=sprintf("
-				UPDATE tbl_usuarios 
-				SET 
-					id_suscripcion=%s,
-					id_pais='%s',
-					usuario='%s',
-					nombre='%s',
-					apellido='%s',
-					sexo='%s',
-					email='%s',
-					contrasenia='%s',
-					url_foto_perfil='%s'
-					WHERE id_usuario=%s
-
-					",
-		
-		$conexion->antiInyeccion($this->idSuscripcion),
-		$conexion->antiInyeccion($this->idPais),
-		$conexion->antiInyeccion($this->usuario),
-		$conexion->antiInyeccion($this->nombre),
-		$conexion->antiInyeccion($this->apellido),
-		$conexion->antiInyeccion($this->sexo),
-		$conexion->antiInyeccion($this->email),
-		$conexion->antiInyeccion($this->contrasenia),
-		$conexion->antiInyeccion($this->urlFotoPerfil),
-		$conexion->antiInyeccion($this->idUsuario)
-
-	);
-
+			UPDATE tbl_usuarios SET 
+				id_suscripcion=%s,
+				id_pais='%s',
+				usuario='%s',
+				nombre='%s',
+				apellido='%s',
+				sexo='%s',
+				email='%s',
+				contrasenia='%s',
+				url_foto_perfil='%s'
+				WHERE id_usuario=%s
+		",	
+			$conexion->antiInyeccion($this->idSuscripcion),
+			$conexion->antiInyeccion($this->idPais),
+			$conexion->antiInyeccion($this->usuario),
+			$conexion->antiInyeccion($this->nombre),
+			$conexion->antiInyeccion($this->apellido),
+			$conexion->antiInyeccion($this->sexo),
+			$conexion->antiInyeccion($this->email),
+			$conexion->antiInyeccion($this->contrasenia),
+			$conexion->antiInyeccion($this->urlFotoPerfil),
+			$conexion->antiInyeccion($this->idUsuario)
+		);
 		$resultado=$conexion->ejecutarConsulta($sql);
-		
-	//echo json_encode($resultado);
-
-}
+		return $resultado;
+	}
 	function obtenerDatosUsuario($conexion,$idUsuarioActivo){
 		$sql= sprintf("
 				SELECT id_suscripcion, 
@@ -418,6 +408,26 @@ class Usuario{
 		echo json_encode($fila);
 	}
 	
+	//ARTISTAS FAVORITOS
+	public static function artistasFavoritos($conexion, $idUsuario){
+		$sql=sprintf("
+			SELECT
+			  a.id_artista,
+			  b.nombre_artista,
+			  b.url_foto_artista
+			from tbl_artistas_por_usuarios a
+			INNER JOIN tbl_artistas b
+			ON (a.id_artista=b.id_artista)
+			WHERE id_usuario=%s
+		",
+			$conexion->antiInyeccion($idUsuario),
+		);
+
+	}
+	//ALBUMES FAVORITOS
+	
+	//PLAYLIST FAVORITOS
+	//CANCIONES FAVORITAS
 	
 }
 ?>

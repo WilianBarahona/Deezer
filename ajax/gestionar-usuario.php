@@ -6,16 +6,17 @@
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
 			case 'actualizar-registro': 
-					$usuario=new Usuario();
-					$usuario -> setIdUsuario($POST['id_usuario']);
-					$usuario -> setUsuario($_POST['usuario']);
-					$usuario -> setNombre($_POST['nombre']);
-					$usuario -> setApellido($_POST['apellido']);
-					$usuario -> setSexo($_POST['sexo']);
-					$usuario -> setEmail($_POST['email']);
-					$usuario -> setContrasenia($_POST['contrasenia']);
-					$usuario -> setFechaNacimiento($_POST['fecha_nacimiento']);
-					$respuesta = $usuario->actualizarRegistro($conexion);
+				$usuario=new Usuario();
+				$usuario -> setIdUsuario($POST['id_usuario']);
+				$usuario -> setUsuario($_POST['usuario']);
+				$usuario -> setNombre($_POST['nombre']);
+				$usuario -> setApellido($_POST['apellido']);
+				$usuario -> setSexo($_POST['sexo']);
+				$usuario -> setEmail($_POST['email']);
+				$usuario -> setContrasenia($_POST['contrasenia']);
+				$usuario -> setFechaNacimiento($_POST['fecha_nacimiento']);
+				$respuesta = $usuario->actualizarRegistro($conexion);
+				echo json_encode($respuesta);
 
 			break;
 			case 'insertar-registro': 
@@ -48,7 +49,8 @@
 				echo json_encode($respuesta);
 			break;
 			case 'obtener-datos-usuario':
-				Usuario::obtenerDatosUsuario($conexion,$_SESSION['id_usuario']);
+				$respuesta = Usuario::obtenerDatosUsuario($conexion,$_SESSION['id_usuario']);
+				echo json_encode($respuesta);
 				break;
 			default:
 				echo json_encode("Petición inválida");
