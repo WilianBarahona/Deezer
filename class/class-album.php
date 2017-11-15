@@ -226,7 +226,7 @@
 	}
 
 
-	public static function ($conexion){
+	// public static function ($conexion){
 
-	}
+	// }
 ?>
