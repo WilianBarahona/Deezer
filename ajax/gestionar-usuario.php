@@ -47,6 +47,9 @@
 				$respuesta=Usuario::eliminarRegistro($conexion, $_POST["id_usuario"]);
 				echo json_encode($respuesta);
 			break;
+			case 'obtener-datos-usuario':
+				Usuario::obtenerDatosUsuario($conexion,$_SESSION['id_usuario']);
+				break;
 			default:
 				echo json_encode("Petición inválida");
 				break;
