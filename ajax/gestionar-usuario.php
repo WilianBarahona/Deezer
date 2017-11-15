@@ -6,23 +6,19 @@
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
 			case 'actualizar-datos': 
-					$usuario=new Usuario(
-
-						$_SESSION['id_usuario'],
-						$_SESSION['id_suscripcion'],
-						$_SESSION['id_pais'],
-						$_POST['usuario'],
-						$_POST['nombre'],
-						$_POST['apellido'],
-						$_SESSION['sexo'],
-						$_POST['email'],
-						$_POST['contrasenia'],
-						$_SESSION['url_foto_perfil'],
-						$_SESSION['fecha_nacimiento'],
-						$_SESSION['url_foto_perfil'],
-						$_SESSION['tipo_usuario']
-
-						);
+					$usuario=new Usuario();
+					$usuario -> setIdUsuario($_SESSION['id_usuario']);
+					$usuario -> setIdSuscripcion($_SESSION['id_suscripcion']);
+					$usuario -> setIdPais($_SESSION['id_pais']);
+					$usuario -> setUsuario($_POST['usuario']);
+					$usuario -> setNombre($_POST['nombre']);
+					$usuario -> setApellido($_POST['apellido']);
+					$usuario -> setSexo($_SESSION['sexo']);
+					$usuario -> setEmail($_POST['email']);
+					$usuario -> setContrasenia($_POST['contrasenia']);
+					$usuario -> setFechaNacimiento($_SESSION['fecha_nacimiento']);
+					$usuario -> setUrlFotoPerfil($_POST['url_foto_perfil']);
+					$usuario -> setTipoUsuario($_SESSION['tipo_usuario']);
 					$usuario->actualizarRegistro($conexion);
 			break;
 			case 'insertar-registro': 
@@ -48,8 +44,7 @@
 				$usuario = new Usuario();
 				$usuario->setIdUsuario($_POST["id_usuario"]);
 				$respuesta = $usuario->seleccionar($conexion);
-				// echo json_encode($respuesta);
-				echo $respuesta;
+				echo json_encode($respuesta);
 			break;
 			case "eliminar-registro":
 				$respuesta=Usuario::eliminarRegistro($conexion, $_POST["id_usuario"]);

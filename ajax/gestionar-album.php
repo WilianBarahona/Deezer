@@ -5,7 +5,6 @@
 		$conexion = new Conexion();
 		switch ($_POST['accion']) {
 			case "listar-todos": 
-				include("../class/class-album.php");
 				$respuesta = Album::listarTodos($conexion);
 				echo json_encode($respuesta);
 			break;
@@ -35,6 +34,7 @@
 			break;
 			case "actualizar-registro":
 				$album= new Album();
+				$album->setIdAlbum($_POST["id_album"]);
 				$album->setIdArtista($_POST["id_artista"]);
 				$album->setNombreAlbum($_POST["nombre_album"]);
 				$album->setAnio($_POST["anio"]);

@@ -26,6 +26,7 @@
 			case 'actualizar-registro':
 				$cancion = new Cancion();
 				$cancion->setIdCancion($_POST["id_cancion"]);
+				$cancion->setIdAlbum($_POST["id_album"]);
 				$cancion->setIdIdioma($_POST["id_idioma"]);
 				$cancion->setNombreCancion($_POST["nombre_cancion"]);
 				$cancion->setUrlAudio($_POST["url_audio"]);

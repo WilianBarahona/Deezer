@@ -142,11 +142,13 @@
 		public function actualizarRegistro($conexion){
 			$sql=sprintf("
 				UPDATE tbl_canciones SET
+				  id_album=%s,
 				  id_idioma=%s,
 				  nombre_cancion='%s',
 				  url_audio='%s'
 				WHERE id_cancion=%s;
 			",
+				$conexion->antiInyeccion($this->getIdAlbum()),
 				$conexion->antiInyeccion($this->getIdIdioma()),
 				$conexion->antiInyeccion($this->getNombreCancion()),
 				$conexion->antiInyeccion($this->getUrlAudio()),
