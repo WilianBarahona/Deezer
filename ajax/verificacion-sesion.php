@@ -12,8 +12,7 @@
 				$password=$_POST["inputPassword"];
 	
 				//$password = hash('sha512',$password); 		
-				$respuesta =Usuario::verificarUsuario($objConexion,$correo,$password);
-				echo json_encode($respuesta);
+				Usuario::verificarUsuario($objConexion,$correo,$password);
 				
 				break;
 			case 'cerrar-sesion':
