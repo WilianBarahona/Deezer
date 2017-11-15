@@ -5,6 +5,7 @@
 		$conexion = new Conexion();
 		switch ($_POST['accion']) {
 			case "listar-todos": 
+				include("../class/class-album.php");
 				$respuesta = Album::listarTodos($conexion);
 				echo json_encode($respuesta);
 			break;
