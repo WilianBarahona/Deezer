@@ -35,7 +35,7 @@ function listarIdiomas(){
 function seleccionarIdioma(idIdioma){
 	$.ajax({
 		data:{
-				"accion":"seleccionar_idioma"
+				"accion":"seleccionar"
 			    //"txt-busqueda":parametros
 			},
 		url:'../ajax/gestionar-idioma.php',
@@ -68,7 +68,7 @@ function editarIdioma(idIdioma){
 		url: '../ajax/gestionar-idioma.php',
 		type: 'POST',
 		data: {
-			"accion":"seleccionar_idioma", 
+			"accion":"seleccionar", 
 			"id_idioma": idIdioma
 		},
 		dataType: 'JSON',
@@ -89,11 +89,10 @@ function editarIdioma(idIdioma){
 };
 
 function eliminarIdioma(codigo){
-	var codigoIdioma = codigo;
 	$.ajax({
 		data:{
-			"accion":"eliminar_idioma",
-			"codigoIdioma":codigoIdioma
+			"accion":"eliminar-registro",
+			"id_idioma":codigo
 			},
 		url:'../ajax/gestionar-idioma.php',
 		method:'POST',
@@ -102,7 +101,7 @@ function eliminarIdioma(codigo){
 			listarIdiomas();
 		},
 		error:function(error){
-			alert(error);
+			console.log(error);
 		}
 	})
 };
@@ -111,15 +110,16 @@ $("#btn-guardar-idioma").click(function(){
 	var inputNombre = $("#txt-nombre-idioma").val();
 	var inputAbreviatura =	$("#txt-abreviatura-idioma").val();
 	$.ajax({
-		data:{"accion":"guardar_idioma",
-			  "inputNombre":inputNombre,
-			  "inputAbreviatura":inputAbreviatura
+		data:{"accion":"insertar-registro",
+			  "nombre_idioma":inputNombre,
+			  "abreviatura_idioma":inputAbreviatura
 			},
 		url:'../ajax/gestionar-idioma.php',
 		method:'POST',
 		dataType:'JSON',
 		success:function(respuesta){
-				listarIdiomas();
+			$("#div-busqueda #tbl-busquedas tbody").empty();
+			listarIdiomas();
 		},
 		error:function(error){
 			console.log(error);
@@ -136,7 +136,7 @@ $("#btn-actualizar-idioma").click(function(){
 		method:"POST",
 		dataType:"JSON",
 		data:{
-			"accion":"actualizar_idioma",
+			"accion":"actualizar-registro",
 			"id_idioma": idIdioma,
 			"nombre_idioma": nombreIdioma,
 			"abreviatura_idioma":abreviaturaIdioma
@@ -165,8 +165,8 @@ function buscarIdioma(){
 	var parametros = $("#txt-busqueda").val();
 	$.ajax({
 		data:{
-				"accion":"buscar_idioma",
-			    "txt-busqueda":parametros
+				"accion":"buscar-por-nombre",
+			    "nombre_idioma":parametros
 			},
 		url:'../ajax/gestionar-idioma.php',
 		method:'POST',
