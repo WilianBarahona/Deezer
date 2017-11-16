@@ -209,6 +209,7 @@ $("#btn-actualizar-usuario").click(function(event) {
 	var email = $("#txt-email-usuario").val();
 	var contrasenia = $("#txt-contrasenia-usuario").val();
 	var fecha_nacimiento = $("#fecha_nacimiento").val();
+	var url_foto_perfil = $("#txt-url-foto-usuario").val();
 
 	$.ajax({
 		url:"../ajax/gestionar-usuario.php",
@@ -224,6 +225,7 @@ $("#btn-actualizar-usuario").click(function(event) {
 			"email":email,
 			"contrasenia":contrasenia,
 			"fecha_nacimiento":fecha_nacimiento,
+			"url_foto_perfil": url_foto_perfil
 		},
 		success:function(respuesta){
 			if(respuesta) {

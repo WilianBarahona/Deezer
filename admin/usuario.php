@@ -1,9 +1,9 @@
 <?php 
 
 session_start();
-if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usuario no es administrador
+/*if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usuario no es administrador
     header("Location: ../login.php");
-}
+}*/
 
 ?>
 <!DOCTYPE html>
@@ -108,7 +108,7 @@ if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usua
                 <tr>
                   <td>Fecha Nacimiento: </td>
                   <td>
-                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento">
+                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control">
                   </td>
                 </tr>
                 <tr>
@@ -149,7 +149,7 @@ if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usua
   </div>
 
   <script type="text/javascript" src="../js/soundmanager2.min.js"></script>
-  <script type="text/javascript" src="../js/player.js"></script>
+ <script type="text/javascript" src="../js/player.js"></script>
   <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="../js/jquery-confirm.min.js"></script>
   <script type="text/javascript" src="../js/navigation.js"></script>
