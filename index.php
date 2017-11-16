@@ -24,6 +24,7 @@
   </head>
   <body>
     <input type="hidden" id="id_usuario" value="<?php echo $_SESSION["id_usuario"] ?>">
+    <input type="hidden" id="foto_usuario" value="<?php echo $_SESSION["url_foto_perfil"] ?>">
     <div class="container-fluid">
       <div class="row">
         <!-- Barra de Navegacion Lateral -->
@@ -59,12 +60,12 @@
                       </div>
                   </div>
                 </div>
-            <li>
+           <!--  <li>
               <a id="favoritas">
                   <span class="glyphicon glyphicon-heart"></span> 
                   &nbsp;&nbsp;&nbsp; Mis favoritas
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a id="float-playlist" class="btn-float">
                   <span class="glyphicon glyphicon-list"></span> 

@@ -197,33 +197,62 @@ function cargar_inicio(){
 });
 
 $("#mi-musica").click(function(){
-    $.ajax({
-          url:"ajax/get-dom.php?evento=cargar_musica",
-          data:"",
-          method:"POST",
-          success:function(resultado){
-            $("#main").html(resultado);
-          },
-          error:function(){
-            alert("error")
-          }
-        }); 
+    musica();
 });
 
 $("#favoritas").click(function(){
+  musica();
+});
+
+
+function musica(){
+  var id_usuario = $("#id_usuario").val();
+  var foto_usuario = $("#foto_usuario").val();
+
      $.ajax({
           url:"ajax/get-dom.php?evento=cargar_favoritas",
           data:"",
           method:"POST",
           success:function(resultado){
             $("#main").html(resultado);
+            $("#img-perfil").attr("src", foto_usuario);
+            $.ajax({
+              url:"ajax/gestionar-usuario.php",
+              method:"POST",
+              dataType:"JSON",
+              data:{
+                "accion":"canciones-favoritos",
+                "id_usuario":id_usuario
+              },
+              success:function(respuesta){
+                for (var i = 0; i < respuesta.length; i++) {
+                  var cancion = respuesta[i];
+                  var card =
+                  '<tr>'+
+                  '  <td>'+cancion.nombre_cancion+'</td>'+
+                  '  <td><button type="button" class="btn btn-none" onclick="agregarCancion('+cancion.id_cancion+')"><span class="glyphicon glyphicon-heart"></span></button></td>'+
+                  '  <td><button type="button" class="btn btn-none" onclick="reproducir('+cancion.id_cancion+')"><span class="glyphicon glyphicon-play"></span></button></td>'+
+                  '  <td>'+cancion.nombre_artista+'</td>'+
+                  '  <td>'+cancion.nombre_album+'</td>'+
+                  '  <td>'+cancion.nombre_genero+'</td>'+
+                  '  <td></td>'+
+                  '</tr>'
+                  $("#canciones-favoritas").append(card);
+                }
+              },
+              error: function(error){
+                console.log(error);
+              },
+              complete: function(){
+                //TO-DO
+              }
+            });
           },
           error:function(){
             alert("error")
           }
         }); 
-});
-
+}
 
 $("#btn-search").click(function(){
     $.ajax({

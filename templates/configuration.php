@@ -41,11 +41,11 @@
           </div>
         </div>
           <div class="contenedorFormulario">
-            <input type="hidden" name="txt-id-usuario" id="txt-id-usuario" value='<?php echo $_SESSION["id_usuario"]?>'>
+            <input type="hidden" name="txt-id-usuario" id="txt-id-usuario" value='<?php echo $_SESSION["id_usuario"];?>'>
             <table class="table" style="width: 500px">
                 <tr>
                     <td class="td">Tu correo electrónico:</td>
-                    <td ><input class="form-control" type="email" name="txt-correo" id="txt-correo"></td>
+                    <td ><input class="form-control" type="email" name="txt-correo" id="txt-correo" value="<?php echo $_SESSION["email"]; ?>"></td>
                     <td><button class="btns">Modificar</button></td>
                 </tr>
                 <tr>
@@ -77,7 +77,7 @@
               </tr>
               <tr>
                 <td class="td">Nombre de usuario</td>
-                <td><input class="form-control" type="text" name="txt-nombre-usuario" id="txt-nombre-usuario"></td>        
+                <td><input class="form-control" type="text" name="txt-nombre-usuario" id="txt-nombre-usuario" value="<?php echo $_SESSION["usuario"]; ?>"></td>        
 
               </tr>
           </table>
@@ -97,23 +97,20 @@
             <table class="table" style="width: 500px">
                 <tr>
                     <td class="td">Apellido(s):</td>
-                    <td ><input class="form-control" type="text" name="txt-apellido" id="txt-apellido"></td>
+                    <td ><input class="form-control" type="text" name="txt-apellido" id="txt-apellido" value="<?php echo $_SESSION["apellido"] ?>"></td>
+
                    
                 </tr>
                 <tr>
                   <td class="td">Nombre</td>
-                  <td><input class="form-control" type="text" name="txt-nombre" id="txt-nombre"></td>                    
+                  <td><input class="form-control" type="text" name="txt-nombre" id="txt-nombre" value="<?php echo $_SESSION["nombre"] ?>"></td>                    
                 </tr>
                 <tr>
                   <td class="td">Fecha de Nacimiento</td>
-                  <td ><input class="form-control" type="date" name="txt-fecha-nacimiento" id="txt-fecha-nacimiento">
+                  <td ><input class="form-control" type="date" name="txt-fecha-nacimiento" id="txt-fecha-nacimiento" value="<?php echo $_SESSION["fecha_nacimiento"] ?>">
                   </td>
                 </tr>
                
-                <tr>
-                  <td class="td">Movil</td>
-                  <td><input type="phone" name="txt-telefono" class="form-control"></td>
-                </tr>
                 <tr>
                   <td class="td">Idioma</td>
                   <td><select>
