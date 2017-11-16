@@ -102,5 +102,37 @@
 			$resultado=$conexion->ejecutarConsulta($sql);
 			return $resultado;
 		}
+
+		public static function listarPorGenero($conexion, $idGenero){
+			$sql=sprintf("
+				SELECT
+				  a.id_cancion, a.id_album, b.nombre_album, b.album_cover_url,
+				  b.id_artista, c.nombre_artista,
+				  a.id_idioma, d.nombre_idioma, d.abreviatura_idioma,
+				  a.nombre_cancion,
+				  a.id_genero,
+				  e.nombre_genero,
+				  a.url_audio,
+				  a.reproducciones
+				FROM tbl_canciones a
+				INNER JOIN tbl_albumes b
+				ON (a.id_album=b.id_album)
+				INNER JOIN tbl_artistas c
+				ON (b.id_artista=c.id_artista)
+				INNER JOIN tbl_idioma d
+				ON (a.id_idioma=d.id_idioma)
+				INNER JOIN tbl_generos e
+				ON (a.id_genero = e.id_genero)
+				WHERE a.id_genero=%s;
+			",
+				$conexion->antiInyeccion($idGenero)
+			);
+			$resultado = $conexion->ejecutarConsulta($sql);
+			$canciones=array(); // Renombrar
+			while($cancion=$conexion->obtenerFila($resultado)){
+				$canciones[]=$cancion;
+			}
+			return $canciones;
+		}
 	}
 ?>

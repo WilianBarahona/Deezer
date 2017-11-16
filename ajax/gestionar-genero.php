@@ -9,6 +9,11 @@
 				$respuesta = Genero::listarTodos($conexion);
 				echo json_encode($respuesta);
 			break;
+
+			case 'listar-por-genero':
+				$respuesta = Genero::listarPorGenero($conexion, $_POST["id_genero"]);
+				echo json_encode($respuesta);
+			break;
 			
 			case "seleccionar": 
 				
