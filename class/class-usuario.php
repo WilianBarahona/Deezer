@@ -402,7 +402,7 @@ class Usuario{
 		$resultado=$conexion->ejecutarConsulta($sql);
 		$fila = $conexion->obtenerFila($resultado);
 		//var_dump($fila);
-		echo json_encode($fila);
+		return $fila;
 	}
 	
 	//ARTISTAS FAVORITOS
