@@ -1,5 +1,16 @@
+
+
+function limpiar()
+{
+	$("#lista-carga-foto-artista").hide();
+	$('#txt-nombre-artista').val("");
+	$('#txt-biografia-artista').val("");
+	$('#slc-pais-artista').val("Seleccionar Pais");
+}
+
 // CARGAR PAISES
 $(document).ready(function(){
+	$("#btn-actualizar-artista").hide();
 	llenarTablaArtistas();
 	$.ajax({
 		url:"../ajax/gestionar-pais.php",
@@ -29,7 +40,7 @@ $(document).ready(function(){
 
 
 // LLENADO TBL-ARTISTAS
-function llenarTablaArtistas(idArtista){
+function llenarTablaArtistas(){
 	$.ajax({
 		url: "../ajax/gestionar-artista.php",
 		method: "POST",
@@ -163,15 +174,28 @@ $("#btn-guardar-artista").click(function(){
 function editarArtista(idArtista){
 	$("#btn-guardar-artista").hide();
 	$("#btn-actualizar-artista").show();
-	$("input[name='form-foto-artista']")
 	$.ajax({
 		url: '../ajax/gestionar-artista.php',
 		type: "POST",
 		data:{
-			"accion":"insertar_artista",
-			"nombre_artista":nombreArtista,
-			"id_pais":idPais,
-			"biografia_artista":biografia
+			"accion":"seleccionar",
+			"id_artista": idArtista
+		},
+		dataType: "JSON",
+		success:function(respuesta){
+			if(respuesta)
+			{
+				$.alert({
+					title: 'Editar registro',
+					content: 'Modifica los campos que lo necesiten'
+				});
+				var objeto = respuesta;
+				$("#txt-id-usuario").val(idArtista);
+				$("#txt-nombre-artista").val(objeto.nombre_artista);
+				$("#slc-pais-artista").val(objeto.id_pais);
+				$("#txt-biografia-artista").val(objeto.biografia_artista);
+				$("#txt-url-foto-artista").val(objeto.url_foto_artista);
+			}
 		}
 	});
 }
@@ -213,10 +237,55 @@ function eliminarArtista(idArtista){
 	});
 }
 
-function limpiar()
-{
-	$("#lista-carga-foto-artista").hide();
-	$('#txt-nombre-artista').val("");
-	$('#txt-biografia-artista').val("");
-	$('#slc-pais-artista').val("Seleccionar Pais");
-}
+$("#btn-actualizar-artista").click(function(){
+	var nombreArtista = $("#txt-nombre-artista").val();
+	var idPais = $("#slc-pais-artista").val();
+	var biografia = $("#txt-biografia-artista").val();
+	var url = $("#txt-url-foto-artista").val();
+	var idArtista = $("#txt-id-usuario").val();
+	if(nombreArtista!="")
+	{
+		$.ajax({
+			url: "../ajax/gestionar-artista.php",
+			method:"POST",
+			data:{
+				"accion":"actualizar-registro",
+				"id_artista":idArtista,
+				"nombre_artista":nombreArtista,
+				"id_pais":idPais,
+				"biografia_artista":biografia,
+				"url_foto_artista":url
+			},
+			dataType: "JSON",
+			success: function(respuesta){
+				if(respuesta)
+				{
+					$.alert({
+						title: '¡Éxito!',
+						content: 'Se actualizo el registro'
+					});
+				}
+				else
+				{
+					$.alert({
+						title: '¡Ocurrió un problema!',
+						content: 'No se pudo actualizar el registro'
+					});
+				}
+			},
+			error: function(error){
+				console.log(error);
+			},
+			complete: function(){
+				$("#btn-actualizar-artista").hide();
+				$("#btn-guardar-artista").show();
+				limpiar();
+				$("#tbl-artistas tbody").html("");
+				llenarTablaArtistas();
+			}
+		});
+	}
+});
+
+
+

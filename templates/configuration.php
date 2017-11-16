@@ -1,4 +1,6 @@
-
+<?php
+  session_start();
+?>
 <div class="container-fluid">
 
   <!--Barra de navegacion-->
@@ -39,6 +41,7 @@
           </div>
         </div>
           <div class="contenedorFormulario">
+            <input type="hidden" name="txt-id-usuario" id="txt-id-usuario" value='<?php echo $_SESSION["id_usuario"]?>'>
             <table class="table" style="width: 500px">
                 <tr>
                     <td class="td">Tu correo electrónico:</td>
@@ -126,70 +129,12 @@
                 </tr>
                 
             </table>
-              <button type="button" class="btn btn-danger" style="padding:7px 200px 7px 200px">
+              <button type="button" class="btn btn-danger" style="padding:7px 200px 7px 200px" id="btn-eliminar">
                           Eliminar Cuenta        
                </button>
           </div>    
 <!--Fin Formulario-->  
 
 </div>
-<script type="text/javascript">
-  $(document).ready(function(){
-      $.ajax({
-        url:"ajax/gestionar-usuario.php",
-        method:"POST",
-        data:{"accion":"obtener-datos-usuario"},
-        dataType: "JSON",
-        error:function(e){
-          console.log(e);
-        },
-        success:function(respuesta){
-          console.log(respuesta);
-           if (respuesta.sexo=="m") {
-            $("input[value='m']").attr('checked', true);
-          }
-          if (respuesta.sexo=='f') {
-            $("input[value='f']").attr('checked', true);
-          }
-          var fila='<img style="width: 200px; height: 200px" src="'+respuesta.url_foto_perfil+'" >';
-          $("#foto-perfil").append(fila);
-          $("#txt-nombre").val(respuesta.nombre);
-          $("#txt-apellido").val(respuesta.apellido);
-          $("#txt-correo").val(respuesta.email);
-          $("#txt-nombre-usuario").val(respuesta.usuario);
-          $("#txt-contrasenia").val(respuesta.contrasenia);
-          $("#txt-fecha-nacimiento").val(respuesta.fecha_nacimiento);
-  
-        }
-      });
-  });
-  $("#btn-guardar-actualizacion").click(function(){
- 
-    var usuario=$("#txt-nombre-usuario").val();
-    var nombre=$("#txt-nombre").val();
-    var apellido=$("#txt-apellido").val();
-    var correo=$("#txt-correo").val();
-    var contrasenia=$("#txt-contrasenia").val();
-    var sexo=$("input[type='radio'][name='rbt-sexo']:checked").val();  
+<script type="text/javascript" src="js/acciones-usuario.js"> </script>
 
-
-    $.ajax({
-      url:"ajax/gestionar-usuario.php",
-      method:"POST",
-      data:{"accion":"actualizar-datos",
-            "usuario": usuario,
-            "nombre":nombre,
-            "apellido":apellido,
-            "email": correo,
-            "contrasenia":contrasenia,
-            "sexo":sexo
-            },
-      error:function(e){
-        alert(e);
-      },
-      success:function(r){
-        alert("Listo");
-      }
-    });
-  });
-</script>>

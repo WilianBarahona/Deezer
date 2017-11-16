@@ -420,14 +420,107 @@ class Usuario{
 			ON (a.id_artista=b.id_artista)
 			WHERE id_usuario=%s
 		",
-			$conexion->antiInyeccion($idUsuario),
+			$conexion->antiInyeccion($idUsuario)
 		);
-
+		$resultado=$conexion->ejecutarConsulta($sql);
+		$artistas=array();
+		include_once("class-artista.php");
+		while($artista = $conexion->obtenerFila($resultado)){
+			$artista["numero_albumes"] = Artista::getNumeroAlbumes($conexion, $artista["id_artista"]);
+			$artistas[]=$artista;
+		}
+		return $artistas;
 	}
 	//ALBUMES FAVORITOS
-	
+	public static function albumesFavoritos($conexion, $idUsuario){
+		$sql=sprintf("
+			SELECT
+			  a.id_album, a.id_artista,
+			  c.nombre_artista, a.nombre_album,
+			  a.anio, a.album_cover_url
+			FROM tbl_albumes_por_usuarios b
+			INNER JOIN tbl_albumes a
+			ON (a.id_album=b.id_album)
+			INNER JOIN tbl_artistas c
+			ON (a.id_artista=c.id_artista)
+			WHERE id_usuario=%s
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$resultado=$conexion->ejecutarConsulta($sql);
+		$albumes=array();
+		include_once("class-album.php");
+		while($album = $conexion->obtenerFila($resultado)){
+			$album["numero_canciones"] = Album::getNumeroCanciones($conexion, $album["id_album"]);
+			$albumes[]=$album;
+		}
+		return $albumes;
+	}
 	//PLAYLIST FAVORITOS
+	public static function playlistFavoritos($conexion, $idUsuario){
+		$sql=sprintf("
+			SELECT
+			  a.id_playlist,
+			  b.id_tipo_visibilidad,
+			  b.nombre_playlist,
+			  b.url_foto_playlist
+			FROM tbl_playlists_por_usuarios a
+			INNER JOIN tbl_playlists b
+			ON(a.id_playlist=b.id_playlist)
+			WHERE a.id_usuario=%s
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		include_once("class-playlist.php");
+		$resultado=$conexion->ejecutarConsulta($sql);
+		$playlists=array();
+		while($playlist = $conexion->obtenerFila($resultado)){
+			$playlist["numero_canciones"] = Playlist::getNumeroCanciones($conexion, $playlist["id_playlist"]);
+			$playlists[]=$playlist;
+		}
+		return $playlists;
+
+	}
 	//CANCIONES FAVORITAS
+	public static function cancionesFavoritos($conexion, $idUsuario){
+		$sql=sprintf("
+			SELECT
+			  a.id_cancion,
+			  b.nombre_cancion,
+			  b.id_album,
+			  c.nombre_album,
+			  c.album_cover_url,
+			  c.id_artista,
+			  d.nombre_artista,
+			  b.id_genero,
+			  f.nombre_genero,
+			  b.url_audio,
+			  b.id_idioma,
+			  e.nombre_idioma,
+			  e.abreviatura_idioma,
+			  b.reproducciones
+			FROM tbl_canciones_por_usuario a
+			INNER JOIN tbl_canciones b
+			ON (a.id_cancion=b.id_cancion)
+			INNER JOIN tbl_albumes c
+			ON (b.id_album=c.id_album)
+			INNER JOIN tbl_artistas d
+			ON (d.id_artista=c.id_artista)
+			INNER JOIN tbl_idioma e
+			ON (e.id_idioma=b.id_idioma)
+			INNER JOIN tbl_generos f
+			ON (b.id_genero = f.id_genero)
+			WHERE a.id_usuario=%s;
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$resultado=$conexion->ejecutarConsulta($sql);
+		$canciones=array();
+		while($cancion = $conexion->obtenerFila($resultado)){
+			$canciones[]=$cancion;
+		}
+		return $canciones;
+	}
 	
 }
 ?>

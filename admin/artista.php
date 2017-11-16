@@ -28,7 +28,10 @@
            
            <h1>Artistas</h1>
            <hr>
-           
+           <div id="resultados">
+             
+           </div>
+
            <div class="col-md-12">
               <h3>Agregar Artista</h3>
               <table class="table table-striped">
@@ -48,6 +51,7 @@
                 <tr>
                   <td>Nombre del artista: </td>
                   <td><input type="text" id="txt-nombre-artista" id="txt-artista" value="" placeholder="Nombre" class="form form-control"></td>
+                  <td><input type="hidden" id="txt-id-usuario"></td>
                 </tr>
                 <tr>
                   <td>Pais: </td>
@@ -67,6 +71,7 @@
                 <tr>
                   <td>
                     <button id="btn-guardar-artista" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                    <button id="btn-actualizar-artista" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-save"></span>Guardar cambios</button>
                   </td>
                 </tr>
               </table>

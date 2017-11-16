@@ -31,7 +31,6 @@
 				$artista->setNombreArtista($_POST["nombre_artista"]);
 				$artista->setBiografia($_POST["biografia_artista"]);
 				$artista->setUrlFoto($_POST["url_foto_artista"]);
-				echo $artista;
 				$respuesta = $artista->actualizarRegistro($conexion);
 				echo json_encode($respuesta);
 			break;

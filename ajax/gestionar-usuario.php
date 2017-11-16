@@ -51,7 +51,24 @@
 			case 'obtener-datos-usuario':
 				$respuesta = Usuario::obtenerDatosUsuario($conexion,$_SESSION['id_usuario']);
 				echo json_encode($respuesta);
-				break;
+			break;
+			
+			case 'artistas-favoritos':
+				$respuesta=Usuario::artistasFavoritos($conexion, $_POST["id_usuario"]);
+				echo json_encode($respuesta);
+			break;
+			case 'albumes-favoritos':
+				$respuesta=Usuario::albumesFavoritos($conexion, $_POST["id_usuario"]);
+				echo json_encode($respuesta);
+			break;
+			case 'playlist-favoritos':
+				$respuesta=Usuario::playlistFavoritos($conexion, $_POST["id_usuario"]);
+				echo json_encode($respuesta);
+			break;
+			case 'canciones-favoritos':
+				$respuesta=Usuario::cancionesFavoritos($conexion, $_POST["id_usuario"]);
+				echo json_encode($respuesta);
+			break;
 			default:
 				echo json_encode("Petición inválida");
 				break;
