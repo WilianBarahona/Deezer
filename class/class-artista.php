@@ -106,6 +106,7 @@ class Artista{
 		$resultado=$conexion->ejecutarConsulta(sprintf("
 				SELECT
 				  a. id_artista,
+				  b.id_pais,
 				  b.nombre_pais,
 				  b.abreviatura_pais,
 				  a.nombre_artista,
@@ -142,7 +143,6 @@ class Artista{
 			$conexion->antiInyeccion($this->getIdArtista())
 		);
 		$resultado=$conexion->ejecutarConsulta($sql);
-		var_dump($resultado);
 		return $resultado;
 	}
 	#### ELIMINAR REGISTRO ARTISTAS
