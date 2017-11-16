@@ -96,6 +96,7 @@ class Artista{
 		$resultado = $conexion->ejecutarConsulta($sql);
 		$artistas=array();
 		while($artista=$conexion->obtenerFila($resultado)){
+			$artista["numero_albumes"] = Artista::getNumeroAlbumes($conexion, $artista["id_artista"]);
 			$artistas[]=$artista;
 		}
 		return $artistas;

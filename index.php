@@ -37,9 +37,9 @@
             <li class="active">
               <a id="index">INICIO</a>
             </li> 
-            <li>
+ <!--            <li>
               <a id="recomendaciones">RECOMENDACIONES</a>
-            </li>
+            </li> -->
             <hr>
             <li>
               <a>

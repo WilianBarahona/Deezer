@@ -104,6 +104,40 @@ function cargar_inicio(){
       }
     });
 
+    //ARTISTAS
+    $.ajax({
+      url:"ajax/gestionar-artista.php",
+      method:"POST",
+      dataType:"JSON",
+      data:{
+        "accion":"listar-todos"
+      },
+      success:function(respuesta){
+        for (var i = 0; i < respuesta.length; i++) {
+          var artista = respuesta[i];
+          var card=
+          '<div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">'+
+          '  <img src="'+artista.url_foto_artista+'" class="img-rounded img-responsive center-block img-album"><br>'+
+          '  <a href="#">'+artista.nombre_artista+'</a>'+
+          '  <span  class="help-block text-center"><h6>'+artista.numero_albumes+' albumes</h6></span>'+
+          '</div>';
+          if(i%4==0){
+            $("#artistas-inicio").append('<div class="row">');
+            $("#artistas-inicio").append(card);
+            $("#artistas-inicio").append('</div>');
+          }else{
+            $("#artistas-inicio").append(card);
+          }
+        }
+      },
+      error: function(error){
+        console.log(error);
+      },
+      complete: function(){
+        //TO-DO
+      }
+    });
+    
 
     // ALBUMES
     
