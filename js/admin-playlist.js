@@ -26,15 +26,15 @@ function cargarVisibilidad(){
 
 function cargarUsuarios(){
 	$.ajax({
-		url: "../ajax/gestionar-playlist.php",
+		url: "../ajax/gestionar-usuario.php",
 		method:"POST",
-		data:{"accion":"cargar-usuarios"},
+		data:{"accion":"listar-todos"},
 		dataType:"JSON",
 		success:function(respuesta){
 			for (var i = 0; i < respuesta.length; i++) {
 				var usuario = respuesta[i];
 				var fila = 
-							'<option value = "'+usuario.id_usuario+'">'+usuario.nombre+' '+usuario.apellido+'</option>';
+							'<option value = "'+usuario.id_usuario+'">'+usuario.usuario+ '</option>';
 				$("#slc-nombre-usuario").append(fila);
 			}
 		},
