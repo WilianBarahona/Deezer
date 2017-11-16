@@ -1,10 +1,10 @@
 <?php 
 
-session_start();
+/*session_start();
 if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usuario no es administrador
     header("Location: ../login.php");
 }
-
+*/
 ?>
 
 <!DOCTYPE html>
@@ -82,26 +82,26 @@ if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usua
                 </tr>
               </table>
             </div>
-                 <div class="well col-md-12" id="div-albumes">
-                  <span class="glyphicon glyphicon-search" onclick="buscarIdioma()"></span>&nbsp&nbsp&nbsp
-                  <input type="text" id="txt-busqueda" placeholder="Busqueda" style="border-radius:8px">
-                  <div id="div-busqueda">
-                    <table id="tbl-busquedas" class="table table-striped">
-                      <thead></thead>
-                      <tbody>
-                      </tbody>
-                    </table>
-                    
-                  </div>
-                  <table id="tbl-albumes" class="table table-striped">
-                    <thead>
-                      <th>Cover</th>
-                      <th>Album</th>
-                      <th>Artista</th>
-                      <th>Año</th>
-                  </thead>
-                  <tbody></tbody>
-                  </table>
+             <div class="well col-md-12" id="div-albumes">
+              <span class="glyphicon glyphicon-search" onclick="buscarAlbum()"></span>&nbsp&nbsp&nbsp
+              <input type="text" id="txt-busqueda" placeholder="Busqueda" style="border-radius:8px">
+              <div id="div-busqueda">
+                <table id="tbl-busquedas" class="table table-striped">
+                  <thead></thead>
+                  <tbody>
+                  </tbody>
+                </table>
+                
+              </div>
+              <table id="tbl-albumes" class="table table-striped">
+                <thead>
+                  <th>Cover</th>
+                  <th>Album</th>
+                  <th>Artista</th>
+                  <th>Año</th>
+              </thead>
+              <tbody></tbody>
+              </table>
             </div>
           </div>
         </div>

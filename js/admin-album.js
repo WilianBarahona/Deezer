@@ -15,7 +15,7 @@ function listarAlbumes(){
 				var albumes = respuesta[i];
 				var fila = 
 				'<tr id="tbl-albumes-fila-'+albumes.id_album+'">'+
-				'	<td>'+albumes.album_cover_url + '</td>'+
+				'	<td><img class="img img-circle img-responsive" src="../'+albumes.album_cover_url+'" title="'+albumes.nombre_album+'"></td>'+
 				'	<td>'+albumes.nombre_album +'</td>'+
 				'	<td>'+albumes.nombre_artista+'</td>'+
 				'	<td>'+albumes.anio + '</td>'+
