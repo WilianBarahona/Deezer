@@ -46,13 +46,172 @@ function panel(id){
 				content.load(path+"settings.html");
 				break;
 			case "float-playlist": 	
-				content.load(path+"playlist.html");
-				break;
+				content.html("");
+				var header = '<div class="header">'+
+				'	<div class="container-fluid">'+
+				'		<div class="row">'+
+				'			<div class="col-sm-12">'+
+				'				<h4>Playlists Favoritos</h4>'+
+				'		</div>'+
+				'		</div>'+
+				'	</div>'+
+				'</div>';
+				content.append(header);
+				var id_usuario=$("#id_usuario").val();
+
+				$.ajax({
+					url:"ajax/gestionar-usuario.php",
+					method:"POST",
+					dataType:"JSON",
+					data:{
+						"accion":"playlist-favoritos",
+						"id_usuario":id_usuario
+					},
+					success:function(respuesta){
+						var body=
+						'<div class="list-body">'+
+						'	<ul class="list-items section" id="info-cola">	'+
+						'	</ul>'+
+						'</div>';
+						content.append(body);
+						for (var i = 0; i < respuesta.length; i++) {
+							var playlist = respuesta[i];
+							var card=
+							'<li>'+
+							'	<div class="row">'+
+							'		<div class="col-sm-2 cover">'+
+							'			<img src="'+playlist.url_foto_playlist+'" alt="cover" class="img-rounded img-responsive"></div>'+
+							'			<div class="col-sm-6">'+
+							'				<p>'+playlist.nombre_playlist+'</p>'+
+							'			</div>'+
+							'			<div class="col-sm-2">'+
+							'				<button onclick="cargarPlaylist('+playlist.id_playlist+')" type="button" class="btn btn-none">'+
+							'					<span class="glyphicon glyphicon-play"></span>'+
+							'				</button>'+
+							'			</div>'
+							'	</div>'+
+							'</li>';
+							$("#info-cola").append(card);
+						}
+					},
+					error: function(error){
+						console.log(error);
+					}
+				});
+
+			break;
 			case "float-albums": 	
-				content.load(path+"albums.html");
-				break;
+				content.html("");
+				var header = '<div class="header">'+
+				'	<div class="container-fluid">'+
+				'		<div class="row">'+
+				'			<div class="col-sm-12">'+
+				'				<h4>Albumes Favoritos</h4>'+
+				'		</div>'+
+				'		</div>'+
+				'	</div>'+
+				'</div>';
+				content.append(header);
+				var id_usuario=$("#id_usuario").val();
+				$.ajax({
+					url:"ajax/gestionar-usuario.php",
+					method:"POST",
+					dataType:"JSON",
+					data:{
+						"accion":"albumes-favoritos",
+						"id_usuario":id_usuario
+					},
+					success:function(respuesta){
+						var body=
+						'<div class="list-body">'+
+						'	<ul class="list-items section" id="info-cola">	'+
+						'	</ul>'+
+						'</div>';
+						content.append(body);
+						for (var i = 0; i < respuesta.length; i++) {
+							var album = respuesta[i];
+							var card=
+							'<li>'+
+							'	<div class="row">'+
+							'		<div class="col-sm-2 cover">'+
+							'			<img src="'+album.album_cover_url+'" alt="cover" class="img-rounded img-responsive"></div>'+
+							'			<div class="col-sm-6">'+
+							'				<p>'+album.nombre_album+'</p>'+
+							'			</div>'+
+							'			<div class="col-sm-2">'+
+							'				<button onclick="cargarAlbum('+album.id_album+')" type="button" class="btn btn-none">'+
+							'					<span class="glyphicon glyphicon-play"></span>'+
+							'				</button>'+
+							'			</div>'
+							'	</div>'+
+							'</li>';
+							$("#info-cola").append(card);
+						}
+					},
+					error: function(error){
+						console.log(error);
+					},
+					complete: function(){
+						//TO-DO
+					}
+				});
+			break;
 			case "float-activity": 	
-				content.load(path+"activity.html");
+				content.html("");
+				var header = '<div class="header">'+
+				'	<div class="container-fluid">'+
+				'		<div class="row">'+
+				'			<div class="col-sm-12">'+
+				'				<h4>Historial</h4>'+
+				'		</div>'+
+				'		</div>'+
+				'	</div>'+
+				'</div>';
+				content.append(header);
+				var id_usuario=$("#id_usuario").val();
+				$.ajax({
+					url:"ajax/gestionar-usuario.php",
+					method:"POST",
+					dataType:"JSON",
+					data:{
+						"accion": "listar-historial",
+						"id_usuario":id_usuario
+					},
+					success:function(respuesta){
+						var body=
+						'<div class="list-body">'+
+						'	<ul class="list-items section" id="info-cola">	'+
+						'	</ul>'+
+						'</div>';
+						content.append(body);
+						for (var i = 0; i < respuesta.length; i++) {
+							var cancion = respuesta[i];
+							var card=
+							'<li>'+
+							'	<div class="row">'+
+							'		<div class="col-sm-2 cover">'+
+							'			<img src="'+cancion.album_cover_url+'" alt="cover" class="img-rounded img-responsive"></div>'+
+							'			<div class="col-sm-6">'+
+							'				<p>'+cancion.nombre_cancion+'</p>'+
+							'			</div>'+
+							'			<div class="col-sm-2">'+
+							'				<button onclick="reproducir('+cancion.id_cancion+')" type="button" class="btn btn-none">'+
+							'					<span class="glyphicon glyphicon-play"></span>'+
+							'				</button>'+
+							'			</div>'
+							'	</div>'+
+							'</li>';
+							$("#info-cola").append(card);
+						}
+					},
+					error: function(error){
+						console.log(error);
+					},
+					complete: function(){
+						//TO-DO
+					}
+				});
+
 				break;
 			case "float-apps": 	
 				content.load(path+"apps.html");

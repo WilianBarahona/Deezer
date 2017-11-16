@@ -527,11 +527,35 @@ class Usuario{
 			(id_usuario, id_cancion, escuchada_en)	
 			VALUES(%s,%s,CURRENT_TIMESTAMP())
 		",
-			$conexion->ejecutarConsulta($idUsuario),
-			$conexion->ejecutarConsulta($idCancion)
-		){
+			$conexion->antiInyeccion($idUsuario),
+			$conexion->antiInyeccion($idCancion)
+		);
+		$resultado=$conexion->ejecutarConsulta($sql);
+		return $resultado;
+	}
 
+	public static function listarHistorial($conexion,  $idUsuario){
+		$sql=sprintf("
+			SELECT 
+				id_cancion,
+				escuchada_en
+			FROM tbl_historial_por_usuario
+			WHERE id_usuario=%s
+		",
+			$conexion->antiInyeccion($idUsuario)
+		);
+		$canciones = array();
+		$resultado=$conexion->ejecutarConsulta($sql);
+		include("class-cancion.php");
+		while($fila=$conexion->obtenerFila($resultado)){
+			$id_cancion = $fila["id_cancion"];
+			$cancion = new Cancion();
+			$cancion->setIdCancion($id_cancion);
+			$cancion = $cancion->seleccionar($conexion);
+			$cancion["escuchada"]=$fila["escuchada_en"];
+			$canciones[]=$cancion;
 		}
-	}	
+		return $canciones;
+	}
 }
 ?>

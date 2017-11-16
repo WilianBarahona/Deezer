@@ -130,6 +130,18 @@ function playList(){
 			"background-image":"url("+imgURL+")"
 		});
 	}
+	this.setInfoSong = function(nombre,artista,cover){
+		var cancion = this.arraySong[this.i];
+		// Cambiar titulo
+		$("#player-title").html(nombre);
+		// Cambiar artista
+		$("#player-artist").html(artista);
+		// Cmabiar cover
+		var imgURL =cover;
+		$("#player").css({
+			"background-image":"url("+imgURL+")"
+		});
+	}
 	this.stop = function(){
 		soundManager.stopAll();
 		// Cambiar icono
@@ -155,6 +167,7 @@ $(document).ready(function(){
 		},
 		success:function(respuesta){
 			playlist=respuesta;
+			album=undefined;
 			lista.setArraySong(respuesta.canciones);
 			lista.changeInfoSong();
 		},
@@ -169,12 +182,30 @@ $(document).ready(function(){
 
 
 function reproducir(id){
-	i=lista.playID(id);
-	lista.i=i;
-	lista.changeInfoSong();
+	$.ajax({
+		url:"ajax/gestionar-cancion.php",
+		method:"POST",
+		dataType:"JSON",
+		data:{
+			"accion":"seleccionar",
+			"id_cancion":id,
+		},
+		success:function(respuesta){
+			lista.arraySong.splice(lista.i+1,0,respuesta);
+			lista.i++;
+			lista.changeInfoSong();
+			lista.play();
+		},
+		error: function(error){
+			console.log(error);
+		},
+		complete: function(){
+			//TO-DO
+		}
+	});
 }
 
-function escuachada(id){
+function escuchada(id){
 	var id_usuario = $("#id_usuario").val();
 	$.ajax({
 		url:"ajax/gestionar-usuario.php",
@@ -187,6 +218,58 @@ function escuachada(id){
 		},
 		success:function(respuesta){
 			console.log(respuesta);
+		},
+		error: function(error){
+			console.log(error);
+		},
+		complete: function(){
+			//TO-DO
+		}
+	});
+}
+
+function cargarAlbum(idAlbum){
+	$.ajax({
+		url:"ajax/gestionar-album.php",
+		method:"POST",
+		dataType:"JSON",
+		data:{
+			"accion":"seleccionar",
+			"id_album":idAlbum
+		},
+		success:function(respuesta){
+			album=respuesta;
+			playlist=undefined;
+			lista.setArraySong(respuesta.canciones);
+			lista.i=0;
+			lista.changeInfoSong();
+			lista.play();
+		},
+		error: function(error){
+			console.log(error);
+		},
+		complete: function(){
+			//TO-DO
+		}
+	});
+}
+
+function cargarPlaylist(idPlaylist){
+	$.ajax({
+		url:"ajax/gestionar-playlist.php",
+		method:"POST",
+		dataType:"JSON",
+		data:{
+			"accion":"seleccionar",
+			"id_playlist":idPlaylist
+		},
+		success:function(respuesta){
+			album=undefined;
+			playlist=respuesta;
+			lista.setArraySong(respuesta.canciones);
+			lista.i=0;
+			lista.changeInfoSong();
+			lista.play();
 		},
 		error: function(error){
 			console.log(error);

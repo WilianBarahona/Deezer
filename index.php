@@ -83,12 +83,12 @@
                   &nbsp;&nbsp;&nbsp; Actividad
                 </a>
               </li>
-              <li>
+<!--               <li>
                 <a  id="float-apps" class="btn-float">
                     <span class="glyphicon glyphicon-expand"></span> 
                     &nbsp;&nbsp;&nbsp; Aplicaciones
                   </a>
-              </li>
+              </li> -->
           </ul>
           <div class="player" id="player">
             <div class="container-fluid">

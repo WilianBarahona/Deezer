@@ -51,18 +51,8 @@ function registrarUsuario(){
 
 
  $(document).ready(function(){
-          $.ajax({
-          url:"ajax/get-dom.php?evento=cargar_index",
-          data:"",
-          method:"POST",
-          success:function(resultado){
-            $("#main").html(resultado);
-          },
-          error:function(){
-            alert("error")
-          }
-        }); 
-  })
+  cargar_inicio();   
+})
 
 $("#index").click(function(event){
     cargar_inicio();
@@ -79,6 +69,76 @@ function cargar_inicio(){
   method:"POST",
   success:function(resultado){
     $("#main").html(resultado);
+
+    // PLAYLIST
+    $.ajax({
+      url:"ajax/gestionar-playlist.php",
+      method:"POST",
+      dataType:"JSON",
+      data:{
+        "accion":"listar-todos"
+      },
+      success:function(respuesta){
+        for (var i = 0; i < respuesta.length; i++) {
+          var playlist = respuesta[i];
+          var card =
+          '<div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">'+
+          '  <img src="'+playlist.url_foto_playlist+'" class="img-rounded img-responsive center-block img-album"><br>'+
+          '  <a href="#" onclick="cargarPlaylist('+playlist.id_playlist+')">'+playlist.nombre_playlist+'</a>'+
+          '  <span  class="help-block text-center"><h6>'+playlist.numero_canciones+' canciones</h6></span>'+
+          '</div>';
+          if(i%4==0){
+            $("#playlist-inicio").append('<div class="row">');
+            $("#playlist-inicio").append(card);
+            $("#playlist-inicio").append('</div>');
+          }else{
+            $("#playlist-inicio").append(card);
+          }
+        }
+      },
+      error: function(error){
+        console.log(error);
+      },
+      complete: function(){
+        //TO-DO
+      }
+    });
+
+
+    // ALBUMES
+    
+    $.ajax({
+      url:"ajax/gestionar-album.php",
+      method:"POST",
+      dataType:"JSON",
+      data:{
+        "accion":"listar-todos"
+      },
+      success:function(respuesta){
+        for (var i = 0; i < respuesta.length; i++) {
+          var album = respuesta[i];
+          var card =
+          '<div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">'+
+          '  <img src="'+album.album_cover_url+'" class="img-rounded img-responsive img-album"><br>'+
+          '  <a href="#" onclick="cargarAlbum('+album.id_album+')">'+album.nombre_album+'</a>'+
+          '  <span  class="help-block text-center"><h6>De '+album.nombre_artista+'</h6></span>'+
+          '</div>';
+          if(i%4==0){
+            $("#albumes-inicio").append('<div class="row">');
+            $("#albumes-inicio").append(card);
+            $("#albumes-inicio").append('</div>');
+          }else{
+            $("#albumes-inicio").append(card);
+          }
+        }
+      },
+      error: function(error){
+        console.log(error);
+      },
+      complete: function(){
+        //TO-DO
+      }
+    });
   },
   error:function(){
     alert("error")

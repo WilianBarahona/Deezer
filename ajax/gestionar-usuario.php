@@ -75,6 +75,11 @@
 				echo json_encode($respuesta);
 			break;
 
+			case "listar-historial":
+				$respuesta = Usuario::listarHistorial($conexion,  $_POST["id_usuario"]);
+				echo json_encode($respuesta);
+			break;
+
 			default:
 				echo json_encode("Petición inválida");
 				break;

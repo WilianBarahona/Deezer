@@ -75,6 +75,7 @@ class Playlist{
 		$resultado = $conexion->ejecutarConsulta($sql);
 		$playlists=array(); // Renombrar
 		while($playlist=$conexion->obtenerFila($resultado)){
+			$playlist["numero_canciones"] = Playlist::getNumeroCanciones($conexion, $playlist["id_playlist"]);
 			$playlists[]=$playlist;
 		}
 		return $playlists;
