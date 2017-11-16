@@ -378,7 +378,6 @@ class Usuario{
 			$conexion->antiInyeccion($this->fechaNacimiento),
 			$conexion->antiInyeccion($this->idUsuario)
 		);
-		echo $sql;
 		$resultado=$conexion->ejecutarConsulta($sql);
 		return $resultado;
 	}
