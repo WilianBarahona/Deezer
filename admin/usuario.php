@@ -1,3 +1,11 @@
+<?php 
+
+session_start();
+if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usuario no es administrador
+    header("Location: ../login.php");
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
