@@ -382,7 +382,7 @@ class Usuario{
 		$resultado=$conexion->ejecutarConsulta($sql);
 		return $resultado;
 	}
-	function obtenerDatosUsuario($conexion,$idUsuarioActivo){
+	public static function  obtenerDatosUsuario($conexion,$idUsuarioActivo){
 		$sql= sprintf("
 				SELECT id_suscripcion, 
 					   id_pais, 

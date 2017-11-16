@@ -49,7 +49,7 @@
 				echo json_encode($respuesta);
 			break;
 			case 'obtener-datos-usuario':
-				$respuesta = Usuario::obtenerDatosUsuario($conexion,$_SESSION['id_usuario']);
+				$respuesta = Usuario::obtenerDatosUsuario($conexion,$_POST['id_usuario']);
 				echo json_encode($respuesta);
 			break;
 			
