@@ -1,4 +1,6 @@
 var lista; // LISTA REPRODUCCION
+var album;
+var playlist;
 soundManager.setup({
 	onready: function() {
 		lista = new playList(); // LISTA DE REPRODUCCION CREADA ARGUMENTO VACIO
@@ -17,47 +19,32 @@ function playList(){
 	// Donde esté guardado el URL del archivo, cover, informacion de artista, etc.
 	// Elementos
 	// {id:"photo",url:"path/to/song.mp3", cover: "path/to/img.jpg(png) , artist: John Doe, title: Some song"}
-	this.arraySong = [
-	//, + iteraciones // Agregar coverimage, artist, titulo
-		// {
-		// 	id:"db",
-		// 	title: "Chala head chala",
-		// 	artist: "Ricardo Silva",
-		// 	url:"http://freezer.rf.gd/musica/db.mp3",
-		// 	cover: "img/cover/db.jpg",
-		// },
-		{
-			id:"db",
-			title: "Chala head chala",
-			artist: "Ricardo Silva",
-			url:"http://freezer.rf.gd/musica/db.mp3",
-			cover: "img/cover/db.jpg",
-		}
-	];
+	this.arraySong = [];
 	this.i=0; // CONTADOR DE REPRODUCCION
 	this.setArraySong = function(arraySong){
 		this.arraySong = arraySong;
+		this.initSounds();
 	}
 	this.initSounds = function(){
 		for (var i = 0; i < this.arraySong.length; i++) {
 			soundManager.createSound({
-				id: this.arraySong[i].id,
-				url: this.arraySong[i].url,
+				id: "id_"+this.arraySong[i].id_cancion,
+				url: "http://freezer.rf.gd/"+this.arraySong[i].url_audio,
 			});
 		}
 	}
 	// Devuelve Objeto Sound actual en reproduccion
 	this.getCurrent=function(){
-		return soundManager.getSoundById(this.arraySong[this.i].id);
+		return soundManager.getSoundById("id_"+this.arraySong[this.i].id_cancion);
 	}
 	// Reproducir la cancion actual
 	this.play = function(){
 		soundManager.pauseAll();
-		var id = this.arraySong[this.i].id;
+		var id = "id_"+this.arraySong[this.i].id_cancion;
 		// soundManager.getSoundById(id).play();
 		soundManager.play(id, {
 			whileplaying : function(){
-				console.log(this);
+				//console.log(this);
 				// Update position
 			},
 			// onfinish: lista.next
@@ -108,11 +95,11 @@ function playList(){
 	this.changeInfoSong = function(){
 		var cancion = this.arraySong[this.i];
 		// Cambiar titulo
-		$("#player-title").html(cancion.title);
+		$("#player-title").html(cancion.nombre_cancion);
 		// Cambiar artista
-		$("#player-artist").html(cancion.artist);
+		$("#player-artist").html(cancion.nombre_artista);
 		// Cmabiar cover
-		var imgURL = cancion.cover;
+		var imgURL = cancion.album_cover_url;
 		$("#player").css({
 			"background-image":"url("+imgURL+")"
 		});
@@ -128,5 +115,28 @@ function playList(){
 	}
 
 	// METODOS DE INICIO __constructor
-	this.initSounds();
+	//this.initSounds();
 }
+
+$(document).ready(function(){
+	$.ajax({
+		url:"ajax/gestionar-playlist.php",
+		method:"POST",
+		dataType:"JSON",
+		data:{
+			"accion":"seleccionar",
+			"id_playlist":23
+		},
+		success:function(respuesta){
+			playlist=respuesta;
+			lista.setArraySong(respuesta.canciones);
+			lista.changeInfoSong();
+		},
+		error: function(error){
+			console.log(error);
+		},
+		complete: function(){
+			//TO-DO
+		}
+	});
+})

@@ -143,7 +143,7 @@ function llenarTablaUsuarios(){
 			var usuario = respuesta[i];
 			var card=
 			'<tr>'+
-			'	<td><img src="'+usuario.url_foto_perfil+'" alt="'+usuario.nombre_usuario+'" /></td>'+
+			'	<td><img src="../'+usuario.url_foto_perfil+'" alt="'+usuario.nombre_usuario+'" /></td>'+
 			'	<td>'+usuario.nombre_usuario+'</td>'+
 			'	<td>'+usuario.email+'</td>'+
 			'	<td>'+usuario.fecha_nacimiento+'</td>'+
