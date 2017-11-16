@@ -83,7 +83,11 @@
       </div>
     </div>
   </div>
-  <script src="../js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="../js/soundmanager2.min.js"></script>
+  <script type="text/javascript" src="../js/player.js"></script>
+  <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-confirm.min.js"></script>
+  <script type="text/javascript" src="../js/navigation.js"></script>
   <script src="../js/admin-idioma.js"></script>
 </body>
 </html>

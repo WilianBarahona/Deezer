@@ -164,11 +164,11 @@ $("#btn-actualizar-idioma").click(function(){
 function buscarIdioma(){
 	var parametros = $("#txt-busqueda").val();
 	$.ajax({
+		url:'../ajax/gestionar-idioma.php',
 		data:{
 				"accion":"buscar-por-nombre",
 			    "nombre_idioma":parametros
 			},
-		url:'../ajax/gestionar-idioma.php',
 		method:'POST',
 		dataType:'JSON',
 		success:function(respuesta){
