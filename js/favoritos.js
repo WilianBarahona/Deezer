@@ -12,7 +12,7 @@ function agregarCancion(id){
 		success:function(respuesta){
 			console.log(respuesta);
 			if(respuesta){
-				$.alert("Se agregó favorita");
+				$.alert("Se agregó favorita");	
 			}
 		},
 		error: function(error){

@@ -118,7 +118,7 @@ function cargar_inicio(){
           var card=
           '<div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">'+
           '  <img src="'+artista.url_foto_artista+'" class="img-rounded img-responsive center-block img-album"><br>'+
-          '  <a href="#">'+artista.nombre_artista+'</a>'+
+          '  <a href="#" onclick="verArtista('+artista.id_artista+')">'+artista.nombre_artista+'</a>'+
           '  <span  class="help-block text-center"><h6>'+artista.numero_albumes+' albumes</h6></span>'+
           '</div>';
           if(i%4==0){
@@ -267,6 +267,59 @@ function iniciarSesion(){
     },
     error:function(e){
         console.log(e);
+    }
+  });
+}
+
+function verArtista(idArtista){
+  $.ajax({
+    url:"ajax/gestionar-artista.php",
+    method:"POST",
+    dataType:"JSON",
+    data:{
+      "accion":"seleccionar",
+      "id_artista":idArtista
+    },
+    success:function(respuesta){
+      var artista = respuesta;
+      $("#main").html("");
+      console.log(respuesta);
+      var header=
+      '<div class="well card">'+
+      '  <img src="'+artista.url_foto_artista+'" alt="'+artista.nombre_artista+'" class="img img-responsive img-rounded"/>'+
+      '  <h2>'+artista.nombre_artista+'</h2>'+
+      '  <h3>'+artista.nombre_pais+'</h3>'+
+      '  <hr/>'+
+      '  <h3>Biografía</h3>'+
+      '  <div class="biografia well">'+artista.biografia_artista+'</div>'+
+      '</div>'+
+      '<h3>Albumes: '+artista.numero_albumes+'</h3>'+
+      '<hr>';
+      $("#main").append(header);
+      $("#main").append('<div id="albumes"></div>');
+
+      for (var i = 0; i < artista.albumes.length; i++) {
+        var album = artista.albumes[i];
+        var card =
+        '<div class="col-lg-3 col-sm-6 col-md-4 col-xs-12 text-center">'+
+        '  <img src="'+album.album_cover_url+'" class="img-rounded img-responsive img-album"><br>'+
+        '  <a href="#" onclick="cargarAlbum('+album.id_album+')">'+album.nombre_album+'</a>'+
+        '  <span  class="help-block text-center"><h6>De '+album.nombre_artista+'</h6></span>'+
+        '</div>';
+        if(i%4==0){
+          $("#main #albumes").append('<div class="row">');
+          $("#main #albumes").append(card);
+          $("#main #albumes").append('</div>');
+        }else{
+          $("#main #albumes").append(card);
+        }
+      }
+    },
+    error: function(error){
+      console.log(error);
+    },
+    complete: function(){
+      //TO-DO
     }
   });
 }
