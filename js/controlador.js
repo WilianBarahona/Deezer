@@ -155,19 +155,18 @@ function iniciarSesion(){
       "inputEmail":correo,
       "inputPassword":contrasenia
     },
-    dataType: 'json ',
+    dataType: 'JSON',
     method: "POST",
-    success: function(respuesta){  
-    console.log(respuesta) ;
+    success: function(respuesta){ 
            if (respuesta.loggedin==0) {
 
               $("#status").html(respuesta.mensaje);
             }
             else {
-               if (respuesta.tipo_usuario==1) {
+               if (respuesta.id_tipo_usuario==1) {
                   window.location="admin/index.php";
                }
-               else if (respuesta.tipo_usuario==2) {
+               else if (respuesta.id_tipo_usuario==2) {
                   window.location="index.php";
                }  
             }

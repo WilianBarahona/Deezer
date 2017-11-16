@@ -315,7 +315,6 @@ class Usuario{
 	}
 	public static function verificarUsuario($conexion,$email,$password){
 			#consulta
-			
 			$sql=sprintf("
 				SELECT  id_usuario, id_suscripcion, id_pais, usuario,
 										  nombre, apellido, sexo, email, contrasenia,
@@ -348,17 +347,18 @@ class Usuario{
 				$_SESSION['id_tipo_usuario']=$fila['id_tipo_usuario'];
 				$respuesta['id_tipo_usuario']=$fila['id_tipo_usuario'];
 				$respuesta['loggedin'] = 1;
+				$_SESSION['status']=true;
 				$respuesta["mensaje"]="tiene acceso" ;
 
 			}
 			else {
-				//echo'correo o contrasenia invalidos';	
+				//return'correo o contrasenia invalidos';	
 				session_start();
 				$_SESSION['status']=false;
 				$respuesta['loggedin'] = 0;
 				$respuesta["mensaje"]="No tiene acceso" ;
 				}	  
-			echo json_encode($respuesta);
+			return $respuesta;
 	}
 	public  function actualizarRegistro($conexion){
 		$sql=sprintf("
