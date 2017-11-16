@@ -142,7 +142,7 @@ class Album{
 
 		#### ACTUALIZAR REGISTRO ALBUM
 		#     return false or true ####  JSON
-		public static function actualizarRegistro($conexion){
+		public  function actualizarRegistro($conexion){
 			$sql=sprintf("
 				UPDATE tbl_albumes
 				SET

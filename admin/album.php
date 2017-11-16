@@ -67,7 +67,9 @@ if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usua
                 </tr>
                 <tr>
                   <td>Nombre del álbum: </td>
-                  <td><input type="text" id="txt-nombre-album" id="txt-album" value="" placeholder="Nombre" class="form form-control"></td>
+                  <td>
+                    <input type="hidden" name="txt-id-album" id="txt-id-album">
+                    <input type="text" id="txt-nombre-album" id="txt-album" value="" placeholder="Nombre" class="form form-control"></td>
                 </tr>
                 <tr>
                   <td>Año: </td>
@@ -78,6 +80,7 @@ if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usua
                 <tr>
                   <td>
                     <button id="btn-guardar-album" type="button" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                    <button id="btn-actualizar-album" type="button" class="btn btn-info"><span class="glyphicon glyphicon-save"></span>Actualizar</button>
                   </td>
                 </tr>
               </table>

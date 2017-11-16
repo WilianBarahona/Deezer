@@ -80,7 +80,7 @@ if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usua
                   </tr>
                 </tbody>
               </table>
-              <input type="button" name="btn-guardar-playlist" value="Guardar" class="btn btn-primary" id="btn-guardar-playlist">
+              <input type="button" name="btn-guardar-playlist" value="Guardar" class="btn btn-success" id="btn-guardar-playlist">
               <input type="button" name="btn-actualizar-playlist" id="btn-actualizar-playlist" value="Actualizar" class="btn btn-info" style="display: none;">
               </form>
             </div>
