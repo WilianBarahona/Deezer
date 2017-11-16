@@ -58,10 +58,32 @@ function panel(id){
 				content.load(path+"apps.html");
 				break;
 			case "float-playlist-playing": 	
-				content.load(path+"cola.html");
+				if(playlist!=undefined){
+					var header = '<div class="header">'+
+					'	<div class="container-fluid">'+
+					'		<div class="row">'+
+					'			<div class="col-sm-12">'+
+					'				<h4>'+playlist.nombre_playlist+'</h4>'+
+					'				<h5 id="total-cancion">'+playlist.numero_canciones+' canciones</h5>'+
+					'				<p><label><input type="checkbox" name="reco-autom"> Recomendaciones automáticas</label></p>'+
+					'		</div>'+
+					'		</div>'+
+					'	</div>'+
+					'</div>';
+					content.append(header);
+					var body=
+					'<div class="list-body">'+
+					'	<ul class="list-items section" id="info-cola">	'+
+					'	</ul>'+
+					'</div>';
+					content.append(body);
+					
+				}else if(album!=undefined){
+
+				}
 				break;
 			default:
 				console.log(id);
-		}
+		};
 	}
 }

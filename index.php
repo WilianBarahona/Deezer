@@ -174,11 +174,11 @@
       </div> <!-- FIN ROW -->
     </div> <!-- FIN container -->
     <script type="text/javascript" src="js/soundmanager2.min.js"></script>
-    <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/panel.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
     <script type="text/javascript" src="js/controlador.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/keys.js"></script>
     <script type="text/javascript" src="js/albumes.js"></script>
 
