@@ -59,7 +59,7 @@ function listarTodos(){
 				'  <td>'+playlist.tipo_visibilidad+'</td>'+
 				'  <td>'+playlist.nombre_playlist+'</td>'+
 				'  <td>'+playlist.nombre_usuario+'</td>'+
-				'  <td>'+playlist.url_foto_perfil+'</td>'+
+				'	<td><img class="img img-circle img-responsive" src="../'+playlist.url_foto_playlist+'" title="'+playlist.nombre_playlist+'"></td>'+
 				'  <td><button onclick="editarPlaylist('+playlist.id_playlist+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>'+
 				'  <button onclick="eliminarPlaylist('+playlist.id_playlist+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 				'</tr>';
@@ -226,7 +226,22 @@ $("#btn-guardar-playlist").click(function(){
 		method:'POST',
 		dataType:'JSON',
 		success:function(respuesta){
-				listarTodos();
+				if(respuesta)
+				{
+					$.alert({
+						title: '¡Éxito!',
+						content: 'Se insertó el registro'
+					});
+					$("#tbl-artistas tbody").html("");
+					listarTodos();
+				}
+				else
+				{
+					$.alert({
+						title: '¡Ocurrió un problema!',
+						content: 'No se pudo ingresar el registro'
+					});
+				}
 		},
 		error:function(error){
 			console.log(error);

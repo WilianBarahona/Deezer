@@ -51,7 +51,7 @@ function llenarTablaArtistas(){
 				var artista = respuesta[i];
 				var fila = 
 				'<tr id="tbl-artistas-fila-'+artista.id_artista+'">'+
-				'	<td><img class="img img-circle img-responsive" src="../'+artista.url_foto_artista+'" title="'+artista.nombre_artista+'">'+
+				'	<td><img class="img img-circle img-responsive" src="../'+artista.url_foto_artista+'" title="'+artista.nombre_artista+'"></td>'+ 
 				'	<td>'+artista.nombre_artista+'</td>'+
 				'	<td>'+artista.nombre_pais+'</td>'+
 				// '	<td>'+artista.biografia_artista+'</td>'+

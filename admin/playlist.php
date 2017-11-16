@@ -1,10 +1,10 @@
 <?php 
 
-session_start();
+/*session_start();
 if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usuario no es administrador
     header("Location: ../login.php");
 }
-
+*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,7 +66,8 @@ if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usua
                   <tr>
                     <td>URL foto playlist:</td>
                     <td>
-                      <input type="hidden" id="txt-url-foto-playlist">
+                      <input type="text" name="txt-foto-playlist" id="txt-url-foto-playlist" class="form-control">
+                      <!--<input type="hidden" id="txt-url-foto-playlist">
                     <form method="post" id="form-foto-playlist" name="form-foto-playlist" enctype="multipart/form-data">
                       <label class="btn btn-default">
                           Examinar <input type="file" name="file" id="file-foto-playlist" hidden>
@@ -74,6 +75,7 @@ if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usua
                       <img src="../img/load.gif" id="carga-foto-playlist" class="img loading" height="20px">
                       <img src="../img/good.png" id="lista-carga-foto-playlist" class="img loading" height="20px">
                     </form>
+                  -->
                     </td>
                   </tr>
                 </tbody>
@@ -111,7 +113,11 @@ if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usua
       </div>
     </div>
   </div>
-  <script src="../js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="../js/soundmanager2.min.js"></script>
+  <script type="text/javascript" src="../js/player.js"></script>
+  <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-confirm.min.js"></script>
+  <script type="text/javascript" src="../js/navigation.js"></script>
   <script src="../js/admin-playlist.js"></script>
 </body>
 </html>
