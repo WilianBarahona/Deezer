@@ -56,10 +56,10 @@ function listarTodos(){
 				var playlist = respuesta[i];
 				var fila = 
 				'<tr id="tbl-playlists-fila-'+playlist.id_playlist+'">'+
+				'	<td><img class="img img-circle img-responsive" src="../'+playlist.url_foto_playlist+'" title="'+playlist.nombre_playlist+'"></td>'+
 				'  <td>'+playlist.tipo_visibilidad+'</td>'+
 				'  <td>'+playlist.nombre_playlist+'</td>'+
 				'  <td>'+playlist.nombre_usuario+'</td>'+
-				'	<td><img class="img img-circle img-responsive" src="../'+playlist.url_foto_playlist+'" title="'+playlist.nombre_playlist+'"></td>'+
 				'  <td><button onclick="editarPlaylist('+playlist.id_playlist+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>'+
 				'  <button onclick="eliminarPlaylist('+playlist.id_playlist+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 				'</tr>';
@@ -142,9 +142,21 @@ $("#btn-actualizar-playlist").click(function(){
 			"url_foto_playlist":url
 		},
 		success:function(respuesta){
-			if (respuesta==true) {
-				listarTodos();
-			}
+			if(respuesta)
+				{
+					$.alert({
+						title: '¡Éxito!',
+						content: 'Se actualizo el registro'
+					});
+					listarTodos();
+				}
+				else
+				{
+					$.alert({
+						title: '¡Ocurrió un problema!',
+						content: 'No se pudo actualizar el registro'
+					});
+				}
 
 		},
 		error: function(error){
@@ -172,8 +184,22 @@ function eliminarPlaylist(codigo){
 		url:'../ajax/gestionar-playlist.php',
 		method:'POST',
 		success:function(respuesta){
-			$("#div-busqueda #tbl-busquedas tbody").empty();
-			listarTodos();
+			if(respuesta)
+				{
+					$.alert({
+						title: '¡Éxito!',
+						content: 'Se elimino el registro'
+					});
+					$("#div-busqueda #tbl-busquedas tbody").empty();
+					listarTodos();
+				}
+				else
+				{
+					$.alert({
+						title: '¡Ocurrió un problema!',
+						content: 'No se pudo eliminar el registro'
+					});
+				}
 		},
 		error:function(error){
 			alert(error);
