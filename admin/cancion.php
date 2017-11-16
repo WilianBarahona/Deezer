@@ -16,10 +16,14 @@
           <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
           <li><a href="artista.php"><span class="glyphicon glyphicon-star"></span> Artistas</a></li>
           <li><a href="album.php"><span class="glyphicon glyphicon-cd"></span> Álbumes</a></li>
-          <li class="active"><a href="#"><span class="glyphicon glyphicon-music"></span> Canciones</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-list"></span> Playlists</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Gestión de Usuarios</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Ajustes</a></li>
+          <li class="active"><a href="cancion.php"><span class="glyphicon glyphicon-music"></span> Canciones</a></li>
+          <li><a href="playlist.php"><span class="glyphicon glyphicon-list"></span> Playlists</a></li>
+          <li><a href="idioma.php"><span class="glyphicon glyphicon-text-width"></span> Idiomas</a></li>
+            <li><a href="paises.php"><span class="glyphicon glyphicon-screenshot"></span>Paises</a></li>
+          <li><a href="tipo-suscripcion.php"><span class="glyphicon glyphicon-eye-open"></span>Tipos de suscripcion</a></li>
+
+         <!--  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Gestión de Usuarios</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Ajustes</a></li> -->
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-3 col-lg-offset-2 main">
@@ -74,9 +78,9 @@
                 <tr>
                 	<td>Incluir canción: </td>
                 	<td>
-                    <input class="form-control" type="text" id="txt-url-cancion">
+                    <input placeholder="nombreCancion.mp3" class="form-control" type="text" id="txt-url-cancion">
                       <form method="post" id="form-cancion" name="form-cancion" enctype="multipart/form-data">
-                        <label class="btn btn-default">
+                        <label style="display:none" class="btn btn-default">
                             Examinar <input type="file" name="file" id="file-cancion" hidden>
                         </label>
                         <img src="../img/load.gif" id="carga-foto-cancion" class="img loading" height="20px">
