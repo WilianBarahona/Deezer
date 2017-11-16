@@ -10,8 +10,8 @@
 			case 'iniciar-sesion':
 				$correo=$_POST["inputEmail"];
 				$password=$_POST["inputPassword"];
-	
-				//$password = hash('sha512',$password); 		
+
+				$password = hash('sha512',$password); 		
 				Usuario::verificarUsuario($objConexion,$correo,$password);
 				
 				break;

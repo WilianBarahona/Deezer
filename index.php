@@ -21,6 +21,7 @@
    <link rel="stylesheet" href="css/player.css">
   </head>
   <body>
+    <input type="hidden">
     <div class="container-fluid">
       <div class="row">
         <!-- Barra de Navegacion Lateral -->

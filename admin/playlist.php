@@ -57,7 +57,16 @@
                   </tr>
                   <tr>
                     <td>URL foto playlist:</td>
-                    <td><input type="text" name="txt-url-foto-playlist" id="txt-url-foto-playlist" class="form-control"></td>
+                    <td>
+                      <input type="hidden" id="txt-url-foto-playlist">
+                    <form method="post" id="form-foto-playlist" name="form-foto-playlist" enctype="multipart/form-data">
+                      <label class="btn btn-default">
+                          Examinar <input type="file" name="file" id="file-foto-playlist" hidden>
+                      </label>
+                      <img src="../img/load.gif" id="carga-foto-playlist" class="img loading" height="20px">
+                      <img src="../img/good.png" id="lista-carga-foto-playlist" class="img loading" height="20px">
+                    </form>
+                    </td>
                   </tr>
                 </tbody>
               </table>
