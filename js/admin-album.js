@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	listarArtistas();
+	listarAlbumes();
 });
 
 function listarAlbumes(){
@@ -111,8 +112,7 @@ $("#btn-guardar-album").click(function(){
 						content: 'Se insertó el registro'
 					});
 					$("#tbl-artistas tbody").html("");
-					limpiar();
-					llenarTablaArtistas();
+					listarAlbumes();
 				}
 				else
 				{
