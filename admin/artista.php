@@ -28,7 +28,10 @@
            
            <h1>Artistas</h1>
            <hr>
-           
+           <div id="resultados">
+             
+           </div>
+
            <div class="col-md-12">
               <h3>Agregar Artista</h3>
               <table class="table table-striped">

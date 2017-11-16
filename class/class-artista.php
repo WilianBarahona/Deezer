@@ -143,7 +143,6 @@ class Artista{
 			$conexion->antiInyeccion($this->getIdArtista())
 		);
 		$resultado=$conexion->ejecutarConsulta($sql);
-		var_dump($resultado);
 		return $resultado;
 	}
 	#### ELIMINAR REGISTRO ARTISTAS
