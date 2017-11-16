@@ -98,10 +98,10 @@ if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usua
                 </div>
                 <table id="tbl-playlists" class="table table-striped">
                   <thead>
+                    <th>Imagen</th>
                     <th>Visibilidad</th>
                     <th>Playlist</th>
                     <th>Usuario</th>
-                    <th>Url foto playlist</th>
                     <th></th>
                 </thead>
                 <tbody></tbody>
