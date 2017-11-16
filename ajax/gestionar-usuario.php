@@ -13,7 +13,7 @@
 				$usuario -> setApellido($_POST['apellido']);
 				$usuario -> setSexo($_POST['sexo']);
 				$usuario -> setEmail($_POST['email']);
-				$usuario -> setContrasenia($_POST['contrasenia']);
+				$usuario -> setContrasenia(hash("sha512",$_POST['contrasenia']));
 				$usuario -> setFechaNacimiento($_POST['fecha_nacimiento']);
 				$respuesta = $usuario->actualizarRegistro($conexion);
 				echo json_encode($respuesta);
@@ -27,7 +27,7 @@
 				$usuario->setApellido($_POST["apellido"]);
 				$usuario->setSexo($_POST["sexo"]);
 				$usuario->setEmail($_POST["email"]);
-				$usuario->setContrasenia($_POST["contrasenia"]);
+				$usuario -> setContrasenia(hash("sha512",$_POST['contrasenia']));
 				$usuario->setFechaNacimiento($_POST["fecha_nacimiento"]);
 				$usuario->setUrlFotoPerfil($_POST["url_foto_perfil"]);
 				$usuario->setTipoUsuario($_POST["id_tipo_usuario"]);
