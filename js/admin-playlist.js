@@ -181,6 +181,35 @@ function eliminarPlaylist(codigo){
 	})
 };
 
+$("#file-foto-playlist").change(function(){
+	var formData = new FormData($("#form-foto-playlist")[0]);
+	$("#lista-carga-foto-playlist").hide();
+	$("#carga-foto-playlist").show();
+	$.ajax({
+	    url: "../ajax/subir-imagen.php",
+	    type: "POST",
+	    data: formData,
+	    contentType: false,
+	    processData: false,
+	    dataType:"JSON",
+	    success:function(respuesta){
+			if(respuesta.status){
+				$("#txt-url-foto-playlist").val("img/"+respuesta.ruta);
+				$("#lista-carga-foto-playlist").show();
+			}else{
+				$.alert(respuesta.mensaje);
+			}
+		},
+		error: function(error){
+			console.log(error);
+		},
+		complete: function(){
+			//TO-DO
+			$("#carga-foto-playlist").hide();
+		}
+	});
+});
+
 $("#btn-guardar-playlist").click(function(){
 	var visibilidad=$("#slc-tipo-visibilidad").val();
 	var nombre=$("#txt-nombre-playlist").val();
