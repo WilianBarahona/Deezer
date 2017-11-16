@@ -2,6 +2,36 @@ $(document).ready(function(){
 	listarArtistas();
 });
 
+function listarAlbumes(){
+	$.ajax({
+		url:"../ajax/gestionar-album.php",
+		method:"POST",
+		dataType: "JSON",
+		data:{
+			"accion":"listar-todos"
+		},
+		success: function(respuesta){
+			for (var i = 0; i < respuesta.length; i++) {
+				var albumes = respuesta[i];
+				var fila = 
+				'<tr id="tbl-albumes-fila-'+albumes.id_album+'">'+
+				'	<td>'+albumes.album_cover_url + '</td>'+
+				'	<td>'+albumes.nombre_album +'</td>'+
+				'	<td>'+albumes.nombre_artista+'</td>'+
+				'	<td>'+albumes.anio + '</td>'+
+				'  	<td><button onclick="editarIdioma('+albumes.id_album+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>'+
+				'  	<button onclick="eliminarIdioma('+albumes.id_album+') class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
+				'	</tr>';
+				$("#div-albumes #tbl-albumes tbody").append(fila);
+			}
+		},
+		error: function(e)
+		{
+
+		}
+	});
+}
+
 function listarArtistas(){
 		$.ajax({
 		url:"../ajax/gestionar-artista.php",
