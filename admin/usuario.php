@@ -31,7 +31,7 @@ session_start();
           <li><a href="tipo-suscripcion.php"><span class="glyphicon glyphicon-eye-open"></span>Tipos de suscripcion</a></li>
 
           <li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span> Gestión de Usuarios</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Ajustes</a></li>
+          <!-- <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Ajustes</a></li> -->
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-3 col-lg-offset-2 main">

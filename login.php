@@ -110,8 +110,8 @@ if(isset($_SESSION["status"])){
             <div class="col-md-2 col-lg-1"></div>
         </div>
        
-  <script src="js/particles.min.js"></script>
-  <script src="js/app.js"></script>
+  <!-- <script src="js/particles.min.js"></script> -->
+  <!-- <script src="js/app.js"></script> -->
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/controlador.js"></script>
 </body>

@@ -6,6 +6,14 @@
 		$conexion = new Conexion;
 		switch ($_POST['accion']) {
 			case 'actualizar-registro': 
+				$_SESSION['id_usuario']= $_POST['id_usuario'];
+				$_SESSION['usuario']= $_POST['usuario'];
+				$_SESSION['nombre']= $_POST['nombre'];
+				$_SESSION['apellido']= $_POST['apellido'];
+				$_SESSION['sexo']= $_POST['sexo'];
+				$_SESSION['email']= $_POST['email'];
+				$_SESSION['fecha_nacimiento']= $_POST['fecha_nacimiento'];
+
 				$usuario=new Usuario();
 				$usuario -> setIdUsuario($_POST['id_usuario']);
 				$usuario -> setUsuario($_POST['usuario']);
@@ -45,6 +53,7 @@
 				echo json_encode($respuesta);
 			break;
 			case "eliminar-registro":
+				session_destroy();
 				$respuesta=Usuario::eliminarRegistro($conexion, $_POST["id_usuario"]);
 				echo json_encode($respuesta);
 			break;

@@ -208,7 +208,7 @@ $("#favoritas").click(function(){
 function musica(){
   var id_usuario = $("#id_usuario").val();
   var foto_usuario = $("#foto_usuario").val();
-
+  var nombre_perfil = $("#nombre_usuario").val();
      $.ajax({
           url:"ajax/get-dom.php?evento=cargar_favoritas",
           data:"",
@@ -216,6 +216,7 @@ function musica(){
           success:function(resultado){
             $("#main").html(resultado);
             $("#img-perfil").attr("src", foto_usuario);
+            $("#nombre-perfil").html(nombre_perfil);
             $.ajax({
               url:"ajax/gestionar-usuario.php",
               method:"POST",

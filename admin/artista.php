@@ -29,7 +29,7 @@ if($_SESSION['status']==false || $_SESSION["id_tipo_usuario"]!=1) { // O el usua
           <li><a href="idioma.php"><span class="glyphicon glyphicon-text-width"></span> Idiomas</a></li>
             <li><a href="paises.php"><span class="glyphicon glyphicon-screenshot"></span>Paises</a></li>
           <li><a href="tipo-suscripcion.php"><span class="glyphicon glyphicon-eye-open"></span>Tipos de suscripcion</a></li>
-
+<li><a href="usuario.php"><span class="glyphicon glyphicon-user"></span> Gestión de Usuarios</a></li>
           <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Gestión de Usuarios</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Ajustes</a></li> -->
         </ul>

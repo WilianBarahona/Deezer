@@ -37,7 +37,6 @@ $(document).ready(function(){
     var contrasenia=$("#txt-contrasenia").val();
     var sexo=$("input[type='radio'][name='rbt-sexo']:checked").val();  
 
-    alert(id_usuario);
     $.ajax({
       url:"ajax/gestionar-usuario.php",
       method:"POST",
@@ -55,22 +54,33 @@ $(document).ready(function(){
         alert(e);
       },
       success:function(r){
-        alert(r);
+        if(r){
+          $.alert("Se almacenó información")
+        }
       }
     });
   });
   $("#btn-eliminar").click(function(){
-     $.ajax({
-          url:"ajax/gestionar-usuario.php",
-      method:"POST",
-      data:{"accion":"eliminar-registro"  },
-      error:function(e){
-        alert(e);
-      },
-      success:function(r){
-        window.location="login.php";
+    $.confirm({
+      title:"¡Alerta!",
+      content:"Confirme para eliminar su cuenta",
+      buttons:{
+        Aceptar:function(){
+          var id_usuario = $("#id_usuario").val();
+           $.ajax({
+                url:"ajax/gestionar-usuario.php",
+            method:"POST",
+            data:{"accion":"eliminar-registro", "id_usuario": id_usuario
+          },
+            error:function(e){
+              alert(e);
+            },
+            success:function(r){
+              window.location="login.php";
+            }
+           });
+        },
+        Cancelar:function(){}
       }
-
-
-     });
+    })
   });

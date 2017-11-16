@@ -46,12 +46,10 @@
                 <tr>
                     <td class="td">Tu correo electrónico:</td>
                     <td ><input class="form-control" type="email" name="txt-correo" id="txt-correo" value="<?php echo $_SESSION["email"]; ?>"></td>
-                    <td><button class="btns">Modificar</button></td>
                 </tr>
                 <tr>
                   <td class="td">Tu contraseña:</td>
                   <td><input class="form-control" type="password" name="txt-contrasenia" id="txt-contrasenia"></td>
-                  <td><button class="btns">Modificar</button></td>
                 </tr>
             </table>
 

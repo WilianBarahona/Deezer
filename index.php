@@ -25,6 +25,7 @@
   <body>
     <input type="hidden" id="id_usuario" value="<?php echo $_SESSION["id_usuario"] ?>">
     <input type="hidden" id="foto_usuario" value="<?php echo $_SESSION["url_foto_perfil"] ?>">
+    <input type="hidden" id="nombre_usuario" value="<?php echo $_SESSION["nombre"].' '.$_SESSION["apellido"] ?>">
     <div class="container-fluid">
       <div class="row">
         <!-- Barra de Navegacion Lateral -->
