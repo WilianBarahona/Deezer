@@ -521,5 +521,17 @@ class Usuario{
 		return $canciones;
 	}
 	
+	public static function agregarHistorial($conexion,  $idUsuario, $idCancion){
+		$sql=sprintf("
+			INSERT INTO tbl_historial_por_usuario
+			(id_usuario, id_cancion, escuchada_en)	
+			VALUES(%s,%s,CURRENT_TIMESTAMP())
+		",
+			$conexion->ejecutarConsulta($idUsuario),
+			$conexion->ejecutarConsulta($idCancion)
+		){
+
+		}
+	}	
 }
 ?>

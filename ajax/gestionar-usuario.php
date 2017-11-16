@@ -69,6 +69,12 @@
 				$respuesta=Usuario::cancionesFavoritos($conexion, $_POST["id_usuario"]);
 				echo json_encode($respuesta);
 			break;
+
+			case "agregar-historial":
+				$respuesta = Usuario::agregarHistorial($conexion,  $_POST["id_usuario"], $_POST["id_cancion"]);
+				echo json_encode($respuesta);
+			break;
+
 			default:
 				echo json_encode("Petición inválida");
 				break;

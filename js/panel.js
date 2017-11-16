@@ -58,12 +58,13 @@ function panel(id){
 				content.load(path+"apps.html");
 				break;
 			case "float-playlist-playing": 	
-				if(playlist!=undefined){
+				if(playlist!=undefined && album==undefined){
+					content.html("");
 					var header = '<div class="header">'+
 					'	<div class="container-fluid">'+
 					'		<div class="row">'+
 					'			<div class="col-sm-12">'+
-					'				<h4>'+playlist.nombre_playlist+'</h4>'+
+					'				<h4>'+playlist.nombre_album+'</h4>'+
 					'				<h5 id="total-cancion">'+playlist.numero_canciones+' canciones</h5>'+
 					'				<p><label><input type="checkbox" name="reco-autom"> Recomendaciones automáticas</label></p>'+
 					'		</div>'+
@@ -77,11 +78,76 @@ function panel(id){
 					'	</ul>'+
 					'</div>';
 					content.append(body);
-					
-				}else if(album!=undefined){
-
+					for (var i = 0; i < playlist.canciones.length; i++) {
+						var cancion = playlist.canciones[i];
+						var card=
+						'<li>'+
+						'	<div class="row">'+
+						'		<div class="col-sm-2 cover">'+
+						'			<img src="'+cancion.album_cover_url+'" alt="cover" class="img-rounded img-responsive"></div>'+
+						'			<div class="col-sm-6">'+
+						'				<p>'+cancion.nombre_cancion+'</p>'+
+						'			</div>'+
+						'			<div class="col-sm-2">'+
+						'				<button onclick="reproducir('+cancion.id_cancion+')" type="button" class="btn btn-none">'+
+						'					<span class="glyphicon glyphicon-play"></span>'+
+						'				</button>'+
+						'			</div>'+
+						'			<div class="col-sm-2">'+
+						'				<button onclick="agregarCancion('+cancion.id_cancion+')" type="button" class="btn btn-none">'+
+						'					<span class="glyphicon glyphicon-heart"></span>'+
+						'				</button>'+
+						'			</div>'+
+						'	</div>'+
+						'</li>';
+						$("#info-cola").append(card);
+					}
+				}else if(album!=undefined && playlist==undefined){
+					content.html("");
+					var header = '<div class="header">'+
+					'	<div class="container-fluid">'+
+					'		<div class="row">'+
+					'			<div class="col-sm-12">'+
+					'				<h4>'+album.nombre_album+'</h4>'+
+					'				<h5 id="total-cancion">'+album.numero_canciones+' canciones</h5>'+
+					'				<p><label><input type="checkbox" name="reco-autom"> Recomendaciones automáticas</label></p>'+
+					'		</div>'+
+					'		</div>'+
+					'	</div>'+
+					'</div>';
+					content.append(header);
+					var body=
+					'<div class="list-body">'+
+					'	<ul class="list-items section" id="info-cola">	'+
+					'	</ul>'+
+					'</div>';
+					content.append(body);
+					for (var i = 0; i < album.canciones.length; i++) {
+						var cancion = album.canciones[i];
+						var card=
+						'<li>'+
+						'	<div class="row">'+
+						'		<div class="col-sm-2 cover">'+
+						'			<img src="'+cancion.album_cover_url+'" alt="cover" class="img-rounded img-responsive"></div>'+
+						'			<div class="col-sm-6">'+
+						'				<p>'+cancion.nombre_cancion+'</p>'+
+						'			</div>'+
+						'			<div class="col-sm-2">'+
+						'				<button onclick="reproducir('+cancion.id_cancion+')" type="button" class="btn btn-none">'+
+						'					<span class="glyphicon glyphicon-play"></span>'+
+						'				</button>'+
+						'			</div>'+
+						'			<div class="col-sm-2">'+
+						'				<button onclick="agregarCancion('+cancion.id_cancion+')" type="button" class="btn btn-none">'+
+						'					<span class="glyphicon glyphicon-heart"></span>'+
+						'				</button>'+
+						'			</div>'+
+						'	</div>'+
+						'</li>';
+						$("#info-cola").append(card);
 				}
-				break;
+			}
+			break;
 			default:
 				console.log(id);
 		};

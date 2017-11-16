@@ -19,9 +19,11 @@
    <link rel="stylesheet" href="css/principal.css">
    <link rel="stylesheet" href="css/favorites.css">
    <link rel="stylesheet" href="css/player.css">
+   <link rel="stylesheet" href="css/jquery-confirm.min.css">
+
   </head>
   <body>
-    <input type="hidden">
+    <input type="hidden" id="id_usuario" value="<?php echo $_SESSION["id_usuario"] ?>">
     <div class="container-fluid">
       <div class="row">
         <!-- Barra de Navegacion Lateral -->
@@ -42,7 +44,7 @@
             <li>
               <a>
                 <span class="link-profile" id="mi-musica">
-                  <img src="img/user.jpg"  class="img-profile img-circle" alt="">
+                  <img src="<?php echo $_SESSION["url_foto_perfil"] ?>"  class="img-profile img-circle" alt="">
                   &nbsp;&nbsp;&nbsp; <span>Mi Música</span>
                 </span>
                 <span class="glyphicon glyphicon-cog settings btn-float" id="float-settings"></span>
@@ -175,12 +177,14 @@
     </div> <!-- FIN container -->
     <script type="text/javascript" src="js/soundmanager2.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-confirm.min.js"></script>
     <script type="text/javascript" src="js/panel.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
     <script type="text/javascript" src="js/controlador.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/keys.js"></script>
     <script type="text/javascript" src="js/albumes.js"></script>
+    <script type="text/javascript" src="js/favoritos.js"></script>
 
 
     <script type="text/javascript">

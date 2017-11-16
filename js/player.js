@@ -37,10 +37,14 @@ function playList(){
 	this.getCurrent=function(){
 		return soundManager.getSoundById("id_"+this.arraySong[this.i].id_cancion);
 	}
+	this.getCurrentIndex=function(){
+		return this.i;
+	}
 	// Reproducir la cancion actual
 	this.play = function(){
 		soundManager.pauseAll();
 		var id = "id_"+this.arraySong[this.i].id_cancion;
+		escuchada(this.arraySong[this.i].id_cancion);
 		// soundManager.getSoundById(id).play();
 		soundManager.play(id, {
 			whileplaying : function(){
@@ -54,6 +58,28 @@ function playList(){
 		$("#player-play").attr("class","");
 		$("#player-play").attr("class","glyphicon glyphicon-pause");
 	}
+	this.playID = function(id){
+		escuchada(id);
+		soundManager.pauseAll();
+		soundManager.play("id_"+id, {
+			whileplaying : function(){
+				//console.log(this);
+				// Update position
+			},
+			// onfinish: lista.next
+			onfinish: nextSound
+		});
+		// Cambiar icono
+		$("#player-play").attr("class","");
+		$("#player-play").attr("class","glyphicon glyphicon-pause");
+		for (var i = 0; i < this.arraySong.length; i++) {
+			idc = this.arraySong[i].id_cancion;
+			if(idc==id){
+				return i;
+			}
+		}
+	}
+
 	// Pausar canción Actual
 	this.pause=function(){
 		soundManager.pauseAll();
@@ -139,4 +165,34 @@ $(document).ready(function(){
 			//TO-DO
 		}
 	});
-})
+});
+
+
+function reproducir(id){
+	i=lista.playID(id);
+	lista.i=i;
+	lista.changeInfoSong();
+}
+
+function escuachada(id){
+	var id_usuario = $("#id_usuario").val();
+	$.ajax({
+		url:"ajax/gestionar-usuario.php",
+		method:"POST",
+		dataType:"JSON",
+		data:{
+			"accion":"agregar-historial",
+			"id_usuario":id_usuario,
+			"id_cancion":id
+		},
+		success:function(respuesta){
+			console.log(respuesta);
+		},
+		error: function(error){
+			console.log(error);
+		},
+		complete: function(){
+			//TO-DO
+		}
+	});
+}
