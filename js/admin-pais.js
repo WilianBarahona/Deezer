@@ -9,6 +9,7 @@ function listarPais(){
 		data:{"accion":"listar-todos"},
 		dataType:"JSON",
 		success:function(respuesta){
+			$("#div-pais #tbl-pais tbody").empty();
 			for (var i = 0; i < respuesta.length; i++) {
 				var pais = respuesta[i];
 				var fila = 
@@ -84,7 +85,6 @@ function eliminarPais(codigo){
 		url:'../ajax/gestionar-pais.php',
 		method:'POST',
 		success:function(respuesta){
-			$("#div-busqueda #tbl-busquedas tbody").empty();
 			listarPais();
 		},
 		error:function(error){
@@ -108,7 +108,6 @@ $("#btn-guardar-pais").click(function(){
 		method:'POST',
 		dataType:'JSON',
 		success:function(respuesta){
-			$("#div-busqueda #tbl-busquedas tbody").empty();
 			listarPais();
 		},
 		error:function(error){
@@ -134,7 +133,6 @@ $("#btn-actualizar-pais").click(function(){
 			"codigo_telefono_pais": codigoTelefonoPais,
 		},
 		success:function(respuesta){
-			$("#div-busqueda #tbl-busquedas tbody").empty();
 			listarPais();
 		},
 		error: function(error){
