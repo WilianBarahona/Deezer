@@ -6,9 +6,9 @@ $(document).ready(function(){
 
 function cargarVisibilidad(){
 	$.ajax({
-		url: "../ajax/gestionar-playlist.php",
+		url: "../ajax/gestionar-tipo-visibilidad.php",
 		method:"POST",
-		data:{"accion":"cargar-visibilidad"},
+		data:{"accion":"seleccionar"},
 		dataType:"JSON",
 		success:function(respuesta){
 			for (var i = 0; i < respuesta.length; i++) {
