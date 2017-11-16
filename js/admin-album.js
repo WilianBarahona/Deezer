@@ -22,7 +22,7 @@ function listarAlbumes(){
 				'	<td>'+albumes.nombre_artista+'</td>'+
 				'	<td>'+albumes.anio + '</td>'+
 				'  	<td><button onclick="editarAlbum('+albumes.id_album+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>'+
-				'  	<button onclick="eliminarAlbum('+albumes.id_album+') class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
+				'  	<button onclick="eliminarAlbum('+albumes.id_album+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+
 				'	</tr>';
 				$("#div-albumes #tbl-albumes tbody").append(fila);
 			}
@@ -112,6 +112,7 @@ $("#btn-guardar-album").click(function(){
 						title: '¡Éxito!',
 						content: 'Se insertó el registro'
 					});
+					$("#lista-carga-foto-album").hide();
 					$("#tbl-artistas tbody").html("");
 					limpiar();
 					listarAlbumes();
@@ -218,6 +219,43 @@ function editarAlbum(idAlbum)
 		complete: function(){
 			//TO-DO
 		}
+	});
+}
+
+function eliminarAlbum(idAlbum){
+	$.ajax({
+		url:"../ajax/gestionar-album.php",
+		method: "POST",
+		data: {
+			"accion":"eliminar-registro",
+			"id_album":idAlbum
+		},
+		dataType: "JSON",
+		success: function(resultado){
+			if(resultado)
+				{
+					$.alert({
+						title: '¡Éxito!',
+						content: 'Se elimino el registro'
+					});
+					$("#tbl-albumes tbody").html("");
+					listarAlbumes();
+				}
+				else
+				{
+					$.alert({
+						title: '¡Ocurrió un problema!',
+						content: 'No se pudo eliminar el registro'
+					});
+					$("#tbl-albumes tbody").html("");
+					listarAlbumes();
+				}
+			},
+			error:function(e){
+				console.log(e);
+			},
+			complete: function(respuesta){
+			}
 	});
 }
 
