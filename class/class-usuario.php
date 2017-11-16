@@ -313,22 +313,25 @@ class Usuario{
 		$resultado11 = $conexion->ejecutarConsulta($sql11);
 		return $resultado2 && $resultado1 && $resultado3 && $resultado4 && $resultado5 && $resultado6 && $resultado7 && $resultado8 && $resultado9 && $resultado10 && $resultado11;
 	}
-	public static function verificarUsuario($objConexion,$email,$password){
+	public static function verificarUsuario($conexion,$email,$password){
 			#consulta
-			$sql="SELECT  id_usuario, id_suscripcion, id_pais, usuario, 
-						  nombre, apellido, sexo, email, contrasenia, 
-						  ultima_sesion, fecha_nacimiento, url_foto_perfil, 
-						  tipo_usuario 
-				  FROM tbl_usuarios
-				  WHERE email='$email' && contrasenia='$password'";
-
-
+			
+			$sql=sprintf("
+				SELECT  id_usuario, id_suscripcion, id_pais, usuario,
+										  nombre, apellido, sexo, email, contrasenia,
+										   fecha_nacimiento, url_foto_perfil,id_tipo_usuario
+								  FROM tbl_usuarios
+								  WHERE email='%s' AND contrasenia='%s';
+			",
+				$conexion->antiInyeccion($email),
+				$conexion->antiInyeccion($password)
+			);
 			#resultado de la consulta				
-			$resultado=$objConexion->ejecutarConsulta($sql);
-			$cantidadRegistros=$objConexion->cantidadRegistros($resultado);
+			$resultado=$conexion->ejecutarConsulta($sql);
+			$cantidadRegistros=$conexion->cantidadRegistros($resultado);
 			
 			if ($cantidadRegistros==1)  {
-				$fila = $objConexion->obtenerFila($resultado);
+				$fila = $conexion->obtenerFila($resultado);
 				session_start();
 				$_SESSION['status']=true;
 				$_SESSION['id_usuario']=$fila['id_usuario'];
@@ -342,8 +345,8 @@ class Usuario{
 				$_SESSION['contrasenia']=$fila['contrasenia'];
 				$_SESSION['fecha_nacimiento']=$fila['fecha_nacimiento'];
 				$_SESSION['url_foto_perfil']=$fila['url_foto_perfil'];
-				$_SESSION['tipo_usuario']=$fila['tipo_usuario'];
-				$respuesta['tipo_usuario']=$fila['tipo_usuario'];
+				$_SESSION['id_tipo_usuario']=$fila['id_tipo_usuario'];
+				$respuesta['id_tipo_usuario']=$fila['id_tipo_usuario'];
 				$respuesta['loggedin'] = 1;
 				$respuesta["mensaje"]="tiene acceso" ;
 
