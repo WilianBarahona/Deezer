@@ -7,7 +7,7 @@
 		switch ($_POST['accion']) {
 			case 'actualizar-registro': 
 				$usuario=new Usuario();
-				$usuario -> setIdUsuario($POST['id_usuario']);
+				$usuario -> setIdUsuario($_POST['id_usuario']);
 				$usuario -> setUsuario($_POST['usuario']);
 				$usuario -> setNombre($_POST['nombre']);
 				$usuario -> setApellido($_POST['apellido']);
