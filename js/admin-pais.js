@@ -6,7 +6,7 @@ function listarPais(){
 	$.ajax({
 		url: "../ajax/gestionar-pais.php",
 		method:"POST",
-		data:{"accion":"listar_pais"},
+		data:{"accion":"listar-todos"},
 		dataType:"JSON",
 		success:function(respuesta){
 			for (var i = 0; i < respuesta.length; i++) {
@@ -14,7 +14,6 @@ function listarPais(){
 				var fila = 
 				'<tr id="tbl-pais-fila-'+pais.id_pais+'">'+
 				'  <td>'+pais.nombre_pais+'</td>'+
-				'  <td>'+pais.abreviatura_pais+'</td>'+
 				'  <td>'+pais.codigo_telefono_pais+'</td>'+
 				'  <td><button onclick="editarPais('+pais.id_pais+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>'+
 				'  <button onclick="eliminarPais('+pais.id_pais+')" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></button></td>'+

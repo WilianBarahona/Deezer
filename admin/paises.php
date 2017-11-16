@@ -47,14 +47,6 @@
                     <td><input type="text" name="txt-nombre-pais" id="txt-nombre-pais" class="form-control"></td>
                   </tr>           
                   <tr>
-                    <td>Name pais:</td>
-                    <td><input type="text" name="txt-name-pais" id="txt-name-pais" class="form-control"></td>
-                  </tr>
-                  <tr>
-                    <td>Nom pais:</td>
-                    <td><input type="text" name="txt-nom-pais" id="txt-nom-pais" class="form-control"></td>
-                  </tr>
-                  <tr>
                     <td>Abreviatura pais:</td>
                     <td><input type="text" name="txt-abreviatura-pais" id="txt-abreviatura-pais" class="form-control"></td>
                   </tr>
@@ -82,7 +74,6 @@
                 <table id="tbl-pais" class="table table-striped">
                   <thead>
                     <th>Pais</th>
-                    <th>Abreviatura</th>
                     <th>Codigo telefono</th>
                     <th></th>
                 </thead>
